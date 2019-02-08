@@ -13,9 +13,11 @@ Information on how to contribute to this project: [contributing](contributing.md
 
 ## Why Does This Exist??
 
-Sample strategies can do some magical things in things like numerical integration in real time graphics, and are suprisingly complex.
+My interest in this is mainly for use in numerical integration techniques in real time graphics.  In that situation, you usually want a sequence that will converge with as few samples as possible, and give a pleasing error pattern when it hasn't fully converged.
 
-To get a taste of things, check out this page on regularly spaced samples:
+This stuff is surprisingly nuanced, and yet new sampling techniques come out every year as researchers continue to push the envelope.
+
+To get a taste of things, check out the page on regularly spaced samples:
 
 [Regular Sampling](src/samples/1d/regular/regular.md)
 
