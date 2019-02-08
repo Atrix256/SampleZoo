@@ -4,6 +4,22 @@ I'm currently fleshing things out and will soon have a standardized process for 
 
 Please check back later!
 
+## Crediting Work
+
+Everyone who contributes code or non code contributions of any size are elligable to be included in the [Credits](credits.md) page.
+
+Feel free to add your own name to the appropriate section with your pull request.
+
+## Non Code Contributions
+
+Both code and non code contributions are valued by this project.
+
+Non code contributions include things like the below:
+* Terminology corrections.
+* Editorial corrections to documentation.
+* Improving explanations about sampling or tests types, including adding links to relevant resources.
+* supplying links and/or information about testing and/or sampling types to be included.
+
 ## Source Code Header (Strongly Suggested)
 
 It's strongly suggested that all files submitted have a header like the below.  All fields are optional however and there are no specific rules about date format, order of fields, or similar.
