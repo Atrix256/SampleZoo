@@ -7,29 +7,27 @@ DATE: 2/8/2019
 #include "regular.h"
 using namespace Samples::_1d::Regular;
 
-void Generate(std::vector<float>& values, size_t numValues)
+void Regular(std::vector<float>& values, size_t numValues)
 {
     values.resize(numValues);
     for (size_t i = 0; i < numValues; ++i)
         values[i] = float(i) / float(numValues);
 }
 
-void GenerateCentered(std::vector<float>& values, size_t numValues)
+void RegularCentered(std::vector<float>& values, size_t numValues)
 {
     values.resize(numValues);
     for (size_t i = 0; i < numValues; ++i)
         values[i] = float(i) / float(numValues - 1);
 }
 
-void GenerateCenteredOffset(std::vector<float>& values, size_t numValues)
+void RegularCenteredOffset(std::vector<float>& values, size_t numValues)
 {
     float offset = 1.0f / float(numValues * 2);
     values.resize(numValues);
     for (size_t i = 0; i < numValues; ++i)
         values[i] = offset + float(i) / float(numValues);
 }
-
-// TODO: can we do all 3 namespaces in 1, in the header?
 
 /*
 TODO:
@@ -38,6 +36,7 @@ regular.md
 * show the three sampling strategies on a number line. Maybe have images go into another folder?
 * show them being used for some numerical integration tests of graphs? linear, step, e^x?  from 0 to 1.
 * compare vs a high count uniform random
+* show how regular sampling aliases.
 
 Guidelines overall:
 * Code should be copy / paste-able

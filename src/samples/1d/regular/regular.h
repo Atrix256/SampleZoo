@@ -12,9 +12,9 @@ namespace Samples
     {
         namespace Regular
         {
-            void Generate(std::vector<float>& values, size_t numValues);
-            void GenerateCentered(std::vector<float>& values, size_t numValues);
-            void GenerateCenteredOffset(std::vector<float>& values, size_t numValues);
+            void Regular(std::vector<float>& values, size_t numValues);
+            void RegularCentered(std::vector<float>& values, size_t numValues);
+            void RegularCenteredOffset(std::vector<float>& values, size_t numValues);
         };
     };
 };
