@@ -11,6 +11,14 @@ Full list of contributors here: [credits](credits.md)
 
 Information on how to contribute to this project: [contributing](contributing.md)
 
+## Why Does This Exist??
+
+Sample strategies can do some magical things in things like numerical integration in real time graphics, and are suprisingly complex.
+
+To get a taste of things, check out this page on regularly spaced samples:
+
+[Regular Sampling](src/samples/1d/regular/regular.md)
+
 ## Samples Documentation
 
 [1D](src/samples/1d/1d.md) - 1 dimensional samples
