@@ -33,17 +33,21 @@ If N is 4, the sampling pattern is: 0, 1/3, 2/3, 1.
 
 Averaging those values gives 0.5.
 
+If you are sampling something that gives the same meaning to 0 and 1 (when it wraps around, or is toroidal), a problem with this sequence is that it has 2 samples in the same location, so weights that sample more highly (adding bias), and also gives less sampling coverage over the sampling domain, which affects the quality of the sampling.
+
 16 samples:
 
 ![16 samples Regular](../../../../output/samples/1d/regular/regularcentered.png)
 
 ## RegularCenteredOffset()
 
-This is the same pattern as Regular, but adds 1/(n+2) to each sample position.
+This is the same pattern as Regular, but adds 1/(n*2) to each sample position.
 
 If N is 4, the sampling pattern is: 1/8, 3/8, 5/8, 7/8.
 
 Averaging those values gives 0.5.
+
+If you are sampling something that gives the same meanting to 0 and 1, this sequence has N distinct sample locations and the distance between all of the samples is a constant 1/N.
 
 16 samples:
 
