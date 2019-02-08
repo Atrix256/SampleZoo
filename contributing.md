@@ -10,7 +10,7 @@ It's strongly suggested that all files submitted have a header like the below.  
 
 If you make a change to a file, feel free to add your name to the contributors section, regardless of the size of the change.
 
-You can specify a license as part of this header as shown below.  If no license is supplied, the file will fall under the default license of this repo, which is the [MIT License](lincense).
+You can specify a license as part of this header as shown below.  If no license is supplied, the file will fall under the default license of this repo, which is the [MIT License](LICENSE).
 
 ```cpp
 /*
