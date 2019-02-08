@@ -3,13 +3,8 @@
 A list of things the project needs
 
 ## Infrastructure
-
-* premake or similar for setting up projects
-* make some 1d samples and some 1d sampling tests
 * make a standard for how to add new samples or tests, fill it out in the contributing file.
-* do 2d, 3d, and beyond
-* gather your list of sampling patterns, tests, etc on this page
-* Get an FFT library (FFTW?)
+* gather your list of sampling patterns, tests, etc on this page. from progressive projective blue noise project and email etc.
 * stb image for reading / writing images?
 * clang tidy for style guidelines? Or google C++ style guide? or clang-format?
 
@@ -22,5 +17,7 @@ A list of things the project needs
 * Martin's R2 sequence for 2d (and higher dimensions)
 
 ## Sampling Tests
-* 1d discrepancy calculation
-* need other 1d tests and FFT!
+* 1d discrepancy calculation.
+* 1d numerical integration tests vs high sample count white noise.
+* need other 1d tests and FFT! (FFTW?)
+* 2d tests and beyond.
