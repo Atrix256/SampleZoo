@@ -24,8 +24,6 @@ There are times when the things you are sampling wrap around, and other times wh
 
 ## Links
 
-Some links on discrepancy:
-
 How to calculate discrepancy: https://math.stackexchange.com/questions/1681562/how-to-calculate-discrepancy-of-a-sequence
 
 Wikipedia links:
