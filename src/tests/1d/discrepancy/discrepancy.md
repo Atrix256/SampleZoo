@@ -27,9 +27,10 @@ There are times when the things you are sampling wrap around, and other times wh
 Some links on discrepancy:
 
 How to calculate discrepancy: https://math.stackexchange.com/questions/1681562/how-to-calculate-discrepancy-of-a-sequence
+
 Wikipedia links:
-https://en.wikipedia.org/wiki/Equidistributed_sequence#Discrepancy
-https://en.wikipedia.org/wiki/Low-discrepancy_sequence#Definition_of_discrepancy
+* https://en.wikipedia.org/wiki/Equidistributed_sequence#Discrepancy
+* https://en.wikipedia.org/wiki/Low-discrepancy_sequence#Definition_of_discrepancy
 
 Star Discrepancy from Wolfram Math World: http://mathworld.wolfram.com/StarDiscrepancy.html
 
