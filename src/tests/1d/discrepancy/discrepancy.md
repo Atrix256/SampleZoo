@@ -33,5 +33,3 @@ Wikipedia links:
 * https://en.wikipedia.org/wiki/Low-discrepancy_sequence#Definition_of_discrepancy
 
 Star Discrepancy from Wolfram Math World: http://mathworld.wolfram.com/StarDiscrepancy.html
-
-TODO: Finish this!
