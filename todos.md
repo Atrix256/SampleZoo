@@ -6,7 +6,7 @@ A list of things the project needs
 * make a standard for how to add new samples or tests, fill it out in the contributing file.
 * gather your list of sampling patterns, tests, etc on this page. from progressive projective blue noise project and email etc.
 * stb image for reading / writing images?
-* clang tidy for style guidelines? Or google C++ style guide? or clang-format?
+* clang tidy for style guidelines? Or google C++ style guide? or clang-format? "clang-format -style=google"
 
 ## Sampling Patterns
 * 1d basic LDS
