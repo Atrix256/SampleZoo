@@ -1,6 +1,6 @@
 # Building
 
-This project uses premake 5, downloaded from https://premake.github.io/.
+This project uses premake5 and includes a windows binary for that downloaded from https://premake.github.io/.
 
 To create the solution in windows, open a command prompt in the main folder and run: ./premake5.exe vs2017
 
