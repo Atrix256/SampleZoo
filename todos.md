@@ -11,7 +11,8 @@ A list of things the project needs
 ## Sampling Patterns
 * 1d basic LDS
 * 2d basic LDS
-* Blue noise in 1d and 2d
+* Blue noise in 1d and 2d (and the various ways to generate it)
+* Poisson Disk
 * 1d and 2d jittered grid
 * 1d golden ratio
 * Martin's R2 sequence for 2d (and higher dimensions)
