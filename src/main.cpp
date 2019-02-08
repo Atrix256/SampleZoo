@@ -37,7 +37,6 @@ int main(int argc, char **argv)
 TODO:
 
 * make documentation for tests
-* should tests be in their own subfolders? probably... make that happen
 * probably should have md files next to them, even if not much to say
 * better (anti aliased) line drawing for number line. maybe make some shared code to do 2d drawing.
 * maybe have DrawLine etc work in floating point units instead of absolute pixels
