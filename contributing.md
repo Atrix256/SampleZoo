@@ -10,6 +10,8 @@ Everyone who contributes code or non code contributions of any size are elligabl
 
 Feel free to add your own name to the appropriate section with your pull request.
 
+If you are making a code change, also feel free to add your name as a contributor to whatever files you modify.
+
 ## Non Code Contributions
 
 Both code and non code contributions are valued by this project.
