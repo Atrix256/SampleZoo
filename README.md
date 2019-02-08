@@ -2,6 +2,7 @@
 Simple implementations of sampling patterns, with objective tests to compare them.
 
 Created by Alan Wolfe
+
 Full list of contributors here: [credits](credits.md)
 
 
