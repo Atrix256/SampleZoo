@@ -23,7 +23,7 @@ If N is 4, the sampling pattern is:  0, 1/4, 2/4, 3/4.
 
 A problem here is that if you take the average of those numbers, you get 0.375, instead of 0.5 like you might expect.  That can affect the quality of the sampling.
 
-(Note: if what you are sampling wraps around and gives 0 and 1 the same meaning, this isn't a problem)
+(Note: if what you are sampling wraps around and gives 0 and 1 the same meaning, this isn't a problem. There is no "true center" of the data, and you coud slide things around for 0.375 to be where 0.5 is.)
 
 16 samples:
 
