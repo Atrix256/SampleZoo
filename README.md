@@ -18,3 +18,7 @@ Information on building this code: [building](building.md)
 [src/samples/samples.md](src/samples/samples.md)
 
 ## Sample Tests Documentation
+
+## Other Software Used
+
+* stb_image and stb_image write at https://github.com/nothings/stb.  This is used to read and write images. Very cool set of header only libraries from Sean Barrett https://twitter.com/nothings.
