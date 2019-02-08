@@ -3,6 +3,8 @@ Simple copy/paste-able implementations of sampling patterns, with objective test
 
 Created by Alan Wolfe
 
+Everything in this repository is under the [MIT License](LICENSE) unless otherwise stated in the source file.
+
 Full list of contributors here: [credits](credits.md)
 
 Information on how to contribute to this project: [contributing](contributing.md)
