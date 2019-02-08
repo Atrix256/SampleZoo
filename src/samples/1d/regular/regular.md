@@ -1,6 +1,6 @@
 # Regular Sampling
 
-**namespace:** Samples::_1d::Regular::
+**namespace:** Samples::_1d::Regular
 
 Regular sampling is also known as uniformly spaced sampling, regular grid sampling.
 
