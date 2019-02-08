@@ -10,7 +10,7 @@ Randomized sampling is often favored over regularly spaced samples to get rid of
 
 Regular spaced samples are the lowest discrepancy sampling you can do in 1D, but you actually want some discrepancy for best results, so "low discrepancy sequences" are actually better even though they have higher discrepancy than regular sampling.
 
-See this page about the discrepancy test to learn more about discrepancy: [1D Discrepancy Test](../../../tests/1d/discrepancy/discrepancy.md)
+See this page about the discrepancy test to learn more about discrepancy: [1D Discrepancy Calculation](../../../tests/1d/discrepancy/discrepancy.md)
 
 There are three regular sampling strategies supplied:
 * Regular()
