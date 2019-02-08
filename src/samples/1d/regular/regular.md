@@ -21,6 +21,10 @@ If N is 4, the sampling pattern is:  0, 1/4, 2/4, 3/4.
 
 A problem here is that if you take the average of those numbers, you get 0.375, instead of 0.5 like you might expect.  That affects the quality of the sampling.
 
+16 samples:
+
+![16 samples Regular](../../../../output/samples/1d/regular/regular.png)
+
 ## RegularCentered()
 
 This does evenly spaced sampling, starting at 0 and going to 1, in step sizes of 1/(N-1).
@@ -29,6 +33,10 @@ If N is 4, the sampling pattern is: 0, 1/3, 2/3, 1.
 
 Averaging those values gives 0.5.
 
+16 samples:
+
+![16 samples Regular](../../../../output/samples/1d/regular/regularcentered.png)
+
 ## RegularCenteredOffset()
 
 This is the same pattern as Regular, but adds 1/(n+2) to each sample position.
@@ -36,3 +44,7 @@ This is the same pattern as Regular, but adds 1/(n+2) to each sample position.
 If N is 4, the sampling pattern is: 1/8, 3/8, 5/8, 7/8.
 
 Averaging those values gives 0.5.
+
+16 samples:
+
+![16 samples Regular](../../../../output/samples/1d/regular/regularcenteredoffset.png)
