@@ -52,7 +52,6 @@ A list of specific things the project needs
 ### Infrastructure
 * make a standard for how to add new samples or tests, fill it out in the contributing file.
 * gather your list of sampling patterns, tests, etc on this page. from progressive projective blue noise project and email etc.
-* stb image for reading / writing images?
 * clang tidy for style guidelines? Or google C++ style guide? or clang-format? "clang-format -style=google"
 * also an editor config? https://editorconfig.org/
 
