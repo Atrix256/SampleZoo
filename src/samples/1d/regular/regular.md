@@ -8,6 +8,8 @@ This sampling strategy takes samples at even spaces which can show good converge
 
 Randomized sampling is often favored over regularly spaced samples to get rid of aliasing problems, at the cost of gaining noise.
 
+Regular spaced samples are the lowest discrepancy sampling you can do in 1D, but you actually want some discrepancy for best results, so "low discrepancy sequences" are actually better even though they have higher discrepancy than regular sampling.
+
 There are three regular sampling strategies supplied:
 * Regular()
 * RegularCentered()
