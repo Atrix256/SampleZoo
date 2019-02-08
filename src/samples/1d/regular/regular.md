@@ -47,7 +47,7 @@ If you are sampling something that gives the same meaning to 0 and 1 (when it wr
 
 ![16 samples Regular](../../../../output/samples/1d/regular/regularcentered.png)
 
-These samples have a discrepancy, and torroidal discrepancy of 0.13.
+These samples have a discrepancy, and torroidal discrepancy of 0.13, which is double Regular().
 
 ## RegularCenteredOffset()
 
