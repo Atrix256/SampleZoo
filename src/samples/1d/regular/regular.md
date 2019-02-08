@@ -19,7 +19,7 @@ This does evenly spaced sampling starting at 0 and going to (N-1)/N, in step siz
 
 If N is 4, the sampling pattern is:  0, 1/4, 2/4, 3/4.
 
-A problem here is that if you take the average of those numbers, you get 0.375, instead of 0.5 like you might expect.
+A problem here is that if you take the average of those numbers, you get 0.375, instead of 0.5 like you might expect.  That affects the quality of the sampling.
 
 ## RegularCentered()
 
