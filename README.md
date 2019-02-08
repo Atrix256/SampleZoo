@@ -1,9 +1,9 @@
 # SampleZoo
 Simple copy/paste-able implementations of sampling patterns, with objective and subjective tests to compare them.
 
-Information on building this code: [building](building.md)
-
 Created by Alan Wolfe (alan.wolfe@gmail.com)
+
+Building and running this code: [building](building.md)
 
 Everything in this repository is under the [MIT License](LICENSE) unless otherwise stated in the source file.
 
