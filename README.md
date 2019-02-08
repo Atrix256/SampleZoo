@@ -1,5 +1,5 @@
 # SampleZoo
-Simple copy/paste-able implementations of sampling patterns, with objective tests to compare them.
+Simple copy/paste-able implementations of sampling patterns, with objective and subjective tests to compare them.
 
 Created by Alan Wolfe (alan.wolfe@gmail.com)
 
