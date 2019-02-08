@@ -1,5 +1,5 @@
 # Contributing
 
-SampleZoo was created by Alan Wolfe.
+I'm currently fleshing things out and will soon have a standardized process for submitting sampling patterns and sampling tests.
 
-If you are interested in contributing and getting your name here on the credits, check out this page: [contributing](contributing.md)
+Please check back later!
