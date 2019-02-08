@@ -11,7 +11,7 @@ A list of things the project needs
 * gather your list of sampling patterns, tests, etc on this page
 * Get an FFT library (FFTW?)
 * stb image for reading / writing images?
-* clang tidy for style guidelines? Or google C++ style guide?
+* clang tidy for style guidelines? Or google C++ style guide? or clang-format?
 
 ## Sampling Patterns
 * 1d basic LDS
