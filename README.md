@@ -1,7 +1,7 @@
 # SampleZoo
 Simple copy/paste-able implementations of sampling patterns, with objective tests to compare them.
 
-Created by Alan Wolfe
+Created by Alan Wolfe (alan.wolfe@gmail.com)
 
 Everything in this repository is under the [MIT License](LICENSE) unless otherwise stated in the source file.
 
