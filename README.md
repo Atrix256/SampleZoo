@@ -15,11 +15,11 @@ Information on building this code: [building](building.md)
 
 ## Samples Documentation
 
-[src/samples/samples.md](src/samples/samples.md)
+[1D](src/samples/1d/1d.md) - 1 dimensional samples
 
 ## Sample Tests Documentation
 
-[src/tests/tests.md](src/tests/tests.md)
+[1D](src/tests/1d/1d.md) - 1 dimensional sampling tests
 
 ## Other Software Used
 
