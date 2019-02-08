@@ -10,14 +10,14 @@ It's strongly suggested that all files submitted have a header like the below.  
 
 If you make a change to a file, feel free to add your name to the contributors section, regardless of the size of the change.
 
-Note that you can specify a license as part of this header.  If no license is supplied, the file will fall under the default license of this repo, which is the [MIT License](lincense.md).
+You can specify a license as part of this header as shown below.  If no license is supplied, the file will fall under the default license of this repo, which is the [MIT License](lincense.md).
 
 ```cpp
 /*
 FILE: ProgProjBlueNoise.cpp
 AUTHOR: Alan Wolfe (alan.wolfe@gmail.com)
 DATE: 2/8/2019
-LICENSE: MIT (see license file in the root of the repository)
+LICENSE: MIT (see license.md next to this file)
 
 CONTRIBUTORS: 
 Jim Bean
