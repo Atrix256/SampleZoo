@@ -29,6 +29,8 @@ A problem here is that if you take the average of those numbers, you get 0.375, 
 
 ![16 samples Regular](../../../../output/samples/1d/regular/regular.png)
 
+These samples have a discrepancy, and torroidal discrepancy of 0.06.
+
 ## RegularCentered()
 
 This does evenly spaced sampling, starting at 0 and going to 1, in step sizes of 1/(N-1).
@@ -43,6 +45,8 @@ If you are sampling something that gives the same meaning to 0 and 1 (when it wr
 
 ![16 samples Regular](../../../../output/samples/1d/regular/regularcentered.png)
 
+These samples have a discrepancy, and torroidal discrepancy of 0.13.
+
 ## RegularCenteredOffset()
 
 This is the same pattern as Regular, but adds 1/(n*2) to each sample position.
@@ -53,8 +57,10 @@ Averaging those values gives 0.5.
 
 If you are sampling something that gives the same meanting to 0 and 1, this sequence has N distinct sample locations and the distance between all of the samples is a constant 1/N.
 
-This sampling strategy is seemingly the best of the three because it works well for both the wrap around and non wrap around cases.
-
 16 samples:
 
 ![16 samples Regular](../../../../output/samples/1d/regular/regularcenteredoffset.png)
+
+These samples have a discrepancy, and torroidal discrepancy of 0.06.
+
+This sampling strategy is seemingly the best of the three because it works well for both the wrap around and non wrap around cases, and is tied for lowest discrepancy.
