@@ -49,6 +49,8 @@ Averaging those values gives 0.5.
 
 If you are sampling something that gives the same meanting to 0 and 1, this sequence has N distinct sample locations and the distance between all of the samples is a constant 1/N.
 
+This sampling strategy is seemingly the best of the three because it works well for both the wrap around and non wrap around cases.
+
 16 samples:
 
 ![16 samples Regular](../../../../output/samples/1d/regular/regularcenteredoffset.png)
