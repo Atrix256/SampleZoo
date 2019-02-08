@@ -7,4 +7,6 @@ Description:
 includes the headers for all sampling types
 */
 
+#pragma once
+
 #include "1d/1d.h"

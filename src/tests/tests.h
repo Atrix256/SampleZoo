@@ -1,12 +1,12 @@
 /*
-FILE: 1d.h
+FILE: tests.h
 AUTHOR: Alan Wolfe (alan.wolfe@gmail.com)
 DATE: 2/8/2019
 
 Description:
-includes the headers for all 1d sampling types
+includes the headers for all testing types
 */
 
 #pragma once
 
-#include "regular/regular.h"
+#include "1d/1d.h"

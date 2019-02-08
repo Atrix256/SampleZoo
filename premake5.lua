@@ -8,6 +8,10 @@ project "SampleZoo"
 	language "C++"
 	targetdir "build/bin/%{cfg.builfcfg}"
 
+	debugdir "./"
+
+	includedirs { "src/" }
+
 	files {"src/**.h", "src/**.cpp"}
 
 	filter { "platforms:Win32" }

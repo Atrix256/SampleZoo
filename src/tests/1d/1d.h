@@ -4,9 +4,10 @@ AUTHOR: Alan Wolfe (alan.wolfe@gmail.com)
 DATE: 2/8/2019
 
 Description:
-includes the headers for all 1d sampling types
+includes the headers for all 1d test types
 */
 
 #pragma once
 
-#include "regular/regular.h"
+#include "discrepancy.h"
+#include "numberline.h"
