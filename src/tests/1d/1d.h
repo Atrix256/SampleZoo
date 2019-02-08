@@ -10,3 +10,4 @@ includes the headers for all 1d test types
 #pragma once
 
 #include "numberline/numberline.h"
+#include "discrepancy/discrepancy.h"

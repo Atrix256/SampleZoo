@@ -20,27 +20,55 @@ DATE: 2/8/2019
 int main(int argc, char **argv)
 {
     std::vector<float> samples;
+    FILE* file = fopen("output/samples/1d/regular/discrepancy.txt", "w+b");
+
     Samples::_1d::Regular::Regular(samples, 16);
     Tests::_1d::Numberline::MakeNumberline("output/samples/1d/regular/regular.png", samples, 512);
+
+    fprintf(file, "%zu samples\r\n\r\n", samples.size());
+
+    fprintf(file, "Regular:\r\n  Discrepancy: %0.2f\r\n  Wrap: %0.2f\r\n\r\n",
+        Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
+        Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
+    );
 
     Samples::_1d::Regular::RegularCentered(samples, 16);
     Tests::_1d::Numberline::MakeNumberline("output/samples/1d/regular/regularcentered.png", samples, 512);
 
+    fprintf(file, "RegularCentered:\r\n  Discrepancy: %0.2f\r\n  Wrap: %0.2f\r\n\r\n",
+        Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
+        Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
+    );
+
     Samples::_1d::Regular::RegularCenteredOffset(samples, 16);
     Tests::_1d::Numberline::MakeNumberline("output/samples/1d/regular/regularcenteredoffset.png", samples, 512);
 
-    printf("Hello World!\n");
+    fprintf(file, "RegularCenteredOffset:\r\n  Discrepancy: %0.2f\r\n  Wrap: %0.2f\r\n\r\n",
+        Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
+        Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
+    );
+
+    fclose(file);
+
     return 0;
 }
 
 /*
 TODO:
 
-* make documentation for tests
-* probably should have md files next to them, even if not much to say
-* better (anti aliased) line drawing for number line. maybe make some shared code to do 2d drawing.
+* write up documentation for discrepancy test!
+* calculate both torroidal and non torroidal discrepancy!
+* put discrepancy values in for regular sampling.
+* maybe link to the discrepancy testing page from the regular sampling page so people can read about discrepancy there
+
+* clean up non torroidal discrepancy calculation? even just the comments maybe?
+
+* sampling: golden ratio next? it's progressive, so is a bit special in that way.
+ * maybe do white noise next?
+
 * maybe have DrawLine etc work in floating point units instead of absolute pixels
-* link to numberline images from .md files!
+
+* discrepancy docs: https://math.stackexchange.com/questions/1681562/how-to-calculate-discrepancy-of-a-sequence
 
 Documentation WIP:
 
