@@ -33,7 +33,7 @@ If N is 4, the sampling pattern is: 0, 1/3, 2/3, 1.
 
 Averaging those values gives 0.5.
 
-If you are sampling something that gives the same meaning to 0 and 1 (when it wraps around, or is toroidal), a problem with this sequence is that it has 2 samples in the same location, so weights that sample more highly (adding bias), and also gives less sampling coverage over the sampling domain, which affects the quality of the sampling.
+If you are sampling something that gives the same meaning to 0 and 1 (when it wraps around, or is toroidal), a problem with this sequence is that it has 2 samples in the same location (the 0 and 1 are the same), so weights that sample more highly (adding bias), and also gives less sampling coverage over the sampling domain, which affects the quality of the sampling.
 
 16 samples:
 
