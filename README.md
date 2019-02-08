@@ -15,11 +15,11 @@ Information on building this code: [building](building.md)
 
 ## Samples Documentation
 
-src/samples/samples.md
+[src/samples/samples.md](src/samples/samples.md)
 
 ## Sample Tests Documentation
 
-src/tests/tests.md
+[src/tests/tests.md](src/tests/tests.md)
 
 ## Other Software Used
 
