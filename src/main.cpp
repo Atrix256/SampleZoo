@@ -61,21 +61,17 @@ TODO:
  * add a 0.0 and 1.0 before sorting and then do it by index.
 
 * sampling: golden ratio next? it's progressive, so is a bit special in that way.
- * maybe do white noise next?
+ * maybe do white noise next? white noise is also progressive
+ * blue noise? mitchell's best candidate. add todos: poisson disk, relaxation.
 
 * show how regular sampling has problems with aliasing (and how random samples don't, but have noise)
+* add numerical integration tests to 1d sample tests: linear, step, e^x? from 0 to 1
+ * compare vs high count uniform random
 
-* discrepancy docs: https://math.stackexchange.com/questions/1681562/how-to-calculate-discrepancy-of-a-sequence
+
+? open up "1d sampling" to submissions soon, and have a page about how to do it?
 
 Documentation WIP:
-
-regular.md
-* show the three sampling strategies on a number line. Maybe have images go into another folder?
-* show them being used for some numerical integration tests of graphs? linear, step, e^x?  from 0 to 1.
-* compare vs a high count uniform random
-* show how regular sampling aliases.
-* calculate and show discrepancy of values
-* make a "unit test" type setup for regular.md that makes these things!
 
 Guidelines overall:
 * Code should be copy / paste-able
@@ -85,7 +81,9 @@ Guidelines overall:
 Guidelines for 1d sampling submissions:
 * generate values to sample in [0,1]
 * stateless one shot generation: function signature requirements
-* progressive: derive from a class that has pure virtuals
+* progressive: derive from a class that has a pure virtual to implement. So, you can have state if you want to, but don't have to i guess?
+ * would need to hook up to different tests
+* random: store random parts in a cache? dunno...
 * make .h and a .cpp.
  * naming conventions! of files, namespaces, directories
  * keep the header as minimal as possible to keep from poluting global symbols.
