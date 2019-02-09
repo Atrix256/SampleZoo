@@ -31,3 +31,6 @@ Wikipedia links:
 * https://en.wikipedia.org/wiki/Low-discrepancy_sequence#Definition_of_discrepancy
 
 Star Discrepancy from Wolfram Math World: http://mathworld.wolfram.com/StarDiscrepancy.html
+
+"Random-Edge Discrepancy of Supersampling Patterns" by David Dobkin & Don Mitchel [1993]
+https://pdfs.semanticscholar.org/5aec/55d3f5ed875a694cc3fb6a0cee42bd8cb92d.pdf
