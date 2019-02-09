@@ -64,8 +64,10 @@ A list of specific things the project needs
 * 1d golden ratio
 * Martin's R2 sequence for 2d (and higher dimensions)
 
-## #Sampling Tests
+### Sampling Tests
 * 1d discrepancy calculation.
 * 1d numerical integration tests vs high sample count white noise.
 * need other 1d tests and FFT! (FFTW?)
 * 2d tests and beyond.
+* show how regular 1d sampling has aliasing problems. Also show how random samples trade the aliasing for noise. 
+* add numerical integration tests to 1d sample tests: linear, step, e^x? from 0 to 1.  compare vs high count uniform random as a ground truth.  Cache those results since they are costlier to compute?
