@@ -1,0 +1,14 @@
+16 samples
+
+GoldenRatio:
+  Discrepancy: 0.12
+  Wrap: 0.12
+
+Pi:
+  Discrepancy: 0.22
+  Wrap: 0.22
+
+Sqrt(2):
+  Discrepancy: 0.13
+  Wrap: 0.13
+

@@ -10,3 +10,4 @@ includes the headers for all 1d sampling types
 #pragma once
 
 #include "regular/regular.h"
+#include "irrational_numbers/irrational_numbers.h"
