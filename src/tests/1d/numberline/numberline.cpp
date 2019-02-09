@@ -20,25 +20,23 @@ void Tests::_1d::Numberline::MakeNumberline(const char* pngFileName, const std::
 
     Image image(width, height, { 224, 224, 224 });
 
-    int numberLineXBegin = int(float(width) * 0.1f);
-    int numberLineXEnd = int(float(width) * 0.9f);
+    float numberLineXBegin = 0.1f;
+    float numberLineXEnd = 0.9f;
 
-    int numberLineYBegin = int(float(height) * 0.3f);
-    int numberLineYEnd = int(float(height) * 0.7f);
+    float numberLineYBegin = 0.3f;
+    float numberLineYEnd = 0.7f;
 
-    int numberLineYSampleBegin = int(float(height) * 0.4f);
-    int numberLineYSampleEnd = int(float(height) * 0.6f);
+    float numberLineYSampleBegin = 0.4f;
+    float numberLineYSampleEnd = 0.6f;
 
-    int imageYMiddle = height / 2;
-
-    DrawLine(image, numberLineXBegin, imageYMiddle, numberLineXEnd, imageYMiddle, { 32,32,32 });
+    DrawLine(image, numberLineXBegin, 0.5f, numberLineXEnd, 0.5f, { 32,32,32 });
     DrawLine(image, numberLineXBegin, numberLineYBegin, numberLineXBegin, numberLineYEnd, { 32, 32, 32 });
     DrawLine(image, numberLineXEnd, numberLineYBegin, numberLineXEnd, numberLineYEnd, { 32, 32, 32 });
 
     for (float f : samples)
     {
-        int sampleX = int(float(f) * (numberLineXEnd - numberLineXBegin) + numberLineXBegin);
-        DrawLine(image, sampleX, numberLineYSampleBegin, sampleX, numberLineYSampleEnd, {32, 32, 255});
+        float sampleX = float(f) * (numberLineXEnd - numberLineXBegin) + numberLineXBegin;
+        DrawLine(image, sampleX, numberLineYSampleBegin, sampleX, numberLineYSampleEnd, {32, 192, 192 });
     }
 
     stbi_write_png(pngFileName, width, height, 3, image.m_pixels.data(), width * sizeof(image.m_pixels[0]));

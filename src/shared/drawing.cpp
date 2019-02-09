@@ -26,8 +26,13 @@ T Lerp(T A, T B, float t)
     return T(float(A) * (1.0f - t) + float(B) * t);
 }
 
-void DrawLine(Image& image, int x1, int y1, int x2, int y2, const PixelRGBU8& color)
+void DrawLine(Image& image, float x1_, float y1_, float x2_, float y2_, const PixelRGBU8& color)
 {
+    int x1 = int(x1_ * float(image.m_width));
+    int x2 = int(x2_ * float(image.m_width));
+    int y1 = int(y1_ * float(image.m_height));
+    int y2 = int(y2_ * float(image.m_height));
+
     // pad the AABB of pixels we scan, to account for anti aliasing
     int startX = std::max(std::min(x1, x2) - 4, 0);
     int startY = std::max(std::min(y1, y2) - 4, 0);

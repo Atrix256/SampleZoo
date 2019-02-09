@@ -55,18 +55,15 @@ int main(int argc, char **argv)
 
 /*
 TODO:
-
-* write up documentation for discrepancy test!
-* calculate both torroidal and non torroidal discrepancy!
-* put discrepancy values in for regular sampling.
-* maybe link to the discrepancy testing page from the regular sampling page so people can read about discrepancy there
+* make the test above be a "conglomerate test" and put it in the tests folder w/ documentation
 
 * clean up non torroidal discrepancy calculation? even just the comments maybe?
+ * add a 0.0 and 1.0 before sorting and then do it by index.
 
 * sampling: golden ratio next? it's progressive, so is a bit special in that way.
  * maybe do white noise next?
 
-* maybe have DrawLine etc work in floating point units instead of absolute pixels
+* show how regular sampling has problems with aliasing (and how random samples don't, but have noise)
 
 * discrepancy docs: https://math.stackexchange.com/questions/1681562/how-to-calculate-discrepancy-of-a-sequence
 
