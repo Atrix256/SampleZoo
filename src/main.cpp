@@ -64,11 +64,6 @@ TODO:
  * maybe do white noise next? white noise is also progressive
  * blue noise? mitchell's best candidate. add todos: poisson disk, relaxation.
 
-* show how regular sampling has problems with aliasing (and how random samples don't, but have noise)
-* add numerical integration tests to 1d sample tests: linear, step, e^x? from 0 to 1
- * compare vs high count uniform random
-
-
 ? open up "1d sampling" to submissions soon, and have a page about how to do it?
 
 Documentation WIP:
