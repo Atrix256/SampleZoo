@@ -104,14 +104,11 @@ TODO:
 
 * make the test above be a "conglomerate test" and put it in the tests folder w/ documentation
 
-* clean up non torroidal discrepancy calculation? even just the comments maybe?
- * add a 0.0 and 1.0 before sorting and then do it by index.
-
 * sampling: golden ratio next? it's progressive, so is a bit special in that way.
  * maybe do white noise next? white noise is also progressive
- * blue noise? mitchell's best candidate. add todos: poisson disk, relaxation.
+ * blue noise? mitchell's best candidate. add todos for blue noise: poisson disk, relaxation.
 
-? open up "1d sampling" to submissions soon, and have a page about how to do it?
+? open up "1d sampling" to submissions soon, and have a page about how to make submissions
 
 * golden ratio documentation:
  * golden ratio = 1.61803398875 (put formula there too x^2+1 = x i think?).

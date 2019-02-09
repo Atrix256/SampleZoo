@@ -12,62 +12,42 @@ Calculates metrics about actual point densities vs expected point densitites
 
 float Tests::_1d::Discrepancy::CalculateDiscrepancy(const std::vector<float>& samples)
 {
-    // some info about calculating discrepancy
-    // https://math.stackexchange.com/questions/1681562/how-to-calculate-discrepancy-of-a-sequence
- 
-    // Calculates the discrepancy of this data.
-    // Assumes the data is [0,1) for valid sample range
+    // sort the samples, but add a 0.0 and a 1.0 to represent the "hard walls" on the left and right
+    // since this isn't torroidal
     std::vector<float> sortedSamples = samples;
+    sortedSamples.push_back(0.0f);
+    sortedSamples.push_back(1.0f);
     std::sort(sortedSamples.begin(), sortedSamples.end());
  
     float maxDifference = 0.0f;
-    for (size_t startIndex = 0; startIndex <= samples.size(); ++startIndex)
+    for (size_t startIndex = 0; startIndex < sortedSamples.size(); ++startIndex)
     {
-        // startIndex 0 = 0.0f.  startIndex 1 = sortedSamples[0]. etc
+        float startValue = sortedSamples[startIndex];
  
-        float startValue = 0.0f;
-        if (startIndex > 0)
-            startValue = sortedSamples[startIndex - 1];
- 
-        for (size_t stopIndex = startIndex; stopIndex <= samples.size(); ++stopIndex)
+        for (size_t stopIndex = startIndex + 1; stopIndex < sortedSamples.size(); ++stopIndex)
         {
-            // stopIndex 0 = sortedSamples[0].  startIndex[N] = 1.0f. etc
- 
-            float stopValue = 1.0f;
-            if (stopIndex < samples.size())
-                stopValue = sortedSamples[stopIndex];
+            float stopValue = sortedSamples[stopIndex];
  
             float length = stopValue - startValue;
- 
+
             // open interval (startValue, stopValue)
-            size_t countInside = 0;
-            for (float sample : samples)
-            {
-                if (sample > startValue &&
-                    sample < stopValue)
-                {
-                    ++countInside;
-                }
-            }
+            size_t countInside = stopIndex - startIndex - 1;
             float density = float(countInside) / float(samples.size());
             float difference = std::abs(density - length);
             if (difference > maxDifference)
                 maxDifference = difference;
- 
-            // closed interval [startValue, stopValue]
-            countInside = 0;
-            for (float sample : samples)
-            {
-                if (sample >= startValue &&
-                    sample <= stopValue)
-                {
-                    ++countInside;
-                }
-            }
+
+            // closed interval [startValue, stopValue], but don't count the very first or last sample,
+            // since they are the "hard walls", and not actually sample points.
+            if (startIndex > 0)
+                countInside += 1;
+            if (stopIndex < sortedSamples.size() - 1)
+                countInside += 1;
             density = float(countInside) / float(samples.size());
             difference = std::abs(density - length);
             if (difference > maxDifference)
                 maxDifference = difference;
+
         }
     }
     return maxDifference;
