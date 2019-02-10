@@ -39,3 +39,6 @@ http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.40.7922&rep=rep1&type=p
 
 "Random-Edge Discrepancy of Supersampling Patterns" by David Dobkin & Don Mitchel (1993)
 https://pdfs.semanticscholar.org/5aec/55d3f5ed875a694cc3fb6a0cee42bd8cb92d.pdf
+
+"Analysis of Forced Random Sampling" by Daniel Cornel
+http://drivenbynostalgia.com/files/DA.pdf
