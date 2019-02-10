@@ -21,3 +21,8 @@ inline float SRGBToLinear(float value)
 {
     return pow(value, 2.2f);
 }
+
+inline uint8_t FloatToU8(float value)
+{
+    return uint8_t(value * 255.0f + 0.5f);
+}

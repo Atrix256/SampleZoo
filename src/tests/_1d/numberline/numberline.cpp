@@ -38,13 +38,13 @@ void Tests::_1d::Numberline::MakeNumberline(const char* pngFileName, const std::
     for(size_t i = 0; i < samples.size(); ++i)
     {
         float f = samples[i];
-        static const uint8_t srcColor[3] = { 255,0,0 };
-        static const uint8_t destColor[3] = { 0, 255, 0};
+        static const float srcColor[3] = { 1, 0, 0 };
+        static const float destColor[3] = { 0, 1, 0};
 
         float t = float(i) / float(samples.size() - 1);
-        uint8_t r = Lerp(srcColor[0], destColor[0], t);
-        uint8_t g = Lerp(srcColor[1], destColor[1], t);
-        uint8_t b = Lerp(srcColor[2], destColor[2], t);
+        uint8_t r = FloatToU8(LinearToSRGB(Lerp(srcColor[0], destColor[0], t)));
+        uint8_t g = FloatToU8(LinearToSRGB(Lerp(srcColor[1], destColor[1], t)));
+        uint8_t b = FloatToU8(LinearToSRGB(Lerp(srcColor[2], destColor[2], t)));
 
         float sampleX = f * (numberLineXEnd - numberLineXBegin) + numberLineXBegin;
         DrawLine(image, sampleX, numberLineYSampleBegin, sampleX, numberLineYSampleEnd, {r, g, b });

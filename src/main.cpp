@@ -94,8 +94,6 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-* make numberline be sRGB correct. do color stuff in float, make into sRGB, then convert to u8.
-
 * do documentation for irrational numbers and link to them
 * todo for other irrational numbers: silver ratio, etc.
 
