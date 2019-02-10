@@ -23,11 +23,11 @@ To get a taste of things, check out the page on regularly spaced samples:
 
 ## Samples Documentation
 
-[1D](src/samples/1d/1d.md) - 1 dimensional samples
+[1D](src/samples/_1d/1d.md) - 1 dimensional samples
 
 ## Sample Tests Documentation
 
-[1D](src/tests/1d/1d.md) - 1 dimensional sampling tests
+[1D](src/tests/_1d/1d.md) - 1 dimensional sampling tests
 
 ## Other Software Used
 
