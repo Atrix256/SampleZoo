@@ -104,6 +104,9 @@ TODO:
  * for now, it's not treated as progressive or noted as progressive.
 
 * make the test above be a "conglomerate test" and put it in the tests folder w/ documentation
+ * make it auto generated from information in a lua file?
+ * specify the functions to call, and if they are progressive or what.
+ * for irrational tests, can pass extra params as template params (like rational number etc).
 
 * sampling: golden ratio next? it's progressive, so is a bit special in that way.
  * maybe do white noise next? white noise is also progressive
