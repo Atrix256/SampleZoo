@@ -31,7 +31,7 @@ A problem here is that if you take the average of those numbers, you get 0.375, 
 
 ![16 samples Regular](../../../../output/samples/_1d/regular/regular.png)
 
-These samples have a discrepancy, and torroidal discrepancy of 0.06.
+These samples have a discrepancy, and torroidal discrepancy of 0.0625 which is 1/16.
 
 ## RegularCentered()
 
@@ -47,7 +47,7 @@ If you are sampling something that gives the same meaning to 0 and 1 (when it wr
 
 ![16 samples Regular](../../../../output/samples/_1d/regular/regularcentered.png)
 
-These samples have a discrepancy, and torroidal discrepancy of 0.13, which is double Regular().
+These samples have a discrepancy, and torroidal discrepancy of 0.125, which is 1/8. That is double the discrepancy of Regular()!
 
 ## RegularCenteredOffset()
 
@@ -63,6 +63,6 @@ If you are sampling something that gives the same meanting to 0 and 1, this sequ
 
 ![16 samples Regular](../../../../output/samples/_1d/regular/regularcenteredoffset.png)
 
-These samples have a discrepancy, and torroidal discrepancy of 0.06.
+These samples have a discrepancy, and torroidal discrepancy of 0.0625 which is 1/16.
 
 This sampling strategy is seemingly the best of the three because it works well for both the wrap around and non wrap around cases, and is tied for lowest discrepancy.
