@@ -54,7 +54,7 @@ A list of specific things the project needs
 * gather your list of sampling patterns, tests, etc on this page. from progressive projective blue noise project and email etc.
 * clang tidy for style guidelines? Or google C++ style guide? or clang-format? "clang-format -style=google"
 * also an editor config? https://editorconfig.org/
-* Is there a way to make the documentation more auto-generated somehow, for less maintenance?
+* do some auto generation of parts of the documentation, in docgen.lua as part of the premake step, to help standardization and boilerplate
 
 ### Sampling Patterns
 * 1d basic LDS
