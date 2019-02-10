@@ -12,6 +12,8 @@ Makes a numberline image and saves it to disk
 #include "shared/pixel.h"
 #include "shared/drawing.h"
 #include "shared/image.h"
+#include "shared/color_spaces.h"
+#include "shared/math.h"
 
 void Tests::_1d::Numberline::MakeNumberline(const char* pngFileName, const std::vector<float>& samples, size_t width_)
 {
@@ -33,10 +35,19 @@ void Tests::_1d::Numberline::MakeNumberline(const char* pngFileName, const std::
     DrawLine(image, numberLineXBegin, numberLineYBegin, numberLineXBegin, numberLineYEnd, { 32, 32, 32 });
     DrawLine(image, numberLineXEnd, numberLineYBegin, numberLineXEnd, numberLineYEnd, { 32, 32, 32 });
 
-    for (float f : samples)
+    for(size_t i = 0; i < samples.size(); ++i)
     {
-        float sampleX = float(f) * (numberLineXEnd - numberLineXBegin) + numberLineXBegin;
-        DrawLine(image, sampleX, numberLineYSampleBegin, sampleX, numberLineYSampleEnd, {32, 192, 192 });
+        float f = samples[i];
+        static const uint8_t srcColor[3] = { 255,0,0 };
+        static const uint8_t destColor[3] = { 0, 255, 0};
+
+        float t = float(i) / float(samples.size() - 1);
+        uint8_t r = Lerp(srcColor[0], destColor[0], t);
+        uint8_t g = Lerp(srcColor[1], destColor[1], t);
+        uint8_t b = Lerp(srcColor[2], destColor[2], t);
+
+        float sampleX = f * (numberLineXEnd - numberLineXBegin) + numberLineXBegin;
+        DrawLine(image, sampleX, numberLineYSampleBegin, sampleX, numberLineYSampleEnd, {r, g, b });
     }
 
     stbi_write_png(pngFileName, width, height, 3, image.m_pixels.data(), width * sizeof(image.m_pixels[0]));

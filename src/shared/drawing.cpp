@@ -9,22 +9,8 @@ Some helper functions for drawing 2d images
 
 #include "drawing.h"
 #include "image.h"
+#include "math.h"
 #include <algorithm>
-
-float SmoothStep(float value, float min, float max)
-{
-    float x = (value - min) / (max - min);
-    x = std::min(x, 1.0f);
-    x = std::max(x, 0.0f);
-
-    return 3.0f * x * x - 2.0f * x * x * x;
-}
-
-template <typename T>
-T Lerp(T A, T B, float t)
-{
-    return T(float(A) * (1.0f - t) + float(B) * t);
-}
 
 void DrawLine(Image& image, float x1_, float y1_, float x2_, float y2_, const PixelRGBU8& color)
 {

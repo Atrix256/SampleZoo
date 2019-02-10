@@ -94,12 +94,13 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* make numberline be sRGB correct. do color stuff in float, make into sRGB, then convert to u8.
+
 * do documentation for irrational numbers and link to them
 * todo for other irrational numbers: silver ratio, etc.
 
 ? how does testing a progressive sequence differ from non progressive?
  * show a graph of discrepancy over sample count, to see how it changes.
- * numberline is color coded to show where each sample came in over time.
  * somehow need to note that it's progressive - in documenation, and also in code?
  * for now, it's not treated as progressive or noted as progressive.
 
