@@ -109,19 +109,31 @@ TODO:
  * blue noise? mitchell's best candidate. add todos for blue noise: poisson disk, relaxation.
 
 ? open up "1d sampling" to submissions soon, and have a page about how to make submissions
+ * figure out what exactly you want to do before opening it up
+
+* look into generating header files and documentation from lua scripts called from in premake
 
 * golden ratio documentation:
- * golden ratio = 1.61803398875 (put formula there too x^2+1 = x i think?).
+ * golden ratio = 1.61803398875 (put formula there too x^2+1 = x i think?). also ratio of fibonacci sequence. maybe also how 1/phi = phi - 1. only thing that it's true for.
  * most irrational number and what that means for "never repeating"
  * also, limit of ratio of fibonaci numbers as you approach infinity
  * talk about conjugate and how it's not any more or less rational
  * could show how each new sample cuts the largest existing sample into two parts: the golden ratio
+ * this from numberphile about how irrational the golden ratio is: https://youtu.be/sj8Sg8qnjOg
 * pi documentation:
  * show repeated fraction of golden ratio vs pi.  maybe link to that video that shows it?
  * show how pi isn't as irrational.
  * show pi not performing as well at integration tests etc
 * sqrt2 documentation:
  * discrepancy bad in low sample counts but gets better?
+
+* add to blue noise notes... blue noise from eigenvectors
+ * https://twitter.com/TechSparx/status/1093902404867760129
+
+* make numberlines have a bool to have nodes be a color based on index? to show progressive sequences.
+ * maybe always want it on? not sure.
+
+
 
 Documentation WIP:
 
