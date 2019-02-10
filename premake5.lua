@@ -1,3 +1,6 @@
+dofile("codegen.lua")
+dofile("docgen.lua")
+
 workspace "SampleZoo"
 	configurations {"Debug", "Release"}
 	platforms { "Win64", "Win32" }
