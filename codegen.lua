@@ -59,5 +59,3 @@ for k,v in pairs(testTypes) do
 	end
 	file:close()
 end
-
-print "========================="

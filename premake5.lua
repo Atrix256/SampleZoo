@@ -1,5 +1,6 @@
 dofile("codegen.lua")
 dofile("docgen.lua")
+print "=====Generating Projects and Solution====="
 
 workspace "SampleZoo"
 	configurations {"Debug", "Release"}
