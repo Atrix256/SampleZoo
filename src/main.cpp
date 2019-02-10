@@ -85,6 +85,22 @@ int main(int argc, char **argv)
             Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
         );
 
+        Samples::_1d::IrrationalNumbers::Rational<3, 16>(samples, 16);
+        Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/irrational_numbers/rational_3_16.png", samples, 512);
+
+        fprintf(file, "Rational(3,16):\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
+            Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
+            Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
+        );
+
+        Samples::_1d::IrrationalNumbers::Rational<2, 16>(samples, 16);
+        Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/irrational_numbers/rational_2_16.png", samples, 512);
+
+        fprintf(file, "Rational(2,16):\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
+            Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
+            Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
+        );
+
         fclose(file);
     }
 
@@ -93,6 +109,8 @@ int main(int argc, char **argv)
 
 /*
 TODO:
+
+* look into how the rational sequence of 2/16 gets a torroidal discrepancy of 1.0.  That is wrong
 
 * do documentation for irrational numbers and link to them
 * todo for other irrational numbers: silver ratio, etc.
