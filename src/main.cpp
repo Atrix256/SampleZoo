@@ -111,6 +111,7 @@ int main(int argc, char **argv)
 TODO:
 
 * look into how the rational sequence of 2/16 gets a torroidal discrepancy of 1.0.  That is wrong
+* renamed 1d.md files to _1d.md but need to make sure you don't break links
 
 * do documentation for irrational numbers and link to them
 * todo for other irrational numbers: silver ratio, etc.
