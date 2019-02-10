@@ -29,7 +29,7 @@ A problem here is that if you take the average of those numbers, you get 0.375, 
 
 16 samples:
 
-![16 samples Regular](../../../../output/samples/1d/regular/regular.png)
+![16 samples Regular](../../../../output/samples/_1d/regular/regular.png)
 
 These samples have a discrepancy, and torroidal discrepancy of 0.06.
 
@@ -45,7 +45,7 @@ If you are sampling something that gives the same meaning to 0 and 1 (when it wr
 
 16 samples:
 
-![16 samples Regular](../../../../output/samples/1d/regular/regularcentered.png)
+![16 samples Regular](../../../../output/samples/_1d/regular/regularcentered.png)
 
 These samples have a discrepancy, and torroidal discrepancy of 0.13, which is double Regular().
 
@@ -61,7 +61,7 @@ If you are sampling something that gives the same meanting to 0 and 1, this sequ
 
 16 samples:
 
-![16 samples Regular](../../../../output/samples/1d/regular/regularcenteredoffset.png)
+![16 samples Regular](../../../../output/samples/_1d/regular/regularcenteredoffset.png)
 
 These samples have a discrepancy, and torroidal discrepancy of 0.06.
 

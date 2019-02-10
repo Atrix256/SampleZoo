@@ -23,10 +23,10 @@ int main(int argc, char **argv)
     // Regular sampling testing
     {
         std::vector<float> samples;
-        FILE* file = fopen("output/samples/1d/regular/discrepancy.txt", "w+b");
+        FILE* file = fopen("output/samples/_1d/regular/discrepancy.txt", "w+b");
 
         Samples::_1d::Regular::Regular(samples, 16);
-        Tests::_1d::Numberline::MakeNumberline("output/samples/1d/regular/regular.png", samples, 512);
+        Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/regular/regular.png", samples, 512);
 
         fprintf(file, "%zu samples\r\n\r\n", samples.size());
 
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
         );
 
         Samples::_1d::Regular::RegularCentered(samples, 16);
-        Tests::_1d::Numberline::MakeNumberline("output/samples/1d/regular/regularcentered.png", samples, 512);
+        Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/regular/regularcentered.png", samples, 512);
 
         fprintf(file, "RegularCentered:\r\n  Discrepancy: %0.2f\r\n  Wrap: %0.2f\r\n\r\n",
             Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
         );
 
         Samples::_1d::Regular::RegularCenteredOffset(samples, 16);
-        Tests::_1d::Numberline::MakeNumberline("output/samples/1d/regular/regularcenteredoffset.png", samples, 512);
+        Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/regular/regularcenteredoffset.png", samples, 512);
 
         fprintf(file, "RegularCenteredOffset:\r\n  Discrepancy: %0.2f\r\n  Wrap: %0.2f\r\n\r\n",
             Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
@@ -57,10 +57,10 @@ int main(int argc, char **argv)
     // Irrational number testing
     {
         std::vector<float> samples;
-        FILE* file = fopen("output/samples/1d/irrational_numbers/discrepancy.txt", "w+b");
+        FILE* file = fopen("output/samples/_1d/irrational_numbers/discrepancy.txt", "w+b");
 
         Samples::_1d::IrrationalNumbers::GoldenRatio(samples, 16);
-        Tests::_1d::Numberline::MakeNumberline("output/samples/1d/irrational_numbers/golden_ratio.png", samples, 512);
+        Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/irrational_numbers/golden_ratio.png", samples, 512);
 
         fprintf(file, "%zu samples\r\n\r\n", samples.size());
 
@@ -70,7 +70,7 @@ int main(int argc, char **argv)
         );
 
         Samples::_1d::IrrationalNumbers::Pi(samples, 16);
-        Tests::_1d::Numberline::MakeNumberline("output/samples/1d/irrational_numbers/pi.png", samples, 512);
+        Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/irrational_numbers/pi.png", samples, 512);
 
         fprintf(file, "Pi:\r\n  Discrepancy: %0.2f\r\n  Wrap: %0.2f\r\n\r\n",
             Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
@@ -78,7 +78,7 @@ int main(int argc, char **argv)
         );
 
         Samples::_1d::IrrationalNumbers::Sqrt2(samples, 16);
-        Tests::_1d::Numberline::MakeNumberline("output/samples/1d/irrational_numbers/sqrt2.png", samples, 512);
+        Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/irrational_numbers/sqrt2.png", samples, 512);
 
         fprintf(file, "Sqrt(2):\r\n  Discrepancy: %0.2f\r\n  Wrap: %0.2f\r\n\r\n",
             Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),

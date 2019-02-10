@@ -6,4 +6,4 @@ The MakeNumberline() function makes a numberline image from the samples you give
 
 Here is an example numberline of 16 samples made with Samples::_1d::Regular::RegularCenteredOffset()
 
-![16 samples Regular](../../../../output/samples/1d/regular/regularcenteredoffset.png)
+![16 samples Regular](../../../../output/samples/_1d/regular/regularcenteredoffset.png)
