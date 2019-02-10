@@ -1,14 +1,14 @@
 16 samples
 
 Regular:
-  Discrepancy: 0.06
-  Wrap: 0.06
+  Discrepancy: 0.062500
+  Wrap: 0.062500
 
 RegularCentered:
-  Discrepancy: 0.13
-  Wrap: 0.13
+  Discrepancy: 0.125000
+  Wrap: 0.125000
 
 RegularCenteredOffset:
-  Discrepancy: 0.06
-  Wrap: 0.06
+  Discrepancy: 0.062500
+  Wrap: 0.062500
 

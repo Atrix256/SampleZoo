@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 
         fprintf(file, "%zu samples\r\n\r\n", samples.size());
 
-        fprintf(file, "Regular:\r\n  Discrepancy: %0.2f\r\n  Wrap: %0.2f\r\n\r\n",
+        fprintf(file, "Regular:\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
             Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
             Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
         );
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
         Samples::_1d::Regular::RegularCentered(samples, 16);
         Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/regular/regularcentered.png", samples, 512);
 
-        fprintf(file, "RegularCentered:\r\n  Discrepancy: %0.2f\r\n  Wrap: %0.2f\r\n\r\n",
+        fprintf(file, "RegularCentered:\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
             Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
             Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
         );
@@ -46,7 +46,7 @@ int main(int argc, char **argv)
         Samples::_1d::Regular::RegularCenteredOffset(samples, 16);
         Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/regular/regularcenteredoffset.png", samples, 512);
 
-        fprintf(file, "RegularCenteredOffset:\r\n  Discrepancy: %0.2f\r\n  Wrap: %0.2f\r\n\r\n",
+        fprintf(file, "RegularCenteredOffset:\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
             Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
             Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
         );
@@ -64,7 +64,7 @@ int main(int argc, char **argv)
 
         fprintf(file, "%zu samples\r\n\r\n", samples.size());
 
-        fprintf(file, "GoldenRatio:\r\n  Discrepancy: %0.2f\r\n  Wrap: %0.2f\r\n\r\n",
+        fprintf(file, "GoldenRatio:\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
             Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
             Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
         );
@@ -72,7 +72,7 @@ int main(int argc, char **argv)
         Samples::_1d::IrrationalNumbers::Pi(samples, 16);
         Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/irrational_numbers/pi.png", samples, 512);
 
-        fprintf(file, "Pi:\r\n  Discrepancy: %0.2f\r\n  Wrap: %0.2f\r\n\r\n",
+        fprintf(file, "Pi:\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
             Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
             Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
         );
@@ -80,7 +80,7 @@ int main(int argc, char **argv)
         Samples::_1d::IrrationalNumbers::Sqrt2(samples, 16);
         Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/irrational_numbers/sqrt2.png", samples, 512);
 
-        fprintf(file, "Sqrt(2):\r\n  Discrepancy: %0.2f\r\n  Wrap: %0.2f\r\n\r\n",
+        fprintf(file, "Sqrt(2):\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
             Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
             Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
         );

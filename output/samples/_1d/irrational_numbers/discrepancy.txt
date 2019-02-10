@@ -1,14 +1,14 @@
 16 samples
 
 GoldenRatio:
-  Discrepancy: 0.12
-  Wrap: 0.12
+  Discrepancy: 0.118034
+  Wrap: 0.118034
 
 Pi:
-  Discrepancy: 0.22
-  Wrap: 0.22
+  Discrepancy: 0.215706
+  Wrap: 0.215706
 
 Sqrt(2):
-  Discrepancy: 0.13
-  Wrap: 0.13
+  Discrepancy: 0.134776
+  Wrap: 0.134776
 
