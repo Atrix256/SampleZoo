@@ -88,6 +88,24 @@ int main(int argc, char **argv)
         fclose(file);
     }
 
+    // uniform random number testing
+    {
+        std::vector<float> samples;
+        FILE* file = fopen("output/samples/_1d/uniform_random/uniform_random.txt", "w+b");
+
+        Samples::_1d::UniformRandom::UniformRandom(samples, 16);
+        Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/uniform_random/uniform_random.png", samples, 512);
+
+        fprintf(file, "%zu samples\r\n\r\n", samples.size());
+
+        fprintf(file, "Uniform Random:\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
+            Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
+            Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
+        );
+
+        fclose(file);
+    }
+
     return 0;
 }
 
@@ -95,7 +113,13 @@ int main(int argc, char **argv)
 TODO:
 
 * white noise test next?
+ * "uniform_random"
+ * tests
+ * make documentation and link it up!
+
 * clean this up below & figure out what is needed to open this up to letting people submit 1d sample sequences!
+ * purpose of samples and test documentation?
+ * automated testing setup / comparisong testing?
 
 * mention somewhere that all samples are in [0,1) unless otherwise stated.
 

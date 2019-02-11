@@ -12,11 +12,3 @@ Sqrt(2):
   Discrepancy: 0.134776
   Wrap: 0.134776
 
-Rational(3,16):
-  Discrepancy: 0.062500
-  Wrap: 0.062500
-
-Rational(2,16):
-  Discrepancy: 0.125000
-  Wrap: 1.000000
-
