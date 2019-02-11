@@ -85,22 +85,6 @@ int main(int argc, char **argv)
             Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
         );
 
-        Samples::_1d::IrrationalNumbers::Rational<3, 16>(samples, 16);
-        Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/irrational_numbers/rational_3_16.png", samples, 512);
-
-        fprintf(file, "Rational(3,16):\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
-            Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
-            Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
-        );
-
-        Samples::_1d::IrrationalNumbers::Rational<2, 16>(samples, 16);
-        Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/irrational_numbers/rational_2_16.png", samples, 512);
-
-        fprintf(file, "Rational(2,16):\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
-            Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
-            Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
-        );
-
         fclose(file);
     }
 
@@ -110,11 +94,8 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-* look into how the rational sequence of 2/16 gets a torroidal discrepancy of 1.0.  That is wrong
-* renamed 1d.md files to _1d.md but need to make sure you don't break links
-
 * do documentation for irrational numbers and link to them
-* todo for other irrational numbers: silver ratio, etc.
+* add a todo for other irrational numbers: silver ratio, etc.
 
 ? how does testing a progressive sequence differ from non progressive?
  * show a graph of discrepancy over sample count, to see how it changes.
@@ -136,22 +117,9 @@ TODO:
 * look into generating header files and documentation from lua scripts called from in premake
  * maybe tests too, and have sequences specify a "json" like file (but lua?) about their properties: progressive, randomized, etc?
 
-* golden ratio documentation:
- * golden ratio = 1.61803398875 (put formula there too x^2+1 = x i think?). also ratio of fibonacci sequence. maybe also how 1/phi = phi - 1. only thing that it's true for.
- * most irrational number and what that means for "never repeating"
- * also, limit of ratio of fibonaci numbers as you approach infinity
- * talk about conjugate and how it's not any more or less rational
- * could show how each new sample cuts the largest existing sample into two parts: the golden ratio
- * this from numberphile about how irrational the golden ratio is: https://youtu.be/sj8Sg8qnjOg
-* pi documentation:
- * show repeated fraction of golden ratio vs pi.  maybe link to that video that shows it?
- * show how pi isn't as irrational.
- * show pi not performing as well at integration tests etc
-* sqrt2 documentation:
- * discrepancy bad in low sample counts but gets better?
 
-
-
+ * need some larger tests showing irrational vs regular sampling. things like discrepancy for sample count.
+  * automatically generate test code based on a lua file describing properties of the sampling would be really nice.
 
 
 * add to blue noise notes... blue noise from eigenvectors

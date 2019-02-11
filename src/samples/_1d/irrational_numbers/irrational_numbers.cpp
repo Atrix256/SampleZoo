@@ -35,12 +35,3 @@ void Samples::_1d::IrrationalNumbers::Sqrt2(std::vector<float>& values, size_t n
     for (size_t i = 0; i < numValues; ++i)
         values[i] = std::fmodf(float(i) * sqrt2Mod1, 1.0f);
 }
-
-void Samples::_1d::IrrationalNumbers::_Rational(std::vector<float>& values, size_t numValues, int numerator_, int denominator_)
-{
-    float numerator = float(numerator_);
-    float denominator = float(denominator_);
-    values.resize(numValues);
-    for (size_t i = 0; i < numValues; ++i)
-        values[i] = std::fmodf(float(i) * numerator / denominator, 1.0f);
-}
