@@ -76,7 +76,7 @@ This can also be used as a "random number generator" but i put it in quotes beca
 
 Irrational numbers are numbers that can't be written as fractions (aka ratios, that's where the "rational" part of the word comes from).
 
-Since the denominator of the reduced fraction is what defines how long the sequence takes to repeat, and irrational numbers have no denominator, that means they don't repeat - which is true.
+Since the denominator of the reduced fraction is what defines how long the sequence takes to repeat, and irrational numbers have no denominator, you might come to the conclusion that they don't ever repeat - and you'd be right!
 
 The formula for using irrational numbers is essentially the same as when using rational numbers.  If X is the irrational number and you want to calculate sample I, it's: (I * X) mod 1
 
