@@ -68,7 +68,7 @@ Here's an example shuffling 10 things using a shuffle seed of 3:
 
 The resulting number is the index to use in the array at step I, so an upside is that you don't actually need to do a shuffle, or stored a shuffled list.
 
-A downside is that not all shuffle orders are always possible, and are limited by how many possible M values there are (which is less than N).  If you were to shuffle 10 things, the only shuffle seeds you have available (numbers coprime to 10) are: 1,3,7,9. 1 and 9 make for some pretty predictable shuffles, and 3 and 7 are very related to eachother as you might have noticed in the examples above.  Despite this, it can work well in a pinch, cache friendliness aside.
+A downside is that not all shuffle orders are possible, and are limited by how many possible M values there are (which is less than N).  If you were to shuffle 10 things, the only shuffle seeds you have available (numbers coprime to 10) are: 1,3,7,9. 1 and 9 make for some pretty predictable shuffles, and 3 and 7 are very related to eachother as you might have noticed in the examples above.  Despite this, it can work well in a pinch, cache friendliness aside.
 
 This can also be used as a "random number generator" but i put it in quotes because it's so low quality, it isn't very often useful even in game development, which has much lower needs than cryptographic random numbers.  Definitely don't use this as a white noise generator for monte carlo integration or anything like that!!
 
