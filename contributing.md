@@ -47,26 +47,30 @@ LOG:
 ```
 ## Work Needed
 
-A list of specific things the project needs
+A list of specific things the project needs.
 
-### Infrastructure
+
+### 1D Sampling Patterns
+* more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
+* low discrepancy sequences (basic, more exotic, scrambled, etc!)
+
+
+
+### (Claimbed by Alan for now) Infrastructure
 * make a standard for how to add new samples or tests, fill it out in the contributing file.
 * gather your list of sampling patterns, tests, etc on this page. from progressive projective blue noise project and email etc.
 * clang tidy for style guidelines? Or google C++ style guide? or clang-format? "clang-format -style=google"
 * also an editor config? https://editorconfig.org/
 * do some auto generation of parts of the documentation, in docgen.lua as part of the premake step, to help standardization and boilerplate
 
-### Sampling Patterns
-* 1d basic LDS
+### (Claimbed by Alan for now) Sampling Patterns
 * 2d basic LDS
 * Blue noise in 1d and 2d (and the various ways to generate it)
 * Poisson Disk
 * 1d and 2d jittered grid
-* 1d golden ratio
 * Martin's R2 sequence for 2d (and higher dimensions)
 
-### Sampling Tests
-* 1d discrepancy calculation.
+### (Claimbed by Alan for now) Sampling Tests
 * 1d numerical integration tests vs high sample count white noise.
 * need other 1d tests and FFT! (FFTW?)
 * 2d tests and beyond.
