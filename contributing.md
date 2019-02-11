@@ -53,7 +53,7 @@ A list of specific things the project needs.
 ### 1D Sampling Patterns
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
 * low discrepancy sequences (basic, more exotic, scrambled, etc!)
-
+* others not listed here!
 
 
 ### (Claimbed by Alan for now) Infrastructure
