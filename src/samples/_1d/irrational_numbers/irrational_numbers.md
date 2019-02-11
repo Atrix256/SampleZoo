@@ -38,6 +38,32 @@ Here are 16 samples using 2/3:
 
 That sequence repeats every 3 samples.
 
-You might think that the pattern is that the denominator
+You might think that the pattern is that the denominator determines how long it takes for the pattern to repeat, but here's 16 samples of 2/4:
 
-TODO: 2/4!
+0, 2/4, 0, 2/4, 0, 2/4, 0, 2/4, 0, 2/4, 0, 2/4, 0, 2/4, 0, 2/4
+
+That repeats every 2 samples!
+
+If you reduce the fraction 2/4 you get 1/2, which explains why we saw it repeating every 2 samples.
+
+So, the rule is, if you have a reduced fraction, the denominator is what determines how long it takes for the sequence to repeat.
+
+A little more formally, if you have two numbers A and B, and they are coprime (they don't have any common divisors except 1), then using the rational number A/B to generate a sequence will repeat after B steps.
+
+### Quick Tangent - Fast and Cheap Shuffles
+
+If you ever find yourself in the need of a fast and cheap shuffle, an offshoot of this technique might be for you.
+
+How it works is if the number of items you need to shuffle is N, you take any coprime number to that M as your "shuffle seed".  Choosing different values of M will result in different shuffles.
+
+To get item I in the shuffle you just calculate this:  (I * M) % N
+
+The resulting number is the index to use in the array at step I, so an upside is that you don't actually need to do a shuffle, or stored a shuffled list.
+
+A downside is that not all shuffle orders are always possible, and are limited by how many possible M values there are (which is less than N), but this can work well in a pinch.
+
+This can also be used as a "random number generator" but i put it in quotes because it's so low quality, it isn't very often useful even in game development, which has much lower needs than cryptographic random numbers.  Definitely don't use this as a white noise generator for monte carlo integration or anything like that!!
+
+## Irrational Numbers
+
+TODO: this
