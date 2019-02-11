@@ -60,9 +60,15 @@ How it works is if the number of items you need to shuffle is N, you take any co
 
 To get item I in the shuffle you just calculate this:  (I * M) mod N
 
+Here's an example shuffling 10 things using a shuffle seed of 7:
+0,7,4,1,8,5,2,9,6,3
+
+Here's an example shuffling 10 things using a shuffle seed of 3:
+0,3,6,9,2,5,8,1,4,7
+
 The resulting number is the index to use in the array at step I, so an upside is that you don't actually need to do a shuffle, or stored a shuffled list.
 
-A downside is that not all shuffle orders are always possible, and are limited by how many possible M values there are (which is less than N), but this can work well in a pinch.
+A downside is that not all shuffle orders are always possible, and are limited by how many possible M values there are (which is less than N).  If you were to shuffle 10 things, the only shuffle seeds you have available (numbers coprime to 10) are: 1,3,7,9. 1 and 9 make for some pretty predictable shuffles, and 3 and 7 are very related to eachother as you might have noticed in the examples above.  Despite this, it can still work in a pinch since you don't actually have to shuffle or store the shuffle anywhere, and it is lightning fast (cache friendliness aside).
 
 This can also be used as a "random number generator" but i put it in quotes because it's so low quality, it isn't very often useful even in game development, which has much lower needs than cryptographic random numbers.  Definitely don't use this as a white noise generator for monte carlo integration or anything like that!!
 
