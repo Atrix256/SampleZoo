@@ -74,7 +74,7 @@ This can also be used as a "random number generator" but i put it in quotes beca
 
 ## Irrational Numbers
 
-Irrational numbers are numbers that can't be written as fractions (aka ratios, that's where the "rational" part of the word comes from).
+Irrational numbers are numbers that can't be written as fractions (aka ratios. that's what rational is referring to, not the numbers decision making abilities).
 
 Since the denominator of the reduced fraction is what defines how long the sequence takes to repeat, and irrational numbers have no denominator, you might come to the conclusion that they don't ever repeat - and you'd be right!
 
