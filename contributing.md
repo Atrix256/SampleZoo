@@ -49,6 +49,8 @@ LOG:
 
 A list of specific things the project needs.
 
+### Infrastructure
+* a better way to find files in codegen.lua than using ls since some systems won't have it. premake lua specifically may have os.matchfiles and os.matchdirs or similar?
 
 ### 1D Sampling Patterns
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
@@ -69,6 +71,7 @@ A list of specific things the project needs.
 * Poisson Disk
 * 1d and 2d jittered grid
 * Martin's R2 sequence for 2d (and higher dimensions)
+* uniform random point in triangle: https://twitter.com/TechSparx/status/1093193006440726529?s=03
 
 ### (Claimbed by Alan for now) Sampling Tests
 * 1d numerical integration tests vs high sample count white noise.
