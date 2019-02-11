@@ -94,8 +94,11 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-* do documentation for irrational numbers and link to them
-* add a todo for other irrational numbers: silver ratio, etc.
+* white noise test next?
+* clean this up below & figure out what is needed to open this up to letting people submit 1d sample sequences!
+
+* mention somewhere that all samples are in [0,1) unless otherwise stated.
+
 
 ? how does testing a progressive sequence differ from non progressive?
  * show a graph of discrepancy over sample count, to see how it changes.
