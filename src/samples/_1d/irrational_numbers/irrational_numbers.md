@@ -80,7 +80,7 @@ Since the denominator of the reduced fraction is what defines how long the seque
 
 The formula for using irrational numbers is essentially the same as when using rational numbers.  If X is the irrational number and you want to calculate sample I, it's: (I * X) mod 1
 
-That can make for a great number sequence like the below, which uses the square root of two (which is an irrational number) in the same formula as before for 16 samples:
+That can make for a great number sequence like the below, which uses the square root of two (which is an irrational number) in that formula for 16 samples:
 
 ![16 samples sqrt2](../../../../output/samples/_1d/irrational_numbers/sqrt2.png)
 
