@@ -50,13 +50,15 @@ So, the rule is, if you have a reduced fraction, the denominator is what determi
 
 A little more formally, if you have two numbers A and B, and they are coprime (they don't have any common divisors except 1), then using the rational number A/B to generate a sequence will repeat after B steps.
 
+The formula for calculating sample I is this:  (I * A / B) mod 1
+
 ### Quick Tangent - Fast and Cheap Shuffles
 
 If you ever find yourself in the need of a fast and cheap shuffle, an offshoot of this technique might be for you.
 
 How it works is if the number of items you need to shuffle is N, you take any coprime number to that M as your "shuffle seed".  Choosing different values of M will result in different shuffles.
 
-To get item I in the shuffle you just calculate this:  (I * M) % N
+To get item I in the shuffle you just calculate this:  (I * M) mod N
 
 The resulting number is the index to use in the array at step I, so an upside is that you don't actually need to do a shuffle, or stored a shuffled list.
 
@@ -66,4 +68,18 @@ This can also be used as a "random number generator" but i put it in quotes beca
 
 ## Irrational Numbers
 
-TODO: this
+Irrational numbers are numbers that can't be written as fractions (aka ratios, that's where the "rational" part of the word comes from).
+
+Since the denominator of the reduced fraction is what defines how long the sequence takes to repeat, and irrational numbers have no denominator, that means they don't repeat - which is true.
+
+The formula for using irrational numbers is essentially the same as when using rational numbers.  If X is the irrational number and you want to calculate sample I, it's: (I * X) mod 1
+
+That can make for a great number sequence like the below, which uses the square root of two (which is an irrational number) in the same formula as before for 16 samples:
+
+![16 samples sqrt2](../../../../output/samples/_1d/irrational_numbers/sqrt2.png)
+
+Just because a number is irrational doesn't make it a good choice though.  Here is 16 samples of pi:
+
+![16 samples pi](../../../../output/samples/_1d/irrational_numbers/pi.png)
+
+TODO: phi
