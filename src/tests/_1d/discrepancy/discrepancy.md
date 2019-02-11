@@ -6,7 +6,7 @@ Discrepancy is a real number given to a sampling sequence that describes how the
 
 Discrepancy is calculated by finding the region with the largest difference between actual density of points and expected density if the points were evenly spaced.  The region with the largest difference may be either too dense, or too sparse.  That difference between actual and expected density in that region is the discrepancy.
 
-Discrepancy is able to be calculated exactly in 1D, but it gets a lot harder in higher dimensions, because you have to consider all possible regions of space, and every shape of those regions.  In higher dimensions you'll see approximations of discrepancy, such as "Star Discrepancy" which is written as D*.
+In higher dimensions, the same process is followed with rectangular regions.  Sometimes this process will be simplified to just considering regions where one point is at the origin, which is an approximation of discrepancy calculated more quickly, called "Star Discrepancy", which is written as D*.
 
 The discrepancy test has two functions available:
 * CalculateDiscrepancy()
