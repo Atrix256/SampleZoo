@@ -54,7 +54,7 @@ The formula for calculating sample I is this:  (I * A / B) mod 1
 
 ### Quick Tangent - Fast and Cheap Shuffles
 
-If you ever find yourself in the need of a fast and cheap shuffle, an offshoot of this technique might be for you.
+If you ever find yourself in the need of a fast and cheap shuffle, a variation of this technique might be for you.
 
 How it works is if the number of items you need to shuffle is N, you take any coprime number to that M as your "shuffle seed".  Choosing different values of M will result in different shuffles.
 
