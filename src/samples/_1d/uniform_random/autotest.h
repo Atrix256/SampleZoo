@@ -13,7 +13,7 @@ namespace Samples
                 // UniformRandom
                 {
                     std::vector<float> samples;
-                    Samples::_1d::UniformRandom::UniformRandom(samples, 16);
+                    UniformRandom(samples, 16);
                 }
             }
         };

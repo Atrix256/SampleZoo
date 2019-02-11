@@ -13,17 +13,17 @@ namespace Samples
                 // Regular
                 {
                     std::vector<float> samples;
-                    Samples::_1d::Regular::Regular(samples, 16);
+                    Regular(samples, 16);
                 }
                 // RegularCentered
                 {
                     std::vector<float> samples;
-                    Samples::_1d::Regular::RegularCentered(samples, 16);
+                    RegularCentered(samples, 16);
                 }
                 // RegularCenteredOffset
                 {
                     std::vector<float> samples;
-                    Samples::_1d::Regular::RegularCenteredOffset(samples, 16);
+                    RegularCenteredOffset(samples, 16);
                 }
             }
         };

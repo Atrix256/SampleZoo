@@ -107,7 +107,7 @@ for k,v in pairs(sampleTypes) do
 
         local namespace = "Samples::"..sampleType.."::"..info.CodeName;
 
-        MakeTests(file, info, "                ", namespace)
+        MakeTests(file, info, "                ")
 
         file:write("            }\n")
 

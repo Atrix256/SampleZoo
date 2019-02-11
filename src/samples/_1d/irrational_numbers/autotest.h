@@ -13,17 +13,17 @@ namespace Samples
                 // GoldenRatio
                 {
                     std::vector<float> samples;
-                    Samples::_1d::IrrationalNumbers::GoldenRatio(samples, 16);
+                    GoldenRatio(samples, 16);
                 }
                 // Pi
                 {
                     std::vector<float> samples;
-                    Samples::_1d::IrrationalNumbers::Pi(samples, 16);
+                    Pi(samples, 16);
                 }
                 // Sqrt2
                 {
                     std::vector<float> samples;
-                    Samples::_1d::IrrationalNumbers::Sqrt2(samples, 16);
+                    Sqrt2(samples, 16);
                 }
             }
         };
