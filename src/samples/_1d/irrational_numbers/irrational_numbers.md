@@ -42,9 +42,9 @@ You might think that the pattern is that the denominator determines how long it 
 
 0, 2/4, 0, 2/4, 0, 2/4, 0, 2/4, 0, 2/4, 0, 2/4, 0, 2/4, 0, 2/4
 
-That repeats every 2 samples!
+That repeats every 2 samples, not every 4!
 
-If you reduce the fraction 2/4 you get 1/2, which explains why we saw it repeating every 2 samples.
+If you reduce the fraction 2/4 you get 1/2, which may help explain why we saw it repeating every 2 samples.
 
 So, the rule is, if you have a reduced fraction, the denominator is what determines how long it takes for the sequence to repeat.
 
