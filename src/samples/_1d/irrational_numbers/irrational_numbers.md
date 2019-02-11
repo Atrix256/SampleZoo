@@ -6,7 +6,7 @@
 
 Before we talk about using irrational numbers for generating sample points, let's talk about using rational numbers and start with the rational number 1/4.
 
-To use rational numbers to make sample points, you just multiply the sample index by the rational number to get the sample point value.  Doing that, the first 4 samples you get are:
+To use rational numbers to make sample points, you just multiply the sample index by the rational number to get the sample point value.  Doing that, the first 4 samples (index 0,1,2,3) you get are:
 
 0, 1/4, 2/4, 3/4
 
