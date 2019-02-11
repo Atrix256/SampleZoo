@@ -3,5 +3,8 @@
 #pragma once
 
 #include "irrational_numbers/irrational_numbers.h"
+#include "irrational_numbers/autotest.h"
 #include "regular/regular.h"
+#include "regular/autotest.h"
 #include "uniform_random/uniform_random.h"
+#include "uniform_random/autotest.h"

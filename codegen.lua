@@ -33,6 +33,7 @@ for k,v in pairs(sampleTypes) do
 	for k2,v2 in pairs(subSampleTypes) do
 		local subSampleType = string.sub(v2,3,-2)
 		file:write('#include "'..subSampleType..'/'..subSampleType..'.h"\n')
+        file:write('#include "'..subSampleType..'/autotest.h"\n')
 	end
 	file:close()
 end
@@ -72,8 +73,6 @@ for k,v in pairs(sampleTypes) do
         file:write(dotHHeader)
         file:write("#include <vector>\n\n")
 
-        print("./src/samples/"..sampleType.."/"..subSampleType.."/info.lua")
-
         dofile("./src/samples/"..sampleType.."/"..subSampleType.."/info.lua")
 
         file:write("namespace Samples\n{\n    namespace "..sampleType.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
@@ -81,6 +80,36 @@ for k,v in pairs(sampleTypes) do
         for functionIndex, functionName in ipairs(info.Functions) do
             file:write("            void "..functionName.."(std::vector<float>& values, size_t numValues);\n")
         end
+
+        file:write("        };\n    };\n};\n")
+    end
+end
+
+-- make ./src/samples/X/Y/autotest.h
+for k,v in pairs(sampleTypes) do
+    local sampleType = string.sub(v,3,-2)
+
+    dofile("./src/samples/"..sampleType.."/samplefamily.lua")
+
+    local subSampleTypes = scandir('cd ./src/samples/'..sampleType..'/ && ls -d ./*/ && cd ../../..')
+    for k2,v2 in pairs(subSampleTypes) do
+
+        local subSampleType = string.sub(v2,3,-2)
+
+        file = io.open("./src/samples/"..sampleType.."/"..subSampleType.."/autotest.h", "w")
+        file:write(dotHHeader)
+
+        dofile("./src/samples/"..sampleType.."/"..subSampleType.."/info.lua")
+
+        file:write("namespace Samples\n{\n    namespace "..sampleType.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
+
+        file:write("            inline void AutoTest(void)\n            {\n")
+
+        local namespace = "Samples::"..sampleType.."::"..info.CodeName;
+
+        MakeTests(file, info, "                ", namespace)
+
+        file:write("            }\n")
 
         file:write("        };\n    };\n};\n")
     end
