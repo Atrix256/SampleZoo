@@ -82,4 +82,11 @@ Just because a number is irrational doesn't make it a good choice though.  Here 
 
 ![16 samples pi](../../../../output/samples/_1d/irrational_numbers/pi.png)
 
-TODO: phi
+The reason for this is that the square root of two is more irrational than pi, meaning you can get closer to the real value of pi with a fraction than you can to the square root of two.
+
+The most irrational number of all is the golden ratio, which is approximately 1.61803398875.  Here are 16 samples using the golden ratio:
+
+![16 samples pi](../../../../output/samples/_1d/irrational_numbers/golden_ratio.png)
+
+TODO: talk about phi, and whatever else was in your notes.
+TODO: clean this up
