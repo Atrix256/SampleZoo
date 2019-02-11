@@ -110,8 +110,10 @@ The golden ratio is a pretty useful thing, and appears in many other sampling si
 
 ## Links
 
-The Golden Ratio (why it is so irrational) - Numberphile
+The Golden Ratio (why it is so irrational) - Numberphile  
+This shows how/why the golden ratio is so irrational, and why pi is not.  
 https://www.youtube.com/watch?v=sj8Sg8qnjOg
 
-The Unreasonable Effectiveness of Quasirandom Sequences
+The Unreasonable Effectiveness of Quasirandom Sequences  
+This talks about a lot of really interesting things, but also generalizes the golden ratio in an interesting way.  
 http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
