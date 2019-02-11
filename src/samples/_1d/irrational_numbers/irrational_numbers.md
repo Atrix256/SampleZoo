@@ -88,5 +88,30 @@ The most irrational number of all is the golden ratio, which is approximately 1.
 
 ![16 samples pi](../../../../output/samples/_1d/irrational_numbers/golden_ratio.png)
 
-TODO: talk about phi, and whatever else was in your notes.
-TODO: clean this up
+## More About the Golden Ratio
+
+The golden ratio is mathematically proven as the most irrational number which is pretty cool (check the numberphile video in the links section for details of that) and has a value of approximately 1.61803398875.  It commonly goes by φ in equations (phi).
+
+The golden ratio is linked to the Fibonacci sequence in that if you divide the N+1th Fibonacci sequence number by the Nth, you'll get a number that gets closer and closer to the golden ratio as N gets bigger.  At infinity (the limit), it is the golden ratio.
+
+Another way to calculate the golden ratio is to solve this equation for x:  x^2=x+1
+
+Something interesting about using the golden ratio to make 1d sample points in [0,1) is that each new sample point appears in the largest existing gap.  It cuts this gap into two sections too, where the size of one vs the other is the golden ratio.
+
+Lastly, in the code, you'll see mention of the "golden ratio conjugate" which is 0.61803398875 instead of 1.61803398875 like the golden ratio.  It's true that this value is the golden ratio mod 1, but something more amazing is that this is also one divided by golden ratio, which is why it's called the conjugate.
+
+Since irrational numbers can't be written as a fraction, you can take the reciprocal of an irrational number to get another irrational number that is just as irrational as the first one.
+
+With the golden ratio being the provably most irrational number, the fact that the reciprocal is the exact same number after the decimal point shouldn't be too surprising, but it does give us another way to calculate it.  Solve for x:  1/x = x-1
+
+It turns out you can use algebra to turn that equation into the previous one, but still a bit interesting I think.
+
+The golden ratio is a pretty useful thing, and appears in many other sampling situations besides this simple 1d case.
+
+## Links
+
+The Golden Ratio (why it is so irrational) - Numberphile
+https://www.youtube.com/watch?v=sj8Sg8qnjOg
+
+The Unreasonable Effectiveness of Quasirandom Sequences
+http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
