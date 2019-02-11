@@ -59,3 +59,29 @@ for k,v in pairs(testTypes) do
 	end
 	file:close()
 end
+
+-- make ./src/samples/X/Y/Y.h
+for k,v in pairs(sampleTypes) do
+    local sampleType = string.sub(v,3,-2)
+    local subSampleTypes = scandir('cd ./src/samples/'..sampleType..'/ && ls -d ./*/ && cd ../../..')
+    for k2,v2 in pairs(subSampleTypes) do
+
+        local subSampleType = string.sub(v2,3,-2)
+
+        file = io.open("./src/samples/"..sampleType.."/"..subSampleType.."/"..subSampleType..".h", "w")
+        file:write(dotHHeader)
+        file:write("#include <vector>\n\n")
+
+        print("./src/samples/"..sampleType.."/"..subSampleType.."/info.lua")
+
+        dofile("./src/samples/"..sampleType.."/"..subSampleType.."/info.lua")
+
+        file:write("namespace Samples\n{\n    namespace "..sampleType.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
+
+        for functionIndex, functionName in ipairs(info.Functions) do
+            file:write("            void "..functionName.."(std::vector<float>& values, size_t numValues);\n")
+        end
+
+        file:write("        };\n    };\n};\n")
+    end
+end

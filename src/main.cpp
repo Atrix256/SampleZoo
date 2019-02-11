@@ -112,10 +112,14 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* auto gen test code & test results page from a info.lua file
+? maybe autogen eg regular.h from the lua file?
+
 * white noise test next?
  * "uniform_random"
  * tests
  * make documentation and link it up!
+
 
 * clean this up below & figure out what is needed to open this up to letting people submit 1d sample sequences!
  * purpose of samples and test documentation?
@@ -167,14 +171,12 @@ Guidelines overall:
 * upper camel case function names, name space names
 
 Guidelines for 1d sampling submissions:
-* generate values to sample in [0,1]
-* stateless one shot generation: function signature requirements
-* progressive: derive from a class that has a pure virtual to implement. So, you can have state if you want to, but don't have to i guess?
- * would need to hook up to different tests
-* random: store random parts in a cache? dunno...
-* make .h and a .cpp.
- * naming conventions! of files, namespaces, directories
- * keep the header as minimal as possible to keep from poluting global symbols.
- * include your .h in the _1d.h file
+* generate values to sample in [0,1)
+* make a subfolder in src/samples/_1d/.  The subfolder name is snake case.
+ * add your code (multiple cpps and headers are allowed)
+ * make an info.lua
+* run premake and it will make a .h file that is named the same as the subfolder that exposes the functions you listed in your info.lua file.
+ * it will also update the header files to include this header file.
+* The namespace is named off of "code name" in the .lua file.  It should be the same as the subfolder name but upper camel case instead of snake case.
 
 */
