@@ -27,71 +27,45 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-* make tests autogenerate a header, from the info.lua file, like samples do
-
-* make sure documentation still works. you changed some file names!
-
-* standardize the samplefamily.lua and info.lua files.  (maybe 2nd one should be sample.lua?)
- * consistent naming convention
- * also maybe sampleType and subSampleType should be called sampleFamily and something else
- * functions or table? if that should be standardized...
-
  * make documentation for uniform random tests
   * and LDS (sobol only right now, maybe add more?)
 
+* make some better tests that actually show things:
+ * discrepancy as a graph with number of samples
+ * integration error over time vs specific functions
 
 * clean this up below & figure out what is needed to open this up to letting people submit 1d sample sequences!
  * purpose of samples and test documentation?
  * automated testing setup / comparisong testing?
 
-* mention somewhere that all samples are in [0,1) unless otherwise stated.
-
-
-? how does testing a progressive sequence differ from non progressive?
+ ? how does testing a progressive sequence differ from non progressive?
  * show a graph of discrepancy over sample count, to see how it changes.
  * somehow need to note that it's progressive - in documenation, and also in code?
  * for now, it's not treated as progressive or noted as progressive.
 
-* make the test above be a "conglomerate test" and put it in the tests folder w/ documentation
- * make it auto generated from information in a lua file?
- * specify the functions to call, and if they are progressive or what.
- * for irrational tests, can pass extra params as template params (like rational number etc).
+* blue noise soon? mitchell's best candidate. add todos for blue noise: poisson disk, relaxation.
+* and eigenvectors https://twitter.com/TechSparx/status/1093902404867760129
 
-* sampling: golden ratio next? it's progressive, so is a bit special in that way.
- * maybe do white noise next? white noise is also progressive
- * blue noise? mitchell's best candidate. add todos for blue noise: poisson disk, relaxation.
 
 ? open up "1d sampling" to submissions soon, and have a page about how to make submissions
  * figure out what exactly you want to do before opening it up
 
-* look into generating header files and documentation from lua scripts called from in premake
- * maybe tests too, and have sequences specify a "json" like file (but lua?) about their properties: progressive, randomized, etc?
-
-
- * need some larger tests showing irrational vs regular sampling. things like discrepancy for sample count.
-  * automatically generate test code based on a lua file describing properties of the sampling would be really nice.
-
-
-* add to blue noise notes... blue noise from eigenvectors
- * https://twitter.com/TechSparx/status/1093902404867760129
-
-* make numberlines have a bool to have nodes be a color based on index? to show progressive sequences.
- * maybe always want it on? not sure.
 
 
 
 Documentation WIP:
 
 Guidelines overall:
-* Code should be copy / paste-able for easy drop in use.
+* samples are in [0,1)^N in general and similar. If you have a good reason to diverge from that, you can.
+* Code should ideally be copy / paste-able for easy drop in use. modular / standalone to be low effort to take & use.
 * Prefer readability over efficiency. STL is fine.
 * Comments are good
 * snake case file names
 * upper camel case function names, name space names
 * The purpose of sample specific documentation is two fold...
- 1) Make programmers (non mathematicians) able to understand how it works
+ 1) Make programmers (non mathematicians) able to understand how it works.
  2) Show how it works, as well as any choices or trade offs there may be.
- * NOTE: comparison vs other sequences is usually out of scope, and should be made into a special test type, which you can link to.
+ * NOTE: comparison vs other sequences is usually out of scope of a sample submission, and should be made into a special test type, which you can link to.
 
 Guidelines for 1d sampling submissions:
 * generate values to sample in [0,1)
