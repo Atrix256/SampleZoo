@@ -92,7 +92,7 @@ The reason for this is that the square root of two is more irrational than pi, m
 
 The most irrational number of all is the golden ratio, which is approximately 1.61803398875.  Here are 16 samples using the golden ratio:
 
-![16 samples pi](../../../../output/samples/_1d/irrational_numbers/golden_ratio.png)
+![16 samples golden ratio](../../../../output/samples/_1d/irrational_numbers/GoldenRatio.png)
 
 ## More About the Golden Ratio
 
