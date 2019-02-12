@@ -51,7 +51,7 @@ A list of specific things the project needs.
 
 ### Infrastructure
 * a better way to find files in codegen.lua than using ls since some systems won't have it. os.matchdirs:  https://github.com/premake/premake-core/wiki/os.matchdirs
-
+* centralize random number (white noise) generation, also make it seedable for deterministic results.
 
 ### 1D Sampling Patterns
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
