@@ -4,19 +4,15 @@ AUTHOR: Alan Wolfe (alan.wolfe@gmail.com)
 DATE: 2/8/2019
 */
 
-#define _CRT_SECURE_NO_WARNINGS // for stb
+#include "codegen.h"
 
 #include <stdio.h>
-
-#include "tests/tests.h"
-#include "samples/samples.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb/stb_image.h"
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb/stb_image_write.h"
-
 
 int main(int argc, char **argv)
 {
@@ -27,8 +23,11 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* blue noise shows a discrepancy of 1.0 for wrap. look into that.
+
  * make documentation for uniform random tests
   * and LDS (sobol only right now, maybe add more?)
+  * and best candidate blue noise (should we have other blue noise multiple amounts? like 0 at high sample count? and a high multiplier value?)
 
 * make some better tests that actually show things:
  * discrepancy as a graph with number of samples

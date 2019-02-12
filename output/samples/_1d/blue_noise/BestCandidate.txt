@@ -1,0 +1,4 @@
+BestCandidate 32 samples
+  Discrepancy: 0.525858
+  Wrap: 1.000000
+

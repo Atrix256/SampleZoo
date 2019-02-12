@@ -127,6 +127,9 @@ for k,v in pairs(sampleTypes) do
         end
 
         file:write("        };\n    };\n};\n")
+
+        -- also make output/samples/X/Y/
+        os.mkdir("./output/samples/"..sampleType.."/"..subSampleType.."/")
     end
 end
 
