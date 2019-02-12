@@ -7,7 +7,7 @@ Description:
 Makes a numberline image and saves it to disk
 */
 
-#include "numberline.h"
+#include "codegen.h"
 #include "stb/stb_image_write.h"
 #include "shared/pixel.h"
 #include "shared/drawing.h"

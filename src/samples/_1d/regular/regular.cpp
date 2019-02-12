@@ -4,7 +4,7 @@ AUTHOR: Alan Wolfe (alan.wolfe@gmail.com)
 DATE: 2/8/2019
 */
 
-#include "regular.h"
+#include "codegen.h"
 
 void Samples::_1d::Regular::Regular(std::vector<float>& values, size_t numValues)
 {

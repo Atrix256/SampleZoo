@@ -14,9 +14,9 @@ project "SampleZoo"
 
 	debugdir "./"
 
-	includedirs { "src/" }
+	includedirs { "src/", "build/codegen/" }
 
-	files {"src/**.h", "src/**.cpp"}
+	files {"src/**.h", "src/**.cpp", "build/codegen/**.h", "build/codegen/**.cpp"}
 
 	filter { "platforms:Win32" }
     	system "Windows"

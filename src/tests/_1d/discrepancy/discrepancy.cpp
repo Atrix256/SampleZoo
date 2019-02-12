@@ -7,7 +7,7 @@ Description:
 Calculates metrics about actual point densities vs expected point densitites
 */
 
-#include "discrepancy.h"
+#include "codegen.h"
 #include <algorithm>
 
 float Tests::_1d::Discrepancy::CalculateDiscrepancy(const std::vector<float>& samples)

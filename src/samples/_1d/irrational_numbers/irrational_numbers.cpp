@@ -4,7 +4,7 @@ AUTHOR: Alan Wolfe (alan.wolfe@gmail.com)
 DATE: 2/8/2019
 */
 
-#include "irrational_numbers.h"
+#include "codegen.h"
 
 static const float c_goldenRatioConjugate = 0.61803398875f;
 static const float c_pi = 3.14159265359f;

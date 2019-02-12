@@ -27,6 +27,8 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* make tests autogenerate a header, from the info.lua file, like samples do
+
 * make sure documentation still works. you changed some file names!
 
 * standardize the samplefamily.lua and info.lua files.  (maybe 2nd one should be sample.lua?)

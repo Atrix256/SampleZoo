@@ -6,7 +6,7 @@ DATE: 2/11/2019
 Description: Low discrepancy sequences
 */
 
-#include "LDS.h"
+#include "codegen.h"
 
 static size_t Ruler(size_t n)
 {

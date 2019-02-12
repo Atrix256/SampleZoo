@@ -4,7 +4,7 @@ AUTHOR: Alan Wolfe (alan.wolfe@gmail.com)
 DATE: 2/10/2019
 */
 
-#include "uniform_random.h"
+#include "codegen.h"
 #include <random>
 
 void Samples::_1d::UniformRandom::UniformRandom(std::vector<float>& values, size_t numValues)
