@@ -27,12 +27,15 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* make sure documentation still works. you changed some file names!
+
 * standardize the samplefamily.lua and info.lua files.  (maybe 2nd one should be sample.lua?)
  * consistent naming convention
  * also maybe sampleType and subSampleType should be called sampleFamily and something else
  * functions or table? if that should be standardized...
 
  * make documentation for uniform random tests
+  * and LDS (sobol only right now, maybe add more?)
 
 
 * clean this up below & figure out what is needed to open this up to letting people submit 1d sample sequences!
