@@ -14,16 +14,40 @@ namespace Samples
                 {
                     std::vector<float> samples;
                     GoldenRatio(samples, 16);
+                    FILE* file = fopen("output/samples/_1d/irrational_numbers/GoldenRatio.txt", "w+b");
+                    fprintf(file, "GoldenRatio %zu samples\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
+                        samples.size(),
+                        Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
+                        Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
+                    );
+                    fclose(file);
+                    Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/irrational_numbers/GoldenRatio.png", samples, 512);
                 }
                 // Pi
                 {
                     std::vector<float> samples;
                     Pi(samples, 16);
+                    FILE* file = fopen("output/samples/_1d/irrational_numbers/Pi.txt", "w+b");
+                    fprintf(file, "Pi %zu samples\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
+                        samples.size(),
+                        Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
+                        Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
+                    );
+                    fclose(file);
+                    Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/irrational_numbers/Pi.png", samples, 512);
                 }
                 // Sqrt2
                 {
                     std::vector<float> samples;
                     Sqrt2(samples, 16);
+                    FILE* file = fopen("output/samples/_1d/irrational_numbers/Sqrt2.txt", "w+b");
+                    fprintf(file, "Sqrt2 %zu samples\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
+                        samples.size(),
+                        Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
+                        Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
+                    );
+                    fclose(file);
+                    Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/irrational_numbers/Sqrt2.png", samples, 512);
                 }
             }
         };

@@ -3,3 +3,11 @@
 #pragma once
 
 #include "_1d/_1d.h"
+
+namespace Samples
+{
+    inline void AutoTest(void)
+    {
+        _1d::AutoTest();
+    }
+}

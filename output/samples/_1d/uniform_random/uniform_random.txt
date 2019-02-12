@@ -1,6 +1,0 @@
-16 samples
-
-Uniform Random:
-  Discrepancy: 0.226323
-  Wrap: 0.226323
-

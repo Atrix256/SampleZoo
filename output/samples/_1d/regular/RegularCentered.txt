@@ -1,0 +1,4 @@
+RegularCentered 16 samples
+  Discrepancy: 0.125000
+  Wrap: 0.125000
+

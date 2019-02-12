@@ -8,3 +8,16 @@
 #include "regular/autotest.h"
 #include "uniform_random/uniform_random.h"
 #include "uniform_random/autotest.h"
+
+namespace Samples
+{
+    namespace _1d
+    {
+        inline void AutoTest(void)
+        {
+            IrrationalNumbers::AutoTest();
+            Regular::AutoTest();
+            UniformRandom::AutoTest();
+        }
+    }
+}

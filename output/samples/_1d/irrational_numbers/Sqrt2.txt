@@ -1,0 +1,4 @@
+Sqrt2 16 samples
+  Discrepancy: 0.134776
+  Wrap: 0.134776
+

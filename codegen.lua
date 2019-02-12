@@ -22,6 +22,12 @@ for k,v in pairs(sampleTypes) do
 	local sampleType = string.sub(v,3,-2)
 	file:write('#include "'..sampleType..'/'..sampleType..'.h"\n')
 end
+file:write('\nnamespace Samples\n{\n    inline void AutoTest(void)\n    {\n')
+for k,v in pairs(sampleTypes) do
+    local sampleType = string.sub(v,3,-2)
+    file:write('        '..sampleType..'::AutoTest();\n')
+end
+file:write('    }\n}\n')
 file:close()
 
 -- make ./src/samples/X/X.h
@@ -35,6 +41,13 @@ for k,v in pairs(sampleTypes) do
 		file:write('#include "'..subSampleType..'/'..subSampleType..'.h"\n')
         file:write('#include "'..subSampleType..'/autotest.h"\n')
 	end
+	file:write('\nnamespace Samples\n{\n    namespace '..sampleType..'\n    {\n        inline void AutoTest(void)\n        {\n')
+	for k2,v2 in pairs(subSampleTypes) do
+		local subSampleType = string.sub(v2,3,-2)
+		dofile("./src/samples/"..sampleType.."/"..subSampleType.."/info.lua")
+		file:write('            '..info.CodeName..'::AutoTest();\n')
+	end
+	file:write('        }\n    }\n}\n')
 	file:close()
 end
 
@@ -105,9 +118,7 @@ for k,v in pairs(sampleTypes) do
 
         file:write("            inline void AutoTest(void)\n            {\n")
 
-        local namespace = "Samples::"..sampleType.."::"..info.CodeName;
-
-        MakeTests(file, info, "                ")
+        MakeTests(file, info, sampleType, subSampleType, "                ")
 
         file:write("            }\n")
 

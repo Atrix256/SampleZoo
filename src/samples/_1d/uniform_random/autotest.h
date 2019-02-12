@@ -14,6 +14,14 @@ namespace Samples
                 {
                     std::vector<float> samples;
                     UniformRandom(samples, 16);
+                    FILE* file = fopen("output/samples/_1d/uniform_random/UniformRandom.txt", "w+b");
+                    fprintf(file, "UniformRandom %zu samples\r\n  Discrepancy: %0f\r\n  Wrap: %0f\r\n\r\n",
+                        samples.size(),
+                        Tests::_1d::Discrepancy::CalculateDiscrepancy(samples),
+                        Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(samples)
+                    );
+                    fclose(file);
+                    Tests::_1d::Numberline::MakeNumberline("output/samples/_1d/uniform_random/UniformRandom.png", samples, 512);
                 }
             }
         };
