@@ -50,13 +50,15 @@ LOG:
 A list of specific things the project needs.
 
 ### Infrastructure
-* a better way to find files in codegen.lua than using ls since some systems won't have it. premake lua specifically may have os.matchfiles and os.matchdirs or similar?
+* a better way to find files in codegen.lua than using ls since some systems won't have it. os.matchdirs:  https://github.com/premake/premake-core/wiki/os.matchdirs
+
 
 ### 1D Sampling Patterns
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
 * low discrepancy sequences (basic, more exotic, scrambled, etc!)
 * others not listed here!
 
+## Work Needed, but claimed by Alan for now
 
 ### (Claimbed by Alan for now) Infrastructure
 * make a standard for how to add new samples or tests, fill it out in the contributing file.
