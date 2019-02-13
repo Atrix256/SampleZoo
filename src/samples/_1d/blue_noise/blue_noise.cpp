@@ -45,6 +45,6 @@ void Samples::_1d::BlueNoise::BestCandidate(std::vector<float>& values, size_t n
                 bestCandidateValue = candidateValue;
             }
         }
-        values.push_back(bestCandidateValue);
+        values[i] = bestCandidateValue;
     }
 }

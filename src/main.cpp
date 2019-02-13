@@ -23,8 +23,6 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-* blue noise shows a discrepancy of 1.0 for wrap. look into that.
-
  * make documentation for uniform random tests
   * and LDS (sobol only right now, maybe add more?)
   * and best candidate blue noise (should we have other blue noise multiple amounts? like 0 at high sample count? and a high multiplier value?)
