@@ -56,7 +56,9 @@ A list of specific things the project needs.
 ### 1D Sampling Patterns
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
 * low discrepancy sequences (basic, more exotic, scrambled, etc!)
-* others not listed here!
+* other 1d blue noise methods including: poisson disk, relaxation.
+* blue noise from eigenvectors: https://twitter.com/TechSparx/status/1093902404867760129
+* other 1d sampling patterns not listed here!
 
 ## Work Needed, but claimed by Alan for now
 
