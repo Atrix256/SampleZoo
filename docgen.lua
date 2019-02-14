@@ -28,7 +28,7 @@ for k,v in pairs(sampleFamilies) do
 		local sampleType = string.sub(v2,3,-2)
 		dofile("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.lua")
 		-- [Regular Sampling](src/samples/_1d/regular/regular.md)
-		file:write('['..info.ShortName..'](src/samples/'..sampleFamily..'/'..sampleType..'/'..sampleType..'.md) - '..info.Description..'\n\n')
+		file:write('['..info.ShortName..'](src/samples/'..sampleFamily..'/'..sampleType..'/samples.md) - '..info.Description..'\n\n')
 	end
 end
 
