@@ -11,6 +11,10 @@ Full list of contributors here: [credits](credits.md)
 
 Information on how to contribute to this project: [contributing](contributing.md)
 
+## Samples & Test Documentation
+
+[TOC](toc.md) - Table of Contents
+
 ## Why Does This Exist??
 
 My interest in sampling patterns is mainly for use in numerical integration techniques in real time graphics.  In that situation, you usually want a sequence that will converge with as few samples as possible, and give a pleasing error pattern when it hasn't fully converged.
@@ -20,10 +24,6 @@ This stuff is surprisingly nuanced, and new sampling techniques come out every y
 To get a taste of things, check out the page on regularly spaced samples:
 
 [Regular Sampling](src/samples/_1d/regular/regular.md)
-
-## Samples & Test Documentation
-
-[TOC](toc.md) - Table of Contents
 
 ## Other Software Used
 
