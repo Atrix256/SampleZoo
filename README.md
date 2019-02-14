@@ -21,13 +21,9 @@ To get a taste of things, check out the page on regularly spaced samples:
 
 [Regular Sampling](src/samples/_1d/regular/regular.md)
 
-## Samples Documentation
+## Samples & Test Documentation
 
-[1D](src/samples/_1d/_1d.md) - 1 dimensional samples
-
-## Sample Tests Documentation
-
-[1D](src/tests/_1d/_1d.md) - 1 dimensional sampling tests
+[TOC](toc.md)
 
 ## Other Software Used
 
