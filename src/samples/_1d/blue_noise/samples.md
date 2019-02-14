@@ -27,6 +27,13 @@ Here are 16 blue noise sample points generated with Mitchell's best candidate al
 
 ![16 samples Regular](../../../../output/samples/_1d/blue_noise/BestCandidate.png)
 
+Blue noise sample points tend to tile very well, even if they weren't designed to tile.  Their lack of low frequency content makes it so there are no larger structures to catch your eye.
+
+Many things in our world - natural and man made - are distributed in a blue noise pattern.  This includes the photoreceptors in your eyes, as well as foam in a tempurpedic matress (something which is unique to them, and patented)
+
 # Links
 
 https://blog.demofox.org/2017/10/20/generating-blue-noise-sample-points-with-mitchells-best-candidate-algorithm/ - Generating Blue Noise Sample Points With Mitchell’s Best Candidate Algorithm  
+https://blog.demofox.org/2018/01/30/what-the-heck-is-blue-noise/ - What the heck is blue noise?  
+https://blog.demofox.org/2018/08/07/tiled-blue-noise/ - Tiled blue noise  
+https://www.princeton.edu/news/2014/02/24/eye-chicken-new-state-matter-comes-view - In the eye of a chicken, a new state of matter comes into view  
