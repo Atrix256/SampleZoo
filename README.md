@@ -1,3 +1,5 @@
+![SampleZoo](SampleZoo.jpg)
+
 # SampleZoo
 Simple copy/paste-able implementations of sampling patterns, with objective and subjective tests to compare them.
 
@@ -23,7 +25,7 @@ This stuff is surprisingly nuanced, and new sampling techniques come out every y
 
 To get a taste of things, check out the page on regularly spaced samples:
 
-[Regular Sampling](src/samples/_1d/regular/regular.md)
+[Regular Sampling](src/samples/_1d/regular/samples.md)
 
 ## Other Software Used
 
