@@ -35,6 +35,7 @@ file:write('## Tests\n\n')
 
 for k,v in pairs(testTypes) do
     local testType = string.sub(v,3,-2)
+    file:write('### '..testType..'\n\n')
     local subTestTypes = scandir('cd ./src/tests/'..testType..'/ && ls -d ./*/ && cd ../../..')
     for k2,v2 in pairs(subTestTypes) do
         local subTestType = string.sub(v2,3,-2)

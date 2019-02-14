@@ -11,5 +11,7 @@
 [Uniform Random](src/samples/_1d/uniform_random/samples.md) - Randomized sample positions using a uniform random number distribution.  
 ## Tests
 
+### _1d
+
 [Discrepancy](src/tests/_1d/discrepancy/tests.md) - Calculate metrics about actual point density compared to expected point density if the points were uniformly spaced.  
 [Numberline](src/tests/_1d/numberline/tests.md) - Makes numberlines  
