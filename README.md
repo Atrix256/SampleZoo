@@ -23,7 +23,7 @@ To get a taste of things, check out the page on regularly spaced samples:
 
 ## Samples & Test Documentation
 
-[TOC](toc.md)
+[TOC](toc.md) - Table of Contents
 
 ## Other Software Used
 
