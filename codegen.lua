@@ -18,6 +18,8 @@ local file
 file = io.open("./build/codegen/codegen.h", "w")
 file:write(dotHHeader)
 file:write('#define _CRT_SECURE_NO_WARNINGS // for stb\n\n')
+file:write("#include <vector>\n")
+file:write("using SampleGenerate_1d = void(*)(std::vector<float>& values, size_t numValues);\n\n")
 file:write('#include "tests/tests.h"\n')
 file:write('#include "samples/samples.h"\n')
 file:close()
@@ -92,7 +94,6 @@ for k,v in pairs(testTypes) do
 
         file = io.open("./build/codegen/tests/"..testType.."/"..subTestType.."/tests.h", "w")
         file:write(dotHHeader)
-        file:write("#include <vector>\n\n")
 
         dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
 
@@ -116,7 +117,6 @@ for k,v in pairs(sampleFamilies) do
 
         file = io.open("./build/codegen/samples/"..sampleFamily.."/"..sampleType.."/samples.h", "w")
         file:write(dotHHeader)
-        file:write("#include <vector>\n\n")
 
         dofile("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.lua")
 
