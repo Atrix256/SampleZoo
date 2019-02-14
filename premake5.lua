@@ -16,7 +16,13 @@ project "SampleZoo"
 
 	includedirs { "src/", "build/codegen/" }
 
-	files {"src/**.h", "src/**.cpp", "build/codegen/**.h", "build/codegen/**.cpp"}
+	files {"src/**.h", "src/**.cpp", "src/**.lua", "src/**.md", "build/codegen/**.h", "build/codegen/**.cpp"}
+
+	filter "files:**.lua"
+		buildaction "None"
+
+	filter "files:**.md"
+		buildaction "None"
 
 	filter { "platforms:Win32" }
     	system "Windows"

@@ -25,34 +25,34 @@ file:close()
 -- make ./build/codegen/samples/samples.h
 file = io.open("./build/codegen/samples/samples.h", "w")
 file:write(dotHHeader)
-local sampleTypes = scandir('cd ./src/samples/ && ls -d ./*/ && cd ../..')
-for k,v in pairs(sampleTypes) do
-	local sampleType = string.sub(v,3,-2)
-	file:write('#include "'..sampleType..'/'..sampleType..'.h"\n')
+local sampleFamilies = scandir('cd ./src/samples/ && ls -d ./*/ && cd ../..')
+for k,v in pairs(sampleFamilies) do
+	local sampleFamily = string.sub(v,3,-2)
+	file:write('#include "'..sampleFamily..'/samples.h"\n')
 end
 file:write('\nnamespace Samples\n{\n    inline void AutoTest(void)\n    {\n')
-for k,v in pairs(sampleTypes) do
-    local sampleType = string.sub(v,3,-2)
-    file:write('        '..sampleType..'::AutoTest();\n')
+for k,v in pairs(sampleFamilies) do
+    local sampleFamily = string.sub(v,3,-2)
+    file:write('        '..sampleFamily..'::AutoTest();\n')
 end
 file:write('    }\n}\n')
 file:close()
 
--- make ./build/codegen/samples/X/X.h
-for k,v in pairs(sampleTypes) do
-	local sampleType = string.sub(v,3,-2)
-	file = io.open("./build/codegen/samples/"..sampleType.."/"..sampleType..".h", "w")
+-- make ./build/codegen/samples/X/samples.h
+for k,v in pairs(sampleFamilies) do
+	local sampleFamily = string.sub(v,3,-2)
+	file = io.open("./build/codegen/samples/"..sampleFamily.."/samples.h", "w")
 	file:write(dotHHeader)
-	local subSampleTypes = scandir('cd ./src/samples/'..sampleType..'/ && ls -d ./*/ && cd ../../..')
-	for k2,v2 in pairs(subSampleTypes) do
-		local subSampleType = string.sub(v2,3,-2)
-		file:write('#include "'..subSampleType..'/'..subSampleType..'.h"\n')
-        file:write('#include "'..subSampleType..'/autotest.h"\n')
+	local sampleTypes = scandir('cd ./src/samples/'..sampleFamily..'/ && ls -d ./*/ && cd ../../..')
+	for k2,v2 in pairs(sampleTypes) do
+		local sampleType = string.sub(v2,3,-2)
+		file:write('#include "'..sampleType..'/samples.h"\n')
+        file:write('#include "'..sampleType..'/autotest.h"\n')
 	end
-	file:write('\nnamespace Samples\n{\n    namespace '..sampleType..'\n    {\n        inline void AutoTest(void)\n        {\n')
-	for k2,v2 in pairs(subSampleTypes) do
-		local subSampleType = string.sub(v2,3,-2)
-		dofile("./src/samples/"..sampleType.."/"..subSampleType.."/info.lua")
+	file:write('\nnamespace Samples\n{\n    namespace '..sampleFamily..'\n    {\n        inline void AutoTest(void)\n        {\n')
+	for k2,v2 in pairs(sampleTypes) do
+		local sampleType = string.sub(v2,3,-2)
+		dofile("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.lua")
 		file:write('            '..info.CodeName..'::AutoTest();\n')
 	end
 	file:write('        }\n    }\n}\n')
@@ -65,24 +65,24 @@ file:write(dotHHeader)
 local testTypes = scandir('cd ./src/tests/ && ls -d ./*/ && cd ../..')
 for k,v in pairs(testTypes) do
 	local testType = string.sub(v,3,-2)
-	file:write('#include "'..testType..'/'..testType..'.h"\n')
+	file:write('#include "'..testType..'/tests.h"\n')
 end
 file:close()
 
--- make ./build/codegen/tests/X/X.h
+-- make ./build/codegen/tests/X/tests.h
 for k,v in pairs(testTypes) do
 	local testType = string.sub(v,3,-2)
-	file = io.open("./build/codegen/tests/"..testType.."/"..testType..".h", "w")
+	file = io.open("./build/codegen/tests/"..testType.."/tests.h", "w")
 	file:write(dotHHeader)
 	local subTestTypes = scandir('cd ./src/tests/'..testType..'/ && ls -d ./*/ && cd ../../..')
 	for k2,v2 in pairs(subTestTypes) do
 		local subTestType = string.sub(v2,3,-2)
-		file:write('#include "'..subTestType..'/'..subTestType..'.h"\n')
+		file:write('#include "'..subTestType..'/tests.h"\n')
 	end
 	file:close()
 end
 
--- make ./build/codegen/tests/X/Y/Y.h
+-- make ./build/codegen/tests/X/Y/tests.h
 for k,v in pairs(testTypes) do
     local testType = string.sub(v,3,-2)
     local subTestTypes = scandir('cd ./src/tests/'..testType..'/ && ls -d ./*/ && cd ../../..')
@@ -90,11 +90,11 @@ for k,v in pairs(testTypes) do
 
         local subTestType = string.sub(v2,3,-2)
 
-        file = io.open("./build/codegen/tests/"..testType.."/"..subTestType.."/"..subTestType..".h", "w")
+        file = io.open("./build/codegen/tests/"..testType.."/"..subTestType.."/tests.h", "w")
         file:write(dotHHeader)
         file:write("#include <vector>\n\n")
 
-        dofile("./src/tests/"..testType.."/"..subTestType.."/info.lua")
+        dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
 
         file:write("namespace Tests\n{\n    namespace "..testType.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
 
@@ -106,21 +106,21 @@ for k,v in pairs(testTypes) do
     end
 end
 
--- make ./build/codegen/samples/X/Y/Y.h
-for k,v in pairs(sampleTypes) do
-    local sampleType = string.sub(v,3,-2)
-    local subSampleTypes = scandir('cd ./src/samples/'..sampleType..'/ && ls -d ./*/ && cd ../../..')
-    for k2,v2 in pairs(subSampleTypes) do
+-- make ./build/codegen/samples/X/Y/samples.h
+for k,v in pairs(sampleFamilies) do
+    local sampleFamily = string.sub(v,3,-2)
+    local sampleTypes = scandir('cd ./src/samples/'..sampleFamily..'/ && ls -d ./*/ && cd ../../..')
+    for k2,v2 in pairs(sampleTypes) do
 
-        local subSampleType = string.sub(v2,3,-2)
+        local sampleType = string.sub(v2,3,-2)
 
-        file = io.open("./build/codegen/samples/"..sampleType.."/"..subSampleType.."/"..subSampleType..".h", "w")
+        file = io.open("./build/codegen/samples/"..sampleFamily.."/"..sampleType.."/samples.h", "w")
         file:write(dotHHeader)
         file:write("#include <vector>\n\n")
 
-        dofile("./src/samples/"..sampleType.."/"..subSampleType.."/info.lua")
+        dofile("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.lua")
 
-        file:write("namespace Samples\n{\n    namespace "..sampleType.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
+        file:write("namespace Samples\n{\n    namespace "..sampleFamily.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
 
         for functionIndex, functionName in ipairs(info.Functions) do
             file:write("            void "..functionName.."(std::vector<float>& values, size_t numValues);\n")
@@ -129,31 +129,31 @@ for k,v in pairs(sampleTypes) do
         file:write("        };\n    };\n};\n")
 
         -- also make output/samples/X/Y/
-        os.mkdir("./output/samples/"..sampleType.."/"..subSampleType.."/")
+        os.mkdir("./output/samples/"..sampleFamily.."/"..sampleType.."/")
     end
 end
 
 -- make ./build/codegen/samples/X/Y/autotest.h
-for k,v in pairs(sampleTypes) do
-    local sampleType = string.sub(v,3,-2)
+for k,v in pairs(sampleFamilies) do
+    local sampleFamily = string.sub(v,3,-2)
 
-    dofile("./src/samples/"..sampleType.."/samplefamily.lua")
+    dofile("./src/samples/"..sampleFamily.."/samplefamily.lua")
 
-    local subSampleTypes = scandir('cd ./src/samples/'..sampleType..'/ && ls -d ./*/ && cd ../../..')
-    for k2,v2 in pairs(subSampleTypes) do
+    local sampleTypes = scandir('cd ./src/samples/'..sampleFamily..'/ && ls -d ./*/ && cd ../../..')
+    for k2,v2 in pairs(sampleTypes) do
 
-        local subSampleType = string.sub(v2,3,-2)
+        local sampleType = string.sub(v2,3,-2)
 
-        file = io.open("./build/codegen/samples/"..sampleType.."/"..subSampleType.."/autotest.h", "w")
+        file = io.open("./build/codegen/samples/"..sampleFamily.."/"..sampleType.."/autotest.h", "w")
         file:write(dotHHeader)
 
-        dofile("./src/samples/"..sampleType.."/"..subSampleType.."/info.lua")
+        dofile("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.lua")
 
-        file:write("namespace Samples\n{\n    namespace "..sampleType.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
+        file:write("namespace Samples\n{\n    namespace "..sampleFamily.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
 
         file:write("            inline void AutoTest(void)\n            {\n")
 
-        MakeTests(file, info, sampleType, subSampleType, "                ")
+        MakeTests(file, info, sampleFamily, sampleType, "                ")
 
         file:write("            }\n")
 
