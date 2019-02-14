@@ -14,7 +14,7 @@ print "=====Generating Documentation====="
 local sampleFamilies = scandir('cd ./src/samples/ && ls -d ./*/ && cd ../..')
 local testTypes = scandir('cd ./src/tests/ && ls -d ./*/ && cd ../..')
 
-local file = io.open("./src/toc.md", "w")
+local file = io.open("./toc.md", "w")
 
 file:write('# Table of Contents\n\n')
 
