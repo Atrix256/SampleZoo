@@ -58,6 +58,23 @@ for k,v in pairs(testTypes) do
         dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
         file = io.open("./output/tests/"..testType.."/"..subTestType.."/results.md", "w")
 
+        for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
+            file:write("# "..testFunctionName.."\n")
+
+            local sampleTypes = scandir('cd ./src/samples/'..testType..'/ && ls -d ./*/ && cd ../../..')
+
+            for k3,v3 in pairs(sampleTypes) do
+                local sampleType = string.sub(v3,3,-2)
+                dofile("./src/samples/"..testType.."/"..sampleType.."/samples.lua")
+
+                file:write("## "..sampleInfo.LongName.."\n")
+
+                for sampleFunctionIndex, sampleFunctionName in ipairs(sampleInfo.Functions) do
+                    file:write("### "..sampleFunctionName.."\n")
+                end
+            end
+        end
+
         -- TODO: put results here!
 
         file:close()
