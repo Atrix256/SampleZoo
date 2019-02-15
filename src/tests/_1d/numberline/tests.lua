@@ -4,6 +4,7 @@ info = {
     LongName="Numberline",
     Description="Makes numberlines",
     Functions= {
-        "void MakeNumberline(const char* pngFileName, const std::vector<float>& samples, size_t width);",
+        "MakeNumberline",
     },
+    AutoTestSampleCounts = {16, 32, 64},
 }

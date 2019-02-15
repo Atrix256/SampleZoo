@@ -19,7 +19,9 @@ file = io.open("./build/codegen/codegen.h", "w")
 file:write(dotHHeader)
 file:write('#define _CRT_SECURE_NO_WARNINGS // for stb\n\n')
 file:write("#include <vector>\n")
-file:write("using SampleGenerate_1d = void(*)(std::vector<float>& values, size_t numValues);\n\n")
+file:write("using SampleGenerate_1d = void(*)(std::vector<float>& values, size_t numValues);\n")
+file:write("using Test_1d = void(*)(SampleGenerate_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts);\n\n")
+file:write("#define countof(array) (sizeof(array) / sizeof(array[0]))\n\n");
 file:write('#include "tests/tests.h"\n')
 file:write('#include "samples/samples.h"\n')
 file:close()
@@ -32,12 +34,6 @@ for k,v in pairs(sampleFamilies) do
 	local sampleFamily = string.sub(v,3,-2)
 	file:write('#include "'..sampleFamily..'/samples.h"\n')
 end
-file:write('\nnamespace Samples\n{\n    inline void AutoTest(void)\n    {\n')
-for k,v in pairs(sampleFamilies) do
-    local sampleFamily = string.sub(v,3,-2)
-    file:write('        '..sampleFamily..'::AutoTest();\n')
-end
-file:write('    }\n}\n')
 file:close()
 
 -- make ./build/codegen/samples/X/samples.h
@@ -49,15 +45,7 @@ for k,v in pairs(sampleFamilies) do
 	for k2,v2 in pairs(sampleTypes) do
 		local sampleType = string.sub(v2,3,-2)
 		file:write('#include "'..sampleType..'/samples.h"\n')
-        file:write('#include "'..sampleType..'/autotest.h"\n')
 	end
-	file:write('\nnamespace Samples\n{\n    namespace '..sampleFamily..'\n    {\n        inline void AutoTest(void)\n        {\n')
-	for k2,v2 in pairs(sampleTypes) do
-		local sampleType = string.sub(v2,3,-2)
-		dofile("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.lua")
-		file:write('            '..info.CodeName..'::AutoTest();\n')
-	end
-	file:write('        }\n    }\n}\n')
 	file:close()
 end
 
@@ -99,10 +87,52 @@ for k,v in pairs(testTypes) do
 
         file:write("namespace Tests\n{\n    namespace "..testType.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
 
-        for functionIndex, functionDeclaration in ipairs(info.Functions) do
-            file:write("            "..functionDeclaration.."\n")
+        for functionIndex, functionName in ipairs(info.Functions) do
+            file:write("            void "..functionName.."(SampleGenerate_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts);\n")
         end
 
+        file:write("        };\n    };\n};\n")
+    end
+end
+
+-- make ./build/codegen/tests/X/Y/autotest.h
+for k,v in pairs(testTypes) do
+    local testType = string.sub(v,3,-2)
+    local subTestTypes = scandir('cd ./src/tests/'..testType..'/ && ls -d ./*/ && cd ../../..')
+    for k2,v2 in pairs(subTestTypes) do
+
+        local subTestType = string.sub(v2,3,-2)
+
+        dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
+
+        file = io.open("./build/codegen/tests/"..testType.."/"..subTestType.."/autotest.h", "w")
+        file:write(dotHHeader)
+
+        file:write("namespace Tests\n{\n    namespace "..testType.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
+
+        file:write("            void AutoTest()\n            {\n")
+        file:write("                SampleGenerate"..testType.." funcs[] =\n                {\n")
+        local sampleTypes = scandir('cd ./src/samples/'..testType..'/ && ls -d ./*/ && cd ../../..')
+        for k3, v3 in pairs(sampleTypes) do
+            local sampleType = string.sub(v3,3,-2)
+            dofile("./src/samples/"..testType.."/"..sampleType.."/samples.lua")
+            for functionIndex, functionName in ipairs(info.Functions) do
+                file:write("                    Samples::"..testType.."::"..info.CodeName.."::"..functionName..",\n")
+            end
+        end
+        file:write("                };\n\n")
+
+        file:write("                size_t sampleCounts[] =\n                {\n")
+        dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
+        for sampleCountIndex, sampleCount in ipairs(info.AutoTestSampleCounts) do
+            file:write("                    "..sampleCount..",\n")
+        end
+        file:write("                };\n\n")
+        for functionIndex, functionName in ipairs(info.Functions) do
+            file:write("                "..functionName.."(funcs, countof(funcs), sampleCounts, countof(sampleCounts));\n")
+        end
+
+        file:write("            }\n")
         file:write("        };\n    };\n};\n")
     end
 end
@@ -130,33 +160,5 @@ for k,v in pairs(sampleFamilies) do
 
         -- also make output/samples/X/Y/
         os.mkdir("./output/samples/"..sampleFamily.."/"..sampleType.."/")
-    end
-end
-
--- make ./build/codegen/samples/X/Y/autotest.h
-for k,v in pairs(sampleFamilies) do
-    local sampleFamily = string.sub(v,3,-2)
-
-    dofile("./src/samples/"..sampleFamily.."/samplefamily.lua")
-
-    local sampleTypes = scandir('cd ./src/samples/'..sampleFamily..'/ && ls -d ./*/ && cd ../../..')
-    for k2,v2 in pairs(sampleTypes) do
-
-        local sampleType = string.sub(v2,3,-2)
-
-        file = io.open("./build/codegen/samples/"..sampleFamily.."/"..sampleType.."/autotest.h", "w")
-        file:write(dotHHeader)
-
-        dofile("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.lua")
-
-        file:write("namespace Samples\n{\n    namespace "..sampleFamily.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
-
-        file:write("            inline void AutoTest(void)\n            {\n")
-
-        MakeTests(file, info, sampleFamily, sampleType, "                ")
-
-        file:write("            }\n")
-
-        file:write("        };\n    };\n};\n")
     end
 end

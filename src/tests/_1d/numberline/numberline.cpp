@@ -15,8 +15,9 @@ Makes a numberline image and saves it to disk
 #include "shared/color_spaces.h"
 #include "shared/math.h"
 
-void Tests::_1d::Numberline::MakeNumberline(const char* pngFileName, const std::vector<float>& samples, size_t width_)
+void Tests::_1d::Numberline::MakeNumberline(SampleGenerate_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts)
 {
+    /*
     const int width = int(width_);
     const int height = int(float(width) * 0.25f);
 
@@ -51,4 +52,5 @@ void Tests::_1d::Numberline::MakeNumberline(const char* pngFileName, const std::
     }
 
     stbi_write_png(pngFileName, width, height, 3, image.m_pixels.data(), width * sizeof(image.m_pixels[0]));
+    */
 }

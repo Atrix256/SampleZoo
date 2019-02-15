@@ -10,8 +10,9 @@ Uses samples to integrate 1d functions
 #include "codegen.h"
 #include "shared/math.h"
 
-void Tests::_1d::Integration::Linear(const std::vector<float>& samples, std::vector<float>& error)
+void Tests::_1d::Integration::Linear(SampleGenerate_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts)
 {
+    /*
     error.resize(samples.size());
 
     // function:  y = x
@@ -27,4 +28,5 @@ void Tests::_1d::Integration::Linear(const std::vector<float>& samples, std::vec
         approximation = Lerp(approximation, y, 1.0f / float(index + 1));
         error[index] = fabsf(c_actual - approximation);
     }
+    */
 }

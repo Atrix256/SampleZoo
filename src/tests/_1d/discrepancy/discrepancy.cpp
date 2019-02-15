@@ -10,8 +10,9 @@ Calculates metrics about actual point densities vs expected point densitites
 #include "codegen.h"
 #include <algorithm>
 
-float Tests::_1d::Discrepancy::CalculateDiscrepancy(const std::vector<float>& samples)
+void Tests::_1d::Discrepancy::CalculateDiscrepancy(SampleGenerate_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts)
 {
+    /*
     // sort the samples, but add a 0.0 and a 1.0 to represent the "hard walls" on the left and right
     // since this isn't torroidal
     std::vector<float> sortedSamples = samples;
@@ -51,10 +52,12 @@ float Tests::_1d::Discrepancy::CalculateDiscrepancy(const std::vector<float>& sa
         }
     }
     return maxDifference;
+    */
 }
 
-float Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(const std::vector<float>& samples)
+void Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(SampleGenerate_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts)
 {
+    /*
     // Calculates the torroidal discrepancy of this data.
     std::vector<float> sortedSamples = samples;
     std::sort(sortedSamples.begin(), sortedSamples.end());
@@ -94,4 +97,5 @@ float Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(const std::vector<
         }
     }
     return maxDifference;
+    */
 }
