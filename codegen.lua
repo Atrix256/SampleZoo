@@ -140,6 +140,8 @@ for k,v in pairs(testTypes) do
 
         file:write("            }\n")
         file:write("        };\n    };\n};\n")
+
+        os.mkdir("./output/tests/"..testType.."/"..subTestType.."/")
     end
 end
 

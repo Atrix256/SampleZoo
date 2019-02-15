@@ -14,6 +14,8 @@ print "=====Generating Documentation====="
 local sampleFamilies = scandir('cd ./src/samples/ && ls -d ./*/ && cd ../..')
 local testTypes = scandir('cd ./src/tests/ && ls -d ./*/ && cd ../..')
 
+-- Make toc.md
+
 local file = io.open("./toc.md", "w")
 
 file:write('# Table of Contents\n\n')
@@ -45,3 +47,19 @@ for k,v in pairs(testTypes) do
 end
 
 file:close()
+
+-- make output/tests/X/Y/results.md
+
+for k,v in pairs(testTypes) do
+    local testType = string.sub(v,3,-2)
+    local subTestTypes = scandir('cd ./src/tests/'..testType..'/ && ls -d ./*/ && cd ../../..')
+    for k2,v2 in pairs(subTestTypes) do
+        local subTestType = string.sub(v2,3,-2)
+        dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
+        file = io.open("./output/tests/"..testType.."/"..subTestType.."/results.md", "w")
+
+        -- TODO: put results here!
+
+        file:close()
+    end
+end
