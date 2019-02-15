@@ -6,5 +6,5 @@ info = {
     Functions= {
         "MakeNumberline",
     },
-    AutoTestSampleCounts = {16, 32, 64},
+    AutoTestSampleCounts = {8, 16, 32, 64},
 }
