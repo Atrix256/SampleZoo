@@ -8,4 +8,6 @@ testInfo = {
         "CalculateDiscrepancyWrapAround",
     },
     AutoTestSampleCounts = {16, 32, 64},
+    MakesImages = false,
+    MakesImagePerSampleCount = false,
 }

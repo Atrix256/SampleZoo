@@ -7,4 +7,6 @@ testInfo = {
         "MakeNumberline",
     },
     AutoTestSampleCounts = {8, 16, 32, 64},
+    MakesImages = true,
+    MakesImagePerSampleCount = true,
 }
