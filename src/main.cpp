@@ -28,6 +28,12 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* next: get other tests working and making their results.md files
+ * then, do the sample for samples having results.md
+ * then, combine the hand written md file from tests and samples with results.md to make the actual .md that the TOC links to.
+ * at that point, it'll be pretty close to ready to open up
+
+
 * Generate numberline results page next. Fuse it with hand written numberline text.
  * Make a results.md for tests and for samples both (in output maybe?)
  * Combine with a handwritten .md for each, into whatever file name is actually linked to from the toc.
