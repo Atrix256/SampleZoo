@@ -1,4 +1,4 @@
-info = {
+testInfo = {
     CodeName="Numberline",
     ShortName="Numberline",
     LongName="Numberline",

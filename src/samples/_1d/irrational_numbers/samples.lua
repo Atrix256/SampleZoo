@@ -1,4 +1,4 @@
-info = {
+sampleInfo = {
     CodeName="IrrationalNumbers",
     ShortName="Irrational Numbers",
     LongName="Irrational Number Sampling",

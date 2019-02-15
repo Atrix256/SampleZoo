@@ -29,7 +29,7 @@ for k,v in pairs(sampleFamilies) do
 	for k2,v2 in pairs(sampleTypes) do
 		local sampleType = string.sub(v2,3,-2)
 		dofile("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.lua")
-		file:write('['..info.ShortName..'](src/samples/'..sampleFamily..'/'..sampleType..'/samples.md) - '..info.Description..'  \n')
+		file:write('['..sampleInfo.ShortName..'](src/samples/'..sampleFamily..'/'..sampleType..'/samples.md) - '..sampleInfo.Description..'  \n')
 	end
 end
 
@@ -42,7 +42,7 @@ for k,v in pairs(testTypes) do
     for k2,v2 in pairs(subTestTypes) do
         local subTestType = string.sub(v2,3,-2)
         dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
-        file:write('['..info.ShortName..'](src/tests/'..testType..'/'..subTestType..'/tests.md) - '..info.Description..'  \n')
+        file:write('['..testInfo.ShortName..'](src/tests/'..testType..'/'..subTestType..'/tests.md) - '..testInfo.Description..'  \n')
     end
 end
 

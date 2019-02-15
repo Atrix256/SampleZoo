@@ -91,9 +91,9 @@ for k,v in pairs(testTypes) do
 
         dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
 
-        file:write("namespace Tests\n{\n    namespace "..testType.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
+        file:write("namespace Tests\n{\n    namespace "..testType.."\n    {\n        namespace "..testInfo.CodeName.."\n        {\n")
 
-        for functionIndex, functionName in ipairs(info.Functions) do
+        for functionIndex, functionName in ipairs(testInfo.Functions) do
             file:write("            void "..functionName.."(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts, const char* testName);\n")
         end
 
@@ -114,7 +114,7 @@ for k,v in pairs(testTypes) do
         file = io.open("./build/codegen/tests/"..testType.."/"..subTestType.."/autotest.h", "w")
         file:write(dotHHeader)
 
-        file:write("namespace Tests\n{\n    namespace "..testType.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
+        file:write("namespace Tests\n{\n    namespace "..testType.."\n    {\n        namespace "..testInfo.CodeName.."\n        {\n")
 
         file:write("            void AutoTest()\n            {\n")
         file:write("                SampleGenerateInfo"..testType.." funcs[] =\n                {\n")
@@ -122,19 +122,19 @@ for k,v in pairs(testTypes) do
         for k3, v3 in pairs(sampleTypes) do
             local sampleType = string.sub(v3,3,-2)
             dofile("./src/samples/"..testType.."/"..sampleType.."/samples.lua")
-            for functionIndex, functionName in ipairs(info.Functions) do
-                file:write("                    { Samples::"..testType.."::"..info.CodeName.."::"..functionName..", \""..testType.."\", \""..sampleType.."\", \""..functionName.."\"},\n")
+            for functionIndex, functionName in ipairs(sampleInfo.Functions) do
+                file:write("                    { Samples::"..testType.."::"..sampleInfo.CodeName.."::"..functionName..", \""..testType.."\", \""..sampleType.."\", \""..functionName.."\"},\n")
             end
         end
         file:write("                };\n\n")
 
         file:write("                size_t sampleCounts[] =\n                {\n")
         dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
-        for sampleCountIndex, sampleCount in ipairs(info.AutoTestSampleCounts) do
+        for sampleCountIndex, sampleCount in ipairs(testInfo.AutoTestSampleCounts) do
             file:write("                    "..sampleCount..",\n")
         end
         file:write("                };\n\n")
-        for functionIndex, functionName in ipairs(info.Functions) do
+        for functionIndex, functionName in ipairs(testInfo.Functions) do
             file:write("                "..functionName.."(funcs, countof(funcs), sampleCounts, countof(sampleCounts), \""..functionName.."\");\n")
         end
 
@@ -158,9 +158,9 @@ for k,v in pairs(sampleFamilies) do
 
         dofile("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.lua")
 
-        file:write("namespace Samples\n{\n    namespace "..sampleFamily.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
+        file:write("namespace Samples\n{\n    namespace "..sampleFamily.."\n    {\n        namespace "..sampleInfo.CodeName.."\n        {\n")
 
-        for functionIndex, functionName in ipairs(info.Functions) do
+        for functionIndex, functionName in ipairs(sampleInfo.Functions) do
             file:write("            void "..functionName.."(std::vector<float>& values, size_t numValues);\n")
         end
 

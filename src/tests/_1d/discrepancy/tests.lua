@@ -1,4 +1,4 @@
-info = {
+testInfo = {
     CodeName="Discrepancy",
     ShortName="Discrepancy",
     LongName="Discrepancy Test",

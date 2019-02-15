@@ -1,4 +1,4 @@
-info = {
+sampleInfo = {
     CodeName="UniformRandom",
     ShortName="Uniform Random",
     LongName="Uniform Random Number Sampling",

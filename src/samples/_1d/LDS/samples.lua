@@ -1,4 +1,4 @@
-info = {
+sampleInfo = {
     CodeName="LDS",
     ShortName="LDS",
     LongName="Low Discrepancy Sequences",

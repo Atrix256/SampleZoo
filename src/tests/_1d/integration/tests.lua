@@ -1,4 +1,4 @@
-info = {
+testInfo = {
     CodeName="Integration",
     ShortName="Integration",
     LongName="Numerical Integration",

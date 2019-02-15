@@ -1,4 +1,4 @@
-info = {
+sampleInfo = {
     CodeName="Regular",
     ShortName="Regular",
     LongName="Regular Sampling",

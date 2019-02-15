@@ -1,4 +1,4 @@
-info = {
+sampleInfo = {
     CodeName="BlueNoise",
     ShortName="Blue Noise",
     LongName="Blue Noise Sequences",
