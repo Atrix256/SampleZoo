@@ -15,10 +15,8 @@ Makes a numberline image and saves it to disk
 #include "shared/color_spaces.h"
 #include "shared/math.h"
 
-void Tests::_1d::Numberline::MakeNumberline(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts)
+static void MakeNumberline(const char* fileName, const std::vector<float>& samples, int width)
 {
-    /*
-    const int width = int(width_);
     const int height = int(float(width) * 0.25f);
 
     Image image(width, height, { 224, 224, 224 });
@@ -36,11 +34,11 @@ void Tests::_1d::Numberline::MakeNumberline(SampleGenerateInfo_1d* sampleFunctio
     DrawLine(image, numberLineXBegin, numberLineYBegin, numberLineXBegin, numberLineYEnd, { 32, 32, 32 });
     DrawLine(image, numberLineXEnd, numberLineYBegin, numberLineXEnd, numberLineYEnd, { 32, 32, 32 });
 
-    for(size_t i = 0; i < samples.size(); ++i)
+    for (size_t i = 0; i < samples.size(); ++i)
     {
         float f = samples[i];
         static const float srcColor[3] = { 1, 0, 0 };
-        static const float destColor[3] = { 0, 1, 0};
+        static const float destColor[3] = { 0, 1, 0 };
 
         float t = float(i) / float(samples.size() - 1);
         uint8_t r = FloatToU8(LinearToSRGB(Lerp(srcColor[0], destColor[0], t)));
@@ -48,9 +46,26 @@ void Tests::_1d::Numberline::MakeNumberline(SampleGenerateInfo_1d* sampleFunctio
         uint8_t b = FloatToU8(LinearToSRGB(Lerp(srcColor[2], destColor[2], t)));
 
         float sampleX = f * (numberLineXEnd - numberLineXBegin) + numberLineXBegin;
-        DrawLine(image, sampleX, numberLineYSampleBegin, sampleX, numberLineYSampleEnd, {r, g, b });
+        DrawLine(image, sampleX, numberLineYSampleBegin, sampleX, numberLineYSampleEnd, { r, g, b });
     }
 
-    stbi_write_png(pngFileName, width, height, 3, image.m_pixels.data(), width * sizeof(image.m_pixels[0]));
-    */
+    stbi_write_png(fileName, width, height, 3, image.m_pixels.data(), width * sizeof(image.m_pixels[0]));
+}
+
+void Tests::_1d::Numberline::MakeNumberline(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts)
+{
+    char fileName[256];
+    for (size_t sampleFunctionIndex = 0; sampleFunctionIndex < sampleFunctionCount; ++sampleFunctionIndex)
+    {
+        SampleGenerateInfo_1d& sampleFunction = sampleFunctions[sampleFunctionIndex];
+
+        std::vector<float> samples;
+        for (size_t sampleCountIndex = 0; sampleCountIndex < sampleCountCounts; ++sampleCountIndex)
+        {
+            size_t sampleCount = sampleCounts[sampleCountIndex];
+            sampleFunction.function(samples, sampleCount);
+            sprintf(fileName, "output/samples/%s/%s/%s_%zu.png", sampleFunction.sampleFamily, sampleFunction.sampleType, sampleFunction.name, sampleCount);
+            ::MakeNumberline(fileName, samples, 512);
+        }
+    }
 }

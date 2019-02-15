@@ -24,6 +24,7 @@ file:write("struct SampleGenerateInfo_1d\n{\n")
 file:write("    SampleGenerate_1d function;\n")
 file:write("    const char* sampleFamily;\n")
 file:write("    const char* sampleType;\n")
+file:write("    const char* name;\n")
 file:write("};\n\n")
 file:write("using Test_1d = void(*)(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts);\n\n")
 file:write("#define countof(array) (sizeof(array) / sizeof(array[0]))\n\n");
@@ -122,7 +123,7 @@ for k,v in pairs(testTypes) do
             local sampleType = string.sub(v3,3,-2)
             dofile("./src/samples/"..testType.."/"..sampleType.."/samples.lua")
             for functionIndex, functionName in ipairs(info.Functions) do
-                file:write("                    { Samples::"..testType.."::"..info.CodeName.."::"..functionName..", \""..testType.."\", \""..sampleType.."\"},\n")
+                file:write("                    { Samples::"..testType.."::"..info.CodeName.."::"..functionName..", \""..testType.."\", \""..sampleType.."\", \""..functionName.."\"},\n")
             end
         end
         file:write("                };\n\n")

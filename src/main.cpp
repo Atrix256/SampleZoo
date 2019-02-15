@@ -33,11 +33,16 @@ TODO:
 * after fixing up testing, delete "output" folder and see how things regenerate
  * also fix up documentation
 
+* figure out the right sample counts for each test
+
 ? what is the goal of testing?
  1) have some things to show on the sample page (semi automatic - gather all test results for this sample type and mix it with supplied explanation / analysis)
  2) show results of tests on a tests page (semi automatic - gather all test results for this test type and mix it with supplied explanation / analysis)
  3) be able to have pages that compare aspects of sampling and talk about them (manual - manually gather whatever images you want and supply with whatever text you want)
 
+ * make sampleFunctions etc const in test function signatures
+
+ * make progressive sample functions not reset if they want more samples!
 
  * the tests should operate on a single set of samples, yes.
   * have the auto test loop through the sample functions and counts.
