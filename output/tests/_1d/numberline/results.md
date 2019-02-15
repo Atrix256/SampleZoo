@@ -1,3 +1,5 @@
+tests:
+* MakeNumberline
 # MakeNumberline
 ## Blue Noise Sequences
 ### BestCandidate

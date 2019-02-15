@@ -58,6 +58,11 @@ for k,v in pairs(testTypes) do
         dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
         file = io.open("./output/tests/"..testType.."/"..subTestType.."/results.md", "w")
 
+        file:write("tests:\n")
+        for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
+            file:write("* "..testFunctionName.."\n")
+        end
+
         for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
             file:write("# "..testFunctionName.."\n")
 

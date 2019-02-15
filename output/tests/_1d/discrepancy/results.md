@@ -1,3 +1,6 @@
+tests:
+* CalculateDiscrepancy
+* CalculateDiscrepancyWrapAround
 # CalculateDiscrepancy
 ## Blue Noise Sequences
 ### BestCandidate

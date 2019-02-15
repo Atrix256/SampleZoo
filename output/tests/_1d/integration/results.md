@@ -1,3 +1,5 @@
+tests:
+* Linear
 # Linear
 ## Blue Noise Sequences
 ### BestCandidate
