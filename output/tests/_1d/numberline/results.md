@@ -1,17 +1,18 @@
-tests:
+# Test Results
+ tests done:
 * MakeNumberline
-# MakeNumberline
-## Blue Noise Sequences
-### BestCandidate
-## Irrational Number Sampling
-### GoldenRatio
-### Pi
-### Sqrt2
-## Low Discrepancy Sequences
-### Sobol
-## Regular Sampling
-### Regular
-### RegularCentered
-### RegularCenteredOffset
-## Uniform Random Number Sampling
-### UniformRandom
+## MakeNumberline
+### Blue Noise Sequences
+#### BestCandidate
+### Irrational Number Sampling
+#### GoldenRatio
+#### Pi
+#### Sqrt2
+### Low Discrepancy Sequences
+#### Sobol
+### Regular Sampling
+#### Regular
+#### RegularCentered
+#### RegularCenteredOffset
+### Uniform Random Number Sampling
+#### UniformRandom
