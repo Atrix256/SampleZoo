@@ -28,7 +28,25 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-* i think tests need to take a struct of sample function information, so they know where to write output files.
+* Generate numberline results page next. Fuse it with hand written numberline text.
+ * Make a results.md for tests and for samples both (in output maybe?)
+ * Combine with a handwritten .md for each, into whatever file name is actually linked to from the toc.
+
+* link to blue noise paper about mitchell's best candidate:
+ * "Spectrally Optimal Sampling for Distribution Ray Tracing" by Don P. Mitchell 1991
+ * http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.556.445&rep=rep1&type=pdf
+
+* name test results as "<test>_<sampleCount>.png" or "<test>.png" since it's already scoped by sample type / sample family.
+
+* put tests and samples both under _1d.  same with output.  fix documentation links.
+
+* do these for LDS, and also link to from LDS
+ * https://twitter.com/TechSparx/status/1096394113635753984?s=03
+ * http://extremelearning.com.au/going-beyond-golden-ratio/
+
+* integration test: include y=x^3
+
+* maybe move to upper camel case instead of snake case.  Then can use folder names directly more often and can use function names in file names.
 
 * after fixing up testing, delete "output" folder and see how things regenerate
  * also fix up documentation
@@ -52,8 +70,15 @@ TODO:
 
  * make sure all tests have a AutoTestSampleCounts, and remove code that makes it ok to be missing
 
+ * Histogram test. Check white noise at large sample counts! Maybe 10, 100, 1000, etc
+
 * make tests have autotest.h files which run through all sample types in the same family, at the specified number of samples.
 
+* James has a bluenoise type sampling he wants to contribute called dpp. Hit him up when you are ready to open things up!
+
+* make sure mitchell's best candidate is using torroidal distance between points.
+
+* Golden ratio: link to generating unique colors with GR
 
 * have each test autogen a results page.
  * loop through each sample in the same family (passed as an array of function pointers)
