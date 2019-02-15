@@ -52,7 +52,7 @@ static void MakeNumberline(const char* fileName, const std::vector<float>& sampl
     stbi_write_png(fileName, width, height, 3, image.m_pixels.data(), width * sizeof(image.m_pixels[0]));
 }
 
-void Tests::_1d::Numberline::MakeNumberline(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts)
+void Tests::_1d::Numberline::MakeNumberline(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts, const char* testName)
 {
     char fileName[256];
     for (size_t sampleFunctionIndex = 0; sampleFunctionIndex < sampleFunctionCount; ++sampleFunctionIndex)
@@ -64,7 +64,7 @@ void Tests::_1d::Numberline::MakeNumberline(SampleGenerateInfo_1d* sampleFunctio
         {
             size_t sampleCount = sampleCounts[sampleCountIndex];
             sampleFunction.function(samples, sampleCount);
-            sprintf(fileName, "output/samples/%s/%s/%s_%zu.png", sampleFunction.sampleFamily, sampleFunction.sampleType, sampleFunction.name, sampleCount);
+            sprintf(fileName, "output/samples/%s/%s/%s_%s_%zu.png", sampleFunction.sampleFamily, sampleFunction.sampleType, testName, sampleFunction.name, sampleCount);
             ::MakeNumberline(fileName, samples, 512);
         }
     }

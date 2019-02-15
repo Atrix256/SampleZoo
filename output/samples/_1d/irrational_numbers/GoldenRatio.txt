@@ -1,4 +1,0 @@
-GoldenRatio 16 samples
-  Discrepancy: 0.118034
-  Wrap: 0.118034
-

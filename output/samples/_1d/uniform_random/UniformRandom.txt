@@ -1,4 +1,0 @@
-UniformRandom 16 samples
-  Discrepancy: 0.399083
-  Wrap: 0.399083
-

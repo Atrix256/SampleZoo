@@ -1,4 +1,0 @@
-Regular 16 samples
-  Discrepancy: 0.062500
-  Wrap: 0.062500
-

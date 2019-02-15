@@ -10,7 +10,7 @@ Calculates metrics about actual point densities vs expected point densitites
 #include "codegen.h"
 #include <algorithm>
 
-void Tests::_1d::Discrepancy::CalculateDiscrepancy(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts)
+void Tests::_1d::Discrepancy::CalculateDiscrepancy(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts, const char* testName)
 {
     /*
     // sort the samples, but add a 0.0 and a 1.0 to represent the "hard walls" on the left and right
@@ -55,7 +55,7 @@ void Tests::_1d::Discrepancy::CalculateDiscrepancy(SampleGenerateInfo_1d* sample
     */
 }
 
-void Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts)
+void Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts, const char* testName)
 {
     /*
     // Calculates the torroidal discrepancy of this data.

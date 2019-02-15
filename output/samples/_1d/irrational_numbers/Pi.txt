@@ -1,4 +1,0 @@
-Pi 16 samples
-  Discrepancy: 0.215706
-  Wrap: 0.215706
-

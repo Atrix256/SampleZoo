@@ -10,7 +10,7 @@ Uses samples to integrate 1d functions
 #include "codegen.h"
 #include "shared/math.h"
 
-void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts)
+void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts, const char* testName)
 {
     /*
     error.resize(samples.size());

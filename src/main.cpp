@@ -68,6 +68,8 @@ TODO:
    * it's ok, you can decide per test now.
    * you also can easily move the "single sample set" work to an internal function
 
+* make all the existing tests work again!
+
  * make sure all tests have a AutoTestSampleCounts, and remove code that makes it ok to be missing
 
  * Histogram test. Check white noise at large sample counts! Maybe 10, 100, 1000, etc
