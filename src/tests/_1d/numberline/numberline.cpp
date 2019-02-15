@@ -15,7 +15,7 @@ Makes a numberline image and saves it to disk
 #include "shared/color_spaces.h"
 #include "shared/math.h"
 
-void Tests::_1d::Numberline::MakeNumberline(SampleGenerate_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts)
+void Tests::_1d::Numberline::MakeNumberline(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts)
 {
     /*
     const int width = int(width_);

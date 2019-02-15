@@ -18,9 +18,14 @@ local file
 file = io.open("./build/codegen/codegen.h", "w")
 file:write(dotHHeader)
 file:write('#define _CRT_SECURE_NO_WARNINGS // for stb\n\n')
-file:write("#include <vector>\n")
-file:write("using SampleGenerate_1d = void(*)(std::vector<float>& values, size_t numValues);\n")
-file:write("using Test_1d = void(*)(SampleGenerate_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts);\n\n")
+file:write("#include <vector>\n\n")
+file:write("using SampleGenerate_1d = void(*)(std::vector<float>& values, size_t numValues);\n\n")
+file:write("struct SampleGenerateInfo_1d\n{\n")
+file:write("    SampleGenerate_1d function;\n")
+file:write("    const char* sampleFamily;\n")
+file:write("    const char* sampleType;\n")
+file:write("};\n\n")
+file:write("using Test_1d = void(*)(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts);\n\n")
 file:write("#define countof(array) (sizeof(array) / sizeof(array[0]))\n\n");
 file:write('#include "tests/tests.h"\n')
 file:write('#include "samples/samples.h"\n')
@@ -88,7 +93,7 @@ for k,v in pairs(testTypes) do
         file:write("namespace Tests\n{\n    namespace "..testType.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
 
         for functionIndex, functionName in ipairs(info.Functions) do
-            file:write("            void "..functionName.."(SampleGenerate_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts);\n")
+            file:write("            void "..functionName.."(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts);\n")
         end
 
         file:write("        };\n    };\n};\n")
@@ -111,13 +116,13 @@ for k,v in pairs(testTypes) do
         file:write("namespace Tests\n{\n    namespace "..testType.."\n    {\n        namespace "..info.CodeName.."\n        {\n")
 
         file:write("            void AutoTest()\n            {\n")
-        file:write("                SampleGenerate"..testType.." funcs[] =\n                {\n")
+        file:write("                SampleGenerateInfo"..testType.." funcs[] =\n                {\n")
         local sampleTypes = scandir('cd ./src/samples/'..testType..'/ && ls -d ./*/ && cd ../../..')
         for k3, v3 in pairs(sampleTypes) do
             local sampleType = string.sub(v3,3,-2)
             dofile("./src/samples/"..testType.."/"..sampleType.."/samples.lua")
             for functionIndex, functionName in ipairs(info.Functions) do
-                file:write("                    Samples::"..testType.."::"..info.CodeName.."::"..functionName..",\n")
+                file:write("                    { Samples::"..testType.."::"..info.CodeName.."::"..functionName..", \""..testType.."\", \""..sampleType.."\"},\n")
             end
         end
         file:write("                };\n\n")
