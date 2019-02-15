@@ -79,7 +79,7 @@ for k,v in pairs(testTypes) do
                     if testInfo.MakesImages then
                         if testInfo.MakesImagePerSampleCount then
                             for sampleCountIndex, sampleCount in ipairs(testInfo.AutoTestSampleCounts) do
-                                file:write(sampleCount.." Samples:\n")
+                                file:write(sampleCount.." Samples:  \n")
                                 file:write("!["..sampleCount.." samples "..sampleFunctionName.."](../../../samples/"..testType.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionName.."_"..sampleCount..".png)\n")
                             end
                         end
