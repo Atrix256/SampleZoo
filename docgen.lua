@@ -88,7 +88,32 @@ for k,v in pairs(testTypes) do
             end
         end
 
-        -- TODO: put results here!
+        file:close()
+    end
+end
+
+-- make output/samples/X/Y/results.md
+
+for k,v in pairs(sampleFamilies) do
+    local sampleFamily = string.sub(v,3,-2)
+    local sampleTypes = scandir('cd ./src/samples/'..sampleFamily..'/ && ls -d ./*/ && cd ../../..')
+    for k2,v2 in pairs(sampleTypes) do
+        local sampleType = string.sub(v2,3,-2)
+        dofile("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.lua")
+
+        file = io.open("./output/samples/"..sampleFamily.."/"..sampleType.."/results.md", "w")
+
+        local subTestTypes = scandir('cd ./src/tests/'..sampleFamily..'/ && ls -d ./*/ && cd ../../..')
+
+        file:write("# Test Results\n samples tested:\n")
+        for sampleFunctionIndex, sampleFunctionName in ipairs(sampleInfo.Functions) do
+            file:write("* "..sampleFunctionName.."\n")
+        end
+
+        for k3,v3 in pairs(subTestTypes) do
+            local subTestType = string.sub(v3,3,-2)
+            dofile("./src/tests/"..sampleFamily.."/"..subTestType.."/tests.lua")
+        end
 
         file:close()
     end

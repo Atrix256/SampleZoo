@@ -28,6 +28,9 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* put 2 scandirs at the top of each file so you only have to get the sample and test types once.
+ * actually no, can't. need to scan for subsamble and subtest types
+
 * next: get other tests working and making their results.md files
  * then, do the sample for samples having results.md
  * then, combine the hand written md file from tests and samples with results.md to make the actual .md that the TOC links to.
