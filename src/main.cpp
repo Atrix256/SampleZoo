@@ -30,6 +30,9 @@ TODO:
 
 * maybe have the toc link into the output folder files? have that be where the combined documentation file goes?
 
+* clean up the hand written pages.
+ * maybe put the header (and namespace if you want it) there automatically.
+
 * put 2 scandirs at the top of each file so you only have to get the sample and test types once.
  * actually no, can't. need to scan for subsamble and subtest types
 

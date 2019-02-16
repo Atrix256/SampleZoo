@@ -9,6 +9,13 @@ function scandir(command)
     return t
 end
 
+function readAll(file)
+    local f = assert(io.open(file, "rb"))
+    local content = f:read("*all")
+    f:close()
+    return content
+end
+
 print "=====Generating Documentation====="
 
 local sampleFamilies = scandir('cd ./src/samples/ && ls -d ./*/ && cd ../..')
@@ -88,6 +95,22 @@ for k,v in pairs(testTypes) do
             end
         end
 
+        file:close()
+    end
+end
+
+-- combine output/tests/X/Y/results.md and src/tests/X/Y/tests.md into output/tests/X/Y/page.md
+for k,v in pairs(testTypes) do
+    local testType = string.sub(v,3,-2)
+    local subTestTypes = scandir('cd ./src/tests/'..testType..'/ && ls -d ./*/ && cd ../../..')
+    for k2,v2 in pairs(subTestTypes) do
+        local subTestType = string.sub(v2,3,-2)
+
+        local results = readAll("./output/tests/"..testType.."/"..subTestType.."/results.md")
+        local testsPage = readAll("./src/tests/"..testType.."/"..subTestType.."/tests.md")
+        file = io.open("./output/tests/"..testType.."/"..subTestType.."/page.md", "w")
+        file:write(testsPage)
+        file:write(results)
         file:close()
     end
 end
