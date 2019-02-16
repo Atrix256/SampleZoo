@@ -160,3 +160,19 @@ for k,v in pairs(sampleFamilies) do
         file:close()
     end
 end
+
+-- combine output/samples/X/Y/results.md and src/samples/X/Y/samples.md into output/samples/X/Y/page.md
+for k,v in pairs(sampleFamilies) do
+    local sampleFamily = string.sub(v,3,-2)
+    local sampleTypes = scandir('cd ./src/samples/'..sampleFamily..'/ && ls -d ./*/ && cd ../../..')
+    for k2,v2 in pairs(sampleTypes) do
+        local sampleType = string.sub(v2,3,-2)
+
+        local results = readAll("./output/samples/"..sampleFamily.."/"..sampleType.."/results.md")
+        local testsPage = readAll("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.md")
+        file = io.open("./output/samples/"..sampleFamily.."/"..sampleType.."/page.md", "w")
+        file:write(testsPage)
+        file:write(results)
+        file:close()
+    end
+end
