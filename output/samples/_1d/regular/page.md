@@ -26,7 +26,7 @@ A problem here is that if you take the average of those numbers, you get 0.375, 
 
 16 samples:
 
-![16 samples Regular](../../../samples/_1d/irrational_numbers/MakeNumberline_Regular_16.png)
+![16 samples Regular](../../../samples/_1d/regular/MakeNumberline_Regular_16.png)
 
 These samples have a discrepancy, and torroidal discrepancy of 0.0625 which is 1/16.
 
@@ -42,7 +42,7 @@ If you are sampling something that gives the same meaning to 0 and 1 (when it wr
 
 16 samples:
 
-![16 samples Regular Centered](../../../samples/_1d/irrational_numbers/MakeNumberline_RegularCentered_16.png)
+![16 samples Regular Centered](../../../samples/_1d/regular/MakeNumberline_RegularCentered_16.png)
 
 These samples have a discrepancy, and torroidal discrepancy of 0.125, which is 1/8. That is double the discrepancy of Regular()!
 
@@ -58,7 +58,7 @@ If you are sampling something that gives the same meanting to 0 and 1, this sequ
 
 16 samples:
 
-![16 samples Regular Centered Offset](../../../samples/_1d/irrational_numbers/MakeNumberline_RegularCenteredOffset_16.png)
+![16 samples Regular Centered Offset](../../../samples/_1d/regular/MakeNumberline_RegularCenteredOffset_16.png)
 
 These samples have a discrepancy, and torroidal discrepancy of 0.0625 which is 1/16.
 
