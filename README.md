@@ -25,7 +25,7 @@ This stuff is surprisingly nuanced, and new sampling techniques come out every y
 
 To get a taste of things, check out the page on regularly spaced samples:
 
-[Regular Sampling](src/samples/_1d/regular/samples.md)
+[Regular Sampling](output/samples/_1d/regular/page.md)
 
 ## Other Software Used
 
