@@ -11,14 +11,15 @@ DATE: 2/8/2019
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb/stb_image.h"
 
-#define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "stb/stb_image_write.h"
-
 // TODO: temp! make this automatic, and run the autotest like you did before for samples.
 #include "tests\_1d\numberline\autotest.h"
 
+#include "shared/drawtext.h"
+
 int main(int argc, char **argv)
 {
+    TextTest();
+
     // TODO: make a root function in tests or something, that runs all the auto tests?
     Tests::_1d::Numberline::AutoTest();
 
@@ -27,6 +28,12 @@ int main(int argc, char **argv)
 
 /*
 TODO:
+
+* make everything be PMA and blend accordingly.
+* make lines have a thickness, and decrease the thickness of AA region. (1 and 1, instead of 0 and 2!)
+* get text working!
+
+* move stb include to some other cpp somewhere. like where the images are saved. Maybe need a function to save an image?
 
 * next: get other tests working and making their results.md files
  * figure out the right sample counts for each test

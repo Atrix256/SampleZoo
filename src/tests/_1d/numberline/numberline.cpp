@@ -17,39 +17,41 @@ Makes a numberline image and saves it to disk
 
 static void MakeNumberline(const char* fileName, const std::vector<float>& samples, int width)
 {
-    const int height = int(float(width) * 0.25f);
+    const int height = int(float(width) * 0.125f);
 
-    Image image(width, height, { 224, 224, 224 });
+    Image image(width, height, { 0.85f, 0.85f, 0.85f, 1.0f});
 
-    float numberLineXBegin = 0.1f;
-    float numberLineXEnd = 0.9f;
+    float numberLineXBegin = 0.025f;
+    float numberLineXEnd = 0.975f;
 
-    float numberLineYBegin = 0.3f;
-    float numberLineYEnd = 0.7f;
+    float numberLineYBegin = 0.2f;
+    float numberLineYEnd = 0.8f;
 
-    float numberLineYSampleBegin = 0.4f;
-    float numberLineYSampleEnd = 0.6f;
+    float numberLineYSampleBegin = 0.3f;
+    float numberLineYSampleEnd = 0.7f;
 
-    DrawLine(image, numberLineXBegin, 0.5f, numberLineXEnd, 0.5f, { 32,32,32 });
-    DrawLine(image, numberLineXBegin, numberLineYBegin, numberLineXBegin, numberLineYEnd, { 32, 32, 32 });
-    DrawLine(image, numberLineXEnd, numberLineYBegin, numberLineXEnd, numberLineYEnd, { 32, 32, 32 });
+    DrawLine(image, numberLineXBegin, 0.5f, numberLineXEnd, 0.5f, { 0.125f, 0.125f, 0.125f, 1.0f }, 2.0f / 512.0f);
+    DrawLine(image, numberLineXBegin, numberLineYBegin, numberLineXBegin, numberLineYEnd, { 0.125f, 0.125f, 0.125f, 1.0f}, 2.0f / 512.0f);
+    DrawLine(image, numberLineXEnd, numberLineYBegin, numberLineXEnd, numberLineYEnd, { 0.125f, 0.125f, 0.125f, 1.0f }, 2.0f / 512.0f);
 
     for (size_t i = 0; i < samples.size(); ++i)
     {
         float f = samples[i];
-        static const float srcColor[3] = { 1, 0, 0 };
-        static const float destColor[3] = { 0, 1, 0 };
+        static const PixelRGBAF32 srcColor(1.0f, 0.0f, 0.0f, 1.0f);
+        static const PixelRGBAF32 destColor(0.0f, 1.0f, 0.0f, 1.0f);
 
         float t = float(i) / float(samples.size() - 1);
-        uint8_t r = FloatToU8(LinearToSRGB(Lerp(srcColor[0], destColor[0], t)));
-        uint8_t g = FloatToU8(LinearToSRGB(Lerp(srcColor[1], destColor[1], t)));
-        uint8_t b = FloatToU8(LinearToSRGB(Lerp(srcColor[2], destColor[2], t)));
+        PixelRGBAF32 color;
+        color.r = Lerp(srcColor.r, destColor.r, t);
+        color.g = Lerp(srcColor.g, destColor.g, t);
+        color.b = Lerp(srcColor.b, destColor.b, t);
+        color.a = Lerp(srcColor.a, destColor.a, t);
 
         float sampleX = f * (numberLineXEnd - numberLineXBegin) + numberLineXBegin;
-        DrawLine(image, sampleX, numberLineYSampleBegin, sampleX, numberLineYSampleEnd, { r, g, b });
+        DrawLine(image, sampleX, numberLineYSampleBegin, sampleX, numberLineYSampleEnd, color, 1.0f / 512.0f);
     }
 
-    stbi_write_png(fileName, width, height, 3, image.m_pixels.data(), width * sizeof(image.m_pixels[0]));
+    SaveImage(image, fileName);
 }
 
 void Tests::_1d::Numberline::MakeNumberline(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts, const char* testName)

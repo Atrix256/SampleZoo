@@ -4,7 +4,7 @@ AUTHOR: Alan Wolfe (alan.wolfe@gmail.com)
 DATE: 2/8/2019
 
 Description:
-A thing wrapper to some pixels
+A thin wrapper to some pixels, and a way to save them to disk as an image
 */
 
 #pragma once
@@ -12,17 +12,21 @@ A thing wrapper to some pixels
 #include "pixel.h"
 #include <vector>
 
+// Images are RGBAF32, and are stored as premultiplied alpha
+
 struct Image
 {
-    Image(int width, int height, const PixelRGBU8& clearColor = PixelRGBU8{ 255, 255, 255 })
+    Image(int width, int height, PixelRGBAF32 clearColor = PixelRGBAF32( 1.0f, 1.0f, 1.0f, 1.0f ))
     {
         m_width = width;
         m_height = height;
         m_pixels.resize(m_width*m_height);
-        std::fill(m_pixels.begin(), m_pixels.end(), clearColor);
+        std::fill(m_pixels.begin(), m_pixels.end(), PixelRGBAF32_PMA(clearColor));
     }
 
     int m_width;
     int m_height;
-    std::vector<PixelRGBU8> m_pixels;
+    std::vector<PixelRGBAF32_PMA> m_pixels;
 };
+
+void SaveImage(const Image& image, const char* fileName);

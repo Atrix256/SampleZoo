@@ -12,18 +12,23 @@ Some helper functions for drawing 2d images
 #include "math.h"
 #include <algorithm>
 
-void DrawLine(Image& image, float x1_, float y1_, float x2_, float y2_, const PixelRGBU8& color)
+void DrawLine(Image& image, float x1_, float y1_, float x2_, float y2_, const PixelRGBAF32& color, float lineWidth_)
 {
     int x1 = int(x1_ * float(image.m_width));
     int x2 = int(x2_ * float(image.m_width));
     int y1 = int(y1_ * float(image.m_height));
     int y2 = int(y2_ * float(image.m_height));
 
+    // Convert line width to pixels by multiplying by image width. not exactly right (aspect ratio / rectangular images not handled well) but whatever.
+    float lineWidth = lineWidth_ * float(image.m_width);
+
+    const PixelRGBAF32_PMA colorPMA(color);
+
     // pad the AABB of pixels we scan, to account for anti aliasing
-    int startX = std::max(std::min(x1, x2) - 4, 0);
-    int startY = std::max(std::min(y1, y2) - 4, 0);
-    int endX = std::min(std::max(x1, x2) + 4, image.m_width - 1);
-    int endY = std::min(std::max(y1, y2) + 4, image.m_height - 1);
+    int startX = std::max(std::min(x1, x2) - 4 - int(2 * lineWidth), 0);
+    int startY = std::max(std::min(y1, y2) - 4 - int(2 * lineWidth), 0);
+    int endX = std::min(std::max(x1, x2) + 4 + int(2 * lineWidth), image.m_width - 1);
+    int endY = std::min(std::max(y1, y2) + 4 + int(2 * lineWidth), image.m_height - 1);
 
     // if (x1,y1) is A and (x2,y2) is B, get a normalized vector from A to B called AB
     float ABX = float(x2 - x1);
@@ -35,7 +40,7 @@ void DrawLine(Image& image, float x1_, float y1_, float x2_, float y2_, const Pi
     // scan the AABB of our line segment, drawing pixels for the line, as is appropriate
     for (int iy = startY; iy <= endY; ++iy)
     {
-        PixelRGBU8* pixel = &image.m_pixels[(iy * image.m_width + startX)];
+        PixelRGBAF32_PMA* pixel = &image.m_pixels[(iy * image.m_width + startX)];
         for (int ix = startX; ix <= endX; ++ix)
         {
             // project this current pixel onto the line segment to get the closest point on the line segment to the point
@@ -50,17 +55,18 @@ void DrawLine(Image& image, float x1_, float y1_, float x2_, float y2_, const Pi
             // calculate the distance from this pixel to the closest point on the line segment
             float distanceX = float(ix) - closestX;
             float distanceY = float(iy) - closestY;
-            float distance = std::sqrtf(distanceX*distanceX + distanceY * distanceY);
+            float distance = std::sqrtf(distanceX * distanceX + distanceY * distanceY);
+
+            // account for line width
+            distance -= lineWidth / 2.0f;
 
             // use the distance to figure out how transparent the pixel should be, and apply the color to the pixel
-            float alpha = SmoothStep(distance, 2.0f, 0.0f);
+            float alpha = SmoothStep(distance, 0.75f, 0.0f);
 
-            if (alpha > 0.0f)
-            {
-                pixel->r = Lerp(pixel->r, color.r, alpha);
-                pixel->g = Lerp(pixel->g, color.g, alpha);
-                pixel->b = Lerp(pixel->b, color.b, alpha);
-            }
+            PixelRGBAF32_PMA colorPMACopy = colorPMA;
+            colorPMACopy.MultiplyAlpha(alpha);
+
+            pixel->BlendIn(colorPMACopy);
 
             pixel++;
         }
