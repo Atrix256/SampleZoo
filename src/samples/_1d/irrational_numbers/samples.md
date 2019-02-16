@@ -78,17 +78,17 @@ The formula for using irrational numbers is essentially the same as when using r
 
 That can make for a great number sequence like the below, which uses the square root of two (which is an irrational number) in that formula for 16 samples:
 
-![16 samples sqrt2](../../../samples/_1d/irrational_numbers/MakeNumberline_sqrt2_16.png)
+![16 samples sqrt2](../../../samples/_1d/irrational_numbers/MakeNumberline_Sqrt2_16.png)
 
 Just because a number is irrational doesn't make it a good choice though.  Here is 16 samples of pi:
 
-![16 samples pi](../../../samples/_1d/irrational_numbers/MakeNumberline_pi_16.png)
+![16 samples pi](../../../samples/_1d/irrational_numbers/MakeNumberline_Pi_16.png)
 
 The reason for this is that the square root of two is more irrational than pi, meaning you can get closer to the real value of pi with a fraction than you can to the square root of two.
 
 The most irrational number of all is the golden ratio, which is approximately 1.61803398875.  Here are 16 samples using the golden ratio:
 
-![16 samples golden ratio](../../../samples/_1d/irrational_numbers/MakeNumberline_goldenratio_16.png)
+![16 samples golden ratio](../../../samples/_1d/irrational_numbers/MakeNumberline_GoldenRatio_16.png)
 
 ## More About the Golden Ratio
 
