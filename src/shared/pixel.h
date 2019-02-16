@@ -102,8 +102,17 @@ inline PixelRGBAF32_PMA::PixelRGBAF32_PMA(const PixelRGBAF32& src)
 
 inline PixelRGBAF32::PixelRGBAF32(const PixelRGBAF32_PMA& src)
 {
-    r = src.r / src.a;
-    g = src.g / src.a;
-    b = src.b / src.a;
+    if (src.a > 0.0f)
+    {
+        r = src.r / src.a;
+        g = src.g / src.a;
+        b = src.b / src.a;
+    }
+    else
+    {
+        r = 0.0f;
+        g = 0.0f;
+        b = 0.0f;
+    }
     a = src.a;
 }

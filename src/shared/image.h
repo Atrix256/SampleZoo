@@ -16,7 +16,18 @@ A thin wrapper to some pixels, and a way to save them to disk as an image
 
 struct Image
 {
-    Image(int width, int height, PixelRGBAF32 clearColor = PixelRGBAF32( 1.0f, 1.0f, 1.0f, 1.0f ))
+    Image()
+    {
+        m_width = 0;
+        m_height = 0;
+    }
+
+    Image(int width, int height, PixelRGBAF32 clearColor = PixelRGBAF32(1.0f, 1.0f, 1.0f, 1.0f))
+    {
+        Resize(width, height, clearColor);
+    }
+
+    void Resize(int width, int height, PixelRGBAF32 clearColor = PixelRGBAF32(1.0f, 1.0f, 1.0f, 1.0f))
     {
         m_width = width;
         m_height = height;

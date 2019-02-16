@@ -29,8 +29,6 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-* make everything be PMA and blend accordingly.
-* make lines have a thickness, and decrease the thickness of AA region. (1 and 1, instead of 0 and 2!)
 * get text working!
 
 * move stb include to some other cpp somewhere. like where the images are saved. Maybe need a function to save an image?
@@ -42,10 +40,15 @@ TODO:
  * "Spectrally Optimal Sampling for Distribution Ray Tracing" by Don P. Mitchell 1991
  * http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.556.445&rep=rep1&type=pdf
 
+ * 1d dft test
 
 * do these for LDS, and also link to from LDS
  * https://twitter.com/TechSparx/status/1096394113635753984?s=03
  * http://extremelearning.com.au/going-beyond-golden-ratio/
+ * also your own ones: https://blog.demofox.org/2017/05/29/when-random-numbers-are-too-random-low-discrepancy-sequences/
+
+ * Use golden ratio index to color for line graphs, and mention it in the golden ratio section.
+  * and link to the page that shows how to do it
 
 * integration test: include y=x^3
 
