@@ -33,62 +33,52 @@ void EnsureFontLoaded()
     stbtt_InitFont(&c_fontInfo, c_fontFile.data(), stbtt_GetFontOffsetForIndex(c_fontFile.data(), 0));
 }
 
-void MakeCharPMA(Image& image, int c, PixelRGBAF32 color, float scaleX, float scaleY)
+void MakeCharImage(Image& image, int c, PixelRGBAF32 color, float textHeight)
 {
-    EnsureFontLoaded();
+    float scale = stbtt_ScaleForPixelHeight(&c_fontInfo, textHeight);
+    int ascent;
+    stbtt_GetFontVMetrics(&c_fontInfo, &ascent, 0, 0);
+    int baseline = (int)(float(ascent)*scale);
+    float xpos = 2.0f;
 
-    const PixelRGBAF32_PMA colorPMA(color);
+    // TODO: continue from .h file
+    // TODO: this function should only make the image. the outer function should loop / advance position etc.
 
-    int width, height;
-    unsigned char *bitmap = stbtt_GetCodepointBitmap(&c_fontInfo, scaleX, stbtt_ScaleForPixelHeight(&c_fontInfo, scaleY), c, &width, &height, nullptr, nullptr);
 
-    image.Resize(width, height, {0.0f, 0.0f, 0.0f, 1.0f});
+
+    scale = 220.0f;
+    int bitmapWidth, bitmapHeight;
+    unsigned char *bitmap = stbtt_GetCodepointBitmap(&c_fontInfo, 0.0f, stbtt_ScaleForPixelHeight(&c_fontInfo, scale), c, &bitmapWidth, &bitmapHeight, nullptr, nullptr);
+
+    image.Resize(bitmapWidth, bitmapHeight, {0.0f, 0.0f, 0.0f, 1.0f});
 
     const unsigned char* srcPixel = bitmap;
     PixelRGBAF32_PMA* destPixel = image.m_pixels.data();
-    for (int pixelIndex = 0, pixelCount = width * height; pixelIndex < pixelCount; ++pixelIndex, ++destPixel, ++srcPixel)
+    for (int pixelIndex = 0, pixelCount = bitmapWidth * bitmapHeight; pixelIndex < pixelCount; ++pixelIndex, ++destPixel, ++srcPixel)
     {
-        PixelRGBAF32_PMA colorPMACopy(colorPMA);
+        PixelRGBAF32_PMA colorPMA(color);
         float alpha = float(*srcPixel) / 255.0f;
-        colorPMACopy.MultiplyAlpha(alpha);
-        destPixel->BlendIn(colorPMACopy);
+        colorPMA.MultiplyAlpha(alpha);
+        destPixel->BlendIn(colorPMA);
     }
 
     stbtt_FreeBitmap(bitmap, nullptr);
 }
 
-void MakeTextPMA(const char* string)
+void MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight)
 {
+    EnsureFontLoaded();
+
     Image image;
-    MakeCharPMA(image, 'Q', { 1.0f, 1.0f, 0.0f, 1.0f }, 0.0f, 22.0f);
+    MakeCharImage(image, 'Q', color, textHeight);
     SaveImage(image, "Q.png");
 
-    // TODO: make the MakeCharBitmap() function, and make one for a string passed in
+    // TODO: make the entire image final image by pasting together individual character images at the right location.
 
-    /*
-    int w, h, i, j, c, s;
-    c = 'a';
-    s = ' ';
-    
-    for (int iz = 0; iz < strlen(string); ++iz)
-    {
-        c = string[iz];
-        unsigned char *bitmap = stbtt_GetCodepointBitmap(&c_fontInfo, 0.0f, stbtt_ScaleForPixelHeight(&c_fontInfo, s), c, &w, &h, 0, 0);
-
-        for (j = 0; j < h; ++j) {
-            for (i = 0; i < w; ++i)
-                putchar(" .:ioVM@"[bitmap[j*w + i] >> 5]);
-            putchar('\n');
-        }
-
-        stbtt_FreeBitmap(bitmap, nullptr);
-    }
-
-    // TODO: i think you need to free memory with stbtt_FreeBitmap
-    */
+    // TODO: text image should probably be filled (cleared) with transparent black.  test that out when you use it.
 }
 
 void TextTest(void)
 {
-    MakeTextPMA("Hi Chanel");
+    MakeTextImage("Hi Chanel", { 1.0f, 1.0f, 0.0f, 1.0f }, 220.0f);
 }
