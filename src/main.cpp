@@ -28,6 +28,8 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* maybe have the toc link into the output folder files? have that be where the combined documentation file goes?
+
 * put 2 scandirs at the top of each file so you only have to get the sample and test types once.
  * actually no, can't. need to scan for subsamble and subtest types
 

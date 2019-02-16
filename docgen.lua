@@ -103,16 +103,35 @@ for k,v in pairs(sampleFamilies) do
 
         file = io.open("./output/samples/"..sampleFamily.."/"..sampleType.."/results.md", "w")
 
-        local subTestTypes = scandir('cd ./src/tests/'..sampleFamily..'/ && ls -d ./*/ && cd ../../..')
-
         file:write("# Test Results\n samples tested:\n")
         for sampleFunctionIndex, sampleFunctionName in ipairs(sampleInfo.Functions) do
             file:write("* "..sampleFunctionName.."\n")
         end
 
-        for k3,v3 in pairs(subTestTypes) do
-            local subTestType = string.sub(v3,3,-2)
-            dofile("./src/tests/"..sampleFamily.."/"..subTestType.."/tests.lua")
+        for sampleFunctionIndex, sampleFunctionName in ipairs(sampleInfo.Functions) do
+            file:write("## "..sampleFunctionName.."\n")
+
+            local subTestTypes = scandir('cd ./src/tests/'..sampleFamily..'/ && ls -d ./*/ && cd ../../..')
+            for k3,v3 in pairs(subTestTypes) do
+                local subTestType = string.sub(v3,3,-2)
+                dofile("./src/tests/"..sampleFamily.."/"..subTestType.."/tests.lua")
+
+                file:write("### "..testInfo.LongName.."\n")
+
+                for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
+                    file:write("#### "..testFunctionName.."\n")
+
+                    if testInfo.MakesImages then
+                        if testInfo.MakesImagePerSampleCount then
+                            for sampleCountIndex, sampleCount in ipairs(testInfo.AutoTestSampleCounts) do
+                                file:write(sampleCount.." Samples:  \n")
+                                file:write("!["..sampleCount.." samples "..sampleFunctionName.."](../../../samples/"..sampleFamily.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionName.."_"..sampleCount..".png)  \n")
+                            end
+                        end
+                    end
+
+                end
+            end
         end
 
         file:close()
