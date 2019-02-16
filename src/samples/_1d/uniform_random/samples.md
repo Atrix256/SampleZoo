@@ -1,7 +1,3 @@
-# Uniform Random Sampling
-
-**namespace:** Samples::_1d::UniformRandom
-
 Uniform random sampling uses random numbers to make sample positions.
 
 It's called uniform because it uses a uniform distribution of random numbers.

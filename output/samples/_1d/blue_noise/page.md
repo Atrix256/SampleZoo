@@ -1,7 +1,4 @@
-# Blue Noise Sampling
-
-**namespace:** Samples::_1d::BlueNoise
-
+# Blue Noise Sequences
 Blue noise samples are randomized samples which are roughly evenly spaced.
 
 It's called blue noise because if you do a DFT, there is primarily high frequency content.
@@ -38,6 +35,7 @@ https://blog.demofox.org/2018/01/30/what-the-heck-is-blue-noise/ - What the heck
 https://blog.demofox.org/2018/08/07/tiled-blue-noise/ - Tiled blue noise  
 https://blog.demofox.org/2018/08/12/not-all-blue-noise-is-created-equal/ - Not All Blue Noise is Created Equal  
 https://www.princeton.edu/news/2014/02/24/eye-chicken-new-state-matter-comes-view - In the eye of a chicken, a new state of matter comes into view  
+
 # Test Results
  samples tested:
 * BestCandidate

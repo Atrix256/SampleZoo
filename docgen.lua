@@ -106,10 +106,14 @@ for k,v in pairs(testTypes) do
     for k2,v2 in pairs(subTestTypes) do
         local subTestType = string.sub(v2,3,-2)
 
+        dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
+
         local results = readAll("./output/tests/"..testType.."/"..subTestType.."/results.md")
         local testsPage = readAll("./src/tests/"..testType.."/"..subTestType.."/tests.md")
         file = io.open("./output/tests/"..testType.."/"..subTestType.."/page.md", "w")
+        file:write("# "..testInfo.LongName.."\n")
         file:write(testsPage)
+        file:write("\n")
         file:write(results)
         file:close()
     end
@@ -168,10 +172,14 @@ for k,v in pairs(sampleFamilies) do
     for k2,v2 in pairs(sampleTypes) do
         local sampleType = string.sub(v2,3,-2)
 
+        dofile("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.lua")
+
         local results = readAll("./output/samples/"..sampleFamily.."/"..sampleType.."/results.md")
         local testsPage = readAll("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.md")
         file = io.open("./output/samples/"..sampleFamily.."/"..sampleType.."/page.md", "w")
+        file:write("# "..sampleInfo.LongName.."\n")
         file:write(testsPage)
+        file:write("\n")
         file:write(results)
         file:close()
     end

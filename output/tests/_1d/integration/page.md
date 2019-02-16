@@ -1,4 +1,6 @@
-# Integration# Test Results
+# Numerical Integration
+
+# Test Results
  tests done:
 * Linear
 ## Linear

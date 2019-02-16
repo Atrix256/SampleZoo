@@ -28,10 +28,6 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-* maybe have the toc link into the output folder files? have that be where the combined documentation file goes?
-
-* the main page has a link to the regular sampling page. update it!
-
 * clean up the hand written pages.
  * maybe put the header (and namespace if you want it) there automatically.
 

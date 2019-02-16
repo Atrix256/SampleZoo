@@ -1,7 +1,3 @@
-# Regular Sampling
-
-**namespace:** Samples::_1d::Regular
-
 Regular sampling is also known as uniformly spaced sampling, regular grid sampling, it could be called "periodic sampling", and has some other names as well.
 
 This sampling strategy takes samples at even spaces which can show good convergence, but comes at the cost of aliasing.

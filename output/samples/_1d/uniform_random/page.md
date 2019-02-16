@@ -1,7 +1,4 @@
-# Uniform Random Sampling
-
-**namespace:** Samples::_1d::UniformRandom
-
+# Uniform Random Number Sampling
 Uniform random sampling uses random numbers to make sample positions.
 
 It's called uniform because it uses a uniform distribution of random numbers.
@@ -21,6 +18,7 @@ Here are 16 samples of uniform random samples:
 ![16 samples Regular](../../../../output/samples/_1d/uniform_random/UniformRandom.png)
 
 Blue noise is an alternative to uniform random sampling which has many of the positive characteristics of white noise, but has a better error rate at lower sample counts, and the noise pattern it leaves is more pleasing to the eye due to being more uniformly distributed.
+
 # Test Results
  samples tested:
 * UniformRandom

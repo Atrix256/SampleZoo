@@ -1,7 +1,3 @@
-# Blue Noise Sampling
-
-**namespace:** Samples::_1d::BlueNoise
-
 Blue noise samples are randomized samples which are roughly evenly spaced.
 
 It's called blue noise because if you do a DFT, there is primarily high frequency content.

@@ -1,7 +1,4 @@
-# Irrational Number Sampling
-
-**namespace:** Samples::_1d::IrrationalNumbers
-
+# Irrational Number Sampling
 ## Rational Numbers
 
 Before we talk about using irrational numbers for generating sample points, let's talk about using rational numbers and start with the rational number 1/4.
@@ -123,6 +120,7 @@ https://www.youtube.com/watch?v=sj8Sg8qnjOg
 The Unreasonable Effectiveness of Quasirandom Sequences  
 This talks about a lot of really interesting things, but also generalizes the golden ratio in an interesting way.  
 http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
+
 # Test Results
  samples tested:
 * GoldenRatio

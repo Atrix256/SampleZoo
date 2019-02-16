@@ -1,7 +1,3 @@
-# Irrational Number Sampling
-
-**namespace:** Samples::_1d::IrrationalNumbers
-
 ## Rational Numbers
 
 Before we talk about using irrational numbers for generating sample points, let's talk about using rational numbers and start with the rational number 1/4.

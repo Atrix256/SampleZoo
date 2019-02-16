@@ -1,3 +1,5 @@
+# Low Discrepancy Sequences
+
 # Test Results
  samples tested:
 * Sobol

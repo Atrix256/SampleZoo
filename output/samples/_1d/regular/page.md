@@ -1,7 +1,4 @@
-# Regular Sampling
-
-**namespace:** Samples::_1d::Regular
-
+# Regular Sampling
 Regular sampling is also known as uniformly spaced sampling, regular grid sampling, it could be called "periodic sampling", and has some other names as well.
 
 This sampling strategy takes samples at even spaces which can show good convergence, but comes at the cost of aliasing.
@@ -66,6 +63,7 @@ If you are sampling something that gives the same meanting to 0 and 1, this sequ
 These samples have a discrepancy, and torroidal discrepancy of 0.0625 which is 1/16.
 
 This sampling strategy is seemingly the best of the three because it works well for both the wrap around and non wrap around cases, and is tied for lowest discrepancy.
+
 # Test Results
  samples tested:
 * Regular
