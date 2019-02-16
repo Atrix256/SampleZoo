@@ -20,11 +20,7 @@ This algorithm generates a progressive sequence which means that if you generate
 
 This property can be very useful for when you don't know how many samples you want to take in advance.
 
-Here are 16 blue noise sample points generated with Mitchell's best candidate algorithm.
-
-![16 samples Regular](../../../../output/samples/_1d/blue_noise/BestCandidate.png)
-
-Blue noise sample points tend to tile very well, even if they weren't designed to tile.  Their lack of low frequency content makes it so there are no larger structures to catch your eye.
+Blue noise sample points tend to tile well, even if they weren't designed to tile.  Their lack of low frequency content makes it so there are no larger structures to catch your eye.
 
 Many things in our world - natural and man made - are distributed in a blue noise pattern.  This includes the photoreceptors in your eyes, as well as foam in a tempurpedic matress (something which is unique to them, and patented).  "Randomized but roughly evenly spaced" turns out to be a really common requirement of things, and in fact, if you have something in a game that doesn't feel random enough ("hey, i just fought one of those guys! This isn't random at all!"), the real randomness you might be looking for is blue noise, which doesn't repeat in the same way white noise does.  Despite this, it's still randomized and unpredictable.
 
