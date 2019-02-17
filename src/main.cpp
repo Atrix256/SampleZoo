@@ -13,6 +13,7 @@ DATE: 2/8/2019
 
 // TODO: temp! make this automatic, and run the autotest like you did before for samples.
 #include "tests\_1d\numberline\autotest.h"
+#include "tests\_1d\integration\autotest.h"
 
 #include "shared/drawtext.h"
 
@@ -22,13 +23,17 @@ int main(int argc, char **argv)
     SaveImage(image, "yo.png");
 
     // TODO: make a root function in tests or something, that runs all the auto tests?
-    Tests::_1d::Numberline::AutoTest();
+    //Tests::_1d::Numberline::AutoTest();
+    Tests::_1d::Integration::AutoTest();
 
     return 0;
 }
 
 /*
 TODO:
+
+? some way to limit tests to a specific test, or samples to a specific sample. easier for iteration in debug mode!
+ * maybe a #define in main here?
 
 * get a graph test working now that you have text.
  * maybe integration test would be good? i think make one graph for all sample functions in the same sample type?
