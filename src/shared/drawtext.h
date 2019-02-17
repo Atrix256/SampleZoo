@@ -6,4 +6,6 @@ DATE: 2/16/2019
 
 #pragma once
 
-void TextTest(void);
+#include "image.h"
+
+Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight);

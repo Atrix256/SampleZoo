@@ -33,24 +33,20 @@ void EnsureFontLoaded()
     stbtt_InitFont(&c_fontInfo, c_fontFile.data(), stbtt_GetFontOffsetForIndex(c_fontFile.data(), 0));
 }
 
-void MakeCharImage(Image& image, int c, PixelRGBAF32 color, float textHeight)
+float MakeCharImage(Image& image, int c, PixelRGBAF32 color, float scale, float x_shift, int &yoffset)
 {
-    float scale = stbtt_ScaleForPixelHeight(&c_fontInfo, textHeight);
-    int ascent;
-    stbtt_GetFontVMetrics(&c_fontInfo, &ascent, 0, 0);
-    int baseline = (int)(float(ascent)*scale);
-    float xpos = 2.0f;
+    int advanceWidth;
+    int leftSideBearing;
+    stbtt_GetCodepointHMetrics(&c_fontInfo, c, &advanceWidth, &leftSideBearing);
 
-    // TODO: continue from .h file
-    // TODO: this function should only make the image. the outer function should loop / advance position etc.
+    int x0, y0, x1, y1;
+    stbtt_GetCodepointBitmapBoxSubpixel(&c_fontInfo, c, scale, scale, x_shift, 0, &x0, &y0, &x1, &y1);
+    yoffset = y0;
 
-
-
-    scale = 220.0f;
     int bitmapWidth, bitmapHeight;
-    unsigned char *bitmap = stbtt_GetCodepointBitmap(&c_fontInfo, 0.0f, stbtt_ScaleForPixelHeight(&c_fontInfo, scale), c, &bitmapWidth, &bitmapHeight, nullptr, nullptr);
+    unsigned char *bitmap = stbtt_GetCodepointBitmapSubpixel(&c_fontInfo, 0.0f,  scale, x_shift, 0.0f, c, &bitmapWidth, &bitmapHeight, nullptr, nullptr);
 
-    image.Resize(bitmapWidth, bitmapHeight, {0.0f, 0.0f, 0.0f, 1.0f});
+    image.Resize(bitmapWidth, bitmapHeight, {0.0f, 0.0f, 0.0f, 0.0f});
 
     const unsigned char* srcPixel = bitmap;
     PixelRGBAF32_PMA* destPixel = image.m_pixels.data();
@@ -63,22 +59,38 @@ void MakeCharImage(Image& image, int c, PixelRGBAF32 color, float textHeight)
     }
 
     stbtt_FreeBitmap(bitmap, nullptr);
+
+    return float(advanceWidth)*scale;
 }
 
-void MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight)
+Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight)
 {
     EnsureFontLoaded();
 
-    Image image;
-    MakeCharImage(image, 'Q', color, textHeight);
-    SaveImage(image, "Q.png");
+    Image stringImage;
 
-    // TODO: make the entire image final image by pasting together individual character images at the right location.
+    float scale = stbtt_ScaleForPixelHeight(&c_fontInfo, textHeight);
+    int ascent;
+    stbtt_GetFontVMetrics(&c_fontInfo, &ascent, 0, 0);
+    int baseline = (int)(float(ascent)*scale);
+    float xpos = 0.0f;
 
-    // TODO: text image should probably be filled (cleared) with transparent black.  test that out when you use it.
-}
+    const char *c = string;
+    while (*c)
+    {
+        Image charImage;
+        float x_shift = xpos - (float)floor(xpos);
+        int yOffset;
+        float advance = MakeCharImage(charImage, *c, color, scale, x_shift, yOffset);
 
-void TextTest(void)
-{
-    MakeTextImage("Hi Chanel", { 1.0f, 1.0f, 0.0f, 1.0f }, 220.0f);
+        BlendInImage_Resize(stringImage, charImage, unsigned int(xpos), baseline + yOffset, { 0.0f, 0.0f, 0.0f, 0.0f });
+
+        if (c[1])
+            xpos += scale * float(stbtt_GetCodepointKernAdvance(&c_fontInfo, c[0], c[1]));
+
+        xpos += advance;
+        c++;
+    }
+
+    return stringImage;
 }

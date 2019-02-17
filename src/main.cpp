@@ -18,7 +18,8 @@ DATE: 2/8/2019
 
 int main(int argc, char **argv)
 {
-    TextTest();
+    Image image = MakeTextImage("Hello World", { 1.0f, 0.2f, 0.5f, 0.75f }, 45.0f);
+    SaveImage(image, "yo.png");
 
     // TODO: make a root function in tests or something, that runs all the auto tests?
     Tests::_1d::Numberline::AutoTest();
@@ -30,6 +31,8 @@ int main(int argc, char **argv)
 TODO:
 
 * get text working!
+
+* the kerning is weird in the text or something sometimes... investigate
 
 * move stb include to some other cpp somewhere. like where the images are saved. Maybe need a function to save an image?
 
