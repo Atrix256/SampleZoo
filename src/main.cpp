@@ -31,10 +31,13 @@ int main(int argc, char **argv)
 TODO:
 
 * get a graph test working now that you have text.
+ * maybe integration test would be good? i think make one graph for all sample functions in the same sample type?
+ * need to change how docs are generated for that (and maybe code gen?)
+ * make a function that graphs data you give it.
+ * make a legend on the graph.
+ * use golden ratio in HSV to turn index into colors.
 
-* maybe interpolate the numberline using HSV to keep brightness?
-
-* move stb include to some other cpp somewhere. like where the images are saved. Maybe need a function to save an image?
+* maybe interpolate the numberline using HSV to keep brightness or make it look better in general? not sure.
 
 * next: get other tests working and making their results.md files
  * figure out the right sample counts for each test
