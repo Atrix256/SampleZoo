@@ -30,9 +30,9 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-* get text working!
+* get a graph test working now that you have text.
 
-* the kerning is weird in the text or something sometimes... investigate
+* maybe interpolate the numberline using HSV to keep brightness?
 
 * move stb include to some other cpp somewhere. like where the images are saved. Maybe need a function to save an image?
 

@@ -47,6 +47,12 @@ static void MakeNumberline(const char* fileName, const std::vector<float>& sampl
         color.b = Lerp(srcColor.b, destColor.b, t);
         color.a = Lerp(srcColor.a, destColor.a, t);
 
+        // normalize the interpolated color to make the middle yellow part brighter
+        float len = sqrtf(color.r*color.r + color.g*color.g + color.b*color.b);
+        color.r /= len;
+        color.g /= len;
+        color.b /= len;
+
         float sampleX = f * (numberLineXEnd - numberLineXBegin) + numberLineXBegin;
         DrawLine(image, sampleX, numberLineYSampleBegin, sampleX, numberLineYSampleEnd, color, 1.0f / 512.0f);
     }
