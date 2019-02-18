@@ -11,11 +11,18 @@ DATE: 2/16/2019
 
 Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight, int& baseline);
 
-enum class TextAlign
+enum class TextHAlign
 {
     Left,
     Right,
     Center
 };
 
-void DrawText(Image& image, const char* string, PixelRGBAF32 color, float textHeight, Vec2& pos, TextAlign align);
+enum class TextVAlign
+{
+    Top,
+    Bottom,
+    Center
+};
+
+void DrawText(Image& image, const char* string, PixelRGBAF32 color, float textHeight, Vec2& pos, TextHAlign halign, TextVAlign valign);

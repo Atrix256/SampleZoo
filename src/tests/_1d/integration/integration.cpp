@@ -36,6 +36,8 @@ void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, siz
     std::vector<GraphItem> errors;
     errors.resize(sampleFunctionCount * sampleCountCounts);
 
+    std::vector<float> xAxisTicks = { 1, 10, 100, 1000 };
+
     char fileName[256];
     for (size_t sampleFunctionIndex = 0; sampleFunctionIndex < sampleFunctionCount; ++sampleFunctionIndex)
     {
@@ -55,12 +57,12 @@ void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, siz
             // TODO: combine the graphs!
             std::vector<GraphItem> graph;
             graph.push_back(error);
-            MakeGraph(fileName, graph, 512, true);
+            MakeGraph(fileName, graph, xAxisTicks, 512, true);
         }
     }
 
     sprintf(fileName, "output/%s.png", testName);
-    MakeGraph(fileName, errors, 512, true);
+    MakeGraph(fileName, errors, xAxisTicks, 512, true);
 
     // TODO: 3 graph scopes:
     // 2 - global
@@ -68,4 +70,5 @@ void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, siz
     // 0 - individual (sample function)
 
     // need another scope for "per sample count"? i dunno... need some way of describing this stuff so the code and auto code / doc gen can pick itup
+    // actually, ditch sample counts. let test code decide sample counts needed. can combine numberlines into single image with labels.
 }

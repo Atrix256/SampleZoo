@@ -60,6 +60,8 @@ TODO:
 ? some way to limit tests to a specific test, or samples to a specific sample. easier for iteration in debug mode!
  * maybe a #define in main here?
 
+ * look for todo's in the code base!
+
  * text: i think the left side baseline is important. read that 16x aa blog post (part 3)
 
 * get a graph test working now that you have text.

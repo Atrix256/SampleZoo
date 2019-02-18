@@ -12,12 +12,16 @@ DATE: 2/17/2019
 
 static const float c_goldenRatioConjugate = 0.61803398875f;
 
-void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, int width, bool loglog)
+// TODO: make y axis ticks get passed in too?
+
+void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, const std::vector<float> xAxisTicks, int width, bool loglog)
 {
     static const Vec2 graphMin = { 0.1f, 0.0f };
     static const Vec2 graphMax = { 1.0f, 0.9f };
 
     static const float virtualPixel = 1.0f / 512.0f;
+
+    static const float log10epsilon = 0.0001f;
 
     // make the graph image
     Image image(width, width, { 1.0f, 1.0f, 1.0f, 1.0f });
@@ -32,7 +36,6 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, i
     // get data range
     Vec2 dataMin = { FLT_MAX, FLT_MAX };
     Vec2 dataMax = { -FLT_MAX, -FLT_MAX };
-
     Vec2 dataMinUnpadded = { FLT_MAX, FLT_MAX };
     Vec2 dataMaxUnpadded = { -FLT_MAX, -FLT_MAX };
     {
@@ -51,22 +54,33 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, i
         dataMinUnpadded = dataMin;
         dataMaxUnpadded = dataMax;
 
-        // pad the top of the graph a bit
-        dataMax[1] += (dataMax[1] - dataMin[1]) * 0.05f;
+        // pad the top and right of the graph a bit
+        dataMax[0] += (dataMax[0] - dataMin[0]) * 0.25f;
+        dataMax[1] += (dataMax[1] - dataMin[1]) * 0.25f;
 
         // flip the graph over to make y=0 be at the bottom of the image
         std::swap(dataMin[1], dataMax[1]);
         std::swap(dataMinUnpadded[1], dataMaxUnpadded[1]);
+
+        // if they want a log/log graph
+        if (loglog)
+        {
+            dataMin[0] = log10f(std::max(dataMin[0], log10epsilon));
+            dataMin[1] = log10f(std::max(dataMin[1], log10epsilon));
+            dataMax[0] = log10f(std::max(dataMax[0], log10epsilon));
+            dataMax[1] = log10f(std::max(dataMax[1], log10epsilon));
+        }
     }
 
     // define the lambda to convert from data space to image space
-    auto DataToImage = [&dataMin, &dataMax] (const Vec2& dataSpace) -> Vec2
+    auto DataToImage = [&dataMin, &dataMax, loglog] (Vec2 dataSpace) -> Vec2
     {
-        //if (loglog)
-        //{
-            //dataPoint[0] = log10f(std::max(dataPoint[0], 0.0001f));
-            //dataPoint[1] = log10f(std::max(dataPoint[1], 0.0001f));
-        //}
+        // if they want a log/log graph
+        if (loglog)
+        {
+            dataSpace[0] = log10f(std::max(dataSpace[0], log10epsilon));
+            dataSpace[1] = log10f(std::max(dataSpace[1], log10epsilon));
+        }
 
         // make the data point be in [0,1) space
         Vec2 imageSpace;
@@ -79,7 +93,7 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, i
         return imageSpace;
     };
 
-    // put a mark at the minimum and maximum error and label them
+    // put a mark at the minimum and maximum y value and label them
     {
         char buffer[256];
 
@@ -88,11 +102,24 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, i
 
         DrawLine(image, min[0] - virtualPixel * 7.0f, min[1], min[0] - virtualPixel * 2.0f, min[1], { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0f * virtualPixel);
         sprintf(buffer, "%0.2f", dataMinUnpadded[1]);
-        DrawText(image, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, min - Vec2{ virtualPixel * 10.0f, 0.0f }, TextAlign::Right);
+        DrawText(image, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{ min[0], min[1] } - Vec2{ virtualPixel * 10.0f, 0.0f }, TextHAlign::Right, TextVAlign::Top);
 
         DrawLine(image, min[0] - virtualPixel * 7.0f, max[1], min[0] - virtualPixel * 2.0f, max[1], { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0f * virtualPixel);
         sprintf(buffer, "%0.2f", dataMaxUnpadded[1]);
-        DrawText(image, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{ min[0], max[1] } - Vec2{ virtualPixel * 10.0f, 0.0f }, TextAlign::Right);
+        DrawText(image, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{ min[0], max[1] } - Vec2{ virtualPixel * 10.0f, 0.0f }, TextHAlign::Right, TextVAlign::Top);
+    }
+
+    // draw x axis ticks
+    for (float f : xAxisTicks)
+    {
+        Vec2 data = { f, dataMinUnpadded[0] };
+        Vec2 pos = DataToImage(data);
+
+        DrawLine(image, pos[0], graphMax[1] + virtualPixel * 2.0f, pos[0], graphMax[1] + virtualPixel * 7.0f, { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0f * virtualPixel);
+
+        char buffer[256];
+        sprintf(buffer, "%i", int(f));
+        DrawText(image, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{ pos[0], graphMax[1] + virtualPixel * 10.0f }, TextHAlign::Right, TextVAlign::Top);
     }
 
     // draw the line graph in a specific region of the image
@@ -126,8 +153,7 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, i
     // save the final image
     SaveImage(image, fileName);
 
-    // TODO: loglog support!
     // TODO: legend
-    // TODO: x axis labeling (sample count... 10, 100, 1000, etc)
-    // TODO: get rid of drawline px
+    // TODO: for x axis ticks (and y!) maybe have user supply text to show.
+    // TODO: is log10 best? there is a lot of space from 0 to 1...
 }

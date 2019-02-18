@@ -96,7 +96,7 @@ Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight, in
     return stringImage;
 }
 
-void DrawText(Image& image, const char* string, PixelRGBAF32 color, float textHeight_, Vec2& pos, TextAlign align)
+void DrawText(Image& image, const char* string, PixelRGBAF32 color, float textHeight_, Vec2& pos, TextHAlign halign, TextVAlign valign)
 {
     // convert text height from uv space to pixels
     float textHeight = textHeight_ * float(image.m_height);
@@ -106,22 +106,40 @@ void DrawText(Image& image, const char* string, PixelRGBAF32 color, float textHe
 
     // convert position from text height to pixels, and handle alignment
     int x = int(pos[0] * float(image.m_width));
-    int y = int(pos[1] * float(image.m_height)) - text.m_height / 2 - (text.m_height - baseline);
+    int y = int(pos[1] * float(image.m_height));
 
-    switch (align)
+    switch (halign)
     {
-        case TextAlign::Left:
+        case TextHAlign::Left:
         {
             break;
         }
-        case TextAlign::Right:
+        case TextHAlign::Right:
         {
             x -= text.m_width;
             break;
         }
-        case TextAlign::Center:
+        case TextHAlign::Center:
         {
             x -= text.m_width / 2;
+            break;
+        }
+    }
+
+    switch (valign)
+    {
+        case TextVAlign::Top:
+        {
+            break;
+        }
+        case TextVAlign::Bottom:
+        {
+            y -= text.m_height;
+            break;
+        }
+        case TextVAlign::Center:
+        {
+            y -= text.m_height / 2 - (text.m_height - baseline);
             break;
         }
     }

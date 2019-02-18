@@ -42,6 +42,6 @@ struct Image
 
 void SaveImage(const Image& image, const char* fileName);
 
-void BlendInImage(Image& image, const Image& otherImage, unsigned int pastex, unsigned int pastey);
+void BlendInImage(Image& image, const Image& otherImage, int pastex, int pastey);
 
 void BlendInImage_Resize(Image& image, const Image& otherImage, unsigned int pastex, unsigned int pastey, PixelRGBAF32 clearColor);

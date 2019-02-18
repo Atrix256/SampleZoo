@@ -29,15 +29,15 @@ void SaveImage(const Image& image, const char* fileName)
     stbi_write_png(fileName, image.m_width, image.m_height, 4, rgbaU8.data(), image.m_width * sizeof(rgbaU8[0]));
 }
 
-void BlendInImage(Image& image, const Image& otherImage, unsigned int pastex, unsigned int pastey)
+void BlendInImage(Image& image, const Image& otherImage, int pastex, int pastey)
 {
-    unsigned int startX = std::min(pastex, unsigned int(image.m_width - 1));
-    unsigned int startY = std::min(pastey, unsigned int(image.m_height - 1));
+    int startX = Clamp(pastex, 0, image.m_width - 1);
+    int startY = Clamp(pastey, 0, image.m_height - 1);
 
-    unsigned int endX = std::min(pastex + otherImage.m_width, unsigned int(image.m_width));
-    unsigned int endY = std::min(pastey + otherImage.m_height, unsigned int(image.m_height));
+    int endX = Clamp(pastex + otherImage.m_width, 0, image.m_width);
+    int endY = Clamp(pastey + otherImage.m_height, 0, image.m_height);
 
-    for (unsigned int y = startY; y < endY; ++y)
+    for (int y = startY; y < endY; ++y)
     {
         // calculate starting pixel on image we are pasting in
         int srcX = startX - pastex;
@@ -48,7 +48,7 @@ void BlendInImage(Image& image, const Image& otherImage, unsigned int pastex, un
         PixelRGBAF32_PMA* destPixel = &image.m_pixels[y * image.m_width + startX];
 
         // do a row of pasting
-        for (unsigned int x = startX; x < endX; ++x, ++srcPixel, ++destPixel)
+        for (int x = startX; x < endX; ++x, ++srcPixel, ++destPixel)
             destPixel->BlendIn(*srcPixel);
     }
 }
