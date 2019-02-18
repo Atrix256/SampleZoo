@@ -26,7 +26,7 @@ static void Linear(const std::vector<float>& samples, GraphItem& error)
     {
         float y = f(samples[index]);
         approximation = Lerp(approximation, y, 1.0f / float(index + 1));
-        error.data[index][0] = float(index);
+        error.data[index][0] = float(index + 1);
         error.data[index][1] = fabsf(c_actual - approximation);
     }
 }

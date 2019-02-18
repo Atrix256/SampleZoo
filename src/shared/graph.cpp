@@ -153,5 +153,4 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, c
 
     // TODO: legend
     // TODO: make y axis ticks be passed in
-    // TODO: is log10 best? there is a lot of space from 0 to 1...
 }
