@@ -19,8 +19,8 @@ DATE: 2/8/2019
 
 int main(int argc, char **argv)
 {
-    Image image = MakeTextImage("Hello World", { 1.0f, 0.2f, 0.5f, 0.75f }, 45.0f);
-    SaveImage(image, "yo.png");
+    //Image image = MakeTextImage("Hello World", { 1.0f, 0.2f, 0.5f, 0.75f }, 45.0f);
+    //SaveImage(image, "yo.png");
 
     // TODO: make a root function in tests or something, that runs all the auto tests?
     //Tests::_1d::Numberline::AutoTest();
@@ -32,8 +32,25 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* why do the error graphs always start at 0.5 error? maybe it's from sampling at 0?
+
+! make the LDS (and whatever else appropriate) not start at index 0.
+ * talk about it in the description too?
+ * maybe have a golden ratio that does use index0 and another that doesn't.
+
+* error graph wants to be log/log graph. check out the progressive projective blue noise repo for details
+ * log10f
+
+* for graphing, when the line is subpixel length, may need to calculate the average over that pixel?
+ * or maybe find where the data point is in that pixel?
+ * could also figure out what the values are for those pixels in those white spots... before going to u8. wonder whats up?!
+
+* for integration tests, only really need 1 sample count... like 1000 or 10k etc.
+
 ? some way to limit tests to a specific test, or samples to a specific sample. easier for iteration in debug mode!
  * maybe a #define in main here?
+
+ * text: i think the left side baseline is important. read that 16x aa blog post (part 3)
 
 * get a graph test working now that you have text.
  * maybe integration test would be good? i think make one graph for all sample functions in the same sample type?
@@ -43,6 +60,7 @@ TODO:
  * use golden ratio in HSV to turn index into colors.
 
 * maybe interpolate the numberline using HSV to keep brightness or make it look better in general? not sure.
+ * we have hsv code now. try it!
 
 * next: get other tests working and making their results.md files
  * figure out the right sample counts for each test

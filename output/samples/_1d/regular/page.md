@@ -75,6 +75,8 @@ This sampling strategy is seemingly the best of the three because it works well 
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
 #### Linear
+1000 Samples:  
+![1000 samples Regular](../../../samples/_1d/regular/Linear_Regular_1000.png)  
 ### Numberline
 #### MakeNumberline
 8 Samples:  
@@ -91,6 +93,8 @@ This sampling strategy is seemingly the best of the three because it works well 
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
 #### Linear
+1000 Samples:  
+![1000 samples RegularCentered](../../../samples/_1d/regular/Linear_RegularCentered_1000.png)  
 ### Numberline
 #### MakeNumberline
 8 Samples:  
@@ -107,6 +111,8 @@ This sampling strategy is seemingly the best of the three because it works well 
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
 #### Linear
+1000 Samples:  
+![1000 samples RegularCenteredOffset](../../../samples/_1d/regular/Linear_RegularCenteredOffset_1000.png)  
 ### Numberline
 #### MakeNumberline
 8 Samples:  

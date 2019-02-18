@@ -34,8 +34,8 @@ void BlendInImage(Image& image, const Image& otherImage, unsigned int pastex, un
     unsigned int startX = std::min(pastex, unsigned int(image.m_width - 1));
     unsigned int startY = std::min(pastey, unsigned int(image.m_height - 1));
 
-    unsigned int endX = std::min(pastex + otherImage.m_width, unsigned int(image.m_width - 1));
-    unsigned int endY = std::min(pastey + otherImage.m_height, unsigned int(image.m_height - 1));
+    unsigned int endX = std::min(pastex + otherImage.m_width, unsigned int(image.m_width));
+    unsigned int endY = std::min(pastey + otherImage.m_height, unsigned int(image.m_height));
 
     for (unsigned int y = startY; y < endY; ++y)
     {

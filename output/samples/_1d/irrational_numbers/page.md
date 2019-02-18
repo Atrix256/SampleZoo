@@ -120,18 +120,42 @@ https://www.youtube.com/watch?v=sj8Sg8qnjOg
 The Unreasonable Effectiveness of Quasirandom Sequences  
 This talks about a lot of really interesting things, but also generalizes the golden ratio in an interesting way.  
 http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
-
+
+How to Generate Random Colors Programmatically
+This shows how to use the golden ratio to generate N colors from index [0,N) where the colors are nearly maximally different from eachother.  This technique is used in SampleZoo in fact, to do things like come up with the colors for lines in a line graph!
+https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmatically/
 # Test Results
  samples tested:
+* GoldenRatioZero
 * GoldenRatio
 * Pi
 * Sqrt2
+## GoldenRatioZero
+### Discrepancy Test
+#### CalculateDiscrepancy
+#### CalculateDiscrepancyWrapAround
+### Numerical Integration
+#### Linear
+1000 Samples:  
+![1000 samples GoldenRatioZero](../../../samples/_1d/irrational_numbers/Linear_GoldenRatioZero_1000.png)  
+### Numberline
+#### MakeNumberline
+8 Samples:  
+![8 samples GoldenRatioZero](../../../samples/_1d/irrational_numbers/MakeNumberline_GoldenRatioZero_8.png)  
+16 Samples:  
+![16 samples GoldenRatioZero](../../../samples/_1d/irrational_numbers/MakeNumberline_GoldenRatioZero_16.png)  
+32 Samples:  
+![32 samples GoldenRatioZero](../../../samples/_1d/irrational_numbers/MakeNumberline_GoldenRatioZero_32.png)  
+64 Samples:  
+![64 samples GoldenRatioZero](../../../samples/_1d/irrational_numbers/MakeNumberline_GoldenRatioZero_64.png)  
 ## GoldenRatio
 ### Discrepancy Test
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
 #### Linear
+1000 Samples:  
+![1000 samples GoldenRatio](../../../samples/_1d/irrational_numbers/Linear_GoldenRatio_1000.png)  
 ### Numberline
 #### MakeNumberline
 8 Samples:  
@@ -148,6 +172,8 @@ http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequence
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
 #### Linear
+1000 Samples:  
+![1000 samples Pi](../../../samples/_1d/irrational_numbers/Linear_Pi_1000.png)  
 ### Numberline
 #### MakeNumberline
 8 Samples:  
@@ -164,6 +190,8 @@ http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequence
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
 #### Linear
+1000 Samples:  
+![1000 samples Sqrt2](../../../samples/_1d/irrational_numbers/Linear_Sqrt2_1000.png)  
 ### Numberline
 #### MakeNumberline
 8 Samples:  

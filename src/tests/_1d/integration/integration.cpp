@@ -35,7 +35,7 @@ static void Linear(const char* fileName, const std::vector<float>& samples, int 
     // TODO: combine the graphs!
     std::vector<GraphItem> graph;
     graph.push_back(error);
-    MakeGraph(fileName, graph, width);
+    MakeGraph(fileName, graph, width, 0.0f, 0.0f, 0.0f, 0.05f);
 }
 
 void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts, const char* testName)

@@ -18,4 +18,4 @@ struct GraphItem
     std::vector<Vec2> data;
 };
 
-void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, int width);
+void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, int width, float padx0, float pady0, float padx1, float pady1);

@@ -6,7 +6,7 @@ testInfo = {
     Functions= {
         "Linear",
     },
-    AutoTestSampleCounts = {16, 32, 64},
-    MakesImages = false,
-    MakesImagePerSampleCount = false,
+    AutoTestSampleCounts = {1000},
+    MakesImages = true,
+    MakesImagePerSampleCount = true,
 }

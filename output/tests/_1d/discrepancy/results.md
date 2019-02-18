@@ -6,6 +6,7 @@
 ### Blue Noise Sequences
 #### BestCandidate
 ### Irrational Number Sampling
+#### GoldenRatioZero
 #### GoldenRatio
 #### Pi
 #### Sqrt2
@@ -21,6 +22,7 @@
 ### Blue Noise Sequences
 #### BestCandidate
 ### Irrational Number Sampling
+#### GoldenRatioZero
 #### GoldenRatio
 #### Pi
 #### Sqrt2

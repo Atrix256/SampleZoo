@@ -9,6 +9,8 @@
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
 #### Linear
+1000 Samples:  
+![1000 samples Sobol](../../../samples/_1d/lds/Linear_Sobol_1000.png)  
 ### Numberline
 #### MakeNumberline
 8 Samples:  

@@ -22,6 +22,11 @@ void DrawLine(Image& image, float x1_, float y1_, float x2_, float y2_, const Pi
     // Convert line width to pixels by multiplying by image width. not exactly right (aspect ratio / rectangular images not handled well) but whatever.
     float lineWidth = lineWidth_ * float(image.m_width);
 
+    DrawLinePx(image, x1, y1, x2, y2, color, lineWidth);
+}
+
+void DrawLinePx(Image& image, int x1, int y1, int x2, int y2, const PixelRGBAF32& color, float lineWidth)
+{
     const PixelRGBAF32_PMA colorPMA(color);
 
     // pad the AABB of pixels we scan, to account for anti aliasing
@@ -63,10 +68,12 @@ void DrawLine(Image& image, float x1_, float y1_, float x2_, float y2_, const Pi
             // use the distance to figure out how transparent the pixel should be, and apply the color to the pixel
             float alpha = SmoothStep(distance, 0.75f, 0.0f);
 
-            PixelRGBAF32_PMA colorPMACopy = colorPMA;
-            colorPMACopy.MultiplyAlpha(alpha);
-
-            pixel->BlendIn(colorPMACopy);
+            if (alpha > 0.0f)
+            {
+                PixelRGBAF32_PMA colorPMACopy = colorPMA;
+                colorPMACopy.MultiplyAlpha(alpha);
+                pixel->BlendIn(colorPMACopy);
+            }
 
             pixel++;
         }

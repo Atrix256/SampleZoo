@@ -7,6 +7,8 @@
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
 #### Linear
+1000 Samples:  
+![1000 samples UniformRandom](../../../samples/_1d/uniform_random/Linear_UniformRandom_1000.png)  
 ### Numberline
 #### MakeNumberline
 8 Samples:  

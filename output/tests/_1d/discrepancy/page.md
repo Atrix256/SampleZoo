@@ -50,6 +50,7 @@ http://drivenbynostalgia.com/files/DA.pdf
 ### Blue Noise Sequences
 #### BestCandidate
 ### Irrational Number Sampling
+#### GoldenRatioZero
 #### GoldenRatio
 #### Pi
 #### Sqrt2
@@ -65,6 +66,7 @@ http://drivenbynostalgia.com/files/DA.pdf
 ### Blue Noise Sequences
 #### BestCandidate
 ### Irrational Number Sampling
+#### GoldenRatioZero
 #### GoldenRatio
 #### Pi
 #### Sqrt2

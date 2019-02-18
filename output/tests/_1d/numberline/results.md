@@ -13,6 +13,15 @@
 64 Samples:  
 ![64 samples BestCandidate](../../../samples/_1d/blue_noise/MakeNumberline_BestCandidate_64.png)  
 ### Irrational Number Sampling
+#### GoldenRatioZero
+8 Samples:  
+![8 samples GoldenRatioZero](../../../samples/_1d/irrational_numbers/MakeNumberline_GoldenRatioZero_8.png)  
+16 Samples:  
+![16 samples GoldenRatioZero](../../../samples/_1d/irrational_numbers/MakeNumberline_GoldenRatioZero_16.png)  
+32 Samples:  
+![32 samples GoldenRatioZero](../../../samples/_1d/irrational_numbers/MakeNumberline_GoldenRatioZero_32.png)  
+64 Samples:  
+![64 samples GoldenRatioZero](../../../samples/_1d/irrational_numbers/MakeNumberline_GoldenRatioZero_64.png)  
 #### GoldenRatio
 8 Samples:  
 ![8 samples GoldenRatio](../../../samples/_1d/irrational_numbers/MakeNumberline_GoldenRatio_8.png)  
