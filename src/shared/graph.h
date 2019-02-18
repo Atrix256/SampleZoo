@@ -17,10 +17,10 @@ struct GraphItem
     std::vector<Vec2> data;
 };
 
-struct AxisTick
+struct GraphAxisTick
 {
-    std::string label;
     float value;
+    std::string label;
 };
 
-void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, const std::vector<float> xAxisTicks, int width, bool loglog);
+void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, const std::vector<GraphAxisTick> xAxisTicks, int width, bool loglog);

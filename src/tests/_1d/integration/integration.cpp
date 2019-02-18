@@ -36,7 +36,7 @@ void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, siz
     std::vector<GraphItem> errors;
     errors.resize(sampleFunctionCount * sampleCountCounts);
 
-    std::vector<float> xAxisTicks = { 1, 10, 100, 1000 };
+    std::vector<GraphAxisTick> xAxisTicks = { {1, "1"}, {10, "10"}, {100, "100"}, {1000, "1000"} };
 
     char fileName[256];
     for (size_t sampleFunctionIndex = 0; sampleFunctionIndex < sampleFunctionCount; ++sampleFunctionIndex)

@@ -14,7 +14,7 @@ static const float c_goldenRatioConjugate = 0.61803398875f;
 
 // TODO: make y axis ticks get passed in too?
 
-void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, const std::vector<float> xAxisTicks, int width, bool loglog)
+void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, const std::vector<GraphAxisTick> xAxisTicks, int width, bool loglog)
 {
     static const Vec2 graphMin = { 0.1f, 0.0f };
     static const Vec2 graphMax = { 1.0f, 0.9f };
@@ -110,16 +110,14 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, c
     }
 
     // draw x axis ticks
-    for (float f : xAxisTicks)
+    for (const GraphAxisTick& tick : xAxisTicks)
     {
-        Vec2 data = { f, dataMinUnpadded[0] };
+        Vec2 data = { tick.value, dataMinUnpadded[0] };
         Vec2 pos = DataToImage(data);
 
         DrawLine(image, pos[0], graphMax[1] + virtualPixel * 2.0f, pos[0], graphMax[1] + virtualPixel * 7.0f, { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0f * virtualPixel);
 
-        char buffer[256];
-        sprintf(buffer, "%i", int(f));
-        DrawText(image, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{ pos[0], graphMax[1] + virtualPixel * 10.0f }, TextHAlign::Right, TextVAlign::Top);
+        DrawText(image, tick.label.c_str(), { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{ pos[0], graphMax[1] + virtualPixel * 10.0f }, TextHAlign::Right, TextVAlign::Top);
     }
 
     // draw the line graph in a specific region of the image
@@ -154,6 +152,6 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, c
     SaveImage(image, fileName);
 
     // TODO: legend
-    // TODO: for x axis ticks (and y!) maybe have user supply text to show.
+    // TODO: make y axis ticks be passed in
     // TODO: is log10 best? there is a lot of space from 0 to 1...
 }
