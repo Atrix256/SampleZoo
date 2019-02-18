@@ -30,4 +30,4 @@ To get a taste of things, check out the page on regularly spaced samples:
 ## Other Software Used
 
 * **STB** - https://github.com/nothings/stb.  This is used to read and write images, and render true type text. Very cool set of header only libraries from Sean Barrett https://twitter.com/nothings.
-* **Premake5** - a nice way to generate project and solution files from code.  https://premake.github.io/
+* **Premake5** - a nice way to generate project and solution files from code.  Because premake scripts are lua, I also have the premake script call into the lua files that generate code and documentation - such as the table of contents page!  https://premake.github.io/
