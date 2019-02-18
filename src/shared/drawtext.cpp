@@ -96,13 +96,17 @@ Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight, in
     return stringImage;
 }
 
-void DrawTextPx(Image& image, const char* string, PixelRGBAF32 color, float textHeight, int posx, int posy, TextAlign align)
+void DrawText(Image& image, const char* string, PixelRGBAF32 color, float textHeight_, Vec2& pos, TextAlign align)
 {
+    // convert text height from uv space to pixels
+    float textHeight = textHeight_ * float(image.m_height);
+
     int baseline;
     Image text = MakeTextImage(string, color, textHeight, baseline);
 
-    int x = posx;
-    int y = posy - text.m_height / 2 - (text.m_height - baseline);
+    // convert position from text height to pixels, and handle alignment
+    int x = int(pos[0] * float(image.m_width));
+    int y = int(pos[1] * float(image.m_height)) - text.m_height / 2 - (text.m_height - baseline);
 
     switch (align)
     {

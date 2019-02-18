@@ -32,6 +32,8 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* integration error graphs should also graph the expected convergence of white noise.  Check progressive projective blue noise project.
+
 * why do the error graphs always start at 0.5 error? maybe it's from sampling at 0?
  * yeap!
  ! make the LDS (and whatever else appropriate) not start at index 0.
@@ -43,6 +45,8 @@ TODO:
  * DrawLinePx, DrawTextPx.
  * BlendInImage may be ok as px? dunno.
 // TODO: BlendInImage should take an int, so things can start out of bounds on the negative side. make long text as a graph label and see what happens as a usage case
+
+* things taking a float x/y should take a vec2 instead
 
 * error graph wants to be log/log graph. check out the progressive projective blue noise repo for details
  * log10f

@@ -11,10 +11,8 @@ Uses samples to integrate 1d functions
 #include "shared/math.h"
 #include "shared/graph.h"
 
-static void Linear(const char* fileName, const std::vector<float>& samples, int width, const char* functionName)
+static void Linear(const std::vector<float>& samples, GraphItem& error)
 {
-    GraphItem error;
-    error.label = functionName;
     error.data.resize(samples.size());
 
     // function:  y = x
@@ -31,15 +29,13 @@ static void Linear(const char* fileName, const std::vector<float>& samples, int 
         error.data[index][0] = float(index);
         error.data[index][1] = fabsf(c_actual - approximation);
     }
-
-    // TODO: combine the graphs!
-    std::vector<GraphItem> graph;
-    graph.push_back(error);
-    MakeGraph(fileName, graph, width, 0.0f, 0.0f, 0.0f, 0.05f);
 }
 
 void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts, const char* testName)
 {
+    std::vector<GraphItem> errors;
+    errors.resize(sampleFunctionCount * sampleCountCounts);
+
     char fileName[256];
     for (size_t sampleFunctionIndex = 0; sampleFunctionIndex < sampleFunctionCount; ++sampleFunctionIndex)
     {
@@ -50,8 +46,26 @@ void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, siz
         {
             size_t sampleCount = sampleCounts[sampleCountIndex];
             sampleFunction.function(samples, sampleCount);
-            sprintf(fileName, "output/samples/%s/%s/%s_%s_%zu.png", sampleFunction.sampleFamily, sampleFunction.sampleType, testName, sampleFunction.name, sampleCount);
-            ::Linear(fileName, samples, 512, sampleFunction.name);
+            sprintf(fileName, "output/samples/%s/%s/%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, testName, sampleFunction.name);
+
+            GraphItem& error = errors[sampleFunctionIndex * sampleCountCounts + sampleCountIndex];
+            error.label = sampleFunction.name;
+            ::Linear(samples, error);
+
+            // TODO: combine the graphs!
+            std::vector<GraphItem> graph;
+            graph.push_back(error);
+            MakeGraph(fileName, graph, 512, true);
         }
     }
+
+    sprintf(fileName, "output/%s.png", testName);
+    MakeGraph(fileName, errors, 512, true);
+
+    // TODO: 3 graph scopes:
+    // 2 - global
+    // 1 - sample type
+    // 0 - individual (sample function)
+
+    // need another scope for "per sample count"? i dunno... need some way of describing this stuff so the code and auto code / doc gen can pick itup
 }

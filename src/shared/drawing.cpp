@@ -22,11 +22,6 @@ void DrawLine(Image& image, float x1_, float y1_, float x2_, float y2_, const Pi
     // Convert line width to pixels by multiplying by image width. not exactly right (aspect ratio / rectangular images not handled well) but whatever.
     float lineWidth = lineWidth_ * float(image.m_width);
 
-    DrawLinePx(image, x1, y1, x2, y2, color, lineWidth);
-}
-
-void DrawLinePx(Image& image, int x1, int y1, int x2, int y2, const PixelRGBAF32& color, float lineWidth)
-{
     const PixelRGBAF32_PMA colorPMA(color);
 
     // pad the AABB of pixels we scan, to account for anti aliasing
@@ -77,5 +72,27 @@ void DrawLinePx(Image& image, int x1, int y1, int x2, int y2, const PixelRGBAF32
 
             pixel++;
         }
+    }
+}
+
+void DrawBox(Image& image, const Vec2& min, const Vec2& max, const PixelRGBAF32& color)
+{
+    const PixelRGBAF32_PMA colorPMA(color);
+
+    int x0 = int(min[0] * float(image.m_width));
+    int y0 = int(min[1] * float(image.m_height));
+    int x1 = int(max[0] * float(image.m_width));
+    int y1 = int(max[1] * float(image.m_height));
+
+    x0 = Clamp(x0, 0, image.m_width - 1);
+    y0 = Clamp(y0, 0, image.m_height - 1);
+    x1 = Clamp(x1, 0, image.m_width - 1);
+    y1 = Clamp(y1, 0, image.m_height - 1);
+
+    for (int y = y0; y <= y1; ++y)
+    {
+        PixelRGBAF32_PMA* pixel = &image.m_pixels[y * image.m_width + x0];
+        for (int x = x0; x <= x1; ++x, ++pixel)
+            pixel->BlendIn(colorPMA);
     }
 }

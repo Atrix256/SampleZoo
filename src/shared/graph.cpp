@@ -12,18 +12,30 @@ DATE: 2/17/2019
 
 static const float c_goldenRatioConjugate = 0.61803398875f;
 
-void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, int width, float padx0, float pady0, float padx1, float pady1)
+void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, int width, bool loglog)
 {
-    // make the actual line graph itself as a seperate image that we'll paste into the larger image
-    Image graphImage;
-    int graphWidth = int(float(width)*0.9f);
-    int graphPad = width - graphWidth;
+    static const Vec2 graphMin = { 0.1f, 0.0f };
+    static const Vec2 graphMax = { 1.0f, 0.9f };
+
+    static const float virtualPixel = 1.0f / 512.0f;
+
+    // make the graph image
+    Image image(width, width, { 1.0f, 1.0f, 1.0f, 1.0f });
+
+    // draw a darker region where the line graph will be
+    DrawBox(image, graphMin, graphMax, { 0.85f, 0.85f, 0.85f, 1.0f });
+
+    // draw the axis lines
+    DrawLine(image, graphMin[0] - virtualPixel * 2.0f, graphMin[1]                      , graphMin[0] - virtualPixel * 2.0f, graphMax[1] + virtualPixel * 2.0f, { 0.0f, 0.0f, 0.0f, 1.0f }, 3.0 * virtualPixel);
+    DrawLine(image, graphMin[0] - virtualPixel * 2.0f, graphMax[1] + virtualPixel * 2.0f, graphMax[0]                      , graphMax[1] + virtualPixel * 2.0f, { 0.0f, 0.0f, 0.0f, 1.0f }, 3.0 * virtualPixel);
+
+    // get data range
     Vec2 dataMin = { FLT_MAX, FLT_MAX };
     Vec2 dataMax = { -FLT_MAX, -FLT_MAX };
+
     Vec2 dataMinUnpadded = { FLT_MAX, FLT_MAX };
     Vec2 dataMaxUnpadded = { -FLT_MAX, -FLT_MAX };
     {
-        // get data range
         for (const GraphItem& graphItem : graphItems)
         {
             for (const Vec2& dataPoint : graphItem.data)
@@ -36,26 +48,55 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, i
             }
         }
 
-        // store off unpadded data extrema so we can use it for data marks
         dataMinUnpadded = dataMin;
         dataMaxUnpadded = dataMax;
 
-        // pad the data range by the amount specified on each axis
-        float padX0 = (dataMax[0] - dataMin[0]) * padx0;
-        float padY0 = (dataMax[1] - dataMin[1]) * pady0;
-        float padX1 = (dataMax[0] - dataMin[0]) * padx1;
-        float padY1 = (dataMax[1] - dataMin[1]) * pady1;
-        dataMin[0] -= padX0;
-        dataMin[1] -= padY0;
-        dataMax[0] += padX1;
-        dataMax[1] += padY1;
+        // pad the top of the graph a bit
+        dataMax[1] += (dataMax[1] - dataMin[1]) * 0.05f;
 
         // flip the graph over to make y=0 be at the bottom of the image
         std::swap(dataMin[1], dataMax[1]);
         std::swap(dataMinUnpadded[1], dataMaxUnpadded[1]);
+    }
 
-        // draw the lines
-        graphImage.Resize(graphWidth, graphWidth, { 0.85f, 0.85f, 0.85f, 1.0f });
+    // define the lambda to convert from data space to image space
+    auto DataToImage = [&dataMin, &dataMax] (const Vec2& dataSpace) -> Vec2
+    {
+        //if (loglog)
+        //{
+            //dataPoint[0] = log10f(std::max(dataPoint[0], 0.0001f));
+            //dataPoint[1] = log10f(std::max(dataPoint[1], 0.0001f));
+        //}
+
+        // make the data point be in [0,1) space
+        Vec2 imageSpace;
+        imageSpace[0] = (dataSpace[0] - dataMin[0]) / (dataMax[0] - dataMin[0]);
+        imageSpace[1] = (dataSpace[1] - dataMin[1]) / (dataMax[1] - dataMin[1]);
+
+        // make the data point be in the [graphMin, graphMax) space
+        imageSpace[0] = graphMin[0] + imageSpace[0] * (graphMax[0] - graphMin[0]);
+        imageSpace[1] = graphMin[1] + imageSpace[1] * (graphMax[1] - graphMin[1]);
+        return imageSpace;
+    };
+
+    // put a mark at the minimum and maximum error and label them
+    {
+        char buffer[256];
+
+        Vec2 min = DataToImage(dataMinUnpadded);
+        Vec2 max = DataToImage(dataMaxUnpadded);
+
+        DrawLine(image, min[0] - virtualPixel * 7.0f, min[1], min[0] - virtualPixel * 2.0f, min[1], { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0f * virtualPixel);
+        sprintf(buffer, "%0.2f", dataMinUnpadded[1]);
+        DrawText(image, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, min - Vec2{ virtualPixel * 10.0f, 0.0f }, TextAlign::Right);
+
+        DrawLine(image, min[0] - virtualPixel * 7.0f, max[1], min[0] - virtualPixel * 2.0f, max[1], { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0f * virtualPixel);
+        sprintf(buffer, "%0.2f", dataMaxUnpadded[1]);
+        DrawText(image, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{ min[0], max[1] } - Vec2{ virtualPixel * 10.0f, 0.0f }, TextAlign::Right);
+    }
+
+    // draw the line graph in a specific region of the image
+    {
         int graphItemIndex = -1;
         for (const GraphItem& graphItem : graphItems)
         {
@@ -68,44 +109,25 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, i
             // draw the lines for the line graph
             bool firstPoint = true;
             Vec2 lastPoint;
-            for (const Vec2& dataPoint : graphItem.data)
+            for (Vec2 dataPoint : graphItem.data)
             {
-                Vec2 normalized;
-                normalized[0] = (dataPoint[0] - dataMin[0]) / (dataMax[0] - dataMin[0]);
-                normalized[1] = (dataPoint[1] - dataMin[1]) / (dataMax[1] - dataMin[1]);
+                // get the data point location on the image
+                Vec2 imageSpacePoint = DataToImage(dataPoint);
 
+                // draw the line segment
                 if (!firstPoint)
-                    DrawLine(graphImage, lastPoint[0], lastPoint[1], normalized[0], normalized[1], lineColor, 1.0f / 512.0f);
+                    DrawLine(image, lastPoint[0], lastPoint[1], imageSpacePoint[0], imageSpacePoint[1], lineColor, virtualPixel);
                 firstPoint = false;
-                lastPoint = normalized;
+                lastPoint = imageSpacePoint;
             }
         }
     }
 
-    // paste the line graph into this image
-    Image image(width, width, { 1.0f, 1.0f, 0.0f, 1.0f });
-    BlendInImage(image, graphImage, graphPad, 0);
-
-    // draw axis lines
-    DrawLinePx(image, graphPad-2, 0, graphPad-2, width - graphPad, { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0);
-    DrawLinePx(image, graphPad, width - graphPad+1, width, width - graphPad+1, { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0);
-
-    // put a mark at the minimum and maximum error and label them
-    float graphPadF = float(graphPad) / float(width);
-    float miny = ((dataMinUnpadded[1] - dataMin[1]) / (dataMax[1] - dataMin[1])) * 0.9f;
-    float maxy = ((dataMaxUnpadded[1] - dataMin[1]) / (dataMax[1] - dataMin[1])) * 0.9f;
-    DrawLine(image, graphPadF - 0.01f, maxy, graphPadF + 0.01f, maxy, { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0f / 512.0f);
-    DrawLine(image, graphPadF - 0.01f, miny, graphPadF + 0.01f, miny, { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0f / 512.0f);
-    char buffer[256];
-    sprintf(buffer, "%0.2f", dataMinUnpadded[1]);
-    DrawTextPx(image, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20, graphPad - 7, int(miny * float(width)), TextAlign::Right);
-    sprintf(buffer, "%0.2f", dataMaxUnpadded[1]);
-    DrawTextPx(image, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20, graphPad - 7, int(maxy * float(width)), TextAlign::Right);
-
     // save the final image
     SaveImage(image, fileName);
 
-    // TODO: maybe don't draw graph image in it's own image.  Draw axis first, and tick marks, then the line graphs.    
-    // TODO: axis labels and legend etc
-    // TODO: try going back to non Px version. better for line width!
+    // TODO: loglog support!
+    // TODO: legend
+    // TODO: x axis labeling (sample count... 10, 100, 1000, etc)
+    // TODO: get rid of drawline px
 }

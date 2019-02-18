@@ -7,6 +7,7 @@ DATE: 2/16/2019
 #pragma once
 
 #include "image.h"
+#include "vector.h"
 
 Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight, int& baseline);
 
@@ -17,4 +18,4 @@ enum class TextAlign
     Center
 };
 
-void DrawTextPx(Image& image, const char* string, PixelRGBAF32 color, float textHeight, int posx, int posy, TextAlign align);
+void DrawText(Image& image, const char* string, PixelRGBAF32 color, float textHeight, Vec2& pos, TextAlign align);
