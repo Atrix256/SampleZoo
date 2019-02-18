@@ -82,17 +82,9 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, i
         }
     }
 
-    // TODO: axis labels and legend etc
-
-    // TODO: make a function to draw text onto an image. do it like the below, but use the text baseline, and also take an enum for left, right or center justify
-    //Image label = MakeTextImage(fileName, {0.0f, 0.0f, 0.0f, 1.0f}, 20);
-    //BlendInImage(image, label, 0, 0);
-
     // paste the line graph into this image
     Image image(width, width, { 1.0f, 1.0f, 0.0f, 1.0f });
     BlendInImage(image, graphImage, graphPad, 0);
-
-    // TODO: try going back to non Px version. better for line width!
 
     // draw axis lines
     DrawLinePx(image, graphPad-2, 0, graphPad-2, width - graphPad, { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0);
@@ -106,14 +98,14 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, i
     DrawLine(image, graphPadF - 0.01f, miny, graphPadF + 0.01f, miny, { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0f / 512.0f);
     char buffer[256];
     sprintf(buffer, "%0.2f", dataMinUnpadded[1]);
-    Image label = MakeTextImage(buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20);
-    BlendInImage(image, label, graphPad, int(miny * float(width)));
+    DrawTextPx(image, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20, graphPad - 7, int(miny * float(width)), TextAlign::Right);
     sprintf(buffer, "%0.2f", dataMaxUnpadded[1]);
-    label = MakeTextImage(buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20);
-    BlendInImage(image, label, graphPad, int(maxy * float(width)));
-
-    // TODO: should BlendInImage take floats? maybe call it Px instead?
+    DrawTextPx(image, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20, graphPad - 7, int(maxy * float(width)), TextAlign::Right);
 
     // save the final image
     SaveImage(image, fileName);
+
+    // TODO: maybe don't draw graph image in it's own image.  Draw axis first, and tick marks, then the line graphs.    
+    // TODO: axis labels and legend etc
+    // TODO: try going back to non Px version. better for line width!
 }

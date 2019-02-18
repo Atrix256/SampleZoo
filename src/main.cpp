@@ -33,10 +33,16 @@ int main(int argc, char **argv)
 TODO:
 
 * why do the error graphs always start at 0.5 error? maybe it's from sampling at 0?
+ * yeap!
+ ! make the LDS (and whatever else appropriate) not start at index 0.
+  * talk about it in the description too?
+  * maybe have a golden ratio that does use index0 and another that doesn't.
+ * "sure, having one sample less good isn't that big a deal when you are looking at the integration graphs, but if all you have is 8 samples like in realtimegraphicss, making one sample better makes a meaningful difference to the result."
 
-! make the LDS (and whatever else appropriate) not start at index 0.
- * talk about it in the description too?
- * maybe have a golden ratio that does use index0 and another that doesn't.
+* TODO: no drawing function should take pixel values. not even "font height" should be absolute.
+ * DrawLinePx, DrawTextPx.
+ * BlendInImage may be ok as px? dunno.
+// TODO: BlendInImage should take an int, so things can start out of bounds on the negative side. make long text as a graph label and see what happens as a usage case
 
 * error graph wants to be log/log graph. check out the progressive projective blue noise repo for details
  * log10f

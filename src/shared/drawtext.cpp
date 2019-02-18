@@ -63,7 +63,7 @@ float MakeCharImage(Image& image, int c, PixelRGBAF32 color, float scale, float 
     return float(advanceWidth)*scale;
 }
 
-Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight)
+Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight, int& baseline)
 {
     EnsureFontLoaded();
 
@@ -71,8 +71,9 @@ Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight)
 
     float scale = stbtt_ScaleForPixelHeight(&c_fontInfo, textHeight);
     int ascent;
-    stbtt_GetFontVMetrics(&c_fontInfo, &ascent, 0, 0);
-    int baseline = (int)(float(ascent)*scale);
+    int descent;
+    stbtt_GetFontVMetrics(&c_fontInfo, &ascent, &descent, 0);
+    baseline = (int)(float(ascent)*scale);
     float xpos = 0.0f;
 
     const char *c = string;
@@ -93,4 +94,33 @@ Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight)
     }
 
     return stringImage;
+}
+
+void DrawTextPx(Image& image, const char* string, PixelRGBAF32 color, float textHeight, int posx, int posy, TextAlign align)
+{
+    int baseline;
+    Image text = MakeTextImage(string, color, textHeight, baseline);
+
+    int x = posx;
+    int y = posy - text.m_height / 2 - (text.m_height - baseline);
+
+    switch (align)
+    {
+        case TextAlign::Left:
+        {
+            break;
+        }
+        case TextAlign::Right:
+        {
+            x -= text.m_width;
+            break;
+        }
+        case TextAlign::Center:
+        {
+            x -= text.m_width / 2;
+            break;
+        }
+    }
+
+    BlendInImage(image, text, x, y);
 }
