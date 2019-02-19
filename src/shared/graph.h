@@ -8,8 +8,8 @@ DATE: 2/17/2019
 
 #include <vector>
 #include <string>
-#include <array>
 #include "vector.h"
+#include "drawtext.h"
 
 struct GraphItem
 {
@@ -21,6 +21,8 @@ struct GraphAxisTick
 {
     float value;
     std::string label;
+    TextHAlign halign;
+    TextVAlign valign;
 };
 
-void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, const std::vector<GraphAxisTick> xAxisTicks, int width, bool loglog);
+void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, const std::vector<GraphAxisTick> xAxisTicks, const std::vector<GraphAxisTick> yAxisTicks, int width, bool loglog);

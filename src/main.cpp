@@ -32,6 +32,14 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* for file names output by tests, maybe the test lua file just says which files they spit out, then it's up to the test to actually do so...
+ 1) All sample families
+ 2) A single sample family
+ 3) A single sample type
+ * it will expect a specific name
+
+* randomized sample types should be noted in the passed in data so they can be repeated some number of times.
+
 * integration error graphs should also graph the expected convergence of white noise.  Check progressive projective blue noise project.
 
 * why do the error graphs always start at 0.5 error? maybe it's from sampling at 0?
@@ -63,6 +71,8 @@ TODO:
  * look for todo's in the code base!
 
  * text: i think the left side baseline is important. read that 16x aa blog post (part 3)
+
+ "Vdc is regular sampling, but progressive, and sorted to be a binary search type setup"
 
 * get a graph test working now that you have text.
  * maybe integration test would be good? i think make one graph for all sample functions in the same sample type?

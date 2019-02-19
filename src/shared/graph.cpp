@@ -14,7 +14,7 @@ static const float c_goldenRatioConjugate = 0.61803398875f;
 
 // TODO: make y axis ticks get passed in too?
 
-void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, const std::vector<GraphAxisTick> xAxisTicks, int width, bool loglog)
+void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, const std::vector<GraphAxisTick> xAxisTicks, const std::vector<GraphAxisTick> yAxisTicks, int width, bool loglog)
 {
     static const Vec2 graphMin = { 0.1f, 0.0f };
     static const Vec2 graphMax = { 1.0f, 0.9f };
@@ -93,31 +93,26 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, c
         return imageSpace;
     };
 
-    // put a mark at the minimum and maximum y value and label them
-    {
-        char buffer[256];
-
-        Vec2 min = DataToImage(dataMinUnpadded);
-        Vec2 max = DataToImage(dataMaxUnpadded);
-
-        DrawLine(image, min[0] - virtualPixel * 7.0f, min[1], min[0] - virtualPixel * 2.0f, min[1], { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0f * virtualPixel);
-        sprintf(buffer, "%0.2f", dataMinUnpadded[1]);
-        DrawText(image, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{ min[0], min[1] } - Vec2{ virtualPixel * 10.0f, 0.0f }, TextHAlign::Right, TextVAlign::Top);
-
-        DrawLine(image, min[0] - virtualPixel * 7.0f, max[1], min[0] - virtualPixel * 2.0f, max[1], { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0f * virtualPixel);
-        sprintf(buffer, "%0.2f", dataMaxUnpadded[1]);
-        DrawText(image, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{ min[0], max[1] } - Vec2{ virtualPixel * 10.0f, 0.0f }, TextHAlign::Right, TextVAlign::Top);
-    }
-
     // draw x axis ticks
     for (const GraphAxisTick& tick : xAxisTicks)
     {
-        Vec2 data = { tick.value, dataMinUnpadded[0] };
+        Vec2 data = { tick.value, dataMinUnpadded[1] };
         Vec2 pos = DataToImage(data);
 
         DrawLine(image, pos[0], graphMax[1] + virtualPixel * 2.0f, pos[0], graphMax[1] + virtualPixel * 7.0f, { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0f * virtualPixel);
 
-        DrawText(image, tick.label.c_str(), { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{ pos[0], graphMax[1] + virtualPixel * 10.0f }, TextHAlign::Right, TextVAlign::Top);
+        DrawText(image, tick.label.c_str(), { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{ pos[0], graphMax[1] + virtualPixel * 10.0f }, tick.halign, tick.valign);
+    }
+
+    // draw y axis ticks
+    for (const GraphAxisTick& tick : yAxisTicks)
+    {
+        Vec2 data = { dataMinUnpadded[0], tick.value };
+        Vec2 pos = DataToImage(data);
+
+        DrawLine(image, graphMin[0] - virtualPixel * 5.0f, pos[1], graphMin[0] - virtualPixel * 2.0f, pos[1], { 0.0f, 0.0f, 0.0f, 1.0f }, 2.0f * virtualPixel);
+
+        DrawText(image, tick.label.c_str(), { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{ graphMin[0] - virtualPixel * 8.0f, pos[1] }, tick.halign, tick.valign);
     }
 
     // draw the line graph in a specific region of the image
