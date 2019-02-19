@@ -11,27 +11,48 @@ Uses samples to integrate 1d functions
 #include "shared/math.h"
 #include "shared/graph.h"
 
-static void Linear(const std::vector<float>& samples, GraphItem& error)
+static const float e = 2.71828182845904523536f;
+
+static float Linear(float x)
+{
+    // function:  y = x
+    return x;
+}
+
+static float Step(float x)
+{
+    // function:  y = (x > 0.5) ? 1 : 0
+    return x > 0.5f ? 1.0f : 0.0f;
+}
+
+static float Exp(float x)
+{
+    // function:  y = e^x
+    return expf(x);
+}
+
+static float Quadratic(float x)
+{
+    // function: y = 3x^2+2x+1
+    return 3.0f*x*x + 2.0f*x + 1.0f;
+}
+
+template <typename LAMBDA>
+static void GetErrorData(const std::vector<float>& samples, GraphItem& error, const LAMBDA& lambda, const float c_actual)
 {
     error.data.resize(samples.size());
-
-    // function:  y = x
-    auto f = [](float x)
-    {
-        return x;
-    };
-    static const float c_actual = 0.5f;
     float approximation = 0.0f;
     for (size_t index = 0, count = samples.size(); index < count; ++index)
     {
-        float y = f(samples[index]);
+        float y = lambda(samples[index]);
         approximation = Lerp(approximation, y, 1.0f / float(index + 1));
         error.data[index][0] = float(index + 1);
         error.data[index][1] = fabsf(c_actual - approximation);
     }
 }
 
-void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, const char* testName)
+template <typename LAMBDA>
+static void DoIntegrationTest(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, const char* testName, const LAMBDA& lambda, const float c_actual)
 {
     std::vector<GraphItem> errors;
     errors.resize(sampleFunctionCount);
@@ -62,7 +83,7 @@ void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, siz
 
         GraphItem& error = errors[sampleFunctionIndex];
         error.label = sampleFunction.name;
-        ::Linear(samples, error);
+        GetErrorData(samples, error, lambda, c_actual);
 
         // put y axis ticks at the min and max y
         std::vector<GraphAxisTick> yAxisTicks;
@@ -105,4 +126,24 @@ void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, siz
 
     // need another scope for "per sample count"? i dunno... need some way of describing this stuff so the code and auto code / doc gen can pick itup
     // actually, ditch sample counts. let test code decide sample counts needed. can combine numberlines into single image with labels.
+}
+
+void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, const char* testName)
+{
+    DoIntegrationTest(sampleFunctions, sampleFunctionCount, testName, ::Linear, 0.5f);
+}
+
+void Tests::_1d::Integration::Step(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, const char* testName)
+{
+    DoIntegrationTest(sampleFunctions, sampleFunctionCount, testName, ::Step, 0.5f);
+}
+
+void Tests::_1d::Integration::Exp(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, const char* testName)
+{
+    DoIntegrationTest(sampleFunctions, sampleFunctionCount, testName, ::Exp, e - 1.0f);
+}
+
+void Tests::_1d::Integration::Quadratic(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, const char* testName)
+{
+    DoIntegrationTest(sampleFunctions, sampleFunctionCount, testName, ::Quadratic, 3.0f);
 }
