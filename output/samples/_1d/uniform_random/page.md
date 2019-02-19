@@ -28,15 +28,7 @@ Blue noise is an alternative to uniform random sampling which has many of the po
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
 #### Linear
-1000 Samples:  
-![1000 samples UniformRandom](../../../samples/_1d/uniform_random/Linear_UniformRandom_1000.png)  
+![UniformRandom](../../../samples/_1d/uniform_random/Linear_UniformRandom.png)  
 ### Numberline
 #### MakeNumberline
-8 Samples:  
-![8 samples UniformRandom](../../../samples/_1d/uniform_random/MakeNumberline_UniformRandom_8.png)  
-16 Samples:  
-![16 samples UniformRandom](../../../samples/_1d/uniform_random/MakeNumberline_UniformRandom_16.png)  
-32 Samples:  
-![32 samples UniformRandom](../../../samples/_1d/uniform_random/MakeNumberline_UniformRandom_32.png)  
-64 Samples:  
-![64 samples UniformRandom](../../../samples/_1d/uniform_random/MakeNumberline_UniformRandom_64.png)  
+![UniformRandom](../../../samples/_1d/uniform_random/MakeNumberline_UniformRandom.png)  

@@ -26,7 +26,7 @@ file:write("    const char* sampleFamily;\n")
 file:write("    const char* sampleType;\n")
 file:write("    const char* name;\n")
 file:write("};\n\n")
-file:write("using Test_1d = void(*)(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts, const char* testName);\n\n")
+file:write("using Test_1d = void(*)(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, const char* testName);\n\n")
 file:write("#define countof(array) (sizeof(array) / sizeof(array[0]))\n\n");
 file:write('#include "tests/tests.h"\n')
 file:write('#include "samples/samples.h"\n')
@@ -94,7 +94,7 @@ for k,v in pairs(testTypes) do
         file:write("namespace Tests\n{\n    namespace "..testType.."\n    {\n        namespace "..testInfo.CodeName.."\n        {\n")
 
         for functionIndex, functionName in ipairs(testInfo.Functions) do
-            file:write("            void "..functionName.."(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts, const char* testName);\n")
+            file:write("            void "..functionName.."(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, const char* testName);\n")
         end
 
         file:write("        };\n    };\n};\n")
@@ -128,14 +128,8 @@ for k,v in pairs(testTypes) do
         end
         file:write("                };\n\n")
 
-        file:write("                size_t sampleCounts[] =\n                {\n")
-        dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
-        for sampleCountIndex, sampleCount in ipairs(testInfo.AutoTestSampleCounts) do
-            file:write("                    "..sampleCount..",\n")
-        end
-        file:write("                };\n\n")
         for functionIndex, functionName in ipairs(testInfo.Functions) do
-            file:write("                "..functionName.."(funcs, countof(funcs), sampleCounts, countof(sampleCounts), \""..functionName.."\");\n")
+            file:write("                "..functionName.."(funcs, countof(funcs), \""..functionName.."\");\n")
         end
 
         file:write("            }\n")

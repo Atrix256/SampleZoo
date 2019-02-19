@@ -23,7 +23,7 @@ int main(int argc, char **argv)
     //SaveImage(image, "yo.png");
 
     // TODO: make a root function in tests or something, that runs all the auto tests?
-    //Tests::_1d::Numberline::AutoTest();
+    Tests::_1d::Numberline::AutoTest();
     Tests::_1d::Integration::AutoTest();
 
     return 0;
@@ -31,6 +31,10 @@ int main(int argc, char **argv)
 
 /*
 TODO:
+
+* need to fix numberline so that it puts them all together?
+
+? does pi even converge on linear test?? maybe you have wrong integration result to calculate error by?
 
 * for file names output by tests, maybe the test lua file just says which files they spit out, then it's up to the test to actually do so...
  1) All sample families

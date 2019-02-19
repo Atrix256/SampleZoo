@@ -31,19 +31,23 @@ static void Linear(const std::vector<float>& samples, GraphItem& error)
     }
 }
 
-void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts, const char* testName)
+void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, const char* testName)
 {
     std::vector<GraphItem> errors;
-    errors.resize(sampleFunctionCount * sampleCountCounts);
+    errors.resize(sampleFunctionCount);
+
+    static const size_t sampleCount = 1000;
 
     //put x axis ticks at every power of 10
-    std::vector<GraphAxisTick> xAxisTicks = {
-        {1, "1", TextHAlign::Right, TextVAlign::Top},
-        {10, "10", TextHAlign::Right, TextVAlign::Top},
-        {100, "100", TextHAlign::Right, TextVAlign::Top},
-        {1000, "1000", TextHAlign::Right, TextVAlign::Top},
-        {10000, "10000", TextHAlign::Right, TextVAlign::Top}
-    };
+    std::vector<GraphAxisTick> xAxisTicks;
+    int i = 1;
+    while (i <= sampleCount)
+    {
+        char buffer[256];
+        sprintf(buffer, "%i", i);
+        xAxisTicks.push_back({ float(i), buffer, TextHAlign::Right, TextVAlign::Top });
+        i *= 10;
+    }
 
     char fileName[256];
     float globalminy = FLT_MAX;
@@ -53,38 +57,34 @@ void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, siz
         SampleGenerateInfo_1d& sampleFunction = sampleFunctions[sampleFunctionIndex];
 
         std::vector<float> samples;
-        for (size_t sampleCountIndex = 0; sampleCountIndex < sampleCountCounts; ++sampleCountIndex)
+        sampleFunction.function(samples, sampleCount);
+        sprintf(fileName, "output/samples/%s/%s/%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, testName, sampleFunction.name);
+
+        GraphItem& error = errors[sampleFunctionIndex];
+        error.label = sampleFunction.name;
+        ::Linear(samples, error);
+
+        // put y axis ticks at the min and max y
+        std::vector<GraphAxisTick> yAxisTicks;
+        float miny = FLT_MAX;
+        float maxy = -FLT_MAX;
+        for (Vec2& v : error.data)
         {
-            size_t sampleCount = sampleCounts[sampleCountIndex];
-            sampleFunction.function(samples, sampleCount);
-            sprintf(fileName, "output/samples/%s/%s/%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, testName, sampleFunction.name);
-
-            GraphItem& error = errors[sampleFunctionIndex * sampleCountCounts + sampleCountIndex];
-            error.label = sampleFunction.name;
-            ::Linear(samples, error);
-
-            // put y axis ticks at the min and max y
-            std::vector<GraphAxisTick> yAxisTicks;
-            float miny = FLT_MAX;
-            float maxy = -FLT_MAX;
-            for (Vec2& v : error.data)
-            {
-                miny = std::min(miny, v[1]);
-                maxy = std::max(maxy, v[1]);
-            }
-            char buffer[256];
-            sprintf(buffer, "%0.2f", miny);
-            yAxisTicks.push_back({ miny, buffer, TextHAlign::Right, TextVAlign::Center });
-            sprintf(buffer, "%0.2f", maxy);
-            yAxisTicks.push_back({ maxy, buffer, TextHAlign::Right, TextVAlign::Center });
-            globalminy = std::min(globalminy, miny);
-            globalmaxy = std::max(globalmaxy, maxy);
-
-            // TODO: combine the graphs!
-            std::vector<GraphItem> graph;
-            graph.push_back(error);
-            MakeGraph(fileName, graph, xAxisTicks, yAxisTicks, 512, true);
+            miny = std::min(miny, v[1]);
+            maxy = std::max(maxy, v[1]);
         }
+        char buffer[256];
+        sprintf(buffer, "%0.2f", miny);
+        yAxisTicks.push_back({ miny, buffer, TextHAlign::Right, TextVAlign::Center });
+        sprintf(buffer, "%0.2f", maxy);
+        yAxisTicks.push_back({ maxy, buffer, TextHAlign::Right, TextVAlign::Center });
+        globalminy = std::min(globalminy, miny);
+        globalmaxy = std::max(globalmaxy, maxy);
+
+        // TODO: combine the graphs!
+        std::vector<GraphItem> graph;
+        graph.push_back(error);
+        MakeGraph(fileName, graph, xAxisTicks, yAxisTicks, 512, true);
     }
 
     // put y axis ticks at the min and max y
