@@ -32,7 +32,11 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-* need to fix numberline so that it puts them all together?
+* for integration test, should it graph the function it's integrating as well?
+ * would need some auto test call into the test scope to do "one time" work
+
+* White noise should do several tests and take the average
+ * the test would know to do this because the sample type will say it's randomized
 
 ? does pi even converge on linear test?? maybe you have wrong integration result to calculate error by?
 

@@ -14,7 +14,16 @@ static const float c_goldenRatioConjugate = 0.61803398875f;
 
 // TODO: make y axis ticks get passed in too?
 
-void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, const std::vector<GraphAxisTick> xAxisTicks, const std::vector<GraphAxisTick> yAxisTicks, int width, bool loglog)
+void MakeGraph(
+    const char* fileName,
+    const std::vector<GraphItem>& graphItems,
+    const std::vector<GraphAxisTick> xAxisTicks,
+    const std::vector<GraphAxisTick> yAxisTicks,
+    int width,
+    bool loglog,
+    const Vec2& minPad,
+    const Vec2& maxPad
+)
 {
     static const Vec2 graphMin = { 0.1f, 0.0f };
     static const Vec2 graphMax = { 1.0f, 0.9f };
@@ -54,13 +63,13 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, c
         dataMinUnpadded = dataMin;
         dataMaxUnpadded = dataMax;
 
-        // pad the top and right of the graph a bit
-        dataMax[0] += (dataMax[0] - dataMin[0]) * 0.25f;
-        dataMax[1] += (dataMax[1] - dataMin[1]) * 0.25f;
-
-        // flip the graph over to make y=0 be at the bottom of the image
-        std::swap(dataMin[1], dataMax[1]);
-        std::swap(dataMinUnpadded[1], dataMaxUnpadded[1]);
+        // pad the top and right of the graph as told by caller
+        float dataw = (dataMax[0] - dataMin[0]);
+        float datah = (dataMax[1] - dataMin[1]);
+        dataMin[0] -= dataw * minPad[0];
+        dataMin[1] -= datah * minPad[1];
+        dataMax[0] += dataw * maxPad[0];
+        dataMax[1] += datah * maxPad[1];
 
         // if they want a log/log graph
         if (loglog)
@@ -70,6 +79,10 @@ void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, c
             dataMax[0] = log10f(std::max(dataMax[0], log10epsilon));
             dataMax[1] = log10f(std::max(dataMax[1], log10epsilon));
         }
+
+        // flip the graph over to make y=0 be at the bottom of the image
+        std::swap(dataMin[1], dataMax[1]);
+        std::swap(dataMinUnpadded[1], dataMaxUnpadded[1]);
     }
 
     // define the lambda to convert from data space to image space

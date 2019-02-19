@@ -84,7 +84,7 @@ void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, siz
         // TODO: combine the graphs!
         std::vector<GraphItem> graph;
         graph.push_back(error);
-        MakeGraph(fileName, graph, xAxisTicks, yAxisTicks, 512, true);
+        MakeGraph(fileName, graph, xAxisTicks, yAxisTicks, 512, true, { 0.0f, 0.0f }, { 0.25f, 0.25f });
     }
 
     // put y axis ticks at the min and max y
@@ -96,7 +96,7 @@ void Tests::_1d::Integration::Linear(SampleGenerateInfo_1d* sampleFunctions, siz
     yAxisTicks.push_back({ globalmaxy, buffer, TextHAlign::Right, TextVAlign::Center });
 
     sprintf(fileName, "output/%s.png", testName);
-    MakeGraph(fileName, errors, xAxisTicks, yAxisTicks, 512, true);
+    MakeGraph(fileName, errors, xAxisTicks, yAxisTicks, 512, true, { 0.0f, 0.0f }, { 0.25f, 0.25f });
 
     // TODO: 3 graph scopes:
     // 2 - global

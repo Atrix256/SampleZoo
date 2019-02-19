@@ -25,4 +25,13 @@ struct GraphAxisTick
     TextVAlign valign;
 };
 
-void MakeGraph(const char* fileName, const std::vector<GraphItem>& graphItems, const std::vector<GraphAxisTick> xAxisTicks, const std::vector<GraphAxisTick> yAxisTicks, int width, bool loglog);
+void MakeGraph(
+    const char* fileName,
+    const std::vector<GraphItem>& graphItems,
+    const std::vector<GraphAxisTick> xAxisTicks,
+    const std::vector<GraphAxisTick> yAxisTicks,
+    int width,
+    bool loglog,
+    const Vec2& minPad,
+    const Vec2& maxPad
+);
