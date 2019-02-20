@@ -59,6 +59,8 @@ static void DoIntegrationTest(SampleGenerateInfo_1d* sampleFunctions, size_t sam
 
     static const size_t sampleCount = 1000;
 
+    // useful for log graphs
+    /*
     //put x axis ticks at every power of 10
     std::vector<GraphAxisTick> xAxisTicks;
     int i = 1;
@@ -68,6 +70,17 @@ static void DoIntegrationTest(SampleGenerateInfo_1d* sampleFunctions, size_t sam
         sprintf(buffer, "%i", i);
         xAxisTicks.push_back({ float(i), buffer, TextHAlign::Right, TextVAlign::Top });
         i *= 10;
+    }
+    */
+
+    std::vector<GraphAxisTick> xAxisTicks;
+    for (int i = 0; i < 8; ++i)
+    {
+        int count = int(float(sampleCount) *  (float(i) / 7.0f));
+
+        char buffer[256];
+        sprintf(buffer, "%i", count);
+        xAxisTicks.push_back({ float(count), buffer, TextHAlign::Right, TextVAlign::Top });
     }
 
     char fileName[256];
@@ -96,16 +109,16 @@ static void DoIntegrationTest(SampleGenerateInfo_1d* sampleFunctions, size_t sam
         }
         char buffer[256];
         sprintf(buffer, "%0.2f", miny);
-        yAxisTicks.push_back({ miny, buffer, TextHAlign::Right, TextVAlign::Center });
+        yAxisTicks.push_back({ miny, buffer, TextHAlign::Right, TextVAlign::Top });
         sprintf(buffer, "%0.2f", maxy);
-        yAxisTicks.push_back({ maxy, buffer, TextHAlign::Right, TextVAlign::Center });
+        yAxisTicks.push_back({ maxy, buffer, TextHAlign::Right, TextVAlign::Top });
         globalminy = std::min(globalminy, miny);
         globalmaxy = std::max(globalmaxy, maxy);
 
         // TODO: combine the graphs!
         std::vector<GraphItem> graph;
         graph.push_back(error);
-        MakeGraph(fileName, graph, xAxisTicks, yAxisTicks, 512, true, { 0.0f, 0.0f }, { 0.25f, 0.25f });
+        MakeGraph(fileName, graph, xAxisTicks, yAxisTicks, 512, false, { 0.0f, 0.0f }, { 0.01f, 0.01f });
     }
 
     // put y axis ticks at the min and max y
@@ -117,7 +130,7 @@ static void DoIntegrationTest(SampleGenerateInfo_1d* sampleFunctions, size_t sam
     yAxisTicks.push_back({ globalmaxy, buffer, TextHAlign::Right, TextVAlign::Center });
 
     sprintf(fileName, "output/%s.png", testName);
-    MakeGraph(fileName, errors, xAxisTicks, yAxisTicks, 512, true, { 0.0f, 0.0f }, { 0.25f, 0.25f });
+    MakeGraph(fileName, errors, xAxisTicks, yAxisTicks, 512, false, { 0.0f, 0.0f }, { 0.01f, 0.01f });
 
     // TODO: 3 graph scopes:
     // 2 - global
