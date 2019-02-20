@@ -23,6 +23,8 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* maybe legend next, and then proper scoped graphs so you can see things compared to eachother instead of in isolation
+
 * need to make integration test "other scopes" and make documentation link to it.
 
 * the error graphs aren't really showing very well. i'd try non long graphs but i think everything shrinks down to the axis.
