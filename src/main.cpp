@@ -11,20 +11,11 @@ DATE: 2/8/2019
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb/stb_image.h"
 
-// TODO: temp! make this automatic, and run the autotest like you did before for samples.
-#include "tests\_1d\numberline\autotest.h"
-#include "tests\_1d\integration\autotest.h"
-
 #include "shared/drawtext.h"
 
 int main(int argc, char **argv)
 {
-    //Image image = MakeTextImage("Hello World", { 1.0f, 0.2f, 0.5f, 0.75f }, 45.0f);
-    //SaveImage(image, "yo.png");
-
-    // TODO: make a root function in tests or something, that runs all the auto tests?
-    Tests::_1d::Numberline::AutoTest();
-    Tests::_1d::Integration::AutoTest();
+    Tests::AutoTest();
 
     return 0;
 }
