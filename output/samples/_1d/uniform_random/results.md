@@ -6,6 +6,7 @@
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
+![uniform_random](../../../samples/_1d/uniform_random.png)  
 #### Linear
 ![UniformRandom](../../../samples/_1d/uniform_random/Linear_UniformRandom.png)  
 #### Step

@@ -135,6 +135,7 @@ https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmaticall
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
+![irrational_numbers](../../../samples/_1d/irrational_numbers.png)  
 #### Linear
 ![GoldenRatioZero](../../../samples/_1d/irrational_numbers/Linear_GoldenRatioZero.png)  
 #### Step
@@ -151,6 +152,7 @@ https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmaticall
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
+![irrational_numbers](../../../samples/_1d/irrational_numbers.png)  
 #### Linear
 ![GoldenRatio](../../../samples/_1d/irrational_numbers/Linear_GoldenRatio.png)  
 #### Step
@@ -167,6 +169,7 @@ https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmaticall
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
+![irrational_numbers](../../../samples/_1d/irrational_numbers.png)  
 #### Linear
 ![Pi](../../../samples/_1d/irrational_numbers/Linear_Pi.png)  
 #### Step
@@ -183,6 +186,7 @@ https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmaticall
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
+![irrational_numbers](../../../samples/_1d/irrational_numbers.png)  
 #### Linear
 ![Sqrt2](../../../samples/_1d/irrational_numbers/Linear_Sqrt2.png)  
 #### Step

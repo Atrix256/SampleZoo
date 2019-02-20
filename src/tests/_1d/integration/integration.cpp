@@ -118,14 +118,11 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
             globalminy = std::min(globalminy, miny);
             globalmaxy = std::max(globalmaxy, maxy);
 
-            // TODO: combine the graphs!
+            // make the individual graph
             std::vector<GraphItem> graph;
             graph.push_back(error);
             MakeGraph(fileName, graph, xAxisTicks, yAxisTicks, 512, false, { 0.0f, 0.0f }, { 0.01f, 0.01f });
         }
-
-        if (sampleType.size() == 1)
-            continue;
 
         // put y axis ticks at the min and max y
         std::vector<GraphAxisTick> yAxisTicks;
@@ -135,17 +132,10 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         sprintf(buffer, "%0.2f", globalmaxy);
         yAxisTicks.push_back({ globalmaxy, buffer, TextHAlign::Right, TextVAlign::Center });
 
+        // make the sample type graph
         sprintf(fileName, "output/samples/%s/%s/%s.png", sampleType[0].sampleFamily, sampleType[0].sampleType, testName);
         MakeGraph(fileName, errors, xAxisTicks, yAxisTicks, 512, false, { 0.0f, 0.0f }, { 0.01f, 0.01f });
     }
-
-    // TODO: 3 graph scopes:
-    // 2 - global
-    // 1 - sample type
-    // 0 - individual (sample function)
-
-    // need another scope for "per sample count"? i dunno... need some way of describing this stuff so the code and auto code / doc gen can pick itup
-    // actually, ditch sample counts. let test code decide sample counts needed. can combine numberlines into single image with labels.
 }
 
 void Tests::_1d::Integration::Linear(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName)

@@ -40,6 +40,7 @@ https://www.princeton.edu/news/2014/02/24/eye-chicken-new-state-matter-comes-vie
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
+![blue_noise](../../../samples/_1d/blue_noise.png)  
 #### Linear
 ![BestCandidate](../../../samples/_1d/blue_noise/Linear_BestCandidate.png)  
 #### Step

@@ -81,9 +81,13 @@ for k,v in pairs(testTypes) do
 
                 file:write("### "..sampleInfo.LongName.."\n")
 
+                if testInfo.MakesSampleTypeImages then
+                    file:write("!["..sampleType.."](../../../samples/"..testType.."/"..sampleType..".png)  \n")
+                end
+
                 for sampleFunctionIndex, sampleFunctionName in ipairs(sampleInfo.Functions) do
                     file:write("#### "..sampleFunctionName.."\n")
-                    if testInfo.MakesImages then
+                    if testInfo.MakesIndividualImages then
                         file:write("!["..sampleFunctionName.."](../../../samples/"..testType.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionName..".png)  \n")
                     end
                 end
@@ -140,13 +144,16 @@ for k,v in pairs(sampleFamilies) do
 
                 file:write("### "..testInfo.LongName.."\n")
 
+                if testInfo.MakesSampleTypeImages then
+                    file:write("!["..sampleType.."](../../../samples/"..sampleFamily.."/"..sampleType..".png)  \n")
+                end
+
                 for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
                     file:write("#### "..testFunctionName.."\n")
 
-                    if testInfo.MakesImages then
+                    if testInfo.MakesIndividualImages then
                         file:write("!["..sampleFunctionName.."](../../../samples/"..sampleFamily.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionName..".png)  \n")
                     end
-
                 end
             end
         end

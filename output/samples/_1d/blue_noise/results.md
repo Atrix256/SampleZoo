@@ -6,6 +6,7 @@
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
+![blue_noise](../../../samples/_1d/blue_noise.png)  
 #### Linear
 ![BestCandidate](../../../samples/_1d/blue_noise/Linear_BestCandidate.png)  
 #### Step

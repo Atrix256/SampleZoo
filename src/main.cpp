@@ -23,12 +23,9 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-* make document link to newly scoped images
- * only make individual graphs if the testtype says it does.
- * only make sample type graphs if the test type says it does.
- * only link to those if the testtype says it makes them.
-
 * legend next? and graph title.
+
+* graph discrepancy?
 
 * for error, may want to have a graph for 0 - 8 samples (or similar) then have 8 - 1000?
  * or maybe just go back to loglog?

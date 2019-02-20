@@ -7,5 +7,6 @@ testInfo = {
         "CalculateDiscrepancy",
         "CalculateDiscrepancyWrapAround",
     },
-    MakesImages = false,
+    MakesIndividualImages = false,
+    MakesSampleTypeImages = false,
 }

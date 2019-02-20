@@ -74,6 +74,7 @@ This sampling strategy is seemingly the best of the three because it works well 
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
+![regular](../../../samples/_1d/regular.png)  
 #### Linear
 ![Regular](../../../samples/_1d/regular/Linear_Regular.png)  
 #### Step
@@ -90,6 +91,7 @@ This sampling strategy is seemingly the best of the three because it works well 
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
+![regular](../../../samples/_1d/regular.png)  
 #### Linear
 ![RegularCentered](../../../samples/_1d/regular/Linear_RegularCentered.png)  
 #### Step
@@ -106,6 +108,7 @@ This sampling strategy is seemingly the best of the three because it works well 
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
+![regular](../../../samples/_1d/regular.png)  
 #### Linear
 ![RegularCenteredOffset](../../../samples/_1d/regular/Linear_RegularCenteredOffset.png)  
 #### Step

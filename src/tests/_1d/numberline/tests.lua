@@ -6,5 +6,6 @@ testInfo = {
     Functions= {
         "MakeNumberline",
     },
-    MakesImages = true,
+    MakesIndividualImages = true,
+    MakesSampleTypeImages = false,
 }

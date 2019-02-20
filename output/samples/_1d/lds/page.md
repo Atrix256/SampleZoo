@@ -8,6 +8,7 @@
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
+![lds](../../../samples/_1d/lds.png)  
 #### Linear
 ![Sobol](../../../samples/_1d/lds/Linear_Sobol.png)  
 #### Step
