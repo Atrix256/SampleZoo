@@ -136,7 +136,7 @@ void MakeGraph(
             // Use the golden ratio to choose nearly maximally different hues for however many graph lines we have.
             // Use HSV to RGB conversion to get an RGB color out of that.
             graphItemIndex++;
-            std::array<float, 3> rgb = HSVToRGB(std::fmodf(float(graphItemIndex)*c_goldenRatioConjugate, 1.0f), 0.95f, 0.95f);
+            std::array<float, 3> rgb = HSVToRGB(Vec3{ std::fmodf(float(graphItemIndex)*c_goldenRatioConjugate, 1.0f), 0.95f, 0.95f });
             PixelRGBAF32 lineColor = { rgb[0], rgb[1], rgb[2], 1.0f };
 
             // draw the lines for the line graph
