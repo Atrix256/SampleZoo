@@ -47,7 +47,7 @@ static void GetErrorData(const std::vector<float>& samples, GraphItem& error, co
         float y = lambda(samples[index]);
         approximation = Lerp(approximation, y, 1.0f / float(index + 1));
         error.data[index][0] = float(index + 1);
-        error.data[index][1] = fabsf(c_actual - approximation);
+        error.data[index][1] = fabsf(c_actual - approximation) / c_actual;
     }
 }
 
@@ -78,9 +78,10 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         */
 
         std::vector<GraphAxisTick> xAxisTicks;
-        for (int i = 0; i < 8; ++i)
+        static int c_numXAxisTicks = 11;
+        for (int i = 0; i < c_numXAxisTicks; ++i)
         {
-            int count = int(float(sampleCount) *  (float(i) / 7.0f));
+            int count = int(float(sampleCount) *  (float(i) / float(c_numXAxisTicks - 1)));
 
             char buffer[256];
             sprintf(buffer, "%i", count);

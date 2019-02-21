@@ -146,7 +146,7 @@ for k,v in pairs(sampleFamilies) do
                     file:write("### "..testInfo.LongName.."\n")
                     for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
                         file:write("#### "..testFunctionName.."\n")
-                            file:write("!["..sampleFunctionName.."](../../../samples/"..sampleFamily.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionName..".png)  \n")
+                        file:write("!["..sampleFunctionName.."](../../../samples/"..sampleFamily.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionName..".png)  \n")
                     end
                 end
             end
