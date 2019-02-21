@@ -84,8 +84,7 @@ Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight, in
         int yOffset;
         float advance = MakeCharImage(charImage, *c, color, scale, x_shift, yOffset);
 
-        if (charImage.m_width > 0 && charImage.m_height > 0)
-            BlendInImage_Resize(stringImage, charImage, unsigned int(xpos), baseline + yOffset, { 0.0f, 0.0f, 0.0f, 0.0f });
+        BlendInImage_Resize(stringImage, charImage, unsigned int(xpos), baseline + yOffset, { 0.0f, 0.0f, 0.0f, 0.0f });
 
         if (c[1])
             xpos += scale * float(stbtt_GetCodepointKernAdvance(&c_fontInfo, c[0], c[1]));

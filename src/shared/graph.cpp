@@ -175,7 +175,7 @@ void MakeGraph(
                 Vec2 imageSpacePoint = DataToImage(dataPoint);
 
                 // draw the point
-                DrawBox(image, imageSpacePoint - Vec2{ virtualPixel, virtualPixel }, imageSpacePoint + Vec2{ virtualPixel, virtualPixel }, lineColor);
+                DrawCircle(image, imageSpacePoint, virtualPixel, lineColor);
             }
         }
     }
@@ -208,15 +208,11 @@ void MakeGraph(
             Image legend(512, 25, { 1.0f, 1.0f, 1.0f, 1.0f });
             DrawBox(legend, outerBoxMin, outerBoxMax, { 0.0f, 0.0f, 0.0f, 1.0f });
             DrawBox(legend, innerBoxMin, innerBoxMax, lineColor);
-            DrawText(legend, graphItem.label.c_str(), { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f / 25.0f, Vec2{ outerBoxMax[0] + 5.0f / 512.0f, 0.5f }, TextHAlign::Left, TextVAlign::Center);
+            DrawText(legend, graphItem.label.c_str(), { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f / 25.0f, Vec2{ outerBoxMax[0] + 5.0f / 512.0f, 0.5f - 2.5f / 25.0f }, TextHAlign::Left, TextVAlign::Center);
             BlendInImage_Resize(image, legend, 0, image.m_height, { 1.0f, 1.0f, 1.0f, 1.0f });
         }
     }
 
     // save the final image
     SaveImage(image, fileName);
-
-    // TODO: fix legend text not being vertically centered
-    // TODO: circle instead of box for point graph
-    // TODO: try linear x axis!
 }

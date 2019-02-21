@@ -6,15 +6,9 @@ DATE: 2/8/2019
 
 #include "codegen.h"
 
-#include <stdio.h>
-
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb/stb_image.h"
-
-#include "shared/drawtext.h"
-
 int main(int argc, char **argv)
 {
+    // Note: comment this out and call your specific code directly if you want to iterate on code.
     Tests::AutoTest();
 
     return 0;
@@ -23,7 +17,13 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-* legend next? and graph title.
+* for the integration graph, could show the actual function graphed in the lower left.
+ * put this on todo list
+
+* martin has some great info about graph improvements in his DM on twitter. to match what was seen in the similar papers
+
+* put in todo: make graph rendering better in general.
+* circle instead of box for point plotting
 
 * maybe numerical integration results should be loglog.
  * instead of drawing lines between all data points, maybe draw lines between data points evaluated per pixel on the graph.
@@ -31,10 +31,16 @@ TODO:
 
 * graph discrepancy?
 
+* Numberline test family doesn't really need the "MakeNumberline" subheader.
+ * make this choice be part of the test info
+
 * for error, may want to have a graph for 0 - 8 samples (or similar) then have 8 - 1000?
  * or maybe just go back to loglog?
  * what do other paers do?
 
+
+ * make _1d be a parent folder everywhere, instead of a child under tests and samples.
+  * this is a "sample family", and it contains both samples and tests
 
 * need to make integration test "other scopes" and make documentation link to it.
 

@@ -64,7 +64,6 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         std::vector<GraphItem> errors;
 
         // useful for log graphs
-        /*
         //put x axis ticks at every power of 10
         std::vector<GraphAxisTick> xAxisTicks;
         int i = 1;
@@ -75,8 +74,9 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
             xAxisTicks.push_back({ float(i), buffer, TextHAlign::Right, TextVAlign::Top });
             i *= 10;
         }
-        */
 
+        // useful for non log graphs
+        /*
         std::vector<GraphAxisTick> xAxisTicks;
         static int c_numXAxisTicks = 11;
         for (int i = 0; i < c_numXAxisTicks; ++i)
@@ -89,6 +89,7 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
             sprintf(buffer, "%i", count);
             xAxisTicks.push_back({ float(count), buffer, TextHAlign::Right, TextVAlign::Top });
         }
+        */
 
         char fileName[256];
         float globalminy = FLT_MAX;

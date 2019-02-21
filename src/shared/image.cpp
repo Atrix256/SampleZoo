@@ -15,6 +15,9 @@ A thin wrapper to some pixels, and a way to save them to disk as an image
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb/stb_image_write.h"
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb/stb_image.h"
+
 void SaveImage(const Image& image, const char* fileName)
 {
     std::vector<PixelRGBAU8> rgbaU8;
@@ -31,8 +34,8 @@ void SaveImage(const Image& image, const char* fileName)
 
 void BlendInImage(Image& image, const Image& otherImage, int pastex, int pastey)
 {
-    int startX = Clamp(pastex, 0, image.m_width - 1);
-    int startY = Clamp(pastey, 0, image.m_height - 1);
+    int startX = Clamp(pastex, 0, image.m_width);
+    int startY = Clamp(pastey, 0, image.m_height);
 
     int endX = Clamp(pastex + otherImage.m_width, 0, image.m_width);
     int endY = Clamp(pastey + otherImage.m_height, 0, image.m_height);
