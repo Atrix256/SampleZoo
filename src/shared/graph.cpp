@@ -186,9 +186,37 @@ void MakeGraph(
     // make the footer
     DrawText(image, footer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{0.5f, 1.0f}, TextHAlign::Center, TextVAlign::Bottom);
 
+    // make the legend
+    {
+        int graphItemIndex = -1;
+        for (const GraphItem& graphItem : graphItems)
+        {
+            // Use the golden ratio to choose nearly maximally different hues for however many graph lines we have.
+            // Use HSV to RGB conversion to get an RGB color out of that.
+            graphItemIndex++;
+            std::array<float, 3> rgb = HSVToRGB(Vec3{ std::fmodf(float(graphItemIndex)*c_goldenRatioConjugate, 1.0f), 0.95f, 0.95f });
+            PixelRGBAF32 lineColor = { rgb[0], rgb[1], rgb[2], 1.0f };
+
+            Vec2 outerBoxSize = Vec2{ 20.0f, 20.0f } / Vec2{ 512.0f, 25.0f };
+            Vec2 outerBoxMin = Vec2{ 0.1f, 0.5f - outerBoxSize[1] / 2.0f };
+            Vec2 outerBoxMax = outerBoxMin + outerBoxSize;
+
+            Vec2 innerBoxSize = Vec2{ 18.0f, 18.0f } / Vec2{ 512.0f, 25.0f };
+            Vec2 innerBoxMin = outerBoxMin + (outerBoxSize - innerBoxSize) * 0.5f;
+            Vec2 innerBoxMax = innerBoxMin + innerBoxSize;
+
+            Image legend(512, 25, { 1.0f, 1.0f, 1.0f, 1.0f });
+            DrawBox(legend, outerBoxMin, outerBoxMax, { 0.0f, 0.0f, 0.0f, 1.0f });
+            DrawBox(legend, innerBoxMin, innerBoxMax, lineColor);
+            DrawText(legend, graphItem.label.c_str(), { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f / 25.0f, Vec2{ outerBoxMax[0] + 5.0f / 512.0f, 0.5f }, TextHAlign::Left, TextVAlign::Center);
+            BlendInImage_Resize(image, legend, 0, image.m_height, { 1.0f, 1.0f, 1.0f, 1.0f });
+        }
+    }
+
     // save the final image
     SaveImage(image, fileName);
 
-    // TODO: legend
+    // TODO: fix legend text not being vertically centered
     // TODO: circle instead of box for point graph
+    // TODO: try linear x axis!
 }
