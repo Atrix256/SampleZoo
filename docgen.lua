@@ -86,8 +86,8 @@ for k,v in pairs(testTypes) do
                 end
 
                 for sampleFunctionIndex, sampleFunctionName in ipairs(sampleInfo.Functions) do
-                    file:write("#### "..sampleFunctionName.."\n")
                     if testInfo.MakesIndividualImages then
+                        file:write("#### "..sampleFunctionName.."\n")
                         file:write("!["..sampleFunctionName.."](../../../samples/"..testType.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionName..".png)  \n")
                     end
                 end
