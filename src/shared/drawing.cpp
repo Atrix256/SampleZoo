@@ -96,3 +96,8 @@ void DrawBox(Image& image, const Vec2& min, const Vec2& max, const PixelRGBAF32&
             pixel->BlendIn(colorPMA);
     }
 }
+
+void DrawCircle(Image& image, const Vec2& pos, float size, const PixelRGBAF32& color)
+{
+    // TODO: make this work and use it in the graphs!
+}

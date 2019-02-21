@@ -12,10 +12,11 @@ DATE: 2/17/2019
 
 static const float c_goldenRatioConjugate = 0.61803398875f;
 
-// TODO: make y axis ticks get passed in too?
-
 void MakeGraph(
+    GraphType graphType,
     const char* fileName,
+    const char* title,
+    const char* footer,
     const std::vector<GraphItem>& graphItems,
     const std::vector<GraphAxisTick> xAxisTicks,
     const std::vector<GraphAxisTick> yAxisTicks,
@@ -36,7 +37,7 @@ void MakeGraph(
     Image image(width, width, { 1.0f, 1.0f, 1.0f, 1.0f });
 
     // draw a darker region where the line graph will be
-    DrawBox(image, graphMin, graphMax, { 0.85f, 0.85f, 0.85f, 1.0f });
+    DrawBox(image, graphMin, graphMax, { 0.25f, 0.25f, 0.25f, 1.0f });
 
     // draw the axis lines
     DrawLine(image, graphMin[0] - virtualPixel * 2.0f, graphMin[1]                      , graphMin[0] - virtualPixel * 2.0f, graphMax[1] + virtualPixel * 2.0f, { 0.0f, 0.0f, 0.0f, 1.0f }, 3.0 * virtualPixel);
@@ -129,6 +130,7 @@ void MakeGraph(
     }
 
     // draw the line graph in a specific region of the image
+    if (graphType == GraphType::Lines)
     {
         int graphItemIndex = -1;
         for (const GraphItem& graphItem : graphItems)
@@ -155,10 +157,38 @@ void MakeGraph(
             }
         }
     }
+    else if (graphType == GraphType::Points)
+    {
+        int graphItemIndex = -1;
+        for (const GraphItem& graphItem : graphItems)
+        {
+            // Use the golden ratio to choose nearly maximally different hues for however many graph lines we have.
+            // Use HSV to RGB conversion to get an RGB color out of that.
+            graphItemIndex++;
+            std::array<float, 3> rgb = HSVToRGB(Vec3{ std::fmodf(float(graphItemIndex)*c_goldenRatioConjugate, 1.0f), 0.95f, 0.95f });
+            PixelRGBAF32 lineColor = { rgb[0], rgb[1], rgb[2], 1.0f };
+
+            // draw the lines for the line graph
+            for (Vec2 dataPoint : graphItem.data)
+            {
+                // get the data point location on the image
+                Vec2 imageSpacePoint = DataToImage(dataPoint);
+
+                // draw the point
+                DrawBox(image, imageSpacePoint - Vec2{ virtualPixel, virtualPixel }, imageSpacePoint + Vec2{ virtualPixel, virtualPixel }, lineColor);
+            }
+        }
+    }
+
+    // make the title
+    DrawText(image, title, { 0.0f, 0.0f, 0.0f, 1.0f }, 25.0f * virtualPixel, Vec2{ 0.55f, 0.0f }, TextHAlign::Center, TextVAlign::Top);
+
+    // make the footer
+    DrawText(image, footer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{0.5f, 1.0f}, TextHAlign::Center, TextVAlign::Bottom);
 
     // save the final image
     SaveImage(image, fileName);
 
     // TODO: legend
-    // TODO: make y axis ticks be passed in
+    // TODO: circle instead of box for point graph
 }

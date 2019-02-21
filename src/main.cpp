@@ -25,6 +25,10 @@ TODO:
 
 * legend next? and graph title.
 
+* maybe numerical integration results should be loglog.
+ * instead of drawing lines between all data points, maybe draw lines between data points evaluated per pixel on the graph.
+ * where should the x axis tick marks go?
+
 * graph discrepancy?
 
 * for error, may want to have a graph for 0 - 8 samples (or similar) then have 8 - 1000?

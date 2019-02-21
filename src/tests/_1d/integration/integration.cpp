@@ -82,6 +82,8 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         for (int i = 0; i < c_numXAxisTicks; ++i)
         {
             int count = int(float(sampleCount) *  (float(i) / float(c_numXAxisTicks - 1)));
+            if (i == 0)
+                count = 1;
 
             char buffer[256];
             sprintf(buffer, "%i", count);
@@ -130,13 +132,15 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         std::vector<GraphAxisTick> yAxisTicks;
         char buffer[256];
         sprintf(buffer, "%0.2f", globalminy);
-        yAxisTicks.push_back({ globalminy, buffer, TextHAlign::Right, TextVAlign::Center });
+        yAxisTicks.push_back({ globalminy, buffer, TextHAlign::Right, TextVAlign::Top });
         sprintf(buffer, "%0.2f", globalmaxy);
-        yAxisTicks.push_back({ globalmaxy, buffer, TextHAlign::Right, TextVAlign::Center });
+        yAxisTicks.push_back({ globalmaxy, buffer, TextHAlign::Right, TextVAlign::Top});
 
         // make the sample type graph
         sprintf(fileName, "output/samples/%s/%s/%s.png", sampleType[0].sampleFamily, sampleType[0].sampleType, testName);
-        MakeGraph(fileName, errors, xAxisTicks, yAxisTicks, 512, false, { 0.0f, 0.0f }, { 0.01f, 0.01f });
+        sprintf(buffer, "Numerical Integration: %s function", testName);
+        const char* footer = "x axis is sample count, y axis is percent error. Graph is log/log.";
+        MakeGraph(GraphType::Points, fileName, buffer, footer, errors, xAxisTicks, yAxisTicks, 512, true, { 0.0f, 0.0f }, { 0.25f, 0.25f });
     }
 }
 

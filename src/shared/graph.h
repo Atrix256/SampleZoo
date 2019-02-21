@@ -25,8 +25,17 @@ struct GraphAxisTick
     TextVAlign valign;
 };
 
+enum class GraphType
+{
+    Lines,
+    Points
+};
+
 void MakeGraph(
+    GraphType graphType,
     const char* fileName,
+    const char* title,
+    const char* footer,
     const std::vector<GraphItem>& graphItems,
     const std::vector<GraphAxisTick> xAxisTicks,
     const std::vector<GraphAxisTick> yAxisTicks,

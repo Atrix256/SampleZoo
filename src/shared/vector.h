@@ -21,6 +21,15 @@ inline std::array<float, N> operator - (const std::array<float, N>& A, const std
 }
 
 template <size_t N>
+inline std::array<float, N> operator + (const std::array<float, N>& A, const std::array<float, N>& B)
+{
+    std::array<float, N> ret;
+    for (size_t i = 0; i < N; ++i)
+        ret[i] = A[i] + B[i];
+    return ret;
+}
+
+template <size_t N>
 inline std::array<float, N> operator * (const std::array<float, N>& A, const std::array<float, N>& B)
 {
     std::array<float, N> ret;
