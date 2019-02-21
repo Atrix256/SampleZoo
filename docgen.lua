@@ -162,9 +162,9 @@ for k,v in pairs(sampleFamilies) do
             dofile("./src/tests/"..sampleFamily.."/"..subTestType.."/tests.lua")
 
             if testInfo.MakesSampleTypeImages then
-                file:write("##"..testInfo.LongName.."\n")
+                file:write("## "..testInfo.LongName.."\n")
                 for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
-                    file:write("###"..testFunctionName.."\n")
+                    file:write("### "..testFunctionName.."\n")
                     file:write("!["..sampleType.."](../../../samples/"..sampleFamily.."/"..sampleType.."/"..testFunctionName..".png)  \n")
                 end
             end

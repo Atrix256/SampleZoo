@@ -17,12 +17,12 @@
 ### Numberline
 #### MakeNumberline
 ![BestCandidate](../../../samples/_1d/blue_noise/MakeNumberline_BestCandidate.png)  
-##Numerical Integration
-###Linear
+## Numerical Integration
+### Linear
 ![blue_noise](../../../samples/_1d/blue_noise/Linear.png)  
-###Step
+### Step
 ![blue_noise](../../../samples/_1d/blue_noise/Step.png)  
-###Exp
+### Exp
 ![blue_noise](../../../samples/_1d/blue_noise/Exp.png)  
-###Quadratic
+### Quadratic
 ![blue_noise](../../../samples/_1d/blue_noise/Quadratic.png)  

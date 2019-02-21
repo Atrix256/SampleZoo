@@ -51,12 +51,12 @@
 ### Numberline
 #### MakeNumberline
 ![RegularCenteredOffset](../../../samples/_1d/regular/MakeNumberline_RegularCenteredOffset.png)  
-##Numerical Integration
-###Linear
+## Numerical Integration
+### Linear
 ![regular](../../../samples/_1d/regular/Linear.png)  
-###Step
+### Step
 ![regular](../../../samples/_1d/regular/Step.png)  
-###Exp
+### Exp
 ![regular](../../../samples/_1d/regular/Exp.png)  
-###Quadratic
+### Quadratic
 ![regular](../../../samples/_1d/regular/Quadratic.png)  

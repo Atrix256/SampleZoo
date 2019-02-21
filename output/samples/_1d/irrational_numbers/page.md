@@ -194,12 +194,12 @@ https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmaticall
 ### Numberline
 #### MakeNumberline
 ![Sqrt2](../../../samples/_1d/irrational_numbers/MakeNumberline_Sqrt2.png)  
-##Numerical Integration
-###Linear
+## Numerical Integration
+### Linear
 ![irrational_numbers](../../../samples/_1d/irrational_numbers/Linear.png)  
-###Step
+### Step
 ![irrational_numbers](../../../samples/_1d/irrational_numbers/Step.png)  
-###Exp
+### Exp
 ![irrational_numbers](../../../samples/_1d/irrational_numbers/Exp.png)  
-###Quadratic
+### Quadratic
 ![irrational_numbers](../../../samples/_1d/irrational_numbers/Quadratic.png)  

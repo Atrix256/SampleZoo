@@ -17,12 +17,12 @@
 ### Numberline
 #### MakeNumberline
 ![Sobol](../../../samples/_1d/lds/MakeNumberline_Sobol.png)  
-##Numerical Integration
-###Linear
+## Numerical Integration
+### Linear
 ![lds](../../../samples/_1d/lds/Linear.png)  
-###Step
+### Step
 ![lds](../../../samples/_1d/lds/Step.png)  
-###Exp
+### Exp
 ![lds](../../../samples/_1d/lds/Exp.png)  
-###Quadratic
+### Quadratic
 ![lds](../../../samples/_1d/lds/Quadratic.png)  
