@@ -121,7 +121,8 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
             // make the individual graph
             std::vector<GraphItem> graph;
             graph.push_back(error);
-            MakeGraph(fileName, graph, xAxisTicks, yAxisTicks, 512, false, { 0.0f, 0.0f }, { 0.01f, 0.01f });
+            // don't make the individual graphs. they aren't useful
+            //MakeGraph(fileName, graph, xAxisTicks, yAxisTicks, 512, false, { 0.0f, 0.0f }, { 0.01f, 0.01f });
         }
 
         // put y axis ticks at the min and max y

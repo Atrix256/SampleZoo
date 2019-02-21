@@ -142,14 +142,11 @@ for k,v in pairs(sampleFamilies) do
             for k3,v3 in pairs(subTestTypes) do
                 local subTestType = string.sub(v3,3,-2)
                 dofile("./src/tests/"..sampleFamily.."/"..subTestType.."/tests.lua")
-
-                file:write("### "..testInfo.LongName.."\n")
-
-                for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
-                    file:write("#### "..testFunctionName.."\n")
-
-                    if testInfo.MakesIndividualImages then
-                        file:write("!["..sampleFunctionName.."](../../../samples/"..sampleFamily.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionName..".png)  \n")
+                if testInfo.MakesIndividualImages then
+                    file:write("### "..testInfo.LongName.."\n")
+                    for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
+                        file:write("#### "..testFunctionName.."\n")
+                            file:write("!["..sampleFunctionName.."](../../../samples/"..sampleFamily.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionName..".png)  \n")
                     end
                 end
             end

@@ -9,6 +9,6 @@ testInfo = {
         "Exp",
         "Quadratic"
     },
-    MakesIndividualImages = true,
+    MakesIndividualImages = false,
     MakesSampleTypeImages = true,
 }
