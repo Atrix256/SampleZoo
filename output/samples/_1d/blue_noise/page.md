@@ -40,7 +40,6 @@ https://www.princeton.edu/news/2014/02/24/eye-chicken-new-state-matter-comes-vie
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
-![blue_noise](../../../samples/_1d/blue_noise.png)  
 #### Linear
 ![BestCandidate](../../../samples/_1d/blue_noise/Linear_BestCandidate.png)  
 #### Step
@@ -52,3 +51,12 @@ https://www.princeton.edu/news/2014/02/24/eye-chicken-new-state-matter-comes-vie
 ### Numberline
 #### MakeNumberline
 ![BestCandidate](../../../samples/_1d/blue_noise/MakeNumberline_BestCandidate.png)  
+##Numerical Integration
+###Linear
+![blue_noise](../../../samples/_1d/blue_noise/Linear.png)  
+###Step
+![blue_noise](../../../samples/_1d/blue_noise/Step.png)  
+###Exp
+![blue_noise](../../../samples/_1d/blue_noise/Exp.png)  
+###Quadratic
+![blue_noise](../../../samples/_1d/blue_noise/Quadratic.png)  

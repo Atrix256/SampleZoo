@@ -6,7 +6,6 @@
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
-![uniform_random](../../../samples/_1d/uniform_random.png)  
 #### Linear
 ![UniformRandom](../../../samples/_1d/uniform_random/Linear_UniformRandom.png)  
 #### Step
@@ -18,3 +17,12 @@
 ### Numberline
 #### MakeNumberline
 ![UniformRandom](../../../samples/_1d/uniform_random/MakeNumberline_UniformRandom.png)  
+##Numerical Integration
+###Linear
+![uniform_random](../../../samples/_1d/uniform_random/Linear.png)  
+###Step
+![uniform_random](../../../samples/_1d/uniform_random/Step.png)  
+###Exp
+![uniform_random](../../../samples/_1d/uniform_random/Exp.png)  
+###Quadratic
+![uniform_random](../../../samples/_1d/uniform_random/Quadratic.png)  

@@ -8,7 +8,6 @@
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
-![regular](../../../samples/_1d/regular.png)  
 #### Linear
 ![Regular](../../../samples/_1d/regular/Linear_Regular.png)  
 #### Step
@@ -25,7 +24,6 @@
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
-![regular](../../../samples/_1d/regular.png)  
 #### Linear
 ![RegularCentered](../../../samples/_1d/regular/Linear_RegularCentered.png)  
 #### Step
@@ -42,7 +40,6 @@
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
-![regular](../../../samples/_1d/regular.png)  
 #### Linear
 ![RegularCenteredOffset](../../../samples/_1d/regular/Linear_RegularCenteredOffset.png)  
 #### Step
@@ -54,3 +51,12 @@
 ### Numberline
 #### MakeNumberline
 ![RegularCenteredOffset](../../../samples/_1d/regular/MakeNumberline_RegularCenteredOffset.png)  
+##Numerical Integration
+###Linear
+![regular](../../../samples/_1d/regular/Linear.png)  
+###Step
+![regular](../../../samples/_1d/regular/Step.png)  
+###Exp
+![regular](../../../samples/_1d/regular/Exp.png)  
+###Quadratic
+![regular](../../../samples/_1d/regular/Quadratic.png)  

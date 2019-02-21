@@ -6,11 +6,11 @@
 * Quadratic
 ## Linear
 ### Blue Noise Sequences
-![blue_noise](../../../samples/_1d/blue_noise.png)  
+![blue_noise](../../../samples/_1d/blue_noise/Linear.png)  
 #### BestCandidate
 ![BestCandidate](../../../samples/_1d/blue_noise/Linear_BestCandidate.png)  
 ### Irrational Number Sampling
-![irrational_numbers](../../../samples/_1d/irrational_numbers.png)  
+![irrational_numbers](../../../samples/_1d/irrational_numbers/Linear.png)  
 #### GoldenRatioZero
 ![GoldenRatioZero](../../../samples/_1d/irrational_numbers/Linear_GoldenRatioZero.png)  
 #### GoldenRatio
@@ -20,11 +20,11 @@
 #### Sqrt2
 ![Sqrt2](../../../samples/_1d/irrational_numbers/Linear_Sqrt2.png)  
 ### Low Discrepancy Sequences
-![lds](../../../samples/_1d/lds.png)  
+![lds](../../../samples/_1d/lds/Linear.png)  
 #### Sobol
 ![Sobol](../../../samples/_1d/lds/Linear_Sobol.png)  
 ### Regular Sampling
-![regular](../../../samples/_1d/regular.png)  
+![regular](../../../samples/_1d/regular/Linear.png)  
 #### Regular
 ![Regular](../../../samples/_1d/regular/Linear_Regular.png)  
 #### RegularCentered
@@ -32,16 +32,16 @@
 #### RegularCenteredOffset
 ![RegularCenteredOffset](../../../samples/_1d/regular/Linear_RegularCenteredOffset.png)  
 ### Uniform Random Number Sampling
-![uniform_random](../../../samples/_1d/uniform_random.png)  
+![uniform_random](../../../samples/_1d/uniform_random/Linear.png)  
 #### UniformRandom
 ![UniformRandom](../../../samples/_1d/uniform_random/Linear_UniformRandom.png)  
 ## Step
 ### Blue Noise Sequences
-![blue_noise](../../../samples/_1d/blue_noise.png)  
+![blue_noise](../../../samples/_1d/blue_noise/Step.png)  
 #### BestCandidate
 ![BestCandidate](../../../samples/_1d/blue_noise/Step_BestCandidate.png)  
 ### Irrational Number Sampling
-![irrational_numbers](../../../samples/_1d/irrational_numbers.png)  
+![irrational_numbers](../../../samples/_1d/irrational_numbers/Step.png)  
 #### GoldenRatioZero
 ![GoldenRatioZero](../../../samples/_1d/irrational_numbers/Step_GoldenRatioZero.png)  
 #### GoldenRatio
@@ -51,11 +51,11 @@
 #### Sqrt2
 ![Sqrt2](../../../samples/_1d/irrational_numbers/Step_Sqrt2.png)  
 ### Low Discrepancy Sequences
-![lds](../../../samples/_1d/lds.png)  
+![lds](../../../samples/_1d/lds/Step.png)  
 #### Sobol
 ![Sobol](../../../samples/_1d/lds/Step_Sobol.png)  
 ### Regular Sampling
-![regular](../../../samples/_1d/regular.png)  
+![regular](../../../samples/_1d/regular/Step.png)  
 #### Regular
 ![Regular](../../../samples/_1d/regular/Step_Regular.png)  
 #### RegularCentered
@@ -63,16 +63,16 @@
 #### RegularCenteredOffset
 ![RegularCenteredOffset](../../../samples/_1d/regular/Step_RegularCenteredOffset.png)  
 ### Uniform Random Number Sampling
-![uniform_random](../../../samples/_1d/uniform_random.png)  
+![uniform_random](../../../samples/_1d/uniform_random/Step.png)  
 #### UniformRandom
 ![UniformRandom](../../../samples/_1d/uniform_random/Step_UniformRandom.png)  
 ## Exp
 ### Blue Noise Sequences
-![blue_noise](../../../samples/_1d/blue_noise.png)  
+![blue_noise](../../../samples/_1d/blue_noise/Exp.png)  
 #### BestCandidate
 ![BestCandidate](../../../samples/_1d/blue_noise/Exp_BestCandidate.png)  
 ### Irrational Number Sampling
-![irrational_numbers](../../../samples/_1d/irrational_numbers.png)  
+![irrational_numbers](../../../samples/_1d/irrational_numbers/Exp.png)  
 #### GoldenRatioZero
 ![GoldenRatioZero](../../../samples/_1d/irrational_numbers/Exp_GoldenRatioZero.png)  
 #### GoldenRatio
@@ -82,11 +82,11 @@
 #### Sqrt2
 ![Sqrt2](../../../samples/_1d/irrational_numbers/Exp_Sqrt2.png)  
 ### Low Discrepancy Sequences
-![lds](../../../samples/_1d/lds.png)  
+![lds](../../../samples/_1d/lds/Exp.png)  
 #### Sobol
 ![Sobol](../../../samples/_1d/lds/Exp_Sobol.png)  
 ### Regular Sampling
-![regular](../../../samples/_1d/regular.png)  
+![regular](../../../samples/_1d/regular/Exp.png)  
 #### Regular
 ![Regular](../../../samples/_1d/regular/Exp_Regular.png)  
 #### RegularCentered
@@ -94,16 +94,16 @@
 #### RegularCenteredOffset
 ![RegularCenteredOffset](../../../samples/_1d/regular/Exp_RegularCenteredOffset.png)  
 ### Uniform Random Number Sampling
-![uniform_random](../../../samples/_1d/uniform_random.png)  
+![uniform_random](../../../samples/_1d/uniform_random/Exp.png)  
 #### UniformRandom
 ![UniformRandom](../../../samples/_1d/uniform_random/Exp_UniformRandom.png)  
 ## Quadratic
 ### Blue Noise Sequences
-![blue_noise](../../../samples/_1d/blue_noise.png)  
+![blue_noise](../../../samples/_1d/blue_noise/Quadratic.png)  
 #### BestCandidate
 ![BestCandidate](../../../samples/_1d/blue_noise/Quadratic_BestCandidate.png)  
 ### Irrational Number Sampling
-![irrational_numbers](../../../samples/_1d/irrational_numbers.png)  
+![irrational_numbers](../../../samples/_1d/irrational_numbers/Quadratic.png)  
 #### GoldenRatioZero
 ![GoldenRatioZero](../../../samples/_1d/irrational_numbers/Quadratic_GoldenRatioZero.png)  
 #### GoldenRatio
@@ -113,11 +113,11 @@
 #### Sqrt2
 ![Sqrt2](../../../samples/_1d/irrational_numbers/Quadratic_Sqrt2.png)  
 ### Low Discrepancy Sequences
-![lds](../../../samples/_1d/lds.png)  
+![lds](../../../samples/_1d/lds/Quadratic.png)  
 #### Sobol
 ![Sobol](../../../samples/_1d/lds/Quadratic_Sobol.png)  
 ### Regular Sampling
-![regular](../../../samples/_1d/regular.png)  
+![regular](../../../samples/_1d/regular/Quadratic.png)  
 #### Regular
 ![Regular](../../../samples/_1d/regular/Quadratic_Regular.png)  
 #### RegularCentered
@@ -125,6 +125,6 @@
 #### RegularCenteredOffset
 ![RegularCenteredOffset](../../../samples/_1d/regular/Quadratic_RegularCenteredOffset.png)  
 ### Uniform Random Number Sampling
-![uniform_random](../../../samples/_1d/uniform_random.png)  
+![uniform_random](../../../samples/_1d/uniform_random/Quadratic.png)  
 #### UniformRandom
 ![UniformRandom](../../../samples/_1d/uniform_random/Quadratic_UniformRandom.png)  

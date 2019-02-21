@@ -82,7 +82,7 @@ for k,v in pairs(testTypes) do
                 file:write("### "..sampleInfo.LongName.."\n")
 
                 if testInfo.MakesSampleTypeImages then
-                    file:write("!["..sampleType.."](../../../samples/"..testType.."/"..sampleType..".png)  \n")
+                    file:write("!["..sampleType.."](../../../samples/"..testType.."/"..sampleType.."/"..testFunctionName..".png)  \n")
                 end
 
                 for sampleFunctionIndex, sampleFunctionName in ipairs(sampleInfo.Functions) do
@@ -134,6 +134,7 @@ for k,v in pairs(sampleFamilies) do
             file:write("* "..sampleFunctionName.."\n")
         end
 
+
         for sampleFunctionIndex, sampleFunctionName in ipairs(sampleInfo.Functions) do
             file:write("## "..sampleFunctionName.."\n")
 
@@ -144,16 +145,27 @@ for k,v in pairs(sampleFamilies) do
 
                 file:write("### "..testInfo.LongName.."\n")
 
-                if testInfo.MakesSampleTypeImages then
-                    file:write("!["..sampleType.."](../../../samples/"..sampleFamily.."/"..sampleType..".png)  \n")
-                end
-
                 for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
                     file:write("#### "..testFunctionName.."\n")
 
                     if testInfo.MakesIndividualImages then
                         file:write("!["..sampleFunctionName.."](../../../samples/"..sampleFamily.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionName..".png)  \n")
                     end
+                end
+            end
+        end
+
+        -- write links to sample type images
+        local subTestTypes = scandir('cd ./src/tests/'..sampleFamily..'/ && ls -d ./*/ && cd ../../..')
+        for k3,v3 in pairs(subTestTypes) do
+            local subTestType = string.sub(v3,3,-2)
+            dofile("./src/tests/"..sampleFamily.."/"..subTestType.."/tests.lua")
+
+            if testInfo.MakesSampleTypeImages then
+                file:write("##"..testInfo.LongName.."\n")
+                for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
+                    file:write("###"..testFunctionName.."\n")
+                    file:write("!["..sampleType.."](../../../samples/"..sampleFamily.."/"..sampleType.."/"..testFunctionName..".png)  \n")
                 end
             end
         end

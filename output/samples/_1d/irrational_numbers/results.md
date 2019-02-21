@@ -9,7 +9,6 @@
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
-![irrational_numbers](../../../samples/_1d/irrational_numbers.png)  
 #### Linear
 ![GoldenRatioZero](../../../samples/_1d/irrational_numbers/Linear_GoldenRatioZero.png)  
 #### Step
@@ -26,7 +25,6 @@
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
-![irrational_numbers](../../../samples/_1d/irrational_numbers.png)  
 #### Linear
 ![GoldenRatio](../../../samples/_1d/irrational_numbers/Linear_GoldenRatio.png)  
 #### Step
@@ -43,7 +41,6 @@
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
-![irrational_numbers](../../../samples/_1d/irrational_numbers.png)  
 #### Linear
 ![Pi](../../../samples/_1d/irrational_numbers/Linear_Pi.png)  
 #### Step
@@ -60,7 +57,6 @@
 #### CalculateDiscrepancy
 #### CalculateDiscrepancyWrapAround
 ### Numerical Integration
-![irrational_numbers](../../../samples/_1d/irrational_numbers.png)  
 #### Linear
 ![Sqrt2](../../../samples/_1d/irrational_numbers/Linear_Sqrt2.png)  
 #### Step
@@ -72,3 +68,12 @@
 ### Numberline
 #### MakeNumberline
 ![Sqrt2](../../../samples/_1d/irrational_numbers/MakeNumberline_Sqrt2.png)  
+##Numerical Integration
+###Linear
+![irrational_numbers](../../../samples/_1d/irrational_numbers/Linear.png)  
+###Step
+![irrational_numbers](../../../samples/_1d/irrational_numbers/Step.png)  
+###Exp
+![irrational_numbers](../../../samples/_1d/irrational_numbers/Exp.png)  
+###Quadratic
+![irrational_numbers](../../../samples/_1d/irrational_numbers/Quadratic.png)  
