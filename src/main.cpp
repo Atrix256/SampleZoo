@@ -31,9 +31,6 @@ TODO:
 
 * graph discrepancy?
 
-* Numberline test family doesn't really need the "MakeNumberline" subheader.
- * make this choice be part of the test info
-
 * for error, may want to have a graph for 0 - 8 samples (or similar) then have 8 - 1000?
  * or maybe just go back to loglog?
  * what do other paers do?
@@ -162,6 +159,8 @@ TODO:
 ? open up "1d sampling" to submissions soon, and have a page about how to make submissions
  * figure out what exactly you want to do before opening it up
 
+
+! need to make sure all documentation is good (hand written). both present, and working w/ new image links etc.
 
 
 

@@ -3,7 +3,6 @@
 * UniformRandom
 ## UniformRandom
 ### Numberline
-#### MakeNumberline
 ![UniformRandom](../../../samples/_1d/uniform_random/MakeNumberline_UniformRandom.png)  
 ## Numerical Integration
 ### Linear

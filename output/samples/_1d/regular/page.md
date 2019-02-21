@@ -71,15 +71,12 @@ This sampling strategy is seemingly the best of the three because it works well 
 * RegularCenteredOffset
 ## Regular
 ### Numberline
-#### MakeNumberline
 ![Regular](../../../samples/_1d/regular/MakeNumberline_Regular.png)  
 ## RegularCentered
 ### Numberline
-#### MakeNumberline
 ![RegularCentered](../../../samples/_1d/regular/MakeNumberline_RegularCentered.png)  
 ## RegularCenteredOffset
 ### Numberline
-#### MakeNumberline
 ![RegularCenteredOffset](../../../samples/_1d/regular/MakeNumberline_RegularCenteredOffset.png)  
 ## Numerical Integration
 ### Linear

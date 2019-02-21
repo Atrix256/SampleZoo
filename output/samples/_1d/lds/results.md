@@ -3,7 +3,6 @@
 * Sobol
 ## Sobol
 ### Numberline
-#### MakeNumberline
 ![Sobol](../../../samples/_1d/lds/MakeNumberline_Sobol.png)  
 ## Numerical Integration
 ### Linear

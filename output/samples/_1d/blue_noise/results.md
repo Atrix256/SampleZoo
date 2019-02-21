@@ -3,7 +3,6 @@
 * BestCandidate
 ## BestCandidate
 ### Numberline
-#### MakeNumberline
 ![BestCandidate](../../../samples/_1d/blue_noise/MakeNumberline_BestCandidate.png)  
 ## Numerical Integration
 ### Linear

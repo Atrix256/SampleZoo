@@ -8,4 +8,5 @@ testInfo = {
     },
     MakesIndividualImages = true,
     MakesSampleTypeImages = false,
+    SamplePageShowsFunctionName = false,
 }

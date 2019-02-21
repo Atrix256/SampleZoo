@@ -11,4 +11,5 @@ testInfo = {
     },
     MakesIndividualImages = false,
     MakesSampleTypeImages = true,
+    SamplePageShowsFunctionName = true,
 }
