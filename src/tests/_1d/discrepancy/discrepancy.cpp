@@ -13,6 +13,11 @@ Calculates metrics about actual point densities vs expected point densitites
 
 static float CalculateDiscrepancy(const std::vector<float>& samples)
 {
+    // one sample without wrap around:
+    // whichever is larger between the sample and 1.0f - the sample. That is the larger empty area.
+    if (samples.size() == 1)
+        return std::max(samples[0], 1.0f - samples[0]);
+
     // sort the samples, but add a 0.0 and a 1.0 to represent the "hard walls" on the left and right
     // since this isn't torroidal
     std::vector<float> sortedSamples = samples;
@@ -56,6 +61,11 @@ static float CalculateDiscrepancy(const std::vector<float>& samples)
 
 static float CalculateDiscrepancyWrapAround(const std::vector<float>& samples)
 {
+    // one sample with wrap around:
+    // there is a region 1.0 in size minus the size of an infintessimal point that is completely empty.
+    if (samples.size() == 1)
+        return 1.0f;
+
     // Calculates the torroidal discrepancy of this data.
     std::vector<float> sortedSamples = samples;
     std::sort(sortedSamples.begin(), sortedSamples.end());
