@@ -21,6 +21,11 @@ TODO:
  * should have integration graphed differently.  Progressive = partial sequence. Non progressive = full sequence.
  * should have discrepancy graphed differently?  ditto to above...
  * it would be nice to show them graphed wrong for 1 image to show the difference though.
+ ! randomized sequences should be an average over several runs.
+
+* likely need to cache blue noise results soon in a cache folder!
+
+* do the "_1d" folder swap soon.
 
 * maybe force discrepancy graph (and integration error graph?) to have a min / max of 0 / 1?
  * that is the natural range of the graph, and that way it's easier to compare different graphs
