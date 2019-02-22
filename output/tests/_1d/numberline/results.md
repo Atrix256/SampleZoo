@@ -24,6 +24,8 @@
 ![RegularCentered](../../../samples/_1d/regular/MakeNumberline_RegularCentered.png)  
 #### RegularCenteredOffset
 ![RegularCenteredOffset](../../../samples/_1d/regular/MakeNumberline_RegularCenteredOffset.png)  
+#### RegularJittered
+![RegularJittered](../../../samples/_1d/regular/MakeNumberline_RegularJittered.png)  
 ### Uniform Random Number Sampling
 #### UniformRandom
 ![UniformRandom](../../../samples/_1d/uniform_random/MakeNumberline_UniformRandom.png)  

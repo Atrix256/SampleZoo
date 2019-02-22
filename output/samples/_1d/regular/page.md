@@ -69,6 +69,7 @@ This sampling strategy is seemingly the best of the three because it works well 
 * Regular (Not Progressive, Not Randomized)
 * RegularCentered (Not Progressive, Not Randomized)
 * RegularCenteredOffset (Not Progressive, Not Randomized)
+* RegularJittered (Not Progressive, Randomized)
 ## Regular
 ### Numberline
 ![Regular](../../../samples/_1d/regular/MakeNumberline_Regular.png)  
@@ -78,6 +79,9 @@ This sampling strategy is seemingly the best of the three because it works well 
 ## RegularCenteredOffset
 ### Numberline
 ![RegularCenteredOffset](../../../samples/_1d/regular/MakeNumberline_RegularCenteredOffset.png)  
+## RegularJittered
+### Numberline
+![RegularJittered](../../../samples/_1d/regular/MakeNumberline_RegularJittered.png)  
 ## Discrepancy Test
 ### CalculateDiscrepancy
 ![regular](../../../samples/_1d/regular/CalculateDiscrepancy.png)  
