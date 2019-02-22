@@ -49,6 +49,12 @@ void MakeGraph(const GraphDesc& desc)
             }
         }
 
+        if (desc.forceYMinMax)
+        {
+            dataMin[1] = desc.yMinMax[0];
+            dataMax[1] = desc.yMinMax[1];
+        }
+
         dataMinUnpadded = dataMin;
         dataMaxUnpadded = dataMax;
 

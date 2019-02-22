@@ -17,6 +17,11 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* do the discrepancy graphs make sense at 1 sample?
+ * torroidal i guess should be 0.
+ * what about non torroidal?
+ * maybe shouldn't even insert 1 sample, and just start at 2? i dunno.
+
 * progressive and non progressive sequences ...
  * should have integration graphed differently.  Progressive = partial sequence. Non progressive = full sequence.
  * should have discrepancy graphed differently?  ditto to above...

@@ -135,11 +135,8 @@ void Tests::_1d::Discrepancy::CalculateDiscrepancy(const std::vector<std::vector
             }
         }
 
-        char buffer[256];
-        sprintf(buffer, "%0.2f", minDiscrepancy);
-        desc.yAxisTicks.push_back({ minDiscrepancy, buffer, TextHAlign::Right, TextVAlign::Bottom });
-        sprintf(buffer, "%0.2f", maxDiscrepancy);
-        desc.yAxisTicks.push_back({ maxDiscrepancy, buffer, TextHAlign::Right, TextVAlign::Top });
+        desc.yAxisTicks.push_back({ 0.0f, "0.0", TextHAlign::Right, TextVAlign::Bottom });
+        desc.yAxisTicks.push_back({ 1.0f, "1.0", TextHAlign::Right, TextVAlign::Top });
 
         // make the sample type graph
         char fileName[256];
@@ -148,6 +145,8 @@ void Tests::_1d::Discrepancy::CalculateDiscrepancy(const std::vector<std::vector
         desc.fileName = fileName;
         desc.footer = "x axis is sample count, y axis is discrepancy.";
         desc.title = "Discrepancy";
+        desc.forceYMinMax = true;
+        desc.yMinMax = Vec2{ 0.0f, 1.0f };
         MakeGraph(desc);
     }
 }
@@ -190,11 +189,8 @@ void Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(const std::vector<s
             }
         }
 
-        char buffer[256];
-        sprintf(buffer, "%0.2f", minDiscrepancy);
-        desc.yAxisTicks.push_back({ minDiscrepancy, buffer, TextHAlign::Right, TextVAlign::Bottom });
-        sprintf(buffer, "%0.2f", maxDiscrepancy);
-        desc.yAxisTicks.push_back({ maxDiscrepancy, buffer, TextHAlign::Right, TextVAlign::Top });
+        desc.yAxisTicks.push_back({ 0.0f, "0.0", TextHAlign::Right, TextVAlign::Bottom });
+        desc.yAxisTicks.push_back({ 1.0f, "1.0", TextHAlign::Right, TextVAlign::Top });
 
         // make the sample type graph
         char fileName[256];
@@ -204,6 +200,8 @@ void Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(const std::vector<s
         desc.fileName = fileName;
         desc.footer = "x axis is sample count, y axis is discrepancy.";
         desc.title = "Torroidal Discrepancy";
+        desc.forceYMinMax = true;
+        desc.yMinMax = Vec2{ 0.0f, 1.0f };
         MakeGraph(desc);
     }
 }

@@ -44,6 +44,8 @@ struct GraphDesc
     bool loglog = false;
     Vec2 minPad = Vec2{ 0.0f, 0.0f };
     Vec2 maxPad = Vec2{ 0.0f, 0.0f };
+    bool forceYMinMax = false;
+    Vec2 yMinMax = Vec2{ 0.0f, 0.0f };
 };
 
 void MakeGraph(const GraphDesc& desc);
