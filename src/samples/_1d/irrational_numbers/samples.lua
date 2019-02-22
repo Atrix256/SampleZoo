@@ -4,6 +4,7 @@ sampleInfo = {
     LongName="Irrational Number Sampling",
     Description="Multiply an irrational number by the squence index and take that mod 1 to make it be in [0,1)",
     Functions= {
+    	"GoldenRatioZero",
         "GoldenRatio",
         "Pi",
         "Sqrt2",

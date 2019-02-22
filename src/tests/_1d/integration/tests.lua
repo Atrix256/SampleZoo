@@ -5,8 +5,11 @@ testInfo = {
     Description="Use sample points to integrate 1d functions",
     Functions= {
         "Linear",
+        "Step",
+        "Exp",
+        "Quadratic"
     },
-    AutoTestSampleCounts = {16, 32, 64},
-    MakesImages = false,
-    MakesImagePerSampleCount = false,
+    MakesIndividualImages = false,
+    MakesSampleTypeImages = true,
+    SamplePageShowsFunctionName = true,
 }

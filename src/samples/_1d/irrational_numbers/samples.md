@@ -119,3 +119,7 @@ https://www.youtube.com/watch?v=sj8Sg8qnjOg
 The Unreasonable Effectiveness of Quasirandom Sequences  
 This talks about a lot of really interesting things, but also generalizes the golden ratio in an interesting way.  
 http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
+
+How to Generate Random Colors Programmatically
+This shows how to use the golden ratio to generate N colors from index [0,N) where the colors are nearly maximally different from eachother.  This technique is used in SampleZoo in fact, to do things like come up with the colors for lines in a line graph!
+https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmatically/

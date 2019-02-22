@@ -4,31 +4,23 @@
 * CalculateDiscrepancyWrapAround
 ## CalculateDiscrepancy
 ### Blue Noise Sequences
-#### BestCandidate
+![blue_noise](../../../samples/_1d/blue_noise/CalculateDiscrepancy.png)  
 ### Irrational Number Sampling
-#### GoldenRatio
-#### Pi
-#### Sqrt2
+![irrational_numbers](../../../samples/_1d/irrational_numbers/CalculateDiscrepancy.png)  
 ### Low Discrepancy Sequences
-#### Sobol
+![lds](../../../samples/_1d/lds/CalculateDiscrepancy.png)  
 ### Regular Sampling
-#### Regular
-#### RegularCentered
-#### RegularCenteredOffset
+![regular](../../../samples/_1d/regular/CalculateDiscrepancy.png)  
 ### Uniform Random Number Sampling
-#### UniformRandom
+![uniform_random](../../../samples/_1d/uniform_random/CalculateDiscrepancy.png)  
 ## CalculateDiscrepancyWrapAround
 ### Blue Noise Sequences
-#### BestCandidate
+![blue_noise](../../../samples/_1d/blue_noise/CalculateDiscrepancyWrapAround.png)  
 ### Irrational Number Sampling
-#### GoldenRatio
-#### Pi
-#### Sqrt2
+![irrational_numbers](../../../samples/_1d/irrational_numbers/CalculateDiscrepancyWrapAround.png)  
 ### Low Discrepancy Sequences
-#### Sobol
+![lds](../../../samples/_1d/lds/CalculateDiscrepancyWrapAround.png)  
 ### Regular Sampling
-#### Regular
-#### RegularCentered
-#### RegularCenteredOffset
+![regular](../../../samples/_1d/regular/CalculateDiscrepancyWrapAround.png)  
 ### Uniform Random Number Sampling
-#### UniformRandom
+![uniform_random](../../../samples/_1d/uniform_random/CalculateDiscrepancyWrapAround.png)  

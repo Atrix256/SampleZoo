@@ -14,8 +14,9 @@ Makes a numberline image and saves it to disk
 #include "shared/image.h"
 #include "shared/color_spaces.h"
 #include "shared/math.h"
+#include "shared/drawtext.h"
 
-static void MakeNumberline(const char* fileName, const std::vector<float>& samples, int width)
+static Image MakeNumberline(const std::vector<float>& samples, int width)
 {
     const int height = int(float(width) * 0.125f);
 
@@ -57,23 +58,47 @@ static void MakeNumberline(const char* fileName, const std::vector<float>& sampl
         DrawLine(image, sampleX, numberLineYSampleBegin, sampleX, numberLineYSampleEnd, color, 1.0f / 512.0f);
     }
 
-    SaveImage(image, fileName);
+    return image;
 }
 
-void Tests::_1d::Numberline::MakeNumberline(SampleGenerateInfo_1d* sampleFunctions, size_t sampleFunctionCount, size_t* sampleCounts, size_t sampleCountCounts, const char* testName)
+void Tests::_1d::Numberline::MakeNumberline(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName)
 {
     char fileName[256];
-    for (size_t sampleFunctionIndex = 0; sampleFunctionIndex < sampleFunctionCount; ++sampleFunctionIndex)
-    {
-        SampleGenerateInfo_1d& sampleFunction = sampleFunctions[sampleFunctionIndex];
+    std::vector<size_t> sampleCounts = { 8, 16, 32, 64 };
 
-        std::vector<float> samples;
-        for (size_t sampleCountIndex = 0; sampleCountIndex < sampleCountCounts; ++sampleCountIndex)
+    for (const std::vector<SampleGenerateInfo_1d>& sampleType : sampleFunctions)
+    {
+        for (const SampleGenerateInfo_1d& sampleFunction : sampleType)
         {
-            size_t sampleCount = sampleCounts[sampleCountIndex];
-            sampleFunction.function(samples, sampleCount);
-            sprintf(fileName, "output/samples/%s/%s/%s_%s_%zu.png", sampleFunction.sampleFamily, sampleFunction.sampleType, testName, sampleFunction.name, sampleCount);
-            ::MakeNumberline(fileName, samples, 512);
+            Image numberlines;
+
+            std::vector<float> samples;
+            for (size_t sampleCountIndex = 0; sampleCountIndex < sampleCounts.size(); ++sampleCountIndex)
+            {
+                sampleFunction.function(samples, sampleCounts[sampleCountIndex]);
+                Image newImage = ::MakeNumberline(samples, 512);
+
+                BlendInImage_Resize(numberlines, newImage, 0, numberlines.m_height, { 0.0f, 0.0f, 0.0f, 1.0f });
+            }
+
+            Image result(numberlines.m_width + 128, numberlines.m_height, { 1.0f, 1.0f, 1.0f, 1.0f });
+            BlendInImage(result, numberlines, 128, 0);
+
+            for (int i = 0; i < sampleCounts.size(); ++i)
+            {
+                float posY = float(i) / float(sampleCounts.size()) + 1.0f / float(sampleCounts.size() * 2);
+                char buffer[256];
+                sprintf(buffer, "%zu samples", sampleCounts[i]);
+
+                Vec2 pos;
+                pos[0] = 64.0f / (512.0f + 128.0f);
+                pos[1] = posY;
+
+                DrawText(result, buffer, { 0.0f, 0.0f, 0.0f, 1.0f }, 40.0f / 512.0f, pos, TextHAlign::Center, TextVAlign::Center);
+            }
+
+            sprintf(fileName, "output/samples/%s/%s/%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, testName, sampleFunction.name);
+            SaveImage(result, fileName);
         }
     }
 }

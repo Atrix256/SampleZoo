@@ -9,11 +9,18 @@ DATE: 2/8/2019
 static const float c_goldenRatioConjugate = 0.61803398875f;
 static const float c_pi = 3.14159265359f;
 
-void Samples::_1d::IrrationalNumbers::GoldenRatio(std::vector<float>& values, size_t numValues)
+void Samples::_1d::IrrationalNumbers::GoldenRatioZero(std::vector<float>& values, size_t numValues)
 {
     values.resize(numValues);
     for (size_t i = 0; i < numValues; ++i)
         values[i] = std::fmodf(float(i) * c_goldenRatioConjugate, 1.0f);
+}
+
+void Samples::_1d::IrrationalNumbers::GoldenRatio(std::vector<float>& values, size_t numValues)
+{
+    values.resize(numValues);
+    for (size_t i = 0; i < numValues; ++i)
+        values[i] = std::fmodf(float(i + 1) * c_goldenRatioConjugate, 1.0f); // Don't sample at zero, as first sample!
 }
 
 void Samples::_1d::IrrationalNumbers::Pi(std::vector<float>& values, size_t numValues)
@@ -23,7 +30,7 @@ void Samples::_1d::IrrationalNumbers::Pi(std::vector<float>& values, size_t numV
 
     values.resize(numValues);
     for (size_t i = 0; i < numValues; ++i)
-        values[i] = std::fmodf(float(i) * piMod1, 1.0f);
+        values[i] = std::fmodf(float(i + 1) * piMod1, 1.0f); // Don't sample at zero, as first sample!
 }
 
 void Samples::_1d::IrrationalNumbers::Sqrt2(std::vector<float>& values, size_t numValues)
@@ -33,5 +40,5 @@ void Samples::_1d::IrrationalNumbers::Sqrt2(std::vector<float>& values, size_t n
 
     values.resize(numValues);
     for (size_t i = 0; i < numValues; ++i)
-        values[i] = std::fmodf(float(i) * sqrt2Mod1, 1.0f);
+        values[i] = std::fmodf(float(i + 1) * sqrt2Mod1, 1.0f); // Don't sample at zero, as first sample!
 }

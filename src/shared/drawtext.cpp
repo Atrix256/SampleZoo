@@ -63,7 +63,7 @@ float MakeCharImage(Image& image, int c, PixelRGBAF32 color, float scale, float 
     return float(advanceWidth)*scale;
 }
 
-Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight)
+Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight, int& baseline)
 {
     EnsureFontLoaded();
 
@@ -71,8 +71,9 @@ Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight)
 
     float scale = stbtt_ScaleForPixelHeight(&c_fontInfo, textHeight);
     int ascent;
-    stbtt_GetFontVMetrics(&c_fontInfo, &ascent, 0, 0);
-    int baseline = (int)(float(ascent)*scale);
+    int descent;
+    stbtt_GetFontVMetrics(&c_fontInfo, &ascent, &descent, 0);
+    baseline = (int)(float(ascent)*scale);
     float xpos = 0.0f;
 
     const char *c = string;
@@ -93,4 +94,55 @@ Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight)
     }
 
     return stringImage;
+}
+
+void DrawText(Image& image, const char* string, PixelRGBAF32 color, float textHeight_, Vec2& pos, TextHAlign halign, TextVAlign valign)
+{
+    // convert text height from uv space to pixels
+    float textHeight = textHeight_ * float(image.m_height);
+
+    int baseline;
+    Image text = MakeTextImage(string, color, textHeight, baseline);
+
+    // convert position from text height to pixels, and handle alignment
+    int x = int(pos[0] * float(image.m_width));
+    int y = int(pos[1] * float(image.m_height));
+
+    switch (halign)
+    {
+        case TextHAlign::Left:
+        {
+            break;
+        }
+        case TextHAlign::Right:
+        {
+            x -= text.m_width;
+            break;
+        }
+        case TextHAlign::Center:
+        {
+            x -= text.m_width / 2;
+            break;
+        }
+    }
+
+    switch (valign)
+    {
+        case TextVAlign::Top:
+        {
+            break;
+        }
+        case TextVAlign::Bottom:
+        {
+            y -= text.m_height;
+            break;
+        }
+        case TextVAlign::Center:
+        {
+            y -= text.m_height / 2 - (text.m_height - baseline);
+            break;
+        }
+    }
+
+    BlendInImage(image, text, x, y);
 }

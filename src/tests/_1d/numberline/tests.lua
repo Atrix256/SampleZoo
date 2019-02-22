@@ -6,7 +6,7 @@ testInfo = {
     Functions= {
         "MakeNumberline",
     },
-    AutoTestSampleCounts = {8, 16, 32, 64},
-    MakesImages = true,
-    MakesImagePerSampleCount = true,
+    MakesIndividualImages = true,
+    MakesSampleTypeImages = false,
+    SamplePageShowsFunctionName = false,
 }

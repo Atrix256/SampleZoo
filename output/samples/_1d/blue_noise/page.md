@@ -36,18 +36,19 @@ https://www.princeton.edu/news/2014/02/24/eye-chicken-new-state-matter-comes-vie
  samples tested:
 * BestCandidate
 ## BestCandidate
-### Discrepancy Test
-#### CalculateDiscrepancy
-#### CalculateDiscrepancyWrapAround
-### Numerical Integration
-#### Linear
 ### Numberline
-#### MakeNumberline
-8 Samples:  
-![8 samples BestCandidate](../../../samples/_1d/blue_noise/MakeNumberline_BestCandidate_8.png)  
-16 Samples:  
-![16 samples BestCandidate](../../../samples/_1d/blue_noise/MakeNumberline_BestCandidate_16.png)  
-32 Samples:  
-![32 samples BestCandidate](../../../samples/_1d/blue_noise/MakeNumberline_BestCandidate_32.png)  
-64 Samples:  
-![64 samples BestCandidate](../../../samples/_1d/blue_noise/MakeNumberline_BestCandidate_64.png)  
+![BestCandidate](../../../samples/_1d/blue_noise/MakeNumberline_BestCandidate.png)  
+## Discrepancy Test
+### CalculateDiscrepancy
+![blue_noise](../../../samples/_1d/blue_noise/CalculateDiscrepancy.png)  
+### CalculateDiscrepancyWrapAround
+![blue_noise](../../../samples/_1d/blue_noise/CalculateDiscrepancyWrapAround.png)  
+## Numerical Integration
+### Linear
+![blue_noise](../../../samples/_1d/blue_noise/Linear.png)  
+### Step
+![blue_noise](../../../samples/_1d/blue_noise/Step.png)  
+### Exp
+![blue_noise](../../../samples/_1d/blue_noise/Exp.png)  
+### Quadratic
+![blue_noise](../../../samples/_1d/blue_noise/Quadratic.png)  

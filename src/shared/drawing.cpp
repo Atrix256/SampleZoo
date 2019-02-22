@@ -63,12 +63,78 @@ void DrawLine(Image& image, float x1_, float y1_, float x2_, float y2_, const Pi
             // use the distance to figure out how transparent the pixel should be, and apply the color to the pixel
             float alpha = SmoothStep(distance, 0.75f, 0.0f);
 
-            PixelRGBAF32_PMA colorPMACopy = colorPMA;
-            colorPMACopy.MultiplyAlpha(alpha);
-
-            pixel->BlendIn(colorPMACopy);
+            if (alpha > 0.0f)
+            {
+                PixelRGBAF32_PMA colorPMACopy = colorPMA;
+                colorPMACopy.MultiplyAlpha(alpha);
+                pixel->BlendIn(colorPMACopy);
+            }
 
             pixel++;
+        }
+    }
+}
+
+void DrawBox(Image& image, const Vec2& min, const Vec2& max, const PixelRGBAF32& color)
+{
+    const PixelRGBAF32_PMA colorPMA(color);
+
+    int x0 = int(min[0] * float(image.m_width));
+    int y0 = int(min[1] * float(image.m_height));
+    int x1 = int(max[0] * float(image.m_width));
+    int y1 = int(max[1] * float(image.m_height));
+
+    x0 = Clamp(x0, 0, image.m_width - 1);
+    y0 = Clamp(y0, 0, image.m_height - 1);
+    x1 = Clamp(x1, 0, image.m_width - 1);
+    y1 = Clamp(y1, 0, image.m_height - 1);
+
+    for (int y = y0; y <= y1; ++y)
+    {
+        PixelRGBAF32_PMA* pixel = &image.m_pixels[y * image.m_width + x0];
+        for (int x = x0; x <= x1; ++x, ++pixel)
+            pixel->BlendIn(colorPMA);
+    }
+}
+
+void DrawCircle(Image& image, const Vec2& pos, float radius_, const PixelRGBAF32& color)
+{
+    // Convert radius to pixels by multiplying by image width. not exactly right (aspect ratio / rectangular images not handled well) but whatever.
+    float radius = radius_ * float(image.m_width);
+
+    const PixelRGBAF32_PMA colorPMA(color);
+
+    int posX = int(pos[0] * float(image.m_width));
+    int posY = int(pos[1] * float(image.m_height));
+
+    int x0 = int(floorf(pos[0] * float(image.m_width) - radius - 0.75f));
+    int y0 = int(floorf(pos[1] * float(image.m_height) - radius - 0.75f));
+    int x1 = int(ceilf(pos[0] * float(image.m_width) + radius + 0.75f));
+    int y1 = int(ceilf(pos[1] * float(image.m_height) + radius + 0.75f));
+
+    x0 = Clamp(x0, 0, image.m_width - 1);
+    y0 = Clamp(y0, 0, image.m_height - 1);
+    x1 = Clamp(x1, 0, image.m_width - 1);
+    y1 = Clamp(y1, 0, image.m_height - 1);
+
+    for (int y = y0; y <= y1; ++y)
+    {
+        int dy = y - posY;
+        PixelRGBAF32_PMA* pixel = &image.m_pixels[y * image.m_width + x0];
+        for (int x = x0; x <= x1; ++x, ++pixel)
+        {
+            int dx = x - posX;
+
+            float distance = sqrtf(float(dx*dx) + float(dy*dy));
+            distance -= radius;
+            float alpha = SmoothStep(distance, 0.75f, 0.0f);
+
+            if (alpha > 0.0f)
+            {
+                PixelRGBAF32_PMA colorPMACopy = colorPMA;
+                colorPMACopy.MultiplyAlpha(alpha);
+                pixel->BlendIn(colorPMACopy);
+            }
         }
     }
 }
