@@ -67,6 +67,7 @@ A list of specific things the project needs.
 * other 1d sampling patterns not listed here!
 * frequency analysis (DFT)
 * regular sampling and some others are not progressive. for integration graphing, it's useful to show what that means when tested the same way progressive samples are tested, but i think non progressive sampling types should be graphed such that at sample count N, it's showing the error for an N count sequence.
+* on the integration error graph, the actual graph being integrated could be shown in the lower left
 
 ## Work Needed, but claimed by Alan for now
 
