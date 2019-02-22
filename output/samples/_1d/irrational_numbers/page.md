@@ -142,6 +142,11 @@ https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmaticall
 ## Sqrt2
 ### Numberline
 ![Sqrt2](../../../samples/_1d/irrational_numbers/MakeNumberline_Sqrt2.png)  
+## Discrepancy Test
+### CalculateDiscrepancy
+![irrational_numbers](../../../samples/_1d/irrational_numbers/CalculateDiscrepancy.png)  
+### CalculateDiscrepancyWrapAround
+![irrational_numbers](../../../samples/_1d/irrational_numbers/CalculateDiscrepancyWrapAround.png)  
 ## Numerical Integration
 ### Linear
 ![irrational_numbers](../../../samples/_1d/irrational_numbers/Linear.png)  

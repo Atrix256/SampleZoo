@@ -8,6 +8,6 @@ testInfo = {
         "CalculateDiscrepancyWrapAround",
     },
     MakesIndividualImages = false,
-    MakesSampleTypeImages = false,
+    MakesSampleTypeImages = true,
     SamplePageShowsFunctionName = true,
 }

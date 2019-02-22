@@ -17,6 +17,9 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* maybe force discrepancy graph (and integration error graph?) to have a min / max of 0 / 1?
+ * that is the natural range of the graph, and that way it's easier to compare different graphs
+
 * for the integration graph, could show the actual function graphed in the lower left.
  * put this on todo list
 

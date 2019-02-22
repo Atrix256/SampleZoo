@@ -4,6 +4,11 @@
 ## BestCandidate
 ### Numberline
 ![BestCandidate](../../../samples/_1d/blue_noise/MakeNumberline_BestCandidate.png)  
+## Discrepancy Test
+### CalculateDiscrepancy
+![blue_noise](../../../samples/_1d/blue_noise/CalculateDiscrepancy.png)  
+### CalculateDiscrepancyWrapAround
+![blue_noise](../../../samples/_1d/blue_noise/CalculateDiscrepancyWrapAround.png)  
 ## Numerical Integration
 ### Linear
 ![blue_noise](../../../samples/_1d/blue_noise/Linear.png)  

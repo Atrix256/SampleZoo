@@ -12,6 +12,11 @@
 ## RegularCenteredOffset
 ### Numberline
 ![RegularCenteredOffset](../../../samples/_1d/regular/MakeNumberline_RegularCenteredOffset.png)  
+## Discrepancy Test
+### CalculateDiscrepancy
+![regular](../../../samples/_1d/regular/CalculateDiscrepancy.png)  
+### CalculateDiscrepancyWrapAround
+![regular](../../../samples/_1d/regular/CalculateDiscrepancyWrapAround.png)  
 ## Numerical Integration
 ### Linear
 ![regular](../../../samples/_1d/regular/Linear.png)  

@@ -4,6 +4,11 @@
 ## Sobol
 ### Numberline
 ![Sobol](../../../samples/_1d/lds/MakeNumberline_Sobol.png)  
+## Discrepancy Test
+### CalculateDiscrepancy
+![lds](../../../samples/_1d/lds/CalculateDiscrepancy.png)  
+### CalculateDiscrepancyWrapAround
+![lds](../../../samples/_1d/lds/CalculateDiscrepancyWrapAround.png)  
 ## Numerical Integration
 ### Linear
 ![lds](../../../samples/_1d/lds/Linear.png)  
