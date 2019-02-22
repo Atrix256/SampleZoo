@@ -17,7 +17,15 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* finish getting the 1d sampling types from your post: https://blog.demofox.org/2017/05/29/when-random-numbers-are-too-random-low-discrepancy-sequences/
+
+* document "regular jittered" and mention pixar.
+
+* document van der corupt base 2, 3, 5 and mention stuff from https://blog.demofox.org/2017/05/29/when-random-numbers-are-too-random-low-discrepancy-sequences/
+
 * note properties of sample types in the documentation. randomized / progressize.
+
+* put in todos: could multithread the auto tests!
 
 * progressive and non progressive sequences ...
  * should have integration graphed differently.  Progressive = partial sequence. Non progressive = full sequence.

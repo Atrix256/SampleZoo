@@ -21,6 +21,12 @@ The first sample is red and the last sample is green. This lets you see the orde
 ### Low Discrepancy Sequences
 #### Sobol
 ![Sobol](../../../samples/_1d/lds/MakeNumberline_Sobol.png)  
+#### VanDerCorput2
+![VanDerCorput2](../../../samples/_1d/lds/MakeNumberline_VanDerCorput2.png)  
+#### VanDerCorput3
+![VanDerCorput3](../../../samples/_1d/lds/MakeNumberline_VanDerCorput3.png)  
+#### VanDerCorput5
+![VanDerCorput5](../../../samples/_1d/lds/MakeNumberline_VanDerCorput5.png)  
 ### Regular Sampling
 #### Regular
 ![Regular](../../../samples/_1d/regular/MakeNumberline_Regular.png)  
