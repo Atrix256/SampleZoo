@@ -17,6 +17,11 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* progressive and non progressive sequences ...
+ * should have integration graphed differently.  Progressive = partial sequence. Non progressive = full sequence.
+ * should have discrepancy graphed differently?  ditto to above...
+ * it would be nice to show them graphed wrong for 1 image to show the difference though.
+
 * maybe force discrepancy graph (and integration error graph?) to have a min / max of 0 / 1?
  * that is the natural range of the graph, and that way it's easier to compare different graphs
 
