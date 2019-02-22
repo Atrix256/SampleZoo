@@ -4,6 +4,6 @@ sampleInfo = {
     LongName="Blue Noise Sequences",
     Description="Randomized sequences that have only high frequency content",
     Functions= {
-        "BestCandidate",
+        { name = "BestCandidate", progressive = true, randomized = true },
     },
 }

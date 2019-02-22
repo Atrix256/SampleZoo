@@ -1,6 +1,6 @@
 # Test Results
  samples tested:
-* BestCandidate
+* BestCandidate (Progressive, Randomized)
 ## BestCandidate
 ### Numberline
 ![BestCandidate](../../../samples/_1d/blue_noise/MakeNumberline_BestCandidate.png)  

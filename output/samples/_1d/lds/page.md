@@ -2,7 +2,7 @@
 
 # Test Results
  samples tested:
-* Sobol
+* Sobol (Progressive, Not Randomized)
 ## Sobol
 ### Numberline
 ![Sobol](../../../samples/_1d/lds/MakeNumberline_Sobol.png)  

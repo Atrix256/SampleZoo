@@ -4,6 +4,6 @@ sampleInfo = {
     LongName="Uniform Random Number Sampling",
     Description="Randomized sample positions using a uniform random number distribution.",
     Functions= {
-        "UniformRandom",
+        { name = "UniformRandom", progressive = true, randomized = true },
     },
 }

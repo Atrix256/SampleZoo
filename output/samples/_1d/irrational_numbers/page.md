@@ -126,10 +126,10 @@ This shows how to use the golden ratio to generate N colors from index [0,N) whe
 https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmatically/
 # Test Results
  samples tested:
-* GoldenRatioZero
-* GoldenRatio
-* Pi
-* Sqrt2
+* GoldenRatioZero (Progressive, Not Randomized)
+* GoldenRatio (Progressive, Not Randomized)
+* Pi (Progressive, Not Randomized)
+* Sqrt2 (Progressive, Not Randomized)
 ## GoldenRatioZero
 ### Numberline
 ![GoldenRatioZero](../../../samples/_1d/irrational_numbers/MakeNumberline_GoldenRatioZero.png)  

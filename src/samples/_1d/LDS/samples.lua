@@ -4,6 +4,6 @@ sampleInfo = {
     LongName="Low Discrepancy Sequences",
     Description="Low discrepancy sequences",
     Functions= {
-        "Sobol",
+        { name = "Sobol", progressive = true, randomized = false },
     },
 }

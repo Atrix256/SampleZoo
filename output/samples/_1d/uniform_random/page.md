@@ -21,7 +21,7 @@ Blue noise is an alternative to uniform random sampling which has many of the po
 
 # Test Results
  samples tested:
-* UniformRandom
+* UniformRandom (Progressive, Randomized)
 ## UniformRandom
 ### Numberline
 ![UniformRandom](../../../samples/_1d/uniform_random/MakeNumberline_UniformRandom.png)  

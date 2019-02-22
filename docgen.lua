@@ -85,10 +85,10 @@ for k,v in pairs(testTypes) do
                     file:write("!["..sampleType.."](../../../samples/"..testType.."/"..sampleType.."/"..testFunctionName..".png)  \n")
                 end
 
-                for sampleFunctionIndex, sampleFunctionName in ipairs(sampleInfo.Functions) do
+                for sampleFunctionIndex, sampleFunctionInfo in ipairs(sampleInfo.Functions) do
                     if testInfo.MakesIndividualImages then
-                        file:write("#### "..sampleFunctionName.."\n")
-                        file:write("!["..sampleFunctionName.."](../../../samples/"..testType.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionName..".png)  \n")
+                        file:write("#### "..sampleFunctionInfo.name.."\n")
+                        file:write("!["..sampleFunctionInfo.name.."](../../../samples/"..testType.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionInfo.name..".png)  \n")
                     end
                 end
             end
@@ -130,13 +130,23 @@ for k,v in pairs(sampleFamilies) do
         file = io.open("./output/samples/"..sampleFamily.."/"..sampleType.."/results.md", "w")
 
         file:write("# Test Results\n samples tested:\n")
-        for sampleFunctionIndex, sampleFunctionName in ipairs(sampleInfo.Functions) do
-            file:write("* "..sampleFunctionName.."\n")
+        for sampleFunctionIndex, sampleFunctionInfo in ipairs(sampleInfo.Functions) do
+            file:write("* "..sampleFunctionInfo.name.. " (")
+            if sampleFunctionInfo.progressive then
+                file:write("Progressive, ")
+            else
+                file:write("Not Progressive, ")
+            end
+            if sampleFunctionInfo.randomized then
+                file:write("Randomized)\n")
+            else
+                file:write("Not Randomized)\n")
+            end
         end
 
 
-        for sampleFunctionIndex, sampleFunctionName in ipairs(sampleInfo.Functions) do
-            file:write("## "..sampleFunctionName.."\n")
+        for sampleFunctionIndex, sampleFunctionInfo in ipairs(sampleInfo.Functions) do
+            file:write("## "..sampleFunctionInfo.name.."\n")
 
             local subTestTypes = scandir('cd ./src/tests/'..sampleFamily..'/ && ls -d ./*/ && cd ../../..')
             for k3,v3 in pairs(subTestTypes) do
@@ -148,7 +158,7 @@ for k,v in pairs(sampleFamilies) do
                         if testInfo.SamplePageShowsFunctionName then
                             file:write("#### "..testFunctionName.."\n")
                         end
-                        file:write("!["..sampleFunctionName.."](../../../samples/"..sampleFamily.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionName..".png)  \n")
+                        file:write("!["..sampleFunctionInfo.name.."](../../../samples/"..sampleFamily.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionInfo.name..".png)  \n")
                     end
                 end
             end

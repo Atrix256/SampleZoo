@@ -17,6 +17,8 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* note properties of sample types in the documentation. randomized / progressize.
+
 * progressive and non progressive sequences ...
  * should have integration graphed differently.  Progressive = partial sequence. Non progressive = full sequence.
  * should have discrepancy graphed differently?  ditto to above...
@@ -25,7 +27,13 @@ TODO:
 
 * likely need to cache blue noise results soon in a cache folder!
 
-* do the "_1d" folder swap soon.
+* make a way to specify specific tests you want to do.
+ * like to compare the best of the best for numerical integration.
+ * maybe make it a manually written thing that writes a specific file name, that you then link to from a manually made / linked to page?
+
+ * make _1d be a parent folder everywhere, instead of a child under tests and samples.
+  * this is a "sample family", and it contains both samples and tests.
+  * i thought about not doing this, but the tests and samples assume they are interchangeable so go for it
 
 * maybe force discrepancy graph (and integration error graph?) to have a min / max of 0 / 1?
  * that is the natural range of the graph, and that way it's easier to compare different graphs
@@ -42,15 +50,7 @@ TODO:
  * instead of drawing lines between all data points, maybe draw lines between data points evaluated per pixel on the graph.
  * where should the x axis tick marks go?
 
-* graph discrepancy?
-
-* for error, may want to have a graph for 0 - 8 samples (or similar) then have 8 - 1000?
- * or maybe just go back to loglog?
- * what do other paers do?
-
-
- * make _1d be a parent folder everywhere, instead of a child under tests and samples.
-  * this is a "sample family", and it contains both samples and tests
+ ? more sampling types. esp low discrepancy, like from your blog
 
 * need to make integration test "other scopes" and make documentation link to it.
 

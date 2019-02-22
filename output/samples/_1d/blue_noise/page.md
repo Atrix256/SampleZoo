@@ -34,7 +34,7 @@ https://www.princeton.edu/news/2014/02/24/eye-chicken-new-state-matter-comes-vie
 
 # Test Results
  samples tested:
-* BestCandidate
+* BestCandidate (Progressive, Randomized)
 ## BestCandidate
 ### Numberline
 ![BestCandidate](../../../samples/_1d/blue_noise/MakeNumberline_BestCandidate.png)  

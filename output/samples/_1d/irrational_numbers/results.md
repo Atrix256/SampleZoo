@@ -1,9 +1,9 @@
 # Test Results
  samples tested:
-* GoldenRatioZero
-* GoldenRatio
-* Pi
-* Sqrt2
+* GoldenRatioZero (Progressive, Not Randomized)
+* GoldenRatio (Progressive, Not Randomized)
+* Pi (Progressive, Not Randomized)
+* Sqrt2 (Progressive, Not Randomized)
 ## GoldenRatioZero
 ### Numberline
 ![GoldenRatioZero](../../../samples/_1d/irrational_numbers/MakeNumberline_GoldenRatioZero.png)  

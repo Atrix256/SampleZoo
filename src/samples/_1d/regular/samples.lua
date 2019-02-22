@@ -4,8 +4,8 @@ sampleInfo = {
     LongName="Regular Sampling",
     Description="Uniformly spaced samples",
     Functions= {
-        "Regular",
-        "RegularCentered",
-        "RegularCenteredOffset",
+        { name = "Regular", progressive = false, randomized = false },
+        { name = "RegularCentered", progressive = false, randomized = false },
+        { name = "RegularCenteredOffset", progressive = false, randomized = false },
     },
 }

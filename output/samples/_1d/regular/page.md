@@ -66,9 +66,9 @@ This sampling strategy is seemingly the best of the three because it works well 
 
 # Test Results
  samples tested:
-* Regular
-* RegularCentered
-* RegularCenteredOffset
+* Regular (Not Progressive, Not Randomized)
+* RegularCentered (Not Progressive, Not Randomized)
+* RegularCenteredOffset (Not Progressive, Not Randomized)
 ## Regular
 ### Numberline
 ![Regular](../../../samples/_1d/regular/MakeNumberline_Regular.png)  
