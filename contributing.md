@@ -54,14 +54,19 @@ A list of specific things the project needs.
 * centralize random number (white noise) generation, also make it seedable for deterministic results.
 * clang tidy for style guidelines? Or google C++ style guide? or clang-format? "clang-format -style=google"
 * also an editor config? https://editorconfig.org/
+* improve the look of graphing in general, all graphs.
+* This seems possibly useful for automatically putting ticks on graphs: http://vis.stanford.edu/files/2010-TickLabels-InfoVis.pdf
+* the text rendering seems like it needs some help.  One thing may possibly be that the text stb renders is in srgb but we are using it like it's perceptually linear.
 
-### 1D Sampling Patterns
+### 1D Sampling Patterns & Tests
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
 * low discrepancy sequences (basic, more exotic, scrambled, etc!)
 * other 1d blue noise methods including: poisson disk, relaxation.
 * blue noise from eigenvectors: https://twitter.com/TechSparx/status/1093902404867760129
 * jittered grid
 * other 1d sampling patterns not listed here!
+* frequency analysis (DFT)
+* regular sampling and some others are not progressive. for integration graphing, it's useful to show what that means when tested the same way progressive samples are tested, but i think non progressive sampling types should be graphed such that at sample count N, it's showing the error for an N count sequence.
 
 ## Work Needed, but claimed by Alan for now
 
