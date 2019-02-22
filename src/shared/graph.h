@@ -31,16 +31,19 @@ enum class GraphType
     Points
 };
 
-void MakeGraph(
-    GraphType graphType,
-    const char* fileName,
-    const char* title,
-    const char* footer,
-    const std::vector<GraphItem>& graphItems,
-    const std::vector<GraphAxisTick> xAxisTicks,
-    const std::vector<GraphAxisTick> yAxisTicks,
-    int width,
-    bool loglog,
-    const Vec2& minPad,
-    const Vec2& maxPad
-);
+struct GraphDesc
+{
+    GraphType graphType = GraphType::Lines;
+    const char* fileName = nullptr;
+    const char* title = nullptr;
+    const char* footer = nullptr;
+    std::vector<GraphItem> graphItems;
+    std::vector<GraphAxisTick> xAxisTicks;
+    std::vector<GraphAxisTick> yAxisTicks;
+    int width = 512;
+    bool loglog = false;
+    Vec2 minPad = Vec2{ 0.0f, 0.0f };
+    Vec2 maxPad = Vec2{ 0.0f, 0.0f };
+};
+
+void MakeGraph(const GraphDesc& desc);

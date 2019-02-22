@@ -12,19 +12,7 @@ DATE: 2/17/2019
 
 static const float c_goldenRatioConjugate = 0.61803398875f;
 
-void MakeGraph(
-    GraphType graphType,
-    const char* fileName,
-    const char* title,
-    const char* footer,
-    const std::vector<GraphItem>& graphItems,
-    const std::vector<GraphAxisTick> xAxisTicks,
-    const std::vector<GraphAxisTick> yAxisTicks,
-    int width,
-    bool loglog,
-    const Vec2& minPad,
-    const Vec2& maxPad
-)
+void MakeGraph(const GraphDesc& desc)
 {
     static const Vec2 graphMin = { 0.1f, 0.0f };
     static const Vec2 graphMax = { 1.0f, 0.9f };
@@ -34,7 +22,7 @@ void MakeGraph(
     static const float log10epsilon = 0.0001f;
 
     // make the graph image
-    Image image(width, width, { 1.0f, 1.0f, 1.0f, 1.0f });
+    Image image(desc.width, desc.width, { 1.0f, 1.0f, 1.0f, 1.0f });
 
     // draw a darker region where the line graph will be
     DrawBox(image, graphMin, graphMax, { 0.25f, 0.25f, 0.25f, 1.0f });
@@ -49,7 +37,7 @@ void MakeGraph(
     Vec2 dataMinUnpadded = { FLT_MAX, FLT_MAX };
     Vec2 dataMaxUnpadded = { -FLT_MAX, -FLT_MAX };
     {
-        for (const GraphItem& graphItem : graphItems)
+        for (const GraphItem& graphItem : desc.graphItems)
         {
             for (const Vec2& dataPoint : graphItem.data)
             {
@@ -67,13 +55,13 @@ void MakeGraph(
         // pad the top and right of the graph as told by caller
         float dataw = (dataMax[0] - dataMin[0]);
         float datah = (dataMax[1] - dataMin[1]);
-        dataMin[0] -= dataw * minPad[0];
-        dataMin[1] -= datah * minPad[1];
-        dataMax[0] += dataw * maxPad[0];
-        dataMax[1] += datah * maxPad[1];
+        dataMin[0] -= dataw * desc.minPad[0];
+        dataMin[1] -= datah * desc.minPad[1];
+        dataMax[0] += dataw * desc.maxPad[0];
+        dataMax[1] += datah * desc.maxPad[1];
 
         // if they want a log/log graph
-        if (loglog)
+        if (desc.loglog)
         {
             dataMin[0] = log10f(std::max(dataMin[0], log10epsilon));
             dataMin[1] = log10f(std::max(dataMin[1], log10epsilon));
@@ -87,10 +75,10 @@ void MakeGraph(
     }
 
     // define the lambda to convert from data space to image space
-    auto DataToImage = [&dataMin, &dataMax, loglog] (Vec2 dataSpace) -> Vec2
+    auto DataToImage = [&dataMin, &dataMax, &desc] (Vec2 dataSpace) -> Vec2
     {
         // if they want a log/log graph
-        if (loglog)
+        if (desc.loglog)
         {
             dataSpace[0] = log10f(std::max(dataSpace[0], log10epsilon));
             dataSpace[1] = log10f(std::max(dataSpace[1], log10epsilon));
@@ -108,7 +96,7 @@ void MakeGraph(
     };
 
     // draw x axis ticks
-    for (const GraphAxisTick& tick : xAxisTicks)
+    for (const GraphAxisTick& tick : desc.xAxisTicks)
     {
         Vec2 data = { tick.value, dataMinUnpadded[1] };
         Vec2 pos = DataToImage(data);
@@ -119,7 +107,7 @@ void MakeGraph(
     }
 
     // draw y axis ticks
-    for (const GraphAxisTick& tick : yAxisTicks)
+    for (const GraphAxisTick& tick : desc.yAxisTicks)
     {
         Vec2 data = { dataMinUnpadded[0], tick.value };
         Vec2 pos = DataToImage(data);
@@ -130,10 +118,10 @@ void MakeGraph(
     }
 
     // draw the line graph in a specific region of the image
-    if (graphType == GraphType::Lines)
+    if (desc.graphType == GraphType::Lines)
     {
         int graphItemIndex = -1;
-        for (const GraphItem& graphItem : graphItems)
+        for (const GraphItem& graphItem : desc.graphItems)
         {
             // Use the golden ratio to choose nearly maximally different hues for however many graph lines we have.
             // Use HSV to RGB conversion to get an RGB color out of that.
@@ -157,10 +145,10 @@ void MakeGraph(
             }
         }
     }
-    else if (graphType == GraphType::Points)
+    else if (desc.graphType == GraphType::Points)
     {
         int graphItemIndex = -1;
-        for (const GraphItem& graphItem : graphItems)
+        for (const GraphItem& graphItem : desc.graphItems)
         {
             // Use the golden ratio to choose nearly maximally different hues for however many graph lines we have.
             // Use HSV to RGB conversion to get an RGB color out of that.
@@ -181,15 +169,15 @@ void MakeGraph(
     }
 
     // make the title
-    DrawText(image, title, { 0.0f, 0.0f, 0.0f, 1.0f }, 25.0f * virtualPixel, Vec2{ 0.55f, 0.0f }, TextHAlign::Center, TextVAlign::Top);
+    DrawText(image, desc.title, { 0.0f, 0.0f, 0.0f, 1.0f }, 25.0f * virtualPixel, Vec2{ 0.55f, 0.0f }, TextHAlign::Center, TextVAlign::Top);
 
     // make the footer
-    DrawText(image, footer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{0.5f, 1.0f}, TextHAlign::Center, TextVAlign::Bottom);
+    DrawText(image, desc.footer, { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f * virtualPixel, Vec2{0.5f, 1.0f}, TextHAlign::Center, TextVAlign::Bottom);
 
     // make the legend
     {
         int graphItemIndex = -1;
-        for (const GraphItem& graphItem : graphItems)
+        for (const GraphItem& graphItem : desc.graphItems)
         {
             // Use the golden ratio to choose nearly maximally different hues for however many graph lines we have.
             // Use HSV to RGB conversion to get an RGB color out of that.
@@ -214,5 +202,5 @@ void MakeGraph(
     }
 
     // save the final image
-    SaveImage(image, fileName);
+    SaveImage(image, desc.fileName);
 }

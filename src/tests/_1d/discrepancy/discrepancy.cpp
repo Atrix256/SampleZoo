@@ -101,14 +101,6 @@ void Tests::_1d::Discrepancy::CalculateDiscrepancy(const std::vector<std::vector
 {
     static const int c_sampleCount = 64;
 
-    std::vector<GraphAxisTick> xAxisTicks;
-    for (int sampleCount = 0; sampleCount <= c_sampleCount; sampleCount += 4)
-    {
-        char buffer[256];
-        sprintf(buffer, "%i", sampleCount > 0 ? sampleCount : 1);
-        xAxisTicks.push_back({ float(sampleCount > 0 ? sampleCount : 1), buffer, TextHAlign::Right, TextVAlign::Top });
-    }
-
     for (const std::vector<SampleGenerateInfo_1d>& sampleType : sampleFunctions)
     {
         if (sampleType.size() == 0)
@@ -117,13 +109,21 @@ void Tests::_1d::Discrepancy::CalculateDiscrepancy(const std::vector<std::vector
         float minDiscrepancy = FLT_MAX;
         float maxDiscrepancy = -FLT_MAX;
 
-        std::vector<GraphItem> discrepancies;
+        GraphDesc desc;
+
+        for (int sampleCount = 0; sampleCount <= c_sampleCount; sampleCount += 4)
+        {
+            char buffer[256];
+            sprintf(buffer, "%i", sampleCount > 0 ? sampleCount : 1);
+            desc.xAxisTicks.push_back({ float(sampleCount > 0 ? sampleCount : 1), buffer, TextHAlign::Right, TextVAlign::Top });
+        }
+
         for (const SampleGenerateInfo_1d& sampleFunction : sampleType)
         {
             std::vector<float> samples;
 
-            discrepancies.resize(discrepancies.size() + 1);
-            GraphItem& discrepancy = *discrepancies.rbegin();
+            desc.graphItems.resize(desc.graphItems.size() + 1);
+            GraphItem& discrepancy = *desc.graphItems.rbegin();
             discrepancy.label = sampleFunction.name;
             for (int sampleCount = 1; sampleCount <= c_sampleCount; ++sampleCount)
             {
@@ -135,32 +135,26 @@ void Tests::_1d::Discrepancy::CalculateDiscrepancy(const std::vector<std::vector
             }
         }
 
-        std::vector<GraphAxisTick> yAxisTicks;
         char buffer[256];
         sprintf(buffer, "%0.2f", minDiscrepancy);
-        yAxisTicks.push_back({ minDiscrepancy, buffer, TextHAlign::Right, TextVAlign::Bottom });
+        desc.yAxisTicks.push_back({ minDiscrepancy, buffer, TextHAlign::Right, TextVAlign::Bottom });
         sprintf(buffer, "%0.2f", maxDiscrepancy);
-        yAxisTicks.push_back({ maxDiscrepancy, buffer, TextHAlign::Right, TextVAlign::Top });
+        desc.yAxisTicks.push_back({ maxDiscrepancy, buffer, TextHAlign::Right, TextVAlign::Top });
 
         // make the sample type graph
         char fileName[256];
         sprintf(fileName, "output/samples/%s/%s/%s.png", sampleType[0].sampleFamily, sampleType[0].sampleType, testName);
-        const char* footer = "x axis is sample count, y axis is discrepancy.";
-        MakeGraph(GraphType::Lines, fileName, "Discrepancy", footer, discrepancies, xAxisTicks, yAxisTicks, 512, false, { 0.0f, 0.0f }, { 0.0f, 0.0f });
+
+        desc.fileName = fileName;
+        desc.footer = "x axis is sample count, y axis is discrepancy.";
+        desc.title = "Discrepancy";
+        MakeGraph(desc);
     }
 }
 
 void Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName)
 {
     static const int c_sampleCount = 64;
-
-    std::vector<GraphAxisTick> xAxisTicks;
-    for (int sampleCount = 0; sampleCount <= c_sampleCount; sampleCount += 4)
-    {
-        char buffer[256];
-        sprintf(buffer, "%i", sampleCount > 0 ? sampleCount : 1);
-        xAxisTicks.push_back({ float(sampleCount > 0 ? sampleCount : 1), buffer, TextHAlign::Right, TextVAlign::Top });
-    }
 
     for (const std::vector<SampleGenerateInfo_1d>& sampleType : sampleFunctions)
     {
@@ -170,13 +164,21 @@ void Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(const std::vector<s
         float minDiscrepancy = FLT_MAX;
         float maxDiscrepancy = -FLT_MAX;
 
-        std::vector<GraphItem> discrepancies;
+        GraphDesc desc;
+
+        for (int sampleCount = 0; sampleCount <= c_sampleCount; sampleCount += 4)
+        {
+            char buffer[256];
+            sprintf(buffer, "%i", sampleCount > 0 ? sampleCount : 1);
+            desc.xAxisTicks.push_back({ float(sampleCount > 0 ? sampleCount : 1), buffer, TextHAlign::Right, TextVAlign::Top });
+        }
+
         for (const SampleGenerateInfo_1d& sampleFunction : sampleType)
         {
             std::vector<float> samples;
 
-            discrepancies.resize(discrepancies.size() + 1);
-            GraphItem& discrepancy = *discrepancies.rbegin();
+            desc.graphItems.resize(desc.graphItems.size() + 1);
+            GraphItem& discrepancy = *desc.graphItems.rbegin();
             discrepancy.label = sampleFunction.name;
             for (int sampleCount = 1; sampleCount <= c_sampleCount; ++sampleCount)
             {
@@ -188,17 +190,20 @@ void Tests::_1d::Discrepancy::CalculateDiscrepancyWrapAround(const std::vector<s
             }
         }
 
-        std::vector<GraphAxisTick> yAxisTicks;
         char buffer[256];
         sprintf(buffer, "%0.2f", minDiscrepancy);
-        yAxisTicks.push_back({ minDiscrepancy, buffer, TextHAlign::Right, TextVAlign::Bottom });
+        desc.yAxisTicks.push_back({ minDiscrepancy, buffer, TextHAlign::Right, TextVAlign::Bottom });
         sprintf(buffer, "%0.2f", maxDiscrepancy);
-        yAxisTicks.push_back({ maxDiscrepancy, buffer, TextHAlign::Right, TextVAlign::Top });
+        desc.yAxisTicks.push_back({ maxDiscrepancy, buffer, TextHAlign::Right, TextVAlign::Top });
 
         // make the sample type graph
         char fileName[256];
         sprintf(fileName, "output/samples/%s/%s/%s.png", sampleType[0].sampleFamily, sampleType[0].sampleType, testName);
         const char* footer = "x axis is sample count, y axis is discrepancy.";
-        MakeGraph(GraphType::Lines, fileName, "Torroidal Discrepancy", footer, discrepancies, xAxisTicks, yAxisTicks, 512, false, { 0.0f, 0.0f }, { 0.0f, 0.0f });
+
+        desc.fileName = fileName;
+        desc.footer = "x axis is sample count, y axis is discrepancy.";
+        desc.title = "Torroidal Discrepancy";
+        MakeGraph(desc);
     }
 }

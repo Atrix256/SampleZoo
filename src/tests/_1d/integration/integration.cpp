@@ -61,17 +61,17 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         if (sampleType.size() == 0)
             continue;
 
-        std::vector<GraphItem> errors;
+
+        GraphDesc desc;
 
         // useful for log graphs
         //put x axis ticks at every power of 10
-        std::vector<GraphAxisTick> xAxisTicks;
         int i = 1;
         while (i <= sampleCount)
         {
             char buffer[256];
             sprintf(buffer, "%i", i);
-            xAxisTicks.push_back({ float(i), buffer, TextHAlign::Right, TextVAlign::Top });
+            desc.xAxisTicks.push_back(GraphAxisTick{ float(i), buffer, TextHAlign::Right, TextVAlign::Top });
             i *= 10;
         }
 
@@ -100,8 +100,8 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
             sampleFunction.function(samples, sampleCount);
             sprintf(fileName, "output/samples/%s/%s/%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, testName, sampleFunction.name);
 
-            errors.resize(errors.size() + 1);
-            GraphItem& error = *errors.rbegin();
+            desc.graphItems.resize(desc.graphItems.size() + 1);
+            GraphItem& error = *desc.graphItems.rbegin();
             error.label = sampleFunction.name;
             GetErrorData(samples, error, lambda, c_actual);
 
@@ -130,18 +130,23 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         }
 
         // put y axis ticks at the min and max y
-        std::vector<GraphAxisTick> yAxisTicks;
         char buffer[256];
         sprintf(buffer, "%0.2f", globalminy);
-        yAxisTicks.push_back({ globalminy, buffer, TextHAlign::Right, TextVAlign::Top });
+        desc.yAxisTicks.push_back({ globalminy, buffer, TextHAlign::Right, TextVAlign::Top });
         sprintf(buffer, "%0.2f", globalmaxy);
-        yAxisTicks.push_back({ globalmaxy, buffer, TextHAlign::Right, TextVAlign::Top});
+        desc.yAxisTicks.push_back({ globalmaxy, buffer, TextHAlign::Right, TextVAlign::Top});
 
         // make the sample type graph
         sprintf(fileName, "output/samples/%s/%s/%s.png", sampleType[0].sampleFamily, sampleType[0].sampleType, testName);
         sprintf(buffer, "Numerical Integration: %s function", testName);
-        const char* footer = "x axis is sample count, y axis is percent error. Graph is log/log.";
-        MakeGraph(GraphType::Points, fileName, buffer, footer, errors, xAxisTicks, yAxisTicks, 512, true, { 0.0f, 0.0f }, { 0.25f, 0.25f });
+
+        desc.graphType = GraphType::Points;
+        desc.fileName = fileName;
+        desc.title = buffer;
+        desc.footer = "x axis is sample count, y axis is percent error. Graph is log/log.";
+        desc.loglog = true;
+        desc.maxPad = Vec2{ 0.25f, 0.25f };
+        MakeGraph(desc);
     }
 }
 
