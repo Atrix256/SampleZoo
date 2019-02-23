@@ -18,8 +18,7 @@ end
 
 print "=====Generating Documentation====="
 
-local sampleFamilies = scandir('cd ./src/samples/ && ls -d ./*/ && cd ../..')
-local testTypes = scandir('cd ./src/tests/ && ls -d ./*/ && cd ../..')
+local sampleFamilies = scandir('cd ./src/families/ && ls -d ./*/ && cd ../..')
 
 -- Make toc.md
 
@@ -32,24 +31,24 @@ file:write('## Samples\n\n')
 for k,v in pairs(sampleFamilies) do
 	local sampleFamily = string.sub(v,3,-2)
 	file:write('### '..sampleFamily..'\n\n')
-	local sampleTypes = scandir('cd ./src/samples/'..sampleFamily..'/ && ls -d ./*/ && cd ../../..')
+	local sampleTypes = scandir('cd ./src/families/'..sampleFamily..'/samples/ && ls -d ./*/ && cd ../../..')
 	for k2,v2 in pairs(sampleTypes) do
 		local sampleType = string.sub(v2,3,-2)
-		dofile("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.lua")
-		file:write('['..sampleInfo.ShortName..'](output/samples/'..sampleFamily..'/'..sampleType..'/page.md) - '..sampleInfo.Description..'  \n')
+		dofile("./src/families/"..sampleFamily.."/samples/"..sampleType.."/samples.lua")
+		file:write('['..sampleInfo.ShortName..'](output/'..sampleFamily..'/samples/'..sampleType..'/page.md) - '..sampleInfo.Description..'  \n')
 	end
 end
 
 file:write('## Tests\n\n')
 
-for k,v in pairs(testTypes) do
-    local testType = string.sub(v,3,-2)
-    file:write('### '..testType..'\n\n')
-    local subTestTypes = scandir('cd ./src/tests/'..testType..'/ && ls -d ./*/ && cd ../../..')
+for k,v in pairs(sampleFamilies) do
+	local sampleFamily = string.sub(v,3,-2)
+    file:write('### '..sampleFamily..'\n\n')
+    local subTestTypes = scandir('cd ./src/families/'..sampleFamily..'/tests/ && ls -d ./*/ && cd ../../..')
     for k2,v2 in pairs(subTestTypes) do
         local subTestType = string.sub(v2,3,-2)
-        dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
-        file:write('['..testInfo.ShortName..'](output/tests/'..testType..'/'..subTestType..'/page.md) - '..testInfo.Description..'  \n')
+        dofile("./src/families/"..sampleFamily.."/tests/"..subTestType.."/tests.lua")
+        file:write('['..testInfo.ShortName..'](output/'..sampleFamily..'/tests/'..subTestType..'/page.md) - '..testInfo.Description..'  \n')
     end
 end
 
@@ -57,13 +56,13 @@ file:close()
 
 -- make output/tests/X/Y/results.md
 
-for k,v in pairs(testTypes) do
-    local testType = string.sub(v,3,-2)
-    local subTestTypes = scandir('cd ./src/tests/'..testType..'/ && ls -d ./*/ && cd ../../..')
+for k,v in pairs(sampleFamilies) do
+	local sampleFamily = string.sub(v,3,-2)
+    local subTestTypes = scandir('cd ./src/families/'..sampleFamily..'/tests/ && ls -d ./*/ && cd ../../..')
     for k2,v2 in pairs(subTestTypes) do
         local subTestType = string.sub(v2,3,-2)
-        dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
-        file = io.open("./output/tests/"..testType.."/"..subTestType.."/results.md", "w")
+        dofile("./src/families/"..sampleFamily.."/tests/"..subTestType.."/tests.lua")
+        file = io.open("./output/"..sampleFamily.."/tests/"..subTestType.."/results.md", "w")
 
         file:write("# Test Results\n tests done:\n")
         for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
@@ -73,22 +72,22 @@ for k,v in pairs(testTypes) do
         for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
             file:write("## "..testFunctionName.."\n")
 
-            local sampleTypes = scandir('cd ./src/samples/'..testType..'/ && ls -d ./*/ && cd ../../..')
+            local sampleTypes = scandir('cd ./src/families/'..sampleFamily..'/samples/ && ls -d ./*/ && cd ../../..')
 
             for k3,v3 in pairs(sampleTypes) do
                 local sampleType = string.sub(v3,3,-2)
-                dofile("./src/samples/"..testType.."/"..sampleType.."/samples.lua")
+                dofile("./src/families/"..sampleFamily.."/samples/"..sampleType.."/samples.lua")
 
                 file:write("### "..sampleInfo.LongName.."\n")
 
                 if testInfo.MakesSampleTypeImages then
-                    file:write("!["..sampleType.."](../../../samples/"..testType.."/"..sampleType.."/"..testFunctionName..".png)  \n")
+                    file:write("!["..sampleType.."](../../../"..sampleFamily.."/samples/"..sampleType.."/"..testFunctionName..".png)  \n")
                 end
 
                 for sampleFunctionIndex, sampleFunctionInfo in ipairs(sampleInfo.Functions) do
                     if testInfo.MakesIndividualImages then
                         file:write("#### "..sampleFunctionInfo.name.."\n")
-                        file:write("!["..sampleFunctionInfo.name.."](../../../samples/"..testType.."/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionInfo.name..".png)  \n")
+                        file:write("!["..sampleFunctionInfo.name.."](../../../"..sampleFamily.."/samples/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionInfo.name..".png)  \n")
                     end
                 end
             end
@@ -97,6 +96,9 @@ for k,v in pairs(testTypes) do
         file:close()
     end
 end
+
+-- TODO: temp!
+do return end
 
 -- combine output/tests/X/Y/results.md and src/tests/X/Y/tests.md into output/tests/X/Y/page.md
 for k,v in pairs(testTypes) do
