@@ -84,7 +84,7 @@ void _1d::Tests::Numberline::MakeNumberline(const std::vector<std::vector<Sample
             Image result(numberlines.m_width + 128, numberlines.m_height, { 1.0f, 1.0f, 1.0f, 1.0f });
             BlendInImage(result, numberlines, 128, 0);
 
-            for (int i = 0; i < sampleCounts.size(); ++i)
+            for (size_t i = 0; i < sampleCounts.size(); ++i)
             {
                 float posY = float(i) / float(sampleCounts.size()) + 1.0f / float(sampleCounts.size() * 2);
                 char buffer[256];
