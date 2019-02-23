@@ -26,35 +26,28 @@ local file = io.open("./toc.md", "w")
 
 file:write('# Table of Contents\n\n')
 
-file:write('## Samples\n\n')
-
 for k,v in pairs(sampleFamilies) do
 	local sampleFamily = string.sub(v,3,-2)
-	file:write('### '..sampleFamily..'\n\n')
+	file:write('## '..sampleFamily..'\n\n')
+	file:write('### Samples\n\n')
 	local sampleTypes = scandir('cd ./src/families/'..sampleFamily..'/samples/ && ls -d ./*/ && cd ../../..')
 	for k2,v2 in pairs(sampleTypes) do
 		local sampleType = string.sub(v2,3,-2)
 		dofile("./src/families/"..sampleFamily.."/samples/"..sampleType.."/samples.lua")
 		file:write('['..sampleInfo.ShortName..'](output/'..sampleFamily..'/samples/'..sampleType..'/page.md) - '..sampleInfo.Description..'  \n')
 	end
-end
-
-file:write('## Tests\n\n')
-
-for k,v in pairs(sampleFamilies) do
-	local sampleFamily = string.sub(v,3,-2)
-    file:write('### '..sampleFamily..'\n\n')
+	file:write('### Tests\n\n')
     local subTestTypes = scandir('cd ./src/families/'..sampleFamily..'/tests/ && ls -d ./*/ && cd ../../..')
     for k2,v2 in pairs(subTestTypes) do
         local subTestType = string.sub(v2,3,-2)
         dofile("./src/families/"..sampleFamily.."/tests/"..subTestType.."/tests.lua")
         file:write('['..testInfo.ShortName..'](output/'..sampleFamily..'/tests/'..subTestType..'/page.md) - '..testInfo.Description..'  \n')
-    end
+    end	
 end
 
 file:close()
 
--- make output/tests/X/Y/results.md
+-- make output/X/tests/Y/results.md
 
 for k,v in pairs(sampleFamilies) do
 	local sampleFamily = string.sub(v,3,-2)
@@ -97,7 +90,7 @@ for k,v in pairs(sampleFamilies) do
     end
 end
 
--- combine output/tests/X/Y/results.md and src/tests/X/Y/tests.md into output/tests/X/Y/page.md
+-- combine output/X/tests/Y/results.md and src/families/X/tests/Y/tests.md into output/X/tests/Y/page.md
 for k,v in pairs(sampleFamilies) do
 	local sampleFamily = string.sub(v,3,-2)
     local subTestTypes = scandir('cd ./src/families/'..sampleFamily..'/tests/ && ls -d ./*/ && cd ../../..')
@@ -117,7 +110,7 @@ for k,v in pairs(sampleFamilies) do
     end
 end
 
--- make output/samples/X/Y/results.md
+-- make output/X/samples/Y/results.md
 
 for k,v in pairs(sampleFamilies) do
     local sampleFamily = string.sub(v,3,-2)
@@ -181,7 +174,7 @@ for k,v in pairs(sampleFamilies) do
     end
 end
 
--- combine output/samples/X/Y/results.md and src/samples/X/Y/samples.md into output/samples/X/Y/page.md
+-- combine output/X/samples/Y/results.md and src/families/X/samples/Y/samples.md into output/X/samples/Y/page.md
 for k,v in pairs(sampleFamilies) do
     local sampleFamily = string.sub(v,3,-2)
     local sampleTypes = scandir('cd ./src/families/'..sampleFamily..'/samples/ && ls -d ./*/ && cd ../../..')
