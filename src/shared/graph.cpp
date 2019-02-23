@@ -19,7 +19,7 @@ void MakeGraph(const GraphDesc& desc)
 
     static const float virtualPixel = 1.0f / 512.0f;
 
-    static const float log10epsilon = 0.0001f;
+    static const float log10epsilon = 0.000001f;
 
     // make the graph image
     Image image(desc.width, desc.width, { 1.0f, 1.0f, 1.0f, 1.0f });

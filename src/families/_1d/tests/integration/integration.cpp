@@ -54,7 +54,8 @@ static void GetErrorData(const std::vector<float>& samples, GraphItem& error, co
 template <typename LAMBDA>
 static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const LAMBDA& lambda, const float c_actual)
 {
-    static const size_t sampleCount = 1000;
+    static const size_t sampleCount = 4096;
+    char buffer[256];
 
     for (const std::vector<SampleGenerateInfo_1d>& sampleType : sampleFunctions)
     {
@@ -69,11 +70,13 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         int i = 1;
         while (i <= sampleCount)
         {
-            char buffer[256];
             sprintf(buffer, "%i", i);
             desc.xAxisTicks.push_back(GraphAxisTick{ float(i), buffer, TextHAlign::Right, TextVAlign::Top });
             i *= 10;
         }
+
+        sprintf(buffer, "%zu", sampleCount);
+        desc.xAxisTicks.push_back(GraphAxisTick{ float(sampleCount), buffer, TextHAlign::Right, TextVAlign::Top });
 
         // useful for non log graphs
         /*
@@ -114,7 +117,6 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
                 miny = std::min(miny, v[1]);
                 maxy = std::max(maxy, v[1]);
             }
-            char buffer[256];
             sprintf(buffer, "%0.2f", miny);
             yAxisTicks.push_back({ miny, buffer, TextHAlign::Right, TextVAlign::Top });
             sprintf(buffer, "%0.2f", maxy);
@@ -129,12 +131,13 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
             //MakeGraph(fileName, graph, xAxisTicks, yAxisTicks, 512, false, { 0.0f, 0.0f }, { 0.01f, 0.01f });
         }
 
-        // put y axis ticks at the min and max y
-        char buffer[256];
-        sprintf(buffer, "%0.2f", globalminy);
-        desc.yAxisTicks.push_back({ globalminy, buffer, TextHAlign::Right, TextVAlign::Top });
-        sprintf(buffer, "%0.2f", globalmaxy);
-        desc.yAxisTicks.push_back({ globalmaxy, buffer, TextHAlign::Right, TextVAlign::Top});
+        float value = 1.0f;
+        for (int i = 1; i <= 7; ++i)
+        {
+            sprintf(buffer, "10^-%i", i);
+            desc.yAxisTicks.push_back({ value, buffer, TextHAlign::Right, TextVAlign::Top });
+            value /= 10.0f;
+        }
 
         // make the sample type graph
         sprintf(fileName, "output/%s/samples/%s/%s.png", sampleType[0].sampleFamily, sampleType[0].sampleType, testName);
@@ -145,7 +148,8 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         desc.title = buffer;
         desc.footer = "x axis is sample count, y axis is percent error. Graph is log/log.";
         desc.loglog = true;
-        desc.maxPad = Vec2{ 0.25f, 0.25f };
+        desc.forceYMinMax = true;
+        desc.yMinMax = Vec2{ 0.0f, 1.0f };
         MakeGraph(desc);
     }
 }

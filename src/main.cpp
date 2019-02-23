@@ -17,6 +17,9 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* make integration graph go to 4096 and put a label there.
+ * i think it's time to cache off blue noise (and other) results. it takes a while.
+
 * in code/doc gen lua files, rename subtesttype to testtype, after things are working
 
 * mention how VDC2 (in a full power of 2) is regular sampling but in a binary search pattern
