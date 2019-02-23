@@ -9,13 +9,15 @@ DATE: 2/8/2019
 int main(int argc, char **argv)
 {
     // Note: comment this out and call your specific code directly if you want to iterate on code.
-    Tests::AutoTest();
+    AutoTest();
 
     return 0;
 }
 
 /*
 TODO:
+
+* in code/doc gen lua files, rename subtesttype to testtype, after things are working
 
 * mention how VDC2 (in a full power of 2) is regular sampling but in a binary search pattern
 
