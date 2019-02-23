@@ -17,6 +17,13 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* Martin's comments about graphing in Twitter dm
+ * this is important. he has the right answers for improving the graphing
+
+* make some 1d summary page: sobol vs golden ratio vs best candidate blue noise, vs regular centered offset?
+
+* there's a thing about aliasing vs... (discrepancy?) i dunno. it was from one of the papers you have a link to.  see if you can formalize that into a test of some kind.
+
 * document "regular jittered" and mention pixar.
 
 * document van der corupt base 2, 3, 5 and mention stuff from https://blog.demofox.org/2017/05/29/when-random-numbers-are-too-random-low-discrepancy-sequences/
