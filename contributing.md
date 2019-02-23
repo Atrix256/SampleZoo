@@ -57,8 +57,9 @@ A list of specific things the project needs.
 * improve the look of graphing in general, all graphs.
 * Do super sampling of graphs to help aliasing problems: render at a larger resolution and downside. Possibly render stochastically?
 * This seems possibly useful for automatically putting ticks on graphs: http://vis.stanford.edu/files/2010-TickLabels-InfoVis.pdf
-* the text rendering seems like it needs some help.  One thing may possibly be that the text stb renders is in srgb but we are using it like it's perceptually linear.
 * I think you can set up CI as well as code tidying in github. Need to figure those things out.
+* Make a way to cache data, since some of it takes a long time to generate (eg large counts of blue noise)
+* probably should modify best candidate blue noise generation to use a (1d) grid acceleration structure. Or sort the points and use binary search to calculate distances or something.
 
 ### 1D Sampling Patterns & Tests
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
