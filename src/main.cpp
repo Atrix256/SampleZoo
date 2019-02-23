@@ -17,6 +17,8 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* mention how VDC2 (in a full power of 2) is regular sampling but in a binary search pattern
+
 * Martin's comments about graphing in Twitter dm
  * this is important. he has the right answers for improving the graphing
 
