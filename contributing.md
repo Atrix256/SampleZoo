@@ -55,6 +55,7 @@ A list of specific things the project needs.
 * clang tidy for style guidelines? Or google C++ style guide? or clang-format? "clang-format -style=google"
 * also an editor config? https://editorconfig.org/
 * improve the look of graphing in general, all graphs.
+* Do super sampling of graphs to help aliasing problems: render at a larger resolution and downside. Possibly render stochastically?
 * This seems possibly useful for automatically putting ticks on graphs: http://vis.stanford.edu/files/2010-TickLabels-InfoVis.pdf
 * the text rendering seems like it needs some help.  One thing may possibly be that the text stb renders is in srgb but we are using it like it's perceptually linear.
 
@@ -73,17 +74,14 @@ A list of specific things the project needs.
 
 ### Infrastructure
 * make a standard for how to add new samples or tests, fill it out in the contributing file.
-* gather your list of sampling patterns, tests, etc on this page. from progressive projective blue noise project and email etc.
-* do some auto generation of parts of the documentation, in docgen.lua as part of the premake step, to help standardization and boilerplate
+* make a data cache for expensive to compute things (eg blue noise)
 
 ### Sampling Patterns
-* 2d basic LDS
+* 2d basic LDS and others
 * Martin's R2 sequence for 2d (and higher dimensions)
 * uniform random point in triangle: https://twitter.com/TechSparx/status/1093193006440726529?s=03
+* prorgressive projective blue noise & all the papers you have linked etc.
 
 ### Sampling Tests
-* 1d numerical integration tests vs high sample count white noise.
-* need other 1d tests and FFT! (FFTW?)
 * 2d tests and beyond.
 * show how regular 1d sampling has aliasing problems. Also show how random samples trade the aliasing for noise. 
-* add numerical integration tests to 1d sample tests: linear, step, e^x? from 0 to 1.  compare vs high count uniform random as a ground truth.  Cache those results since they are costlier to compute?
