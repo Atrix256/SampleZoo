@@ -30,27 +30,29 @@ file:write("    bool randomized;\n")
 file:write("};\n\n")
 file:write("using Test_1d = void(*)(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName);\n\n")
 file:write("#define countof(array) (sizeof(array) / sizeof(array[0]))\n\n");
-file:write('#include "tests/tests.h"\n')
-file:write('#include "samples/samples.h"\n')
-file:write('#include "tests/autotest.h"\n')
+file:write('#include "tests.h"\n')
+file:write('#include "samples.h"\n')
+file:write('#include "autotest.h"\n')
 file:close()
 
--- make ./build/codegen/samples/samples.h
-file = io.open("./build/codegen/samples/samples.h", "w")
+-- gather the list of sample families
+local sampleFamilies = scandir('cd ./src/families/ && ls -d ./*/ && cd ../..')
+
+-- make ./build/codegen/samples.h
+file = io.open("./build/codegen/samples.h", "w")
 file:write(dotHHeader)
-local sampleFamilies = scandir('cd ./src/samples/ && ls -d ./*/ && cd ../..')
 for k,v in pairs(sampleFamilies) do
 	local sampleFamily = string.sub(v,3,-2)
-	file:write('#include "'..sampleFamily..'/samples.h"\n')
+	file:write('#include "'..sampleFamily..'/samples/samples.h"\n')
 end
 file:close()
 
--- make ./build/codegen/samples/X/samples.h
+-- make ./build/codegen/X/samples/samples.h
 for k,v in pairs(sampleFamilies) do
 	local sampleFamily = string.sub(v,3,-2)
-	file = io.open("./build/codegen/samples/"..sampleFamily.."/samples.h", "w")
+	file = io.open("./build/codegen/"..sampleFamily.."/samples/samples.h", "w")
 	file:write(dotHHeader)
-	local sampleTypes = scandir('cd ./src/samples/'..sampleFamily..'/ && ls -d ./*/ && cd ../../..')
+	local sampleTypes = scandir('cd ./src/families/'..sampleFamily..'/samples/ && ls -d ./*/ && cd ../../..')
 	for k2,v2 in pairs(sampleTypes) do
 		local sampleType = string.sub(v2,3,-2)
 		file:write('#include "'..sampleType..'/samples.h"\n')
@@ -58,39 +60,36 @@ for k,v in pairs(sampleFamilies) do
 	file:close()
 end
 
--- make ./build/codegen/tests/tests.h
-file = io.open("./build/codegen/tests/tests.h", "w")
+-- make ./build/codegen/tests.h
+file = io.open("./build/codegen/tests.h", "w")
 file:write(dotHHeader)
-local testTypes = scandir('cd ./src/tests/ && ls -d ./*/ && cd ../..')
-for k,v in pairs(testTypes) do
-	local testType = string.sub(v,3,-2)
-	file:write('#include "'..testType..'/tests.h"\n')
+for k,v in pairs(sampleFamilies) do
+	local sampleFamily = string.sub(v,3,-2)
+	file:write('#include "'..sampleFamily..'/tests/tests.h"\n')
 end
 file:close()
 
--- make ./build/codegen/tests/autotest.h
-file = io.open("./build/codegen/tests/autotest.h", "w")
+-- make ./build/codegen/autotest.h
+file = io.open("./build/codegen/autotest.h", "w")
 file:write(dotHHeader)
-local testTypes = scandir('cd ./src/tests/ && ls -d ./*/ && cd ../..')
-for k,v in pairs(testTypes) do
-	local testType = string.sub(v,3,-2)
-	file:write('#include "'..testType..'/autotest.h"\n')
+for k,v in pairs(sampleFamilies) do
+	local sampleFamily = string.sub(v,3,-2)
+	file:write('#include "'..sampleFamily..'/tests/autotest.h"\n')
 end
-file:write("\nnamespace Tests\n{\n")
-file:write("    inline void AutoTest()\n    {\n")
-for k,v in pairs(testTypes) do
-	local testType = string.sub(v,3,-2)
-	file:write('        '..testType..'::AutoTest();\n')
+file:write("\ninline void AutoTest()\n{\n")
+for k,v in pairs(sampleFamilies) do
+	local sampleFamily = string.sub(v,3,-2)
+	file:write('    '..sampleFamily..'::Tests::AutoTest();\n')
 end
-file:write("    }\n};\n")
+file:write("};\n")
 file:close()
 
--- make ./build/codegen/tests/X/tests.h
-for k,v in pairs(testTypes) do
-	local testType = string.sub(v,3,-2)
-	file = io.open("./build/codegen/tests/"..testType.."/tests.h", "w")
+-- make ./build/codegen/X/tests/tests.h
+for k,v in pairs(sampleFamilies) do
+	local sampleFamily = string.sub(v,3,-2)
+	file = io.open("./build/codegen/"..sampleFamily.."/tests/tests.h", "w")
 	file:write(dotHHeader)
-	local subTestTypes = scandir('cd ./src/tests/'..testType..'/ && ls -d ./*/ && cd ../../..')
+	local subTestTypes = scandir('cd ./src/families/'..sampleFamily..'/tests/ && ls -d ./*/ && cd ../../..')
 	for k2,v2 in pairs(subTestTypes) do
 		local subTestType = string.sub(v2,3,-2)
 		file:write('#include "'..subTestType..'/tests.h"\n')
@@ -98,20 +97,20 @@ for k,v in pairs(testTypes) do
 	file:close()
 end
 
--- make ./build/codegen/tests/X/Y/tests.h
-for k,v in pairs(testTypes) do
-    local testType = string.sub(v,3,-2)
-    local subTestTypes = scandir('cd ./src/tests/'..testType..'/ && ls -d ./*/ && cd ../../..')
+-- make ./build/codegen/X/tests/Y/tests.h
+for k,v in pairs(sampleFamilies) do
+	local sampleFamily = string.sub(v,3,-2)
+    local subTestTypes = scandir('cd ./src/families/'..sampleFamily..'/tests/ && ls -d ./*/ && cd ../../..')
     for k2,v2 in pairs(subTestTypes) do
 
         local subTestType = string.sub(v2,3,-2)
 
-        file = io.open("./build/codegen/tests/"..testType.."/"..subTestType.."/tests.h", "w")
+        file = io.open("./build/codegen/"..sampleFamily.."/tests/"..subTestType.."/tests.h", "w")
         file:write(dotHHeader)
 
-        dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
+        dofile("./src/families/"..sampleFamily.."/tests/"..subTestType.."/tests.lua")
 
-        file:write("namespace Tests\n{\n    namespace "..testType.."\n    {\n        namespace "..testInfo.CodeName.."\n        {\n")
+        file:write("namespace "..sampleFamily.."\n{\n    namespace Tests\n    {\n        namespace "..testInfo.CodeName.."\n        {\n")
 
         for functionIndex, functionName in ipairs(testInfo.Functions) do
             file:write("            void "..functionName.."(const std::vector<std::vector<SampleGenerateInfo_1d>>&, const char* testName);\n")
@@ -121,27 +120,27 @@ for k,v in pairs(testTypes) do
     end
 end
 
--- make ./build/codegen/tests/X/autotest.h
-for k,v in pairs(testTypes) do
-    local testType = string.sub(v,3,-2)
+-- make ./build/codegen/X/tests/autotest.h
+for k,v in pairs(sampleFamilies) do
+	local sampleFamily = string.sub(v,3,-2)
 
-    file = io.open("./build/codegen/tests/"..testType.."/autotest.h", "w")
+    file = io.open("./build/codegen/"..sampleFamily.."/tests/autotest.h", "w")
     file:write(dotHHeader)
 
-    local subTestTypes = scandir('cd ./src/tests/'..testType..'/ && ls -d ./*/ && cd ../../..')
+    local subTestTypes = scandir('cd ./src/families/'..sampleFamily..'/tests/ && ls -d ./*/ && cd ../../..')
     for k2,v2 in pairs(subTestTypes) do
         local subTestType = string.sub(v2,3,-2)
         file:write('#include "'..subTestType..'/autotest.h"\n')
     end
 
-    file:write("\nnamespace Tests\n{\n    namespace "..testType.."\n    {\n")
+    file:write("\nnamespace "..sampleFamily.."\n{\n    namespace Tests\n    {\n")
     file:write("        inline void AutoTest()\n        {\n")
 
-    local subTestTypes = scandir('cd ./src/tests/'..testType..'/ && ls -d ./*/ && cd ../../..')
+    local subTestTypes = scandir('cd ./src/families/'..sampleFamily..'/tests/ && ls -d ./*/ && cd ../../..')
     for k2,v2 in pairs(subTestTypes) do
         local subTestType = string.sub(v2,3,-2)
-        dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
-        file:write("            "..testType.."::"..testInfo.CodeName.."::AutoTest();\n")
+        dofile("./src/families/"..sampleFamily.."/tests/"..subTestType.."/tests.lua")
+        file:write("            "..testInfo.CodeName.."::AutoTest();\n")
     end
 
     file:write("        };\n    };\n};\n")
@@ -149,30 +148,30 @@ for k,v in pairs(testTypes) do
     file:close()
 end
 
--- make ./build/codegen/tests/X/Y/autotest.h
-for k,v in pairs(testTypes) do
-    local testType = string.sub(v,3,-2)
-    local subTestTypes = scandir('cd ./src/tests/'..testType..'/ && ls -d ./*/ && cd ../../..')
+-- make ./build/codegen/X/tests/Y/autotest.h
+for k,v in pairs(sampleFamilies) do
+	local sampleFamily = string.sub(v,3,-2)
+    local subTestTypes = scandir('cd ./src/families/'..sampleFamily..'/tests/ && ls -d ./*/ && cd ../../..')
     for k2,v2 in pairs(subTestTypes) do
 
         local subTestType = string.sub(v2,3,-2)
 
-        dofile("./src/tests/"..testType.."/"..subTestType.."/tests.lua")
+        dofile("./src/families/"..sampleFamily.."/tests/"..subTestType.."/tests.lua")
 
-        file = io.open("./build/codegen/tests/"..testType.."/"..subTestType.."/autotest.h", "w")
+        file = io.open("./build/codegen/"..sampleFamily.."/tests/"..subTestType.."/autotest.h", "w")
         file:write(dotHHeader)
 
-        file:write("namespace Tests\n{\n    namespace "..testType.."\n    {\n        namespace "..testInfo.CodeName.."\n        {\n")
+        file:write("namespace "..sampleFamily.."\n{\n    namespace Tests\n    {\n        namespace "..testInfo.CodeName.."\n        {\n")
 
         file:write("            inline void AutoTest()\n            {\n")
-        file:write("                std::vector<std::vector<SampleGenerateInfo"..testType..">> funcs =\n                {\n")
-        local sampleTypes = scandir('cd ./src/samples/'..testType..'/ && ls -d ./*/ && cd ../../..')
+        file:write("                std::vector<std::vector<SampleGenerateInfo"..sampleFamily..">> funcs =\n                {\n")
+        local sampleTypes = scandir('cd ./src/families/'..sampleFamily..'/samples/ && ls -d ./*/ && cd ../../..')
         for k3, v3 in pairs(sampleTypes) do
             local sampleType = string.sub(v3,3,-2)
-            dofile("./src/samples/"..testType.."/"..sampleType.."/samples.lua")
+            dofile("./src/families/"..sampleFamily.."/samples/"..sampleType.."/samples.lua")
             file:write("                    {\n")
             for functionIndex, functionInfo in ipairs(sampleInfo.Functions) do
-                file:write("                        { Samples::"..testType.."::"..sampleInfo.CodeName.."::"..functionInfo.name..", \""..testType.."\", \""..sampleType.."\", \""..functionInfo.name.."\", "..tostring(functionInfo.progressive)..", "..tostring(functionInfo.randomized).."},\n")
+                file:write("                        { "..sampleFamily.."::Samples::"..sampleInfo.CodeName.."::"..functionInfo.name..", \""..sampleFamily.."\", \""..sampleType.."\", \""..functionInfo.name.."\", "..tostring(functionInfo.progressive)..", "..tostring(functionInfo.randomized).."},\n")
             end
             file:write("                    },\n")
         end
@@ -185,24 +184,24 @@ for k,v in pairs(testTypes) do
         file:write("            }\n")
         file:write("        };\n    };\n};\n")
 
-        os.mkdir("./output/tests/"..testType.."/"..subTestType.."/")
+        os.mkdir("./output/"..sampleFamily.."/tests/"..subTestType.."/")
     end
 end
 
--- make ./build/codegen/samples/X/Y/samples.h
+-- make ./build/codegen/X/samples/Y/samples.h
 for k,v in pairs(sampleFamilies) do
     local sampleFamily = string.sub(v,3,-2)
-    local sampleTypes = scandir('cd ./src/samples/'..sampleFamily..'/ && ls -d ./*/ && cd ../../..')
+    local sampleTypes = scandir('cd ./src/families/'..sampleFamily..'/samples/ && ls -d ./*/ && cd ../../..')
     for k2,v2 in pairs(sampleTypes) do
 
         local sampleType = string.sub(v2,3,-2)
 
-        file = io.open("./build/codegen/samples/"..sampleFamily.."/"..sampleType.."/samples.h", "w")
+        file = io.open("./build/codegen/"..sampleFamily.."/samples/"..sampleType.."/samples.h", "w")
         file:write(dotHHeader)
 
-        dofile("./src/samples/"..sampleFamily.."/"..sampleType.."/samples.lua")
+        dofile("./src/families/"..sampleFamily.."/samples/"..sampleType.."/samples.lua")
 
-        file:write("namespace Samples\n{\n    namespace "..sampleFamily.."\n    {\n        namespace "..sampleInfo.CodeName.."\n        {\n")
+        file:write("namespace "..sampleFamily.."\n{\n    namespace Samples\n    {\n        namespace "..sampleInfo.CodeName.."\n        {\n")
 
         for functionIndex, functionInfo in ipairs(sampleInfo.Functions) do
             file:write("            void "..functionInfo.name.."(std::vector<float>& values, size_t numValues);\n")
@@ -211,6 +210,6 @@ for k,v in pairs(sampleFamilies) do
         file:write("        };\n    };\n};\n")
 
         -- also make output/samples/X/Y/
-        os.mkdir("./output/samples/"..sampleFamily.."/"..sampleType.."/")
+        os.mkdir("./output/"..sampleFamily.."/samples/"..sampleType.."/")
     end
 end
