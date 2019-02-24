@@ -4,30 +4,23 @@ AUTHOR: Alan Wolfe (alan.wolfe@gmail.com)
 DATE: 2/8/2019
 */
 
+#include "shared/datacache.h"
 #include "codegen.h"
 
 int main(int argc, char **argv)
 {
+    DataCache::Load();
+
     // Note: comment this out and call your specific code directly if you want to iterate on code.
     AutoTest();
 
+
+    DataCache::Save();
     return 0;
 }
 
 /*
 TODO:
-
-! gather links from progressive projective blue noise project! there are some good ones.
- * and email later.
-
-* explain dft test
- * in blue noise explanation show white vs blue DFT and how blue is missing low frequency content
- * and compare vs jittered.
-
-! maybe need a "blue noise" meta page?
- * show DFT best candidate, vs uniform random, vs the regular jittered
-
-* cache all randomized sequences, so they aren't so noisy on checkins / iteration
 
 * sample cache soon
  * Have a bool that says whether shared is ok or if it wants unique.
@@ -40,6 +33,22 @@ TODO:
  ! maybe have everything call a wrapper function which goes through cache first and doesn't call internal function if serviced by cache?
   * std::vector<std::vector<SampleGenerateInfo_1d>> funcs
   * that would instead have a wrapper function, which accesses the cache, but has knowledge of the function to call as backup, the key to look it up by, and whether it's unique or shared
+
+ ! we could maybe have a generated c++ structure for samples, tests, and functions there in.
+
+ * maybe put max / min hz on the frequency graph too?
+
+! gather links from progressive projective blue noise project! there are some good ones.
+ * and email later.
+
+* explain dft test
+ * in blue noise explanation show white vs blue DFT and how blue is missing low frequency content
+ * and compare vs jittered.
+
+! maybe need a "blue noise" meta page?
+ * show DFT best candidate, vs uniform random, vs the regular jittered
+
+* cache all randomized sequences, so they aren't so noisy on checkins / iteration
 
 * generate the TOC into the readme, by having the readme have a source .md file, and a marker for where to put the TOC
  * can still link to a raw TOC i guess :P
