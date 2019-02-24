@@ -17,11 +17,15 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+! gather links from progressive projective blue noise project! there are some good ones.
+ * and email later.
+
 * explain dft test
  * in blue noise explanation show white vs blue DFT and how blue is missing low frequency content
  * and compare vs jittered.
 
 ! maybe need a "blue noise" meta page?
+ * show DFT best candidate, vs uniform random, vs the regular jittered
 
 * cache all randomized sequences, so they aren't so noisy on checkins / iteration
 
@@ -33,6 +37,7 @@ TODO:
  * Cache... Load it up on startup, save it on shutdown.
  * If a cache index desired doesn't exist or doesn't have enough / the right number of samples, it makes that index (or fills it up for progressive case).
  * How can we make sure requesting samples goes through cache API?
+ ! maybe have everything call a wrapper function which goes through cache first and doesn't call internal function if serviced by cache?
 
 * generate the TOC into the readme, by having the readme have a source .md file, and a marker for where to put the TOC
  * can still link to a raw TOC i guess :P
