@@ -38,6 +38,8 @@ TODO:
  * If a cache index desired doesn't exist or doesn't have enough / the right number of samples, it makes that index (or fills it up for progressive case).
  * How can we make sure requesting samples goes through cache API?
  ! maybe have everything call a wrapper function which goes through cache first and doesn't call internal function if serviced by cache?
+  * std::vector<std::vector<SampleGenerateInfo_1d>> funcs
+  * that would instead have a wrapper function, which accesses the cache, but has knowledge of the function to call as backup, the key to look it up by, and whether it's unique or shared
 
 * generate the TOC into the readme, by having the readme have a source .md file, and a marker for where to put the TOC
  * can still link to a raw TOC i guess :P

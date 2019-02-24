@@ -212,4 +212,6 @@ for k,v in pairs(sampleFamilies) do
         -- also make output/samples/X/Y/
         os.mkdir("./output/"..sampleFamily.."/samples/"..sampleType.."/")
     end
+
+    os.mkdir("./datacache/")
 end
