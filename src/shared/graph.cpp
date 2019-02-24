@@ -135,10 +135,19 @@ void MakeGraph(const GraphDesc& desc)
             std::array<float, 3> rgb = HSVToRGB(Vec3{ std::fmodf(float(graphItemIndex)*c_goldenRatioConjugate, 1.0f), 0.95f, 0.95f });
             PixelRGBAF32 lineColor = { rgb[0], rgb[1], rgb[2], 1.0f };
 
+            // make sure the data is sorted
+            std::vector<Vec2> dataSorted(graphItem.data);
+            std::sort(dataSorted.begin(), dataSorted.end(),
+                [] (const Vec2& a, const Vec2& b)
+                {
+                    return a[0] < b[0];
+                }
+            );
+
             // draw the lines for the line graph
             bool firstPoint = true;
             Vec2 lastPoint;
-            for (Vec2 dataPoint : graphItem.data)
+            for (Vec2 dataPoint : dataSorted)
             {
                 // get the data point location on the image
                 Vec2 imageSpacePoint = DataToImage(dataPoint);
