@@ -18,14 +18,12 @@ int main(int argc, char **argv)
 TODO:
 
 * explain dft test
-* in blue noise explanation show white vs blue DFT and how blue is missing low frequency content
+ * in blue noise explanation show white vs blue DFT and how blue is missing low frequency content
+ * and compare vs jittered.
+
+! maybe need a "blue noise" meta page?
 
 * cache all randomized sequences, so they aren't so noisy on checkins / iteration
-
-* does blue noise show the right spectrum in dft test?
-
-* this for fft: https://github.com/d1vanov/Simple-FFT
- * add to software used list
 
 * sample cache soon
  * Have a bool that says whether shared is ok or if it wants unique.
@@ -36,9 +34,10 @@ TODO:
  * If a cache index desired doesn't exist or doesn't have enough / the right number of samples, it makes that index (or fills it up for progressive case).
  * How can we make sure requesting samples goes through cache API?
 
-* generate the TOC into the readme
+* generate the TOC into the readme, by having the readme have a source .md file, and a marker for where to put the TOC
+ * can still link to a raw TOC i guess :P
 
-* try using left side bearing in the font drawing.  Sobol in particular has an issue but so does heljo
+* try using left side bearing in the font drawing.  Sobol in particular has an issue but so does heljo, and RegularJittered
 
 * make integration graph go to 4096 and put a label there.
  * i think it's time to cache off blue noise (and other) results. it takes a while.
