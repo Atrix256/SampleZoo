@@ -14,8 +14,8 @@ DATE: 2/23/2019
 
 void _1d::Tests::DFT::DFT(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName)
 {
-    static const int c_numSamples = 64;
-    static const int c_sampleSourceImageWidth = 512;
+    static const int c_numSamples = 128;
+    static const int c_sampleSourceImageWidth = 1024;
 
     for (const std::vector<SampleGenerateInfo_1d>& sampleType : sampleFunctions)
     {
@@ -40,11 +40,15 @@ void _1d::Tests::DFT::DFT(const std::vector<std::vector<SampleGenerateInfo_1d>>&
             // make a graph of the frequencies
             char fileName[256];
             sprintf(fileName, "output/%s/samples/%s/%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, testName, sampleFunction.name);
+            char title[256];
+            sprintf(title, "DFT Magnitude: %s", sampleFunction.name);
             GraphDesc desc;
             desc.fileName = fileName;
+            desc.title = title;
             desc.graphItems.resize(desc.graphItems.size() + 1);
+            desc.xAxisTicks.push_back({ 1.0f, "1 hz", TextHAlign::Left, TextVAlign::Top });
             GraphItem& dftData = *desc.graphItems.rbegin();
-            for (size_t i = 0; i < sampleImage.size() / 2; ++i)
+            for (size_t i = 1; i < sampleImage.size() / 2; ++i)
             {
                 const complex_type& c = sampleImage[i];
                 float mag = float(sqrt(c.real()*c.real() + c.imag()*c.imag()));
@@ -52,18 +56,16 @@ void _1d::Tests::DFT::DFT(const std::vector<std::vector<SampleGenerateInfo_1d>>&
             }
             MakeGraph(desc);
 
-            int ijkl = 0;
-            (void)ijkl;
-
-            // TODO: x and y axis tick marks
-            // TODO: only do first half of frequencies?
-            // TODO: i think the graph needs to be shifted over.
+            /*
+            Image tempTest(c_sampleSourceImageWidth * 2, 1);
+            for (float f : samples)
+            {
+                size_t index = Clamp(size_t(f * float(c_sampleSourceImageWidth * 2) + 0.5f), size_t(0), size_t(c_sampleSourceImageWidth * 2 - 1));
+                tempTest.m_pixels[index] = {0.0f, 0.0f, 0.0f, 1.0f};
+            }
+            sprintf(fileName, "output/%s/samples/%s/%s_%s_samples.png", sampleFunction.sampleFamily, sampleFunction.sampleType, testName, sampleFunction.name);
+            SaveImage(tempTest, fileName);
+            */
         }
     }
-
-
-
-
-    int ijkl = 0;
-    //DoIntegrationTest(sampleFunctions, testName, ::Quadratic, 3.0f);
 }

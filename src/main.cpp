@@ -17,6 +17,9 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* finish making dft test
+ * the blue noise doesn't seem very blue... what's the deal?
+
 * cache all randomized sequences, so they aren't so noisy on checkins / iteration
 
 * does blue noise show the right spectrum in dft test?
