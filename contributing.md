@@ -72,6 +72,7 @@ A list of specific things the project needs.
 * frequency analysis (DFT)
 * regular sampling and some others are not progressive. for integration graphing, it's useful to show what that means when tested the same way progressive samples are tested, but i think non progressive sampling types should be graphed such that at sample count N, it's showing the error for an N count sequence.
 * on the integration error graph, the actual graph being integrated could be shown in the lower left
+* look into making a power spectrum test: https://cs.dartmouth.edu/wjarosz/publications/subr16fourier.html
 
 ## Work Needed, but claimed by Alan for now
 
@@ -79,7 +80,7 @@ A list of specific things the project needs.
 * make a standard for how to add new samples or tests, fill it out in the contributing file.
 * make a data cache for expensive to compute things (eg blue noise)
 
-### Sampling Patterns
+### Sampling Patterns & tests
 * 2d basic LDS and others
 * Martin's R2 sequence for 2d (and higher dimensions)
 * uniform random point in triangle: https://twitter.com/TechSparx/status/1093193006440726529?s=03
@@ -87,6 +88,7 @@ A list of specific things the project needs.
 * dither / animated dither blue noise, ign, etc
 * sampling on a sphere
 * sampling in a triangle
+* 2d radial power spectrum test described here: https://cs.dartmouth.edu/wjarosz/publications/subr16fourier.html
 
 ### Sampling Tests
 * 2d tests and beyond.
