@@ -17,6 +17,10 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* cache all randomized sequences, so they aren't so noisy on checkins / iteration
+
+* does blue noise show the right spectrum in dft test?
+
 * this for fft: https://github.com/d1vanov/Simple-FFT
  * add to software used list
 
@@ -60,6 +64,7 @@ TODO:
  * should have discrepancy graphed differently?  ditto to above...
  * it would be nice to show them graphed wrong for 1 image to show the difference though.
  ! randomized sequences should be an average over several runs.
+  * for integration, discrepancy and dft mainly. numerline doesn't need it
 
 * likely need to cache blue noise results soon in a cache folder!
 

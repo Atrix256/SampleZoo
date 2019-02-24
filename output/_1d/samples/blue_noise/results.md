@@ -2,6 +2,8 @@
  samples tested:
 * BestCandidate (Progressive, Randomized)
 ## BestCandidate
+### Discrete Fourier Transform
+![BestCandidate](../../../_1d/samples/blue_noise/DFT_BestCandidate.png)  
 ### Numberline
 ![BestCandidate](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate.png)  
 ## Discrepancy Test

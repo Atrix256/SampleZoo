@@ -5,15 +5,23 @@
 * RegularCenteredOffset (Not Progressive, Not Randomized)
 * RegularJittered (Not Progressive, Randomized)
 ## Regular
+### Discrete Fourier Transform
+![Regular](../../../_1d/samples/regular/DFT_Regular.png)  
 ### Numberline
 ![Regular](../../../_1d/samples/regular/MakeNumberline_Regular.png)  
 ## RegularCentered
+### Discrete Fourier Transform
+![RegularCentered](../../../_1d/samples/regular/DFT_RegularCentered.png)  
 ### Numberline
 ![RegularCentered](../../../_1d/samples/regular/MakeNumberline_RegularCentered.png)  
 ## RegularCenteredOffset
+### Discrete Fourier Transform
+![RegularCenteredOffset](../../../_1d/samples/regular/DFT_RegularCenteredOffset.png)  
 ### Numberline
 ![RegularCenteredOffset](../../../_1d/samples/regular/MakeNumberline_RegularCenteredOffset.png)  
 ## RegularJittered
+### Discrete Fourier Transform
+![RegularJittered](../../../_1d/samples/regular/DFT_RegularJittered.png)  
 ### Numberline
 ![RegularJittered](../../../_1d/samples/regular/MakeNumberline_RegularJittered.png)  
 ## Discrepancy Test

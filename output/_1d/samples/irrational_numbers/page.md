@@ -131,15 +131,23 @@ https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmaticall
 * Pi (Progressive, Not Randomized)
 * Sqrt2 (Progressive, Not Randomized)
 ## GoldenRatioZero
+### Discrete Fourier Transform
+![GoldenRatioZero](../../../_1d/samples/irrational_numbers/DFT_GoldenRatioZero.png)  
 ### Numberline
 ![GoldenRatioZero](../../../_1d/samples/irrational_numbers/MakeNumberline_GoldenRatioZero.png)  
 ## GoldenRatio
+### Discrete Fourier Transform
+![GoldenRatio](../../../_1d/samples/irrational_numbers/DFT_GoldenRatio.png)  
 ### Numberline
 ![GoldenRatio](../../../_1d/samples/irrational_numbers/MakeNumberline_GoldenRatio.png)  
 ## Pi
+### Discrete Fourier Transform
+![Pi](../../../_1d/samples/irrational_numbers/DFT_Pi.png)  
 ### Numberline
 ![Pi](../../../_1d/samples/irrational_numbers/MakeNumberline_Pi.png)  
 ## Sqrt2
+### Discrete Fourier Transform
+![Sqrt2](../../../_1d/samples/irrational_numbers/DFT_Sqrt2.png)  
 ### Numberline
 ![Sqrt2](../../../_1d/samples/irrational_numbers/MakeNumberline_Sqrt2.png)  
 ## Discrepancy Test

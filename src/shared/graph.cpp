@@ -191,6 +191,9 @@ void MakeGraph(const GraphDesc& desc)
             std::array<float, 3> rgb = HSVToRGB(Vec3{ std::fmodf(float(graphItemIndex)*c_goldenRatioConjugate, 1.0f), 0.95f, 0.95f });
             PixelRGBAF32 lineColor = { rgb[0], rgb[1], rgb[2], 1.0f };
 
+            if (graphItem.label.length() == 0)
+                continue;
+
             Vec2 outerBoxSize = Vec2{ 20.0f, 20.0f } / Vec2{ 512.0f, 25.0f };
             Vec2 outerBoxMin = Vec2{ 0.1f, 0.5f - outerBoxSize[1] / 2.0f };
             Vec2 outerBoxMax = outerBoxMin + outerBoxSize;

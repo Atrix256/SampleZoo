@@ -70,6 +70,9 @@ Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight, in
 
     Image stringImage;
 
+    if (!string)
+        return stringImage;
+
     float scale = stbtt_ScaleForPixelHeight(&c_fontInfo, textHeight);
     int ascent;
     int descent;
@@ -99,6 +102,9 @@ Image MakeTextImage(const char* string, PixelRGBAF32 color, float textHeight, in
 
 void DrawText(Image& image, const char* string, PixelRGBAF32 color, float textHeight_, Vec2& pos, TextHAlign halign, TextVAlign valign)
 {
+    if (!string)
+        return;
+
     // convert text height from uv space to pixels
     float textHeight = textHeight_ * float(image.m_height);
 
