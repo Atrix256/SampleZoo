@@ -17,6 +17,22 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* this for fft: https://github.com/d1vanov/Simple-FFT
+ * add to software used list
+
+* sample cache soon
+ * Have a bool that says whether shared is ok or if it wants unique.
+ * Internally have N cache items.
+ * Shared uses index 0.
+ * Unique increments an internal uniqueness counter and uses that index.
+ * Cache... Load it up on startup, save it on shutdown.
+ * If a cache index desired doesn't exist or doesn't have enough / the right number of samples, it makes that index (or fills it up for progressive case).
+ * How can we make sure requesting samples goes through cache API?
+
+* generate the TOC into the readme
+
+* try using left side bearing in the font drawing.  Sobol in particular has an issue but so does heljo
+
 * make integration graph go to 4096 and put a label there.
  * i think it's time to cache off blue noise (and other) results. it takes a while.
 

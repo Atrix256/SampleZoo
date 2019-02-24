@@ -54,7 +54,7 @@ float MakeCharImage(Image& image, int c, PixelRGBAF32 color, float scale, float 
     {
         PixelRGBAF32_PMA colorPMA(color);
         float alpha = float(*srcPixel) / 255.0f;
-        alpha = LinearToSRGB(alpha); // assuming stb gives us linear color data, it should be converted to srgb before being displayed. alpha is not gamma corrected, so we need to do that here.
+        alpha = LinearToSRGB(alpha); // We are circumventing srgb correctness. check out the gamma section here.   https://github.com/nothings/stb/blob/master/tests/oversample/README.md
         colorPMA.MultiplyAlpha(alpha);
         destPixel->BlendIn(colorPMA);
     }
