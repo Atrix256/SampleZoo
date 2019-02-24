@@ -60,6 +60,7 @@ A list of specific things the project needs.
 * I think you can set up CI as well as code tidying in github. Need to figure those things out.
 * Make a way to cache data, since some of it takes a long time to generate (eg large counts of blue noise)
 * probably should modify best candidate blue noise generation to use a (1d) grid acceleration structure. Or sort the points and use binary search to calculate distances or something.
+* graph: make axis labels instead of using footer text
 
 ### 1D Sampling Patterns & Tests
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
@@ -83,7 +84,11 @@ A list of specific things the project needs.
 * Martin's R2 sequence for 2d (and higher dimensions)
 * uniform random point in triangle: https://twitter.com/TechSparx/status/1093193006440726529?s=03
 * prorgressive projective blue noise & all the papers you have linked etc.
+* dither / animated dither blue noise, ign, etc
+* sampling on a sphere
+* sampling in a triangle
 
 ### Sampling Tests
 * 2d tests and beyond.
 * show how regular 1d sampling has aliasing problems. Also show how random samples trade the aliasing for noise. 
+* correlated multi jittering: https://graphics.pixar.com/library/MultiJitteredSampling/paper.pdf
