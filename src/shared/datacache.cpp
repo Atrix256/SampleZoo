@@ -48,7 +48,7 @@ void DataCache::Load()
         return;
 
     DataCache& cache = Instance();
-    cache.m_samples_1d.Load(file);
+    cache.m_samples__1d.Load(file);
 
     fclose(file);
 }
@@ -61,7 +61,7 @@ void DataCache::Save()
         return;
 
     const DataCache& cache = Instance();
-    cache.m_samples_1d.Save(file);
+    cache.m_samples__1d.Save(file);
 
     fclose(file);
 }

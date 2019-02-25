@@ -17,7 +17,7 @@ int main(int argc, char **argv)
     static const size_t c_numValues = 64;
     std::vector<float> samples;
     const char* key = "BlueNoise::BestCandidate";
-    DataCache::Instance().m_samples_1d.GetProgressiveSamples(key, _1d::Samples::BlueNoise::BestCandidate, samples, c_numValues, false);
+    DataCache::Instance().m_samples__1d.GetSamples_Progressive(key, _1d::Samples::BlueNoise::BestCandidate, samples, c_numValues, false);
 
     DataCache::Save();
     return 0;
@@ -27,7 +27,6 @@ int main(int argc, char **argv)
 TODO:
 
 TODO: have the tests go through the data interface.  Have a prog/non prog version. also a cache / non cache version. properties of the sampling type choose which to call.
-TODO: put todo in the non prog versions.
 
 
 ! on read failure of cache, clear out all the data i think.
