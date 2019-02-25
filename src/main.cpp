@@ -22,6 +22,11 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* maybe get documentation in order, and whatever ad hoc tests you need to set up for that, and try and announce sample zoo?
+ * TOC probably needs to be more prevelant too.
+ * organize the below into before announce vs after.  I think non progressive data cache and averaging multiple runs of randomized samples can wait til after.
+
+
 * the regular samples are non deterministic even with the data cache on for the jittered sequence. Check into why!
  * it's because jitteed is not progressive! need to implement a non progressive lookup for the data cache
  * maybe make the dictionary two leveled. first is by key, second is by sample count.  Progressive samples can use 0 as the sample count always.
