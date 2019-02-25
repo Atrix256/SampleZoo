@@ -12,8 +12,12 @@ int main(int argc, char **argv)
     DataCache::Load();
 
     // Note: comment this out and call your specific code directly if you want to iterate on code.
-    AutoTest();
+    //AutoTest();
 
+    static const size_t c_numValues = 64;
+    std::vector<float> samples;
+    const char* key = "BlueNoise::BestCandidate";
+    DataCache::Instance().m_samples_1d.GetProgressiveSamples(key, _1d::Samples::BlueNoise::BestCandidate, samples, c_numValues, false);
 
     DataCache::Save();
     return 0;
@@ -21,6 +25,13 @@ int main(int argc, char **argv)
 
 /*
 TODO:
+
+TODO: have the tests go through the data interface.  Have a prog/non prog version. also a cache / non cache version. properties of the sampling type choose which to call.
+TODO: put todo in the non prog versions.
+
+
+! on read failure of cache, clear out all the data i think.
+ * or just don't insert the bad data? but exit because the rest of the file is likely corrupt
 
 * sample cache soon
  * Have a bool that says whether shared is ok or if it wants unique.
@@ -36,7 +47,7 @@ TODO:
 
  ! we could maybe have a generated c++ structure for samples, tests, and functions there in.
 
- * maybe put max / min hz on the frequency graph too?
+ * non progressive samples need to do lookup by both key and sample count to get the array of sample lists. Not just key. progressive can do just by key, and create more samples if needed.
 
 ! gather links from progressive projective blue noise project! there are some good ones.
  * and email later.
