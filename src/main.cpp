@@ -12,12 +12,8 @@ int main(int argc, char **argv)
     DataCache::Load();
 
     // Note: comment this out and call your specific code directly if you want to iterate on code.
-    //AutoTest();
-
-    static const size_t c_numValues = 64;
-    std::vector<float> samples;
-    const char* key = "BlueNoise::BestCandidate";
-    DataCache::Instance().m_samples__1d.GetSamples_Progressive(key, _1d::Samples::BlueNoise::BestCandidate, samples, c_numValues, false);
+    // You can also pop open samples.cpp and comment out sampling types (running premake regenerates samples.cpp and you will lose your changes FYI)
+    AutoTest();
 
     DataCache::Save();
     return 0;

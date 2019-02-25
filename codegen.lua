@@ -19,7 +19,7 @@ file = io.open("./build/codegen/codegen.h", "w")
 file:write(dotHHeader)
 file:write('#define _CRT_SECURE_NO_WARNINGS // for stb\n\n')
 file:write("#include <vector>\n\n")
-file:write("using SampleGenerate_1d = void(*)(std::vector<float>& values, size_t numValues);\n\n")
+file:write("using SampleGenerate_1d = void(*)(std::vector<float>& values, size_t numValues, bool wantUnique);\n\n")
 file:write("struct SampleGenerateInfo_1d\n{\n")
 file:write("    SampleGenerate_1d function;\n")
 file:write("    const char* sampleFamily;\n")
@@ -30,6 +30,7 @@ file:write("    bool randomized;\n")
 file:write("};\n\n")
 file:write("using Test_1d = void(*)(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName);\n\n")
 file:write("#define countof(array) (sizeof(array) / sizeof(array[0]))\n\n");
+file:write('#include "shared/datacache.h"\n')
 file:write('#include "tests.h"\n')
 file:write('#include "samples.h"\n')
 file:write('#include "autotest.h"\n')
@@ -57,6 +58,42 @@ for k,v in pairs(sampleFamilies) do
 		local sampleType = string.sub(v2,3,-2)
 		file:write('#include "'..sampleType..'/samples.h"\n')
 	end
+
+    file:write("\nnamespace "..sampleFamily.."\n{\n")
+    file:write("    extern std::vector<std::vector<SampleGenerateInfo"..sampleFamily..">> sampleFunctions;\n")
+    file:write("}\n")
+	file:close()
+end
+
+-- make ./build/codegen/X/samples/samples.cpp
+for k,v in pairs(sampleFamilies) do
+	local sampleFamily = string.sub(v,3,-2)
+	file = io.open("./build/codegen/"..sampleFamily.."/samples/samples.cpp", "w")
+	file:write(dotHHeader)
+    file:write('#include "codegen.h"\n')
+    file:write('#include "'..sampleFamily..'/samples/samples.h"\n')
+
+    file:write("\nnamespace "..sampleFamily.."\n{\n")
+    file:write("    std::vector<std::vector<SampleGenerateInfo"..sampleFamily..">> sampleFunctions =\n    {\n")
+    local sampleTypes = scandir('cd ./src/families/'..sampleFamily..'/samples/ && ls -d ./*/ && cd ../../..')
+    for k3, v3 in pairs(sampleTypes) do
+        local sampleType = string.sub(v3,3,-2)
+        dofile("./src/families/"..sampleFamily.."/samples/"..sampleType.."/samples.lua")
+        file:write("        {\n")
+        for functionIndex, functionInfo in ipairs(sampleInfo.Functions) do
+            file:write("            { [](std::vector<float>& values, size_t numValues, bool wantUnique) {")
+            if functionInfo.progressive then
+                file:write("  DataCache::Instance().m_samples__1d.GetSamples_Progressive(");
+            else
+                file:write("  DataCache::Instance().m_samples__1d.GetSamples_NonProgressive(")
+            end
+            file:write("\""..sampleType.."::"..functionInfo.name.."\", ")
+            file:write(sampleFamily.."::Samples::"..sampleInfo.CodeName.."::"..functionInfo.name..", ")
+            file:write("values, numValues, wantUnique, "..tostring(functionInfo.cache).."); }, \""..sampleFamily.."\", \""..sampleType.."\", \""..functionInfo.name.."\", "..tostring(functionInfo.progressive)..", "..tostring(functionInfo.randomized).." },\n")
+        end
+        file:write("        },\n")
+    end
+    file:write("    };\n}\n")
 	file:close()
 end
 
@@ -164,21 +201,9 @@ for k,v in pairs(sampleFamilies) do
         file:write("namespace "..sampleFamily.."\n{\n    namespace Tests\n    {\n        namespace "..testInfo.CodeName.."\n        {\n")
 
         file:write("            inline void AutoTest()\n            {\n")
-        file:write("                std::vector<std::vector<SampleGenerateInfo"..sampleFamily..">> funcs =\n                {\n")
-        local sampleTypes = scandir('cd ./src/families/'..sampleFamily..'/samples/ && ls -d ./*/ && cd ../../..')
-        for k3, v3 in pairs(sampleTypes) do
-            local sampleType = string.sub(v3,3,-2)
-            dofile("./src/families/"..sampleFamily.."/samples/"..sampleType.."/samples.lua")
-            file:write("                    {\n")
-            for functionIndex, functionInfo in ipairs(sampleInfo.Functions) do
-                file:write("                        { "..sampleFamily.."::Samples::"..sampleInfo.CodeName.."::"..functionInfo.name..", \""..sampleFamily.."\", \""..sampleType.."\", \""..functionInfo.name.."\", "..tostring(functionInfo.progressive)..", "..tostring(functionInfo.randomized).."},\n")
-            end
-            file:write("                    },\n")
-        end
-        file:write("                };\n\n")
 
         for functionIndex, functionName in ipairs(testInfo.Functions) do
-            file:write("                "..functionName.."(funcs, \""..functionName.."\");\n")
+            file:write("                "..functionName.."("..sampleFamily.."::sampleFunctions, \""..functionName.."\");\n")
         end
 
         file:write("            }\n")

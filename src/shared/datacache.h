@@ -26,12 +26,15 @@ struct DataCacheFamily
 {
     std::unordered_map<std::string, DataList<T>> m_dataLists;
 
-    // Note: need to write a non progressive version when we have need of it.
-    // Non progressive needs to take key and desired sample count as input to get a DataList<T>
-
     template <typename SAMPLE_FN>
-    void GetSamples_Progressive(const char* key, const SAMPLE_FN& SampleFn, std::vector<T>& values, size_t numValues, bool wantUnique)
+    void GetSamples_Progressive(const char* key, const SAMPLE_FN& SampleFn, std::vector<T>& values, size_t numValues, bool wantUnique, bool useCache)
     {
+        if (!useCache)
+        {
+            SampleFn(values, numValues);
+            return;
+        }
+
         DataList<T>& dataList = m_dataLists[key];
 
         size_t dataListIndex = 0;
@@ -50,6 +53,19 @@ struct DataCacheFamily
 
         values.resize(numValues);
         memcpy(values.data(), samples.data(), sizeof(T) * numValues);
+    }
+
+    template <typename SAMPLE_FN>
+    void GetSamples_NonProgressive(const char* key, const SAMPLE_FN& SampleFn, std::vector<T>& values, size_t numValues, bool wantUnique, bool useCache)
+    {
+        //if (!useCache)
+        {
+            SampleFn(values, numValues);
+            return;
+        }
+
+        // Note: need to write a non progressive version when we have need of it.
+        // Non progressive needs to take key and desired sample count as input to get a DataList<T>
     }
 
     bool Load(FILE* file)

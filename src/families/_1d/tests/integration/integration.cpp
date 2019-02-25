@@ -62,7 +62,6 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         if (sampleType.size() == 0)
             continue;
 
-
         GraphDesc desc;
 
         // useful for log graphs
@@ -100,7 +99,7 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         for (const SampleGenerateInfo_1d& sampleFunction : sampleType)
         {
             std::vector<float> samples;
-            sampleFunction.function(samples, sampleCount);
+            sampleFunction.function(samples, sampleCount, false);
             sprintf(fileName, "output/%s/samples/%s/%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, testName, sampleFunction.name);
 
             desc.graphItems.resize(desc.graphItems.size() + 1);

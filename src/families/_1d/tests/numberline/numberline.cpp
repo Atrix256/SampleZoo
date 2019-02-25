@@ -75,7 +75,7 @@ void _1d::Tests::Numberline::MakeNumberline(const std::vector<std::vector<Sample
             std::vector<float> samples;
             for (size_t sampleCountIndex = 0; sampleCountIndex < sampleCounts.size(); ++sampleCountIndex)
             {
-                sampleFunction.function(samples, sampleCounts[sampleCountIndex]);
+                sampleFunction.function(samples, sampleCounts[sampleCountIndex], false);
                 Image newImage = ::MakeNumberline(samples, 512);
 
                 BlendInImage_Resize(numberlines, newImage, 0, numberlines.m_height, { 0.0f, 0.0f, 0.0f, 1.0f });
