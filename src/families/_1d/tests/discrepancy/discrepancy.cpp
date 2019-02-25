@@ -137,7 +137,7 @@ void _1d::Tests::Discrepancy::CalculateDiscrepancy(const std::vector<std::vector
             discrepancy.label = sampleFunction.name;
             for (int sampleCount = 1; sampleCount <= c_sampleCount; ++sampleCount)
             {
-                sampleFunction.function(samples, sampleCount);
+                sampleFunction.function(samples, sampleCount, false);
                 float d = ::CalculateDiscrepancy(samples);
                 minDiscrepancy = std::min(minDiscrepancy, d);
                 maxDiscrepancy = std::max(maxDiscrepancy, d);
@@ -191,7 +191,7 @@ void _1d::Tests::Discrepancy::CalculateDiscrepancyWrapAround(const std::vector<s
             discrepancy.label = sampleFunction.name;
             for (int sampleCount = 1; sampleCount <= c_sampleCount; ++sampleCount)
             {
-                sampleFunction.function(samples, sampleCount);
+                sampleFunction.function(samples, sampleCount, false);
                 float d = ::CalculateDiscrepancyWrapAround(samples);
                 minDiscrepancy = std::min(minDiscrepancy, d);
                 maxDiscrepancy = std::max(maxDiscrepancy, d);

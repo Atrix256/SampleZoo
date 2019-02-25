@@ -23,7 +23,7 @@ void _1d::Tests::DFT::DFT(const std::vector<std::vector<SampleGenerateInfo_1d>>&
         {
             // get the samples
             std::vector<float> samples;
-            sampleFunction.function(samples, c_numSamples);
+            sampleFunction.function(samples, c_numSamples, false);
 
             // make a black and white image of the samples
             std::vector<complex_type> sampleImage(c_sampleSourceImageWidth, real_type(0.0f));

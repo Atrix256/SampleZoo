@@ -4,18 +4,45 @@ AUTHOR: Alan Wolfe (alan.wolfe@gmail.com)
 DATE: 2/8/2019
 */
 
+#include "shared/datacache.h"
 #include "codegen.h"
 
 int main(int argc, char **argv)
 {
+    DataCache::Load();
+
     // Note: comment this out and call your specific code directly if you want to iterate on code.
+    // You can also pop open samples.cpp and comment out sampling types (running premake regenerates samples.cpp and you will lose your changes FYI)
     AutoTest();
 
+    DataCache::Save();
     return 0;
 }
 
 /*
 TODO:
+
+TODO: have the tests go through the data interface.  Have a prog/non prog version. also a cache / non cache version. properties of the sampling type choose which to call.
+
+
+! on read failure of cache, clear out all the data i think.
+ * or just don't insert the bad data? but exit because the rest of the file is likely corrupt
+
+* sample cache soon
+ * Have a bool that says whether shared is ok or if it wants unique.
+ * Internally have N cache items.
+ * Shared uses index 0.
+ * Unique increments an internal uniqueness counter and uses that index.
+ * Cache... Load it up on startup, save it on shutdown.
+ * If a cache index desired doesn't exist or doesn't have enough / the right number of samples, it makes that index (or fills it up for progressive case).
+ * How can we make sure requesting samples goes through cache API?
+ ! maybe have everything call a wrapper function which goes through cache first and doesn't call internal function if serviced by cache?
+  * std::vector<std::vector<SampleGenerateInfo_1d>> funcs
+  * that would instead have a wrapper function, which accesses the cache, but has knowledge of the function to call as backup, the key to look it up by, and whether it's unique or shared
+
+ ! we could maybe have a generated c++ structure for samples, tests, and functions there in.
+
+ * non progressive samples need to do lookup by both key and sample count to get the array of sample lists. Not just key. progressive can do just by key, and create more samples if needed.
 
 ! gather links from progressive projective blue noise project! there are some good ones.
  * and email later.
@@ -28,16 +55,6 @@ TODO:
  * show DFT best candidate, vs uniform random, vs the regular jittered
 
 * cache all randomized sequences, so they aren't so noisy on checkins / iteration
-
-* sample cache soon
- * Have a bool that says whether shared is ok or if it wants unique.
- * Internally have N cache items.
- * Shared uses index 0.
- * Unique increments an internal uniqueness counter and uses that index.
- * Cache... Load it up on startup, save it on shutdown.
- * If a cache index desired doesn't exist or doesn't have enough / the right number of samples, it makes that index (or fills it up for progressive case).
- * How can we make sure requesting samples goes through cache API?
- ! maybe have everything call a wrapper function which goes through cache first and doesn't call internal function if serviced by cache?
 
 * generate the TOC into the readme, by having the readme have a source .md file, and a marker for where to put the TOC
  * can still link to a raw TOC i guess :P
