@@ -22,8 +22,9 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-TODO: have the tests go through the data interface.  Have a prog/non prog version. also a cache / non cache version. properties of the sampling type choose which to call.
-
+* the regular samples are non deterministic even with the data cache on for the jittered sequence. Check into why!
+ * it's because jitteed is not progressive! need to implement a non progressive lookup for the data cache
+ * maybe make the dictionary two leveled. first is by key, second is by sample count.  Progressive samples can use 0 as the sample count always.
 
 ! on read failure of cache, clear out all the data i think.
  * or just don't insert the bad data? but exit because the rest of the file is likely corrupt
