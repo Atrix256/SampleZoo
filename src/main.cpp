@@ -29,11 +29,8 @@ TODO:
 
 ----- BEFORE RELEASE -----
 
-* instead of making data cache keyed on key (and later on key and count for non progressive), hash key, and hash key / count for non progressive. check out progressive blue noise for that code.
- * use fnv1a.h
- * could maybe put each thing into it's own file? more granularity = easier to delete stuff.
-
- * get non progressive caching working, and turn caching on for best candidate refined
+* On the dft graph for random could also show last. Name it "single" maybe?
+* maybe need to try best candidate with a different candidate multiplier.
 
 * maybe get documentation in order, and whatever ad hoc tests you need to set up for that, and try and announce sample zoo?
  * TOC probably needs to be more prevelant too.
@@ -62,10 +59,6 @@ TODO:
  * make documentation for Sobol in LDS sample type
   * and integration test
   * and standard test
-
-* clean this up below & figure out what is needed to open this up to letting people submit 1d sample sequences!
- * purpose of samples and test documentation?
- * automated testing setup / comparisong testing?
 
 ? open up "1d sampling" to submissions soon, and have a page about how to make submissions
  * figure out what exactly you want to do before opening it up

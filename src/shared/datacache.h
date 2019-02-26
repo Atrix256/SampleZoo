@@ -58,14 +58,33 @@ struct DataCacheFamily
     template <typename SAMPLE_FN>
     void GetSamples_NonProgressive(const char* key, const SAMPLE_FN& SampleFn, std::vector<T>& values, size_t numValues, bool wantUnique, bool useCache)
     {
-        //if (!useCache)
+        if (!useCache)
         {
             SampleFn(values, numValues);
             return;
         }
 
-        // Note: need to write a non progressive version when we have need of it.
-        // Non progressive needs to take key and desired sample count as input to get a DataList<T>
+        char keyBuffer[256];
+        sprintf(keyBuffer, "%s_%zu", key, numValues);
+
+        DataList<T>& dataList = m_dataLists[keyBuffer];
+
+        size_t dataListIndex = 0;
+        if (wantUnique)
+        {
+            dataListIndex = dataList.m_uniqueIndex;
+            dataList.m_uniqueIndex++;
+        }
+
+        if (dataList.m_dataLists.size() <= dataListIndex)
+            dataList.m_dataLists.resize(dataListIndex + 1);
+
+        DataList<T>::TData& samples = dataList.m_dataLists[dataListIndex];
+        if (samples.size() != numValues)
+            SampleFn(samples, numValues);
+
+        values.resize(numValues);
+        memcpy(values.data(), samples.data(), sizeof(T) * numValues);
     }
 
     bool Load(FILE* file)
