@@ -29,8 +29,6 @@ TODO:
 
 ----- BEFORE RELEASE -----
 
-? why does the cache.dat file change every run? it should be stable!
-
 * maybe get documentation in order, and whatever ad hoc tests you need to set up for that, and try and announce sample zoo?
  * TOC probably needs to be more prevelant too.
  * organize the below into before announce vs after.  I think non progressive data cache and averaging multiple runs of randomized samples can wait til after.

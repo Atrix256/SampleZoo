@@ -9,7 +9,7 @@ Holds re-usable data on disk, such as expensive to create sampling patterns, to 
 
 #pragma once
 
-#include <unordered_map>
+#include <map>
 #include <vector>
 
 template <typename T>
@@ -24,7 +24,8 @@ struct DataList
 template <typename T>
 struct DataCacheFamily
 {
-    std::unordered_map<std::string, DataList<T>> m_dataLists;
+    // a map, not an unordered_map because order matters. If the order changes, then cache.dat is different and means a huge file upload.
+    std::map<std::string, DataList<T>> m_dataLists;
 
     template <typename SAMPLE_FN>
     void GetSamples_Progressive(const char* key, const SAMPLE_FN& SampleFn, std::vector<T>& values, size_t numValues, bool wantUnique, bool useCache)
