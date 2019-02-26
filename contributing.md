@@ -62,6 +62,7 @@ A list of specific things the project needs.
 * probably should modify best candidate blue noise generation to use a (1d) grid acceleration structure. Or sort the points and use binary search to calculate distances or something.
 * graph: make axis labels instead of using footer text
 * make datacache use file compression (zlib?)
+* look into multithreading the tests & sample generation. data cache would need to be made safe for this.
 
 ### 1D Sampling Patterns & Tests
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
