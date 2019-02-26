@@ -29,8 +29,7 @@ TODO:
 
 ----- BEFORE RELEASE -----
 
-* On the dft graph for random could also show last. Name it "single" maybe?
-* maybe need to try best candidate with a different candidate multiplier.
+? why does the cache.dat file change every run? it should be stable!
 
 * maybe get documentation in order, and whatever ad hoc tests you need to set up for that, and try and announce sample zoo?
  * TOC probably needs to be more prevelant too.
@@ -68,7 +67,7 @@ TODO:
 
 ----- STRETCH / UNSURE -----
 
-
+* print out what tests it's doing and some % of total tests done? make it be part of the generated code.
 * make sure both best candidate blue noises are based on torroidal distance
 * discrepancy should have multiple tests for randomized samples, and so should integration. numberline doesn't care though.
 * for manual tests, just have a .h file there in the tests folder defining the functions, implement them in the .cpp and manually include the .h and run the functioon in the manual tests

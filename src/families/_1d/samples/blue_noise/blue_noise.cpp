@@ -12,7 +12,7 @@ Description: Randomized sequences that have only high frequency content
 
 #include <windows.h>
 
-void _1d::Samples::BlueNoise::BestCandidate(std::vector<float>& values, size_t numValues)
+static void BestCandidateN(std::vector<float>& values, size_t numValues, const size_t c_blueNoiseSampleMultiplier)
 {
     // if they want less samples than there are, just truncate the sequence
     if (numValues <= values.size())
@@ -20,8 +20,6 @@ void _1d::Samples::BlueNoise::BestCandidate(std::vector<float>& values, size_t n
         values.resize(numValues);
         return;
     }
-
-    static const size_t c_blueNoiseSampleMultiplier = 1;
 
     // make sure we use "the good stuff". yes, it matters if the not good stuff gets in, it's a big difference.
     // https://blog.demofox.org/2017/03/15/neural-network-recipe-recognize-handwritten-digits-with-95-accuracy/
@@ -56,6 +54,21 @@ void _1d::Samples::BlueNoise::BestCandidate(std::vector<float>& values, size_t n
         }
         values.push_back(bestCandidateValue);
     }
+}
+
+void _1d::Samples::BlueNoise::BestCandidate(std::vector<float>& values, size_t numValues)
+{
+    BestCandidateN(values, numValues, 1);
+}
+
+void _1d::Samples::BlueNoise::BestCandidate5(std::vector<float>& values, size_t numValues)
+{
+    BestCandidateN(values, numValues, 5);
+}
+
+void _1d::Samples::BlueNoise::BestCandidate10(std::vector<float>& values, size_t numValues)
+{
+    BestCandidateN(values, numValues, 10);
 }
 
 void _1d::Samples::BlueNoise::BestCandidateRefined(std::vector<float>& values, size_t numValues)

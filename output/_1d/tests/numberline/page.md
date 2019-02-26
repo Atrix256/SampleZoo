@@ -9,6 +9,10 @@ The first sample is red and the last sample is green. This lets you see the orde
 ### Blue Noise Sequences
 #### BestCandidate
 ![BestCandidate](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate.png)  
+#### BestCandidate5
+![BestCandidate5](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate5.png)  
+#### BestCandidate10
+![BestCandidate10](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate10.png)  
 #### BestCandidateRefined
 ![BestCandidateRefined](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidateRefined.png)  
 ### Irrational Number Sampling

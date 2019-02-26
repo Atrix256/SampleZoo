@@ -35,12 +35,24 @@ https://www.princeton.edu/news/2014/02/24/eye-chicken-new-state-matter-comes-vie
 # Test Results
  samples tested:
 * BestCandidate (Progressive, Randomized)
+* BestCandidate5 (Progressive, Randomized)
+* BestCandidate10 (Progressive, Randomized)
 * BestCandidateRefined (Not Progressive, Randomized)
 ## BestCandidate
 ### Discrete Fourier Transform
 ![BestCandidate](../../../_1d/samples/blue_noise/DFT_BestCandidate.png)  
 ### Numberline
 ![BestCandidate](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate.png)  
+## BestCandidate5
+### Discrete Fourier Transform
+![BestCandidate5](../../../_1d/samples/blue_noise/DFT_BestCandidate5.png)  
+### Numberline
+![BestCandidate5](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate5.png)  
+## BestCandidate10
+### Discrete Fourier Transform
+![BestCandidate10](../../../_1d/samples/blue_noise/DFT_BestCandidate10.png)  
+### Numberline
+![BestCandidate10](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate10.png)  
 ## BestCandidateRefined
 ### Discrete Fourier Transform
 ![BestCandidateRefined](../../../_1d/samples/blue_noise/DFT_BestCandidateRefined.png)  
