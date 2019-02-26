@@ -26,6 +26,14 @@ TODO:
  * TOC probably needs to be more prevelant too.
  * organize the below into before announce vs after.  I think non progressive data cache and averaging multiple runs of randomized samples can wait til after.
 
+* DFT: do N tests for randomized samples. Keep track of the min, max, and average, and graph all 3.
+
+* discrepancy should have multiple tests for randomized samples, and so should integration. numberline doesn't care though.
+
+* for manual tests, just have a .h file there in the tests folder defining the functions, implement them in the .cpp and manually include the .h and run the functioon in the manual tests
+
+* Try throwing out half of your blue noise after you create it and then fill it back in throw away the worst-performing noise points
+ * sort the samples to make this fast
 
 * the regular samples are non deterministic even with the data cache on for the jittered sequence. Check into why!
  * it's because jitteed is not progressive! need to implement a non progressive lookup for the data cache
