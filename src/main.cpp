@@ -22,15 +22,21 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* i think best candidate refined isn't working correctly. look into it with a small sample count!
+ * actually it might be due to saying it's progressive, when it isn't. maybe fix the cache for non progressive things and try again.
+ * don't forget to delete the cache after modifying it!
+
+! BestCandidateRefined isn't really progressive due to the refinement. it kinda is though. think about the implications for it being marked as progressive vs not.
+ * i'm leaning towards progressive right now but ::shrug::
+
 * maybe get documentation in order, and whatever ad hoc tests you need to set up for that, and try and announce sample zoo?
  * TOC probably needs to be more prevelant too.
  * organize the below into before announce vs after.  I think non progressive data cache and averaging multiple runs of randomized samples can wait til after.
 
-* DFT: do N tests for randomized samples. Keep track of the min, max, and average, and graph all 3.
-
 * discrepancy should have multiple tests for randomized samples, and so should integration. numberline doesn't care though.
 
 * for manual tests, just have a .h file there in the tests folder defining the functions, implement them in the .cpp and manually include the .h and run the functioon in the manual tests
+ * these are for the one off tests needed for documentation. maybe VDC5 should go here since it's a fail case? dunno.
 
 * Try throwing out half of your blue noise after you create it and then fill it back in throw away the worst-performing noise points
  * sort the samples to make this fast

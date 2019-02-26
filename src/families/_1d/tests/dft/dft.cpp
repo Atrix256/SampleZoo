@@ -68,7 +68,7 @@ void _1d::Tests::DFT::DFT(const std::vector<std::vector<SampleGenerateInfo_1d>>&
             if (sampleFunction.randomized)
             {
                 char title[256];
-                sprintf(title, "DFT Magnitude: %s over %zu tests", sampleFunction.name, numTests);
+                sprintf(title, "DFT Magnitude: %s %zu tests", sampleFunction.name, numTests);
                 desc.title = title;
                 desc.graphItems.resize(desc.graphItems.size() + 3);
                 GraphItem& dftDataMin = desc.graphItems[desc.graphItems.size() - 3];

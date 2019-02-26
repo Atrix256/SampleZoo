@@ -8,6 +8,9 @@ Description: Randomized sequences that have only high frequency content
 
 #include "codegen.h"
 #include <random>
+#include <algorithm>
+
+#include <windows.h>
 
 void _1d::Samples::BlueNoise::BestCandidate(std::vector<float>& values, size_t numValues)
 {
@@ -53,4 +56,79 @@ void _1d::Samples::BlueNoise::BestCandidate(std::vector<float>& values, size_t n
         }
         values.push_back(bestCandidateValue);
     }
+}
+
+void _1d::Samples::BlueNoise::BestCandidateRefined(std::vector<float>& values, size_t numValues)
+{
+    // get the samples
+    BestCandidate(values, numValues);
+    if (numValues < 2)
+        return;
+
+    // get rid of the worst 50% of the samples. sort them to make it faster.
+    struct Item
+    {
+        float value;
+        size_t index;
+    };
+    std::vector<Item> sorted;
+    sorted.resize(values.size());
+    for (size_t index = 0; index < values.size(); ++index)
+    {
+        sorted[index].index = index;
+        sorted[index].value = values[index];
+    }
+
+    std::sort(
+        sorted.begin(),
+        sorted.end(),
+        [] (const Item& a, const Item& b)
+        {
+            return a.value < b.value;
+        }
+    );
+
+    while (sorted.size() > numValues / 2)
+    {
+        // Find and remove the worst point.
+        // The worst point is judged by...
+        // 1) The point that is closest to a neighbor.
+        // 2) Since that point and it's neighbor are tied, kill the one that has a shorter distance to the neighbor on the other side
+
+        float closestDistance = FLT_MAX;
+        size_t closestDistancePoint = 0;
+
+        for (size_t searchIndex = 0; searchIndex < sorted.size() - 1; ++searchIndex)
+        {
+            float distance = sorted[searchIndex + 1].value - sorted[searchIndex].value;
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestDistancePoint = searchIndex;
+            }
+        }
+
+        float leftValue = closestDistancePoint > 0 ? sorted[closestDistancePoint - 1].value : 0.0f;
+        float leftDistance = sorted[closestDistancePoint].value - leftValue;
+
+        float rightValue = (closestDistancePoint + 2) < sorted.size() ? sorted[closestDistancePoint + 2].value : 1.0f;
+        float rightDistance = rightValue - sorted[closestDistancePoint + 1].value;
+
+        size_t removeIndexSorted = (leftValue < rightValue) ? closestDistancePoint : closestDistancePoint + 1;
+        size_t removeIndexValues = sorted[removeIndexSorted].index;
+
+        // remove from both arrays
+        values.erase(values.begin() + removeIndexValues);
+        sorted.erase(sorted.begin() + removeIndexSorted);
+
+        // update reference indices
+        for (auto& v : sorted)
+        {
+            if (v.index >= removeIndexValues)
+                v.index--;
+        }
+    }
+
+    // fill the samples back in
+    BestCandidate(values, numValues);
 }
