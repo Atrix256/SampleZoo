@@ -1,7 +1,7 @@
 # Test Results
  samples tested:
 * BestCandidate (Progressive, Randomized)
-* BestCandidateRefined (Progressive, Randomized)
+* BestCandidateRefined (Not Progressive, Randomized)
 ## BestCandidate
 ### Discrete Fourier Transform
 ![BestCandidate](../../../_1d/samples/blue_noise/DFT_BestCandidate.png)  

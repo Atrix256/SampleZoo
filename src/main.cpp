@@ -15,6 +15,9 @@ int main(int argc, char **argv)
     // You can also pop open samples.cpp and comment out sampling types (running premake regenerates samples.cpp and you will lose your changes FYI)
     AutoTest();
 
+    //std::vector<float> values;
+    //DataCache::Instance().m_samples__1d.GetSamples_Progressive("blue_noise::BestCandidateRefined", _1d::Samples::BlueNoise::BestCandidateRefined, values, 4, true, false);
+
     DataCache::Save();
     return 0;
 }
@@ -22,12 +25,14 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-* i think best candidate refined isn't working correctly. look into it with a small sample count!
- * actually it might be due to saying it's progressive, when it isn't. maybe fix the cache for non progressive things and try again.
- * don't forget to delete the cache after modifying it!
+* make sure both best candidate blue noises are based on torroidal distance
 
-! BestCandidateRefined isn't really progressive due to the refinement. it kinda is though. think about the implications for it being marked as progressive vs not.
- * i'm leaning towards progressive right now but ::shrug::
+* put in todo's: use compression for data cache
+* instead of making data cache keyed on key (and later on key and count for non progressive), hash key, and hash key / count for non progressive. check out progressive blue noise for that code.
+ * use fnv1a.h
+ * could maybe put each thing into it's own file? more granularity = easier to delete stuff.
+
+ * get non progressive caching working, and turn caching on for best candidate refined
 
 * maybe get documentation in order, and whatever ad hoc tests you need to set up for that, and try and announce sample zoo?
  * TOC probably needs to be more prevelant too.
@@ -38,31 +43,8 @@ TODO:
 * for manual tests, just have a .h file there in the tests folder defining the functions, implement them in the .cpp and manually include the .h and run the functioon in the manual tests
  * these are for the one off tests needed for documentation. maybe VDC5 should go here since it's a fail case? dunno.
 
-* Try throwing out half of your blue noise after you create it and then fill it back in throw away the worst-performing noise points
- * sort the samples to make this fast
-
-* the regular samples are non deterministic even with the data cache on for the jittered sequence. Check into why!
- * it's because jitteed is not progressive! need to implement a non progressive lookup for the data cache
- * maybe make the dictionary two leveled. first is by key, second is by sample count.  Progressive samples can use 0 as the sample count always.
-
 ! on read failure of cache, clear out all the data i think.
  * or just don't insert the bad data? but exit because the rest of the file is likely corrupt
-
-* sample cache soon
- * Have a bool that says whether shared is ok or if it wants unique.
- * Internally have N cache items.
- * Shared uses index 0.
- * Unique increments an internal uniqueness counter and uses that index.
- * Cache... Load it up on startup, save it on shutdown.
- * If a cache index desired doesn't exist or doesn't have enough / the right number of samples, it makes that index (or fills it up for progressive case).
- * How can we make sure requesting samples goes through cache API?
- ! maybe have everything call a wrapper function which goes through cache first and doesn't call internal function if serviced by cache?
-  * std::vector<std::vector<SampleGenerateInfo_1d>> funcs
-  * that would instead have a wrapper function, which accesses the cache, but has knowledge of the function to call as backup, the key to look it up by, and whether it's unique or shared
-
- ! we could maybe have a generated c++ structure for samples, tests, and functions there in.
-
- * non progressive samples need to do lookup by both key and sample count to get the array of sample lists. Not just key. progressive can do just by key, and create more samples if needed.
 
 ! gather links from progressive projective blue noise project! there are some good ones.
  * and email later.
@@ -74,17 +56,10 @@ TODO:
 ! maybe need a "blue noise" meta page?
  * show DFT best candidate, vs uniform random, vs the regular jittered
 
-* cache all randomized sequences, so they aren't so noisy on checkins / iteration
-
 * generate the TOC into the readme, by having the readme have a source .md file, and a marker for where to put the TOC
  * can still link to a raw TOC i guess :P
 
 * try using left side bearing in the font drawing.  Sobol in particular has an issue but so does heljo, and RegularJittered
-
-* make integration graph go to 4096 and put a label there.
- * i think it's time to cache off blue noise (and other) results. it takes a while.
-
-* in code/doc gen lua files, rename subtesttype to testtype, after things are working
 
 * mention how VDC2 (in a full power of 2) is regular sampling but in a binary search pattern
 

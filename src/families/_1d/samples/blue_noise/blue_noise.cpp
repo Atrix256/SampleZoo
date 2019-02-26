@@ -91,30 +91,25 @@ void _1d::Samples::BlueNoise::BestCandidateRefined(std::vector<float>& values, s
     while (sorted.size() > numValues / 2)
     {
         // Find and remove the worst point.
-        // The worst point is judged by...
-        // 1) The point that is closest to a neighbor.
-        // 2) Since that point and it's neighbor are tied, kill the one that has a shorter distance to the neighbor on the other side
+        // The worst point is judged by the point that if we remove it, the distance between it's left and right neighbor is the smallest
 
-        float closestDistance = FLT_MAX;
-        size_t closestDistancePoint = 0;
+        float worstPointSpan = FLT_MAX;
+        size_t worstPointIndex = 0;
 
-        for (size_t searchIndex = 0; searchIndex < sorted.size() - 1; ++searchIndex)
+        for (size_t searchIndex = 0; searchIndex < sorted.size(); ++searchIndex)
         {
-            float distance = sorted[searchIndex + 1].value - sorted[searchIndex].value;
-            if (distance < closestDistance)
+            float left = searchIndex > 0 ? sorted[searchIndex - 1].value : 0.0f;
+            float right = searchIndex < sorted.size() - 1 ? sorted[searchIndex + 1].value : 1.0f;
+
+            float distance = right - left;
+            if (distance < worstPointSpan)
             {
-                closestDistance = distance;
-                closestDistancePoint = searchIndex;
+                worstPointSpan = distance;
+                worstPointIndex = searchIndex;
             }
         }
 
-        float leftValue = closestDistancePoint > 0 ? sorted[closestDistancePoint - 1].value : 0.0f;
-        float leftDistance = sorted[closestDistancePoint].value - leftValue;
-
-        float rightValue = (closestDistancePoint + 2) < sorted.size() ? sorted[closestDistancePoint + 2].value : 1.0f;
-        float rightDistance = rightValue - sorted[closestDistancePoint + 1].value;
-
-        size_t removeIndexSorted = (leftValue < rightValue) ? closestDistancePoint : closestDistancePoint + 1;
+        size_t removeIndexSorted = worstPointIndex;
         size_t removeIndexValues = sorted[removeIndexSorted].index;
 
         // remove from both arrays
