@@ -7,10 +7,9 @@ Description: Randomized sequences that have only high frequency content
 */
 
 #include "codegen.h"
+#include "manual_test.h"
 #include <random>
 #include <algorithm>
-
-#include <windows.h>
 
 static void BestCandidateN(std::vector<float>& values, size_t numValues, const size_t c_blueNoiseSampleMultiplier)
 {
@@ -139,4 +138,23 @@ void _1d::Samples::BlueNoise::BestCandidateRefined(std::vector<float>& values, s
 
     // fill the samples back in
     BestCandidate(values, numValues);
+}
+
+void _1d::Samples::BlueNoise::ManualTest()
+{
+
+    std::vector<std::vector<SampleGenerateInfo_1d>> testFuncs =
+    {
+        {
+            { [](std::vector<float>& values, size_t numValues, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_Progressive("blue_noise::BestCandidate", _1d::Samples::BlueNoise::BestCandidate, values, numValues, wantUnique, true); }, "_1d", "blue_noise", "BestCandidate", true, true },
+            { [](std::vector<float>& values, size_t numValues, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_NonProgressive("regular::RegularJittered", _1d::Samples::Regular::RegularJittered, values, numValues, wantUnique, true); }, "_1d", "regular", "RegularJittered", false, true },
+            { [](std::vector<float>& values, size_t numValues, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_Progressive("uniform_random::UniformRandom", _1d::Samples::UniformRandom::UniformRandom, values, numValues, wantUnique, true); }, "_1d", "uniform_random", "UniformRandom", true, true },
+            { [](std::vector<float>& values, size_t numValues, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_Progressive("lds::Sobol", _1d::Samples::LDS::Sobol, values, numValues, wantUnique, false); }, "_1d", "lds", "Sobol", true, false },
+        }
+    };
+
+    _1d::Tests::Integration::Linear(testFuncs, "Doc_Linear");
+    _1d::Tests::Integration::Step(testFuncs, "Doc_Step");
+    _1d::Tests::Integration::Exp(testFuncs, "Doc_Exp");
+    _1d::Tests::Integration::Quadratic(testFuncs, "Doc_Quadratic");
 }

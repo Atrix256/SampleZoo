@@ -7,17 +7,24 @@ DATE: 2/8/2019
 #include "shared/datacache.h"
 #include "codegen.h"
 
+#include "families/_1d/samples/blue_noise/manual_test.h"
+
+void ManualTest()
+{
+    _1d::Samples::BlueNoise::ManualTest();
+}
+
 int main(int argc, char **argv)
 {
     DataCache::Load();
 
     // Note: comment this out and call your specific code directly if you want to iterate on code.
-    // You can also pop open samples.cpp and comment out sampling types (running premake regenerates samples.cpp and you will lose your changes FYI)
+    // You can also pop open samples.cpp and comment out sampling types .
     // You can also follow this function call down to see what is actually called and comment out the tests (or family of tests) that you don't want it to do while you iterate.
+    // Note that any modifications you make to those files will be undone when you run premake and re-generate code and documentation.
+    ManualTest();
     AutoTest();
 
-    //std::vector<float> values;
-    //DataCache::Instance().m_samples__1d.GetSamples_Progressive("blue_noise::BestCandidateRefined", _1d::Samples::BlueNoise::BestCandidateRefined, values, 4, true, false);
 
     DataCache::Save();
     return 0;
@@ -29,15 +36,34 @@ TODO:
 
 ----- BEFORE RELEASE -----
 
-* maybe get documentation in order, and whatever ad hoc tests you need to set up for that, and try and announce sample zoo?
- * organize the below into before announce vs after.  I think non progressive data cache and averaging multiple runs of randomized samples can wait til after.
+Sign off on documentation for sampling types...
+- Blue noise
+- irrational numbers
+- LDS
+- Regular
+- Uniform Random
+tests...
+- DFT
+- Discrepancy
+- Integration
+- Numberline
+Also:
+- how to submit a 2d sampling type or test?
+- the rest of the docs
+
+
+
+Blue noise doc page:
+* show blue vs white noise integration vs jittered. maybe throw sobal in too, to show how quickly it integrates
+* compare blue noise dft vs white vs jittered, and show how blue DFT where it talks about frequency content
+
+
+
+
+
+? maybe have codegen handle "ManualTest" if the lua file says to make it for a sample type?
 
  * explain dft test
- * in blue noise explanation show white vs blue DFT and how blue is missing low frequency content
- * and compare vs jittered.
-
-! maybe need a "blue noise" meta page?
- * show DFT best candidate, vs uniform random, vs the regular jittered
 
 * mention how VDC2 (in a full power of 2) is regular sampling but in a binary search pattern
 
@@ -57,6 +83,7 @@ TODO:
 
 ----- STRETCH / UNSURE -----
 
+* need some "1d summary" page to show how sequences do vs eachother
 * print out what tests it's doing and some % of total tests done? make it be part of the generated code.
 * make sure both best candidate blue noises are based on torroidal distance
 * discrepancy should have multiple tests for randomized samples, and so should integration. numberline doesn't care though.

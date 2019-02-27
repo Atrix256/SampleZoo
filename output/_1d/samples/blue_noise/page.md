@@ -1,7 +1,7 @@
 # Blue Noise Sequences
 Blue noise samples are randomized samples which are roughly evenly spaced.
 
-It's called blue noise because if you do a DFT, there is primarily high frequency content.
+It's called blue noise because if you do a DFT, it's missing low frequency content.
 
 This gives blue noise good coverage over a sampling space, just like regular sampling does,but because the points are still randomized, doesn't have problems with aliasing.
 
@@ -14,15 +14,15 @@ Because of this, blue noise is a good choice for low sample counts, but for high
 There are many ways to generate blue noise sample points, but there currently is only one way implemented:
 * BestCandidate()
 
-The BestCandidate() function uses Mitchell's best candidate algorithm to iteratively generate a number of random candidates (white noise) and choose the candidate which has the best blue noise properties.
+The BestCandidate() function uses Mitchell's best candidate algorithm to iteratively generate a number of random candidates (white noise) and choose the candidate which has the best blue noise properties (largest distance from it's nearest neighbor).
 
 This algorithm generates a progressive sequence which means that if you generate N sample points, any subset of those sample points starting at 0 is also blue noise.  Also, you can add more sample points to an existing set of sample points, without having to throw out all the points you already made.
 
-This property can be very useful for when you don't know how many samples you want to take in advance.
+This property can be very useful for when you don't know how many samples you want to take in advance, or if you are using it for rendering, being able to preview the image as it renders and see something more representative of the final image.  With a non progressive sequence used in rendering, the image looks very bad until the end.
 
 Blue noise sample points tend to tile well, even if they weren't designed to tile.  Their lack of low frequency content makes it so there are no larger structures to catch your eye.
 
-Many things in our world - natural and man made - are distributed in a blue noise pattern.  This includes the photoreceptors in your eyes, as well as foam in a tempurpedic matress (something which is unique to them, and patented).  "Randomized but roughly evenly spaced" turns out to be a really common requirement of things, and in fact, if you have something in a game that doesn't feel random enough ("hey, i just fought one of those guys! This isn't random at all!"), the real randomness you might be looking for is blue noise, which doesn't repeat in the same way white noise does.  Despite this, it's still randomized and unpredictable.
+Many things in our world - natural and man made - are distributed in a blue noise pattern.  This includes the photoreceptors in your eyes, as well as foam in a tempurpedic matress (something which is unique to their process of making matresses, and patented).  "Randomized but roughly evenly spaced" turns out to be a really common requirement of things, and in fact, if you have something in a game that doesn't feel random enough ("hey, i just fought one of those guys! This isn't random at all!"), the real randomness you might be looking for is blue noise, which doesn't repeat in the same way white noise does.  Despite this, it's still randomized and unpredictable.
 
 # Links
 
