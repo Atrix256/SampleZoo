@@ -51,6 +51,9 @@ Also:
 - how to submit a 2d sampling type or test?
 - the rest of the docs
 
+* we have some unknowns that affect the blue noise documentation page:
+ * make blue noise torroidal
+ * try this for the dft experiment: https://twitter.com/Slartybartfast/status/1100789770920304640?s=03
 
 
 Blue noise doc page:
@@ -59,6 +62,8 @@ Blue noise doc page:
 
 
 
+
+* for regular jitter & uniform random, cache seed, not samples
 
 
 ? maybe have codegen handle "ManualTest" if the lua file says to make it for a sample type?
@@ -79,10 +84,18 @@ Blue noise doc page:
  * figure out what exactly you want to do before opening it up
 
 
+ * mention how sampling is like convolution in frequency space somewhere?
+
 ! need to make sure all documentation is good (hand written). both present, and working w/ new image links etc.
+
+* bounce whole thing off manu before announcing
 
 ----- STRETCH / UNSURE -----
 
+
+* profile
+* if we can optimize blue noise, we can store seed instead of samples like we do for white noise
+ * Erin suggested kd tree with branch and bounds to find nearest point.
 * need some "1d summary" page to show how sequences do vs eachother
 * print out what tests it's doing and some % of total tests done? make it be part of the generated code.
 * make sure both best candidate blue noises are based on torroidal distance

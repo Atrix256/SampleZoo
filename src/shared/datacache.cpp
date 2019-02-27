@@ -55,13 +55,18 @@ void DataCache::Load()
 
 void DataCache::Save()
 {
-    FILE* file = nullptr;
-    fopen_s(&file, "datacache/cache.dat", "w+b");
-    if (!file)
+    FILE* datFile = nullptr;
+    FILE* txtFile = nullptr;
+    fopen_s(&datFile, "datacache/cache.dat", "w+b");
+    fopen_s(&txtFile, "datacache/cache.txt", "w+b");
+    if (!datFile || !txtFile)
         return;
 
     const DataCache& cache = Instance();
-    cache.m_samples__1d.Save(file);
 
-    fclose(file);
+    fprintf(txtFile, "---------- Samples 1D ----------\r\n\r\n");
+    cache.m_samples__1d.Save(datFile, txtFile);
+
+    fclose(datFile);
+    fclose(txtFile);
 }

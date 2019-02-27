@@ -134,30 +134,38 @@ struct DataCacheFamily
         return true;
     }
 
-    void Save(FILE* file) const
+    void Save(FILE* datFile, FILE* txtFile) const
     {
         // write how many keys there are
-        Write(file, uint32_t(m_dataLists.size()));
+        Write(datFile, uint32_t(m_dataLists.size()));
+
+        fprintf(txtFile, "  %zu keys\r\n", m_dataLists.size());
 
         // for each key...
         for (const auto& pair : m_dataLists)
         {
             // write the key
-            WriteString(file, pair.first.c_str());
+            WriteString(datFile, pair.first.c_str());
 
             // write how many data lists there are
-            Write(file, uint32_t(pair.second.m_dataLists.size()));
+            Write(datFile, uint32_t(pair.second.m_dataLists.size()));
 
             // for each data list...
+            size_t totalMemory = 0;
             for (const auto& dataList : pair.second.m_dataLists)
             {
+                totalMemory += dataList.size() * sizeof(dataList[0]);
+
                 // write how many items there is in this data list
-                Write(file, uint32_t(dataList.size()));
+                Write(datFile, uint32_t(dataList.size()));
 
                 // write the data items
                 for (const auto& data : dataList)
-                    Write(file, data);
+                    Write(datFile, data);
             }
+
+            // write the txtFile data
+            fprintf(txtFile, "    %s  - %zu entries, %zu bytes\r\n", pair.first.c_str(), pair.second.m_dataLists.size(), totalMemory);
         }
     }
 };
