@@ -193,3 +193,11 @@ for k,v in pairs(sampleFamilies) do
         file:close()
     end
 end
+
+-- combine readme.raw.md and toc.md into readme.md
+local readmeRaw = readAll("readme.raw.md")
+local TOC = readAll("toc.md")
+local result = string.gsub(readmeRaw, "TOCTOC", TOC)
+file = io.open("./readme.md", "w")
+file:write(result)
+file:close()
