@@ -61,7 +61,7 @@ A list of specific things the project needs.
 * Make a way to cache data, since some of it takes a long time to generate (eg large counts of blue noise)
 * probably should modify best candidate blue noise generation to use a (1d) grid acceleration structure. Or sort the points and use binary search to calculate distances or something.
 * graph: make axis labels instead of using footer text
-* make datacache use file compression (zlib?)
+* make datacache use file compression (zlib?). The data makes this a very poor proposition. a 30MB data cache file compressed to 27MB for me.
 * look into multithreading the tests & sample generation. data cache would need to be made safe for this.
 
 ### 1D Sampling Patterns & Tests
