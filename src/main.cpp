@@ -39,18 +39,11 @@ TODO:
 ! maybe need a "blue noise" meta page?
  * show DFT best candidate, vs uniform random, vs the regular jittered
 
-* generate the TOC into the readme, by having the readme have a source .md file, and a marker for where to put the TOC
- * can still link to a raw TOC i guess :P
-
 * mention how VDC2 (in a full power of 2) is regular sampling but in a binary search pattern
 
 * document "regular jittered" and mention pixar.
 
 * document van der corupt base 2, 3, 5 and mention stuff from https://blog.demofox.org/2017/05/29/when-random-numbers-are-too-random-low-discrepancy-sequences/
-
-* link to blue noise paper about mitchell's best candidate:
- * "Spectrally Optimal Sampling for Distribution Ray Tracing" by Don P. Mitchell 1991
- * http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.556.445&rep=rep1&type=pdf
 
  * make documentation for Sobol in LDS sample type
   * and integration test
