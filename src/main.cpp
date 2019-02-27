@@ -51,6 +51,22 @@ Also:
 - how to submit a 2d sampling type or test?
 - the rest of the docs
 
+* before calling it good, turn off caching for jitter & uniform random, delete all output and cache, and run things.
+
+* rng cache: store the starting seed, even though the actual seed will change state. I think it already does this but verify
+ ! actually... i guess the first time a key is requested in a run, seed a twister either from the cache or from random device.  subsequent requests, re-use the twister.
+ * save/load that initial seed.
+
+! make sure the rng seed cache works with progressive & non progressive and also the "wantUnique" situation. need an array of seeds i think, and an index to track it like the other thing has.
+
+* make sure blue_noise.cpp is ok. i added code w/o being able to test it yet.
+
+
+* seeding mersenne twister better & serializably.
+ * https://stackoverflow.com/questions/15509270/does-stdmt19937-require-warmup
+
+
+
 * we have some unknowns that affect the blue noise documentation page:
  * make blue noise torroidal
  * try this for the dft experiment: https://twitter.com/Slartybartfast/status/1100789770920304640?s=03
@@ -59,7 +75,7 @@ Also:
 Blue noise doc page:
 * show blue vs white noise integration vs jittered. maybe throw sobal in too, to show how quickly it integrates
 * compare blue noise dft vs white vs jittered, and show how blue DFT where it talks about frequency content
-
+* use file name prefix in manual tests to disambiguate file name
 
 
 
@@ -92,7 +108,7 @@ Blue noise doc page:
 
 ----- STRETCH / UNSURE -----
 
-
+* the cachekey going to sample functions makes the functions not as copy/pastable.  have it pass the random number generator into the function, for functions that are randomized. (change their function signature)
 * profile
 * if we can optimize blue noise, we can store seed instead of samples like we do for white noise
  * Erin suggested kd tree with branch and bounds to find nearest point.

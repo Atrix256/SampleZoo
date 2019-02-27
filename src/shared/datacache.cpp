@@ -70,3 +70,33 @@ void DataCache::Save()
     fclose(datFile);
     fclose(txtFile);
 }
+
+std::mt19937 DataCacheRNGSeeds::GetRNG(const char* key)
+{
+    // make sure we use "the good stuff". yes, it matters if the not good stuff gets in, it's a big difference.
+    // https://blog.demofox.org/2017/03/15/neural-network-recipe-recognize-handwritten-digits-with-95-accuracy/
+    static std::random_device rd("dev/random");
+    
+    // get or make a random seed
+    auto it = m_seeds.find(key);
+    if (it == m_seeds.end())
+    {
+        DataCacheRNGSeed seed;
+        for (uint32_t& u : seed.seed)
+            u = rd();
+        m_seeds[key] = seed;
+        it = m_seeds.find(key);
+    }
+    DataCacheRNGSeed& seed = it->second;
+
+    // seed the rng the first time it's used in a run, else just let it keep going
+    if (!seed.usedThisRun)
+    {
+        seed.usedThisRun = true;
+        std::seed_seq fullSeed{ seed.seed[0], seed.seed[1], seed.seed[2], seed.seed[3], seed.seed[4], seed.seed[5], seed.seed[6], seed.seed[7], seed.seed[8] };
+        seed.rng = std::mt19937(fullSeed);
+    }
+
+    // return the seeded rng
+    return seed.rng;
+};

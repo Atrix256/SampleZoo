@@ -12,7 +12,7 @@ DATE: 2/23/2019
 #include "simple_fft/fft.h"
 #include <vector>
 
-void _1d::Tests::DFT::DFT(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName)
+void _1d::Tests::DFT::DFT(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
     static const int c_numSamples = 128;
     static const int c_sampleSourceImageWidth = 1024;
@@ -32,7 +32,7 @@ void _1d::Tests::DFT::DFT(const std::vector<std::vector<SampleGenerateInfo_1d>>&
             {
                 // get the samples
                 std::vector<float> samples;
-                sampleFunction.function(samples, c_numSamples, sampleFunction.randomized);
+                sampleFunction.function(samples, c_numSamples, sampleFunction.cacheKey, sampleFunction.randomized);
 
                 // make a black and white image of the samples
                 std::vector<complex_type> sampleImage(c_sampleSourceImageWidth, real_type(0.0f));

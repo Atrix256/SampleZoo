@@ -11,6 +11,7 @@ Holds re-usable data on disk, such as expensive to create sampling patterns, to 
 
 #include <map>
 #include <vector>
+#include <random>
 
 template <typename T>
 struct DataList
@@ -28,15 +29,15 @@ struct DataCacheFamily
     std::map<std::string, DataList<T>> m_dataLists;
 
     template <typename SAMPLE_FN>
-    void GetSamples_Progressive(const char* key, const SAMPLE_FN& SampleFn, std::vector<T>& values, size_t numValues, bool wantUnique, bool useCache)
+    void GetSamples_Progressive(const char* cacheKey, const SAMPLE_FN& SampleFn, std::vector<T>& values, size_t numValues, bool wantUnique, bool useCache)
     {
         if (!useCache)
         {
-            SampleFn(values, numValues);
+            SampleFn(values, numValues, cacheKey);
             return;
         }
 
-        DataList<T>& dataList = m_dataLists[key];
+        DataList<T>& dataList = m_dataLists[cacheKey];
 
         size_t dataListIndex = 0;
         if (wantUnique)
@@ -50,25 +51,25 @@ struct DataCacheFamily
 
         DataList<T>::TData& samples = dataList.m_dataLists[dataListIndex];
         if (samples.size() < numValues)
-            SampleFn(samples, numValues);
+            SampleFn(samples, numValues, cacheKey);
 
         values.resize(numValues);
         memcpy(values.data(), samples.data(), sizeof(T) * numValues);
     }
 
     template <typename SAMPLE_FN>
-    void GetSamples_NonProgressive(const char* key, const SAMPLE_FN& SampleFn, std::vector<T>& values, size_t numValues, bool wantUnique, bool useCache)
+    void GetSamples_NonProgressive(const char* cacheKey, const SAMPLE_FN& SampleFn, std::vector<T>& values, size_t numValues, bool wantUnique, bool useCache)
     {
         if (!useCache)
         {
-            SampleFn(values, numValues);
+            SampleFn(values, numValues, cacheKey);
             return;
         }
 
-        char keyBuffer[256];
-        sprintf(keyBuffer, "%s_%zu", key, numValues);
+        char realCacheKey[256];
+        sprintf(realCacheKey, "%s_%zu", cacheKey, numValues);
 
-        DataList<T>& dataList = m_dataLists[keyBuffer];
+        DataList<T>& dataList = m_dataLists[realCacheKey];
 
         size_t dataListIndex = 0;
         if (wantUnique)
@@ -82,7 +83,7 @@ struct DataCacheFamily
 
         DataList<T>::TData& samples = dataList.m_dataLists[dataListIndex];
         if (samples.size() != numValues)
-            SampleFn(samples, numValues);
+            SampleFn(samples, numValues, cacheKey);
 
         values.resize(numValues);
         memcpy(values.data(), samples.data(), sizeof(T) * numValues);
@@ -170,6 +171,23 @@ struct DataCacheFamily
     }
 };
 
+struct DataCacheRNGSeed
+{
+    uint32_t seed[8];
+    std::mt19937 rng;
+    bool usedThisRun = false; // TODO: have load set this to false!
+};
+
+class DataCacheRNGSeeds
+{
+public:
+    std::mt19937 GetRNG(const char* key);
+
+private:
+    // a map, not an unordered_map because order matters. If the order changes, then cache.dat is different and means a huge file upload.
+    std::map<std::string, DataCacheRNGSeed> m_seeds;
+};
+
 class DataCache
 {
 private:
@@ -185,4 +203,5 @@ public:
     }
 
     DataCacheFamily<float> m_samples__1d;
+    DataCacheRNGSeeds m_rngSeeds;
 };
