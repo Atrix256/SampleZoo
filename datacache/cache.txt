@@ -1,6 +1,6 @@
 ---------- Samples 1D ----------
 
-  136 keys
+  69 keys
     blue_noise::BestCandidate  - 10001 entries, 5136384 bytes
     blue_noise::BestCandidate10  - 10001 entries, 5136384 bytes
     blue_noise::BestCandidate5  - 10001 entries, 5136384 bytes
@@ -70,70 +70,12 @@
     blue_noise::BestCandidateRefined_7  - 1 entries, 28 bytes
     blue_noise::BestCandidateRefined_8  - 1 entries, 32 bytes
     blue_noise::BestCandidateRefined_9  - 1 entries, 36 bytes
-    regular::RegularJittered_1  - 1 entries, 4 bytes
-    regular::RegularJittered_10  - 1 entries, 40 bytes
-    regular::RegularJittered_11  - 1 entries, 44 bytes
-    regular::RegularJittered_12  - 1 entries, 48 bytes
-    regular::RegularJittered_128  - 10001 entries, 5120000 bytes
-    regular::RegularJittered_13  - 1 entries, 52 bytes
-    regular::RegularJittered_14  - 1 entries, 56 bytes
-    regular::RegularJittered_15  - 1 entries, 60 bytes
-    regular::RegularJittered_16  - 1 entries, 64 bytes
-    regular::RegularJittered_17  - 1 entries, 68 bytes
-    regular::RegularJittered_18  - 1 entries, 72 bytes
-    regular::RegularJittered_19  - 1 entries, 76 bytes
-    regular::RegularJittered_2  - 1 entries, 8 bytes
-    regular::RegularJittered_20  - 1 entries, 80 bytes
-    regular::RegularJittered_21  - 1 entries, 84 bytes
-    regular::RegularJittered_22  - 1 entries, 88 bytes
-    regular::RegularJittered_23  - 1 entries, 92 bytes
-    regular::RegularJittered_24  - 1 entries, 96 bytes
-    regular::RegularJittered_25  - 1 entries, 100 bytes
-    regular::RegularJittered_26  - 1 entries, 104 bytes
-    regular::RegularJittered_27  - 1 entries, 108 bytes
-    regular::RegularJittered_28  - 1 entries, 112 bytes
-    regular::RegularJittered_29  - 1 entries, 116 bytes
-    regular::RegularJittered_3  - 1 entries, 12 bytes
-    regular::RegularJittered_30  - 1 entries, 120 bytes
-    regular::RegularJittered_31  - 1 entries, 124 bytes
-    regular::RegularJittered_32  - 1 entries, 128 bytes
-    regular::RegularJittered_33  - 1 entries, 132 bytes
-    regular::RegularJittered_34  - 1 entries, 136 bytes
-    regular::RegularJittered_35  - 1 entries, 140 bytes
-    regular::RegularJittered_36  - 1 entries, 144 bytes
-    regular::RegularJittered_37  - 1 entries, 148 bytes
-    regular::RegularJittered_38  - 1 entries, 152 bytes
-    regular::RegularJittered_39  - 1 entries, 156 bytes
-    regular::RegularJittered_4  - 1 entries, 16 bytes
-    regular::RegularJittered_40  - 1 entries, 160 bytes
-    regular::RegularJittered_4096  - 1 entries, 16384 bytes
-    regular::RegularJittered_41  - 1 entries, 164 bytes
-    regular::RegularJittered_42  - 1 entries, 168 bytes
-    regular::RegularJittered_43  - 1 entries, 172 bytes
-    regular::RegularJittered_44  - 1 entries, 176 bytes
-    regular::RegularJittered_45  - 1 entries, 180 bytes
-    regular::RegularJittered_46  - 1 entries, 184 bytes
-    regular::RegularJittered_47  - 1 entries, 188 bytes
-    regular::RegularJittered_48  - 1 entries, 192 bytes
-    regular::RegularJittered_49  - 1 entries, 196 bytes
-    regular::RegularJittered_5  - 1 entries, 20 bytes
-    regular::RegularJittered_50  - 1 entries, 200 bytes
-    regular::RegularJittered_51  - 1 entries, 204 bytes
-    regular::RegularJittered_52  - 1 entries, 208 bytes
-    regular::RegularJittered_53  - 1 entries, 212 bytes
-    regular::RegularJittered_54  - 1 entries, 216 bytes
-    regular::RegularJittered_55  - 1 entries, 220 bytes
-    regular::RegularJittered_56  - 1 entries, 224 bytes
-    regular::RegularJittered_57  - 1 entries, 228 bytes
-    regular::RegularJittered_58  - 1 entries, 232 bytes
-    regular::RegularJittered_59  - 1 entries, 236 bytes
-    regular::RegularJittered_6  - 1 entries, 24 bytes
-    regular::RegularJittered_60  - 1 entries, 240 bytes
-    regular::RegularJittered_61  - 1 entries, 244 bytes
-    regular::RegularJittered_62  - 1 entries, 248 bytes
-    regular::RegularJittered_63  - 1 entries, 252 bytes
-    regular::RegularJittered_64  - 1 entries, 256 bytes
-    regular::RegularJittered_7  - 1 entries, 28 bytes
-    regular::RegularJittered_8  - 1 entries, 32 bytes
-    regular::RegularJittered_9  - 1 entries, 36 bytes
-    uniform_random::UniformRandom  - 10001 entries, 5136384 bytes
+---------- RNG Seeds ----------
+
+  6 keys
+    blue_noise::BestCandidate  - 32 bytes
+    blue_noise::BestCandidate10  - 32 bytes
+    blue_noise::BestCandidate5  - 32 bytes
+    blue_noise::BestCandidateRefined  - 32 bytes
+    regular::RegularJittered  - 32 bytes
+    uniform_random::UniformRandom  - 32 bytes

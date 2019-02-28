@@ -51,6 +51,9 @@ Also:
 - how to submit a 2d sampling type or test?
 - the rest of the docs
 
+
+* i think maybe the "make unique" thing is bs, let it keep on rolling with whatever the state of that rng is.
+
 * before calling it good, turn off caching for jitter & uniform random, delete all output and cache, and run things.
 
 * rng cache: store the starting seed, even though the actual seed will change state. I think it already does this but verify

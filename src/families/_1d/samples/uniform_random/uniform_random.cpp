@@ -7,7 +7,7 @@ DATE: 2/10/2019
 #include "codegen.h"
 #include <random>
 
-void _1d::Samples::UniformRandom::UniformRandom(std::vector<float>& values, size_t numValues, const char* cacheKey)
+void _1d::Samples::UniformRandom::UniformRandom(std::vector<float>& values, size_t numValues, std::mt19937& rng)
 {
     // if they want less samples than there are, just truncate the sequence
     if (numValues <= values.size())
@@ -16,8 +16,6 @@ void _1d::Samples::UniformRandom::UniformRandom(std::vector<float>& values, size
         return;
     }
 
-    // get random number generator
-    std::mt19937 rng = DataCache::Instance().m_rngSeeds.GetRNG(cacheKey);
     static std::uniform_real_distribution<float> dist(0, 1);
 
     // generate random samples

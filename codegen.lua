@@ -93,7 +93,7 @@ for k,v in pairs(sampleFamilies) do
             end
             file:write("\""..cacheKey.."\", ")
             file:write(sampleFamily.."::Samples::"..sampleInfo.CodeName.."::"..functionInfo.name..", ")
-            file:write("values, numValues, wantUnique, "..tostring(functionInfo.cache).."); }, \""..cacheKey.."\", \""..sampleFamily.."\", \""..sampleType.."\", \""..functionInfo.name.."\", "..tostring(functionInfo.progressive)..", "..tostring(functionInfo.randomized).." },\n")
+            file:write("values, numValues, wantUnique, "..tostring(functionInfo.cache)..", "..tostring(functionInfo.randomized) .."); }, \""..cacheKey.."\", \""..sampleFamily.."\", \""..sampleType.."\", \""..functionInfo.name.."\", "..tostring(functionInfo.progressive)..", "..tostring(functionInfo.randomized).." },\n")
         end
         file:write("        },\n")
     end
@@ -233,7 +233,7 @@ for k,v in pairs(sampleFamilies) do
         file:write("namespace "..sampleFamily.."\n{\n    namespace Samples\n    {\n        namespace "..sampleInfo.CodeName.."\n        {\n")
 
         for functionIndex, functionInfo in ipairs(sampleInfo.Functions) do
-            file:write("            void "..functionInfo.name.."(std::vector<float>& values, size_t numValues, const char* cacheKey);\n")
+            file:write("            void "..functionInfo.name.."(std::vector<float>& values, size_t numValues, std::mt19937& rng);\n")
         end
 
         file:write("        };\n    };\n};\n")

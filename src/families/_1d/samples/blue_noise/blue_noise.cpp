@@ -11,7 +11,7 @@ Description: Randomized sequences that have only high frequency content
 #include <random>
 #include <algorithm>
 
-static void BestCandidateN(std::vector<float>& values, size_t numValues, const char* cacheKey, const size_t c_blueNoiseSampleMultiplier)
+static void BestCandidateN(std::vector<float>& values, size_t numValues, std::mt19937& rng, const size_t c_blueNoiseSampleMultiplier)
 {
     // if they want less samples than there are, just truncate the sequence
     if (numValues <= values.size())
@@ -20,8 +20,6 @@ static void BestCandidateN(std::vector<float>& values, size_t numValues, const c
         return;
     }
 
-    // get random number generator
-    std::mt19937 rng = DataCache::Instance().m_rngSeeds.GetRNG(cacheKey);
     static std::uniform_real_distribution<float> dist(0, 1);
 
     // use whatever samples currently exist, and just add to them, since this is a progressive sequence
@@ -53,25 +51,25 @@ static void BestCandidateN(std::vector<float>& values, size_t numValues, const c
     }
 }
 
-void _1d::Samples::BlueNoise::BestCandidate(std::vector<float>& values, size_t numValues, const char* cacheKey)
+void _1d::Samples::BlueNoise::BestCandidate(std::vector<float>& values, size_t numValues, std::mt19937& rng)
 {
-    BestCandidateN(values, numValues, cacheKey, 1);
+    BestCandidateN(values, numValues, rng, 1);
 }
 
-void _1d::Samples::BlueNoise::BestCandidate5(std::vector<float>& values, size_t numValues, const char* cacheKey)
+void _1d::Samples::BlueNoise::BestCandidate5(std::vector<float>& values, size_t numValues, std::mt19937& rng)
 {
-    BestCandidateN(values, numValues, cacheKey, 5);
+    BestCandidateN(values, numValues, rng, 5);
 }
 
-void _1d::Samples::BlueNoise::BestCandidate10(std::vector<float>& values, size_t numValues, const char* cacheKey)
+void _1d::Samples::BlueNoise::BestCandidate10(std::vector<float>& values, size_t numValues, std::mt19937& rng)
 {
-    BestCandidateN(values, numValues, cacheKey, 10);
+    BestCandidateN(values, numValues, rng, 10);
 }
 
-void _1d::Samples::BlueNoise::BestCandidateRefined(std::vector<float>& values, size_t numValues, const char* cacheKey)
+void _1d::Samples::BlueNoise::BestCandidateRefined(std::vector<float>& values, size_t numValues, std::mt19937& rng)
 {
     // get the samples
-    BestCandidate(values, numValues, cacheKey);
+    BestCandidate(values, numValues, rng);
     if (numValues < 2)
         return;
 
@@ -135,7 +133,7 @@ void _1d::Samples::BlueNoise::BestCandidateRefined(std::vector<float>& values, s
     }
 
     // fill the samples back in
-    BestCandidate(values, numValues, cacheKey);
+    BestCandidate(values, numValues, rng);
 }
 
 void _1d::Samples::BlueNoise::ManualTest()
