@@ -52,23 +52,7 @@ Also:
 - the rest of the docs
 
 
-* i think maybe the "make unique" thing is bs, let it keep on rolling with whatever the state of that rng is.
-
-* before calling it good, turn off caching for jitter & uniform random, delete all output and cache, and run things.
-
-* rng cache: store the starting seed, even though the actual seed will change state. I think it already does this but verify
- ! actually... i guess the first time a key is requested in a run, seed a twister either from the cache or from random device.  subsequent requests, re-use the twister.
- * save/load that initial seed.
-
-! make sure the rng seed cache works with progressive & non progressive and also the "wantUnique" situation. need an array of seeds i think, and an index to track it like the other thing has.
-
-* make sure blue_noise.cpp is ok. i added code w/o being able to test it yet.
-
-
-* seeding mersenne twister better & serializably.
- * https://stackoverflow.com/questions/15509270/does-stdmt19937-require-warmup
-
-
+* get blue noise manual test working again
 
 * we have some unknowns that affect the blue noise documentation page:
  * make blue noise torroidal
@@ -82,10 +66,10 @@ Blue noise doc page:
 
 
 
-* for regular jitter & uniform random, cache seed, not samples
 
 
-? maybe have codegen handle "ManualTest" if the lua file says to make it for a sample type?
+
+
 
  * explain dft test
 
@@ -107,11 +91,14 @@ Blue noise doc page:
 
 ! need to make sure all documentation is good (hand written). both present, and working w/ new image links etc.
 
-* bounce whole thing off manu before announcing
+
+* delete the cache and rerun everything from scratch. see if image / data file changes make sense
+
+* bounce whole thing off manu before announcing (or after, get his feedback)
 
 ----- STRETCH / UNSURE -----
 
-* the cachekey going to sample functions makes the functions not as copy/pastable.  have it pass the random number generator into the function, for functions that are randomized. (change their function signature)
+? maybe have codegen handle "ManualTest" if the lua file says to make it for a sample type?
 * profile
 * if we can optimize blue noise, we can store seed instead of samples like we do for white noise
  * Erin suggested kd tree with branch and bounds to find nearest point.
