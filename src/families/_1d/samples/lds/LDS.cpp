@@ -36,7 +36,7 @@ static void VanDerCorput(std::vector<float>& values, size_t base)
     }
 }
 
-void _1d::Samples::LDS::Sobol(std::vector<float>& values, size_t numValues)
+void _1d::Samples::LDS::Sobol(std::vector<float>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
     size_t sampleInt = 0;
@@ -49,19 +49,19 @@ void _1d::Samples::LDS::Sobol(std::vector<float>& values, size_t numValues)
     }
 }
 
-void _1d::Samples::LDS::VanDerCorput2(std::vector<float>& values, size_t numValues)
+void _1d::Samples::LDS::VanDerCorput2(std::vector<float>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
     VanDerCorput(values, 2);
 }
 
-void _1d::Samples::LDS::VanDerCorput3(std::vector<float>& values, size_t numValues)
+void _1d::Samples::LDS::VanDerCorput3(std::vector<float>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
     VanDerCorput(values, 3);
 }
 
-void _1d::Samples::LDS::VanDerCorput5(std::vector<float>& values, size_t numValues)
+void _1d::Samples::LDS::VanDerCorput5(std::vector<float>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
     VanDerCorput(values, 5);

@@ -7,6 +7,6 @@ sampleInfo = {
         { name = "Regular", progressive = false, randomized = false, cache = false },
         { name = "RegularCentered", progressive = false, randomized = false, cache = false },
         { name = "RegularCenteredOffset", progressive = false, randomized = false, cache = false },
-        { name = "RegularJittered", progressive = false, randomized = true, cache = true },
+        { name = "RegularJittered", progressive = false, randomized = true, cache = false },
     },
 }

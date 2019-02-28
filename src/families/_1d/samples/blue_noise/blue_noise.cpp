@@ -11,7 +11,7 @@ Description: Randomized sequences that have only high frequency content
 #include <random>
 #include <algorithm>
 
-static void BestCandidateN(std::vector<float>& values, size_t numValues, const size_t c_blueNoiseSampleMultiplier)
+static void BestCandidateN(std::vector<float>& values, size_t numValues, std::mt19937& rng, const size_t c_blueNoiseSampleMultiplier)
 {
     // if they want less samples than there are, just truncate the sequence
     if (numValues <= values.size())
@@ -20,10 +20,6 @@ static void BestCandidateN(std::vector<float>& values, size_t numValues, const s
         return;
     }
 
-    // make sure we use "the good stuff". yes, it matters if the not good stuff gets in, it's a big difference.
-    // https://blog.demofox.org/2017/03/15/neural-network-recipe-recognize-handwritten-digits-with-95-accuracy/
-    static std::random_device rd("dev/random");
-    static std::mt19937 rng(rd());
     static std::uniform_real_distribution<float> dist(0, 1);
 
     // use whatever samples currently exist, and just add to them, since this is a progressive sequence
@@ -55,25 +51,25 @@ static void BestCandidateN(std::vector<float>& values, size_t numValues, const s
     }
 }
 
-void _1d::Samples::BlueNoise::BestCandidate(std::vector<float>& values, size_t numValues)
+void _1d::Samples::BlueNoise::BestCandidate(std::vector<float>& values, size_t numValues, std::mt19937& rng)
 {
-    BestCandidateN(values, numValues, 1);
+    BestCandidateN(values, numValues, rng, 1);
 }
 
-void _1d::Samples::BlueNoise::BestCandidate5(std::vector<float>& values, size_t numValues)
+void _1d::Samples::BlueNoise::BestCandidate5(std::vector<float>& values, size_t numValues, std::mt19937& rng)
 {
-    BestCandidateN(values, numValues, 5);
+    BestCandidateN(values, numValues, rng, 5);
 }
 
-void _1d::Samples::BlueNoise::BestCandidate10(std::vector<float>& values, size_t numValues)
+void _1d::Samples::BlueNoise::BestCandidate10(std::vector<float>& values, size_t numValues, std::mt19937& rng)
 {
-    BestCandidateN(values, numValues, 10);
+    BestCandidateN(values, numValues, rng, 10);
 }
 
-void _1d::Samples::BlueNoise::BestCandidateRefined(std::vector<float>& values, size_t numValues)
+void _1d::Samples::BlueNoise::BestCandidateRefined(std::vector<float>& values, size_t numValues, std::mt19937& rng)
 {
     // get the samples
-    BestCandidate(values, numValues);
+    BestCandidate(values, numValues, rng);
     if (numValues < 2)
         return;
 
@@ -137,12 +133,12 @@ void _1d::Samples::BlueNoise::BestCandidateRefined(std::vector<float>& values, s
     }
 
     // fill the samples back in
-    BestCandidate(values, numValues);
+    BestCandidate(values, numValues, rng);
 }
 
 void _1d::Samples::BlueNoise::ManualTest()
 {
-
+    /*
     std::vector<std::vector<SampleGenerateInfo_1d>> testFuncs =
     {
         {
@@ -157,4 +153,5 @@ void _1d::Samples::BlueNoise::ManualTest()
     _1d::Tests::Integration::Step(testFuncs, "Doc_Step");
     _1d::Tests::Integration::Exp(testFuncs, "Doc_Exp");
     _1d::Tests::Integration::Quadratic(testFuncs, "Doc_Quadratic");
+    */
 }

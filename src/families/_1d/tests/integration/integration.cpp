@@ -99,7 +99,7 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         for (const SampleGenerateInfo_1d& sampleFunction : sampleType)
         {
             std::vector<float> samples;
-            sampleFunction.function(samples, sampleCount, false);
+            sampleFunction.function(samples, sampleCount, sampleFunction.cacheKey, false);
             sprintf(fileName, "output/%s/samples/%s/%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, testName, sampleFunction.name);
 
             desc.graphItems.resize(desc.graphItems.size() + 1);
@@ -153,22 +153,22 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
     }
 }
 
-void _1d::Tests::Integration::Linear(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName)
+void _1d::Tests::Integration::Linear(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
     DoIntegrationTest(sampleFunctions, testName, ::Linear, 0.5f);
 }
 
-void _1d::Tests::Integration::Step(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName)
+void _1d::Tests::Integration::Step(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
     DoIntegrationTest(sampleFunctions, testName, ::Step, 0.5f);
 }
 
-void _1d::Tests::Integration::Exp(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName)
+void _1d::Tests::Integration::Exp(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
     DoIntegrationTest(sampleFunctions, testName, ::Exp, e - 1.0f);
 }
 
-void _1d::Tests::Integration::Quadratic(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName)
+void _1d::Tests::Integration::Quadratic(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
     DoIntegrationTest(sampleFunctions, testName, ::Quadratic, 3.0f);
 }

@@ -107,7 +107,7 @@ static float CalculateDiscrepancyWrapAround(const std::vector<float>& samples)
     return maxDifference;
 }
 
-void _1d::Tests::Discrepancy::CalculateDiscrepancy(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName)
+void _1d::Tests::Discrepancy::CalculateDiscrepancy(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
     static const int c_sampleCount = 64;
 
@@ -137,7 +137,7 @@ void _1d::Tests::Discrepancy::CalculateDiscrepancy(const std::vector<std::vector
             discrepancy.label = sampleFunction.name;
             for (int sampleCount = 1; sampleCount <= c_sampleCount; ++sampleCount)
             {
-                sampleFunction.function(samples, sampleCount, false);
+                sampleFunction.function(samples, sampleCount, sampleFunction.cacheKey, false);
                 float d = ::CalculateDiscrepancy(samples);
                 minDiscrepancy = std::min(minDiscrepancy, d);
                 maxDiscrepancy = std::max(maxDiscrepancy, d);
@@ -161,7 +161,7 @@ void _1d::Tests::Discrepancy::CalculateDiscrepancy(const std::vector<std::vector
     }
 }
 
-void _1d::Tests::Discrepancy::CalculateDiscrepancyWrapAround(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName)
+void _1d::Tests::Discrepancy::CalculateDiscrepancyWrapAround(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
     static const int c_sampleCount = 64;
 
@@ -191,7 +191,7 @@ void _1d::Tests::Discrepancy::CalculateDiscrepancyWrapAround(const std::vector<s
             discrepancy.label = sampleFunction.name;
             for (int sampleCount = 1; sampleCount <= c_sampleCount; ++sampleCount)
             {
-                sampleFunction.function(samples, sampleCount, false);
+                sampleFunction.function(samples, sampleCount, sampleFunction.cacheKey, false);
                 float d = ::CalculateDiscrepancyWrapAround(samples);
                 minDiscrepancy = std::min(minDiscrepancy, d);
                 maxDiscrepancy = std::max(maxDiscrepancy, d);
