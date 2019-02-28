@@ -77,19 +77,19 @@ Since the denominator of the reduced fraction is what defines how long the seque
 
 The formula for using irrational numbers is essentially the same as when using rational numbers.  If X is the irrational number and you want to calculate sample I, it's: (I * X) mod 1
 
-That can make for a great number sequence like the below, which uses the square root of two (which is an irrational number) in that formula for 16 samples:
+That can make for a great number sequence like the below, which uses the square root of two (which is an irrational number) in that formula:
 
-![16 samples sqrt2](../../../samples/_1d/irrational_numbers/MakeNumberline_Sqrt2_16.png)
+![Sqrt2](../../../_1d/samples/irrational_numbers/MakeNumberline_Sqrt2.png)  
 
-Just because a number is irrational doesn't make it a good choice though.  Here is 16 samples of pi:
+Just because a number is irrational doesn't make it a good choice though.  Here is pi:
 
-![16 samples pi](../../../samples/_1d/irrational_numbers/MakeNumberline_Pi_16.png)
+![Pi](../../../_1d/samples/irrational_numbers/MakeNumberline_Pi.png)  
 
 The reason for this is that the square root of two is more irrational than pi, meaning you can get closer to the real value of pi with a fraction than you can to the square root of two.
 
-The most irrational number of all is the golden ratio, which is approximately 1.61803398875.  Here are 16 samples using the golden ratio:
+The most irrational number of all is the golden ratio, which is approximately 1.61803398875.  Here is the golden ratio:
 
-![16 samples golden ratio](../../../samples/_1d/irrational_numbers/MakeNumberline_GoldenRatio_16.png)
+![GoldenRatio](../../../_1d/samples/irrational_numbers/MakeNumberline_GoldenRatio.png)  
 
 ## More About the Golden Ratio
 

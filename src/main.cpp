@@ -36,8 +36,8 @@ TODO:
 ----- BEFORE RELEASE -----
 
 Sign off on documentation for sampling types...
-- Blue noise
-- irrational numbers
++ Blue noise
++ irrational numbers
 - LDS
 - Regular
 - Uniform Random
@@ -51,21 +51,8 @@ Also:
 - the rest of the docs
 
 
-* faster blue noise! (add info to blog post and link to sample zoo?)
- * resize array to full size at beginning, set instead of push_back
- * when you generate a candidate, binary search to see closest neighbors in list and where to insert it if it wins
- * when you accept a candidate, shift the array over and put the sample in the new spot
 
 
-? is blue noise integration test getting stuck somehow??
- * showing progress is probably really necessary cause I can't tell if it's getting stuck or not.
-
-
-
-Blue noise doc page:
-* show blue vs white noise integration vs jittered. maybe throw sobal in too, to show how quickly it integrates
-* compare blue noise dft vs white vs jittered, and show how blue DFT where it talks about frequency content
-* we are only doing one integration test now. delete the images (and links) for the others
 
 
 
@@ -85,41 +72,44 @@ Blue noise doc page:
   * and integration test
   * and standard test
 
-? open up "1d sampling" to submissions soon, and have a page about how to make submissions
- * figure out what exactly you want to do before opening it up
-
-
  * mention how sampling is like convolution in frequency space somewhere?
 
 ! need to make sure all documentation is good (hand written). both present, and working w/ new image links etc.
 
-
-* delete the cache and rerun everything from scratch. see if image / data file changes make sense
+? have a page about how to make submissions
+ * "how to submit a 1d test"
+ * "how to submit a 1d sample sequence"
 
 * bounce whole thing off manu before announcing (or after, get his feedback)
 
------ STRETCH / UNSURE -----
-
-* need some way to override filename better than a prefix.  the blue noise tests for instance should go in the blue noise folder even for non blue noise sample functions i think.
-* some way to combine DFT graphs from different sampling types? not sure if useful
-* maybe some way to reset "wants unique" back to index 1.
- * that'd be good for "combined tests" too, being able to see the same things together.
-? maybe have codegen handle "ManualTest" if the lua file says to make it for a sample type?
-* profile
-* if we can optimize blue noise, we can store seed instead of samples like we do for white noise
- * Erin suggested kd tree with branch and bounds to find nearest point.
-* need some "1d summary" page to show how sequences do vs eachother
-* print out what tests it's doing and some % of total tests done? make it be part of the generated code.
-* make sure both best candidate blue noises are based on torroidal distance
-* discrepancy should have multiple tests for randomized samples, and so should integration. numberline doesn't care though.
-* for manual tests, just have a .h file there in the tests folder defining the functions, implement them in the .cpp and manually include the .h and run the functioon in the manual tests
- * these are for the one off tests needed for documentation. maybe VDC5 should go here since it's a fail case? dunno.
-* make some 1d summary page: sobol vs golden ratio vs best candidate blue noise, vs regular centered offset?
- * text: i think the left side baseline is important. read that 16x aa blog post (part 3)
-* can we make some special "meta tests" to combine information?
-
 
 ----- AFTER RELEASE -----
+
+* discrepancy should have multiple tests for randomized samples, and so should integration. numberline doesn't care though.
+
+* make some 1d summary page: sobol vs golden ratio vs best candidate blue noise, vs regular centered offset?
+ * text: i think the left side baseline is important. read that 16x aa blog post (part 3)
+
+* show progress: print out what tests it's doing and some % of total tests done? make it be part of the generated code.
+
+* need some way to override filename better than a prefix.  the blue noise tests for instance should go in the blue noise folder even for non blue noise sample functions i think.
+? maybe have codegen handle "ManualTest" if the lua file says to make it for a sample type?
+
+* profile
+
+* if we can optimize blue noise, we can store seed instead of samples like we do for white noise
+ * Erin suggested kd tree with branch and bounds to find nearest point. This would work betetr for 2d and beyond. your sorted list thing works well for 1d.
+
+* faster blue noise! (add info to blog post and link to sample zoo?)
+ * resize array to full size at beginning, set instead of push_back
+ * when you generate a candidate, binary search to see closest neighbors in list and where to insert it if it wins
+ * when you accept a candidate, shift the array over and put the sample in the new spot
+ ! if you do this, you can likely get rid of (some?) of the blue noise caching
+
+* maybe some way to reset "wants unique" back to index 1.
+ * that'd be good for "combined tests" too, being able to see the same things together.
+ * probably reset it after every test.
+ * probably also reset the rng's after every test.
 
 * James has a bluenoise type sampling he wants to contribute called dpp. Hit him up when you are ready to open things up!
 
