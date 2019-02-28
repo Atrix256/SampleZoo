@@ -150,7 +150,7 @@ void _1d::Tests::Discrepancy::CalculateDiscrepancy(const std::vector<std::vector
 
         // make the sample type graph
         char fileName[256];
-        sprintf(fileName, "output/%s/samples/%s/%s.png", sampleType[0].sampleFamily, sampleType[0].sampleType, testName);
+        sprintf(fileName, "output/%s/samples/%s/%s%s.png", sampleType[0].sampleFamily, sampleType[0].sampleType, fileNamePrefix, testName);
 
         desc.fileName = fileName;
         desc.footer = "x axis is sample count, y axis is discrepancy.";
@@ -204,7 +204,7 @@ void _1d::Tests::Discrepancy::CalculateDiscrepancyWrapAround(const std::vector<s
 
         // make the sample type graph
         char fileName[256];
-        sprintf(fileName, "output/%s/samples/%s/%s.png", sampleType[0].sampleFamily, sampleType[0].sampleType, testName);
+        sprintf(fileName, "output/%s/samples/%s/%s%s.png", sampleType[0].sampleFamily, sampleType[0].sampleType, fileNamePrefix, testName);
         const char* footer = "x axis is sample count, y axis is discrepancy.";
 
         desc.fileName = fileName;

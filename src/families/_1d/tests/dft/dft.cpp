@@ -60,7 +60,7 @@ void _1d::Tests::DFT::DFT(const std::vector<std::vector<SampleGenerateInfo_1d>>&
 
             // make a graph of the frequencies
             char fileName[256];
-            sprintf(fileName, "output/%s/samples/%s/%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, testName, sampleFunction.name);
+            sprintf(fileName, "output/%s/samples/%s/%s%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, fileNamePrefix, testName, sampleFunction.name);
             GraphDesc desc;
             desc.fileName = fileName;
             desc.xAxisTicks.push_back({ 0.0f, "0 hz", TextHAlign::Left, TextVAlign::Top });

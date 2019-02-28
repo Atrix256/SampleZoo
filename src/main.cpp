@@ -22,9 +22,8 @@ int main(int argc, char **argv)
     // You can also pop open samples.cpp and comment out sampling types .
     // You can also follow this function call down to see what is actually called and comment out the tests (or family of tests) that you don't want it to do while you iterate.
     // Note that any modifications you make to those files will be undone when you run premake and re-generate code and documentation.
-    ManualTest();
     AutoTest();
-
+    ManualTest();
 
     DataCache::Save();
     return 0;
@@ -65,7 +64,7 @@ Blue noise doc page:
 * use file name prefix in manual tests to disambiguate file name
 
 
-
+* need some way to override filename better than a prefix.  the blue noise tests for instance should go in the blue noise folder even for non blue noise sample functions i think.
 
 
 
@@ -98,6 +97,9 @@ Blue noise doc page:
 
 ----- STRETCH / UNSURE -----
 
+* some way to combine DFT graphs from different sampling types? not sure if useful
+* maybe some way to reset "wants unique" back to index 1.
+ * that'd be good for "combined tests" too, being able to see the same things together.
 ? maybe have codegen handle "ManualTest" if the lua file says to make it for a sample type?
 * profile
 * if we can optimize blue noise, we can store seed instead of samples like we do for white noise

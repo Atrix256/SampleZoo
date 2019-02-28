@@ -52,7 +52,7 @@ static void GetErrorData(const std::vector<float>& samples, GraphItem& error, co
 }
 
 template <typename LAMBDA>
-static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const LAMBDA& lambda, const float c_actual)
+static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix, const LAMBDA& lambda, const float c_actual)
 {
     static const size_t sampleCount = 4096;
     char buffer[256];
@@ -100,7 +100,7 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         {
             std::vector<float> samples;
             sampleFunction.function(samples, sampleCount, sampleFunction.cacheKey, false);
-            sprintf(fileName, "output/%s/samples/%s/%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, testName, sampleFunction.name);
+            sprintf(fileName, "output/%s/samples/%s/%s%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, fileNamePrefix, testName, sampleFunction.name);
 
             desc.graphItems.resize(desc.graphItems.size() + 1);
             GraphItem& error = *desc.graphItems.rbegin();
@@ -139,7 +139,7 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         }
 
         // make the sample type graph
-        sprintf(fileName, "output/%s/samples/%s/%s.png", sampleType[0].sampleFamily, sampleType[0].sampleType, testName);
+        sprintf(fileName, "output/%s/samples/%s/%s%s.png", sampleType[0].sampleFamily, sampleType[0].sampleType, fileNamePrefix, testName);
         sprintf(buffer, "Numerical Integration: %s function", testName);
 
         desc.graphType = GraphType::Points;
@@ -155,20 +155,20 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
 
 void _1d::Tests::Integration::Linear(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
-    DoIntegrationTest(sampleFunctions, testName, ::Linear, 0.5f);
+    DoIntegrationTest(sampleFunctions, testName, fileNamePrefix, ::Linear, 0.5f);
 }
 
 void _1d::Tests::Integration::Step(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
-    DoIntegrationTest(sampleFunctions, testName, ::Step, 0.5f);
+    DoIntegrationTest(sampleFunctions, testName, fileNamePrefix, ::Step, 0.5f);
 }
 
 void _1d::Tests::Integration::Exp(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
-    DoIntegrationTest(sampleFunctions, testName, ::Exp, e - 1.0f);
+    DoIntegrationTest(sampleFunctions, testName, fileNamePrefix, ::Exp, e - 1.0f);
 }
 
 void _1d::Tests::Integration::Quadratic(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
-    DoIntegrationTest(sampleFunctions, testName, ::Quadratic, 3.0f);
+    DoIntegrationTest(sampleFunctions, testName, fileNamePrefix, ::Quadratic, 3.0f);
 }
