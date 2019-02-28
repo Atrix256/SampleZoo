@@ -30,10 +30,7 @@ Many things in our world - natural and man made - are distributed in a blue nois
 
 ![BestCandidateRefined](../../../_1d/samples/blue_noise/Doc_CalculateDiscrepancy.png)  
 ![BestCandidateRefined](../../../_1d/samples/blue_noise/Doc_CalculateDiscrepancyWrapAround.png)  
-![BestCandidateRefined](../../../_1d/samples/blue_noise/Doc_Exp.png)  
-![BestCandidateRefined](../../../_1d/samples/blue_noise/Doc_Linear.png)  
 ![BestCandidateRefined](../../../_1d/samples/blue_noise/Doc_Quadratic.png)  
-![BestCandidateRefined](../../../_1d/samples/blue_noise/Doc_Step.png)  
 
 # Links
 

@@ -11,7 +11,7 @@ DATE: 2/8/2019
 
 void ManualTest()
 {
-    //_1d::Samples::BlueNoise::ManualTest();
+    _1d::Samples::BlueNoise::ManualTest();
 }
 
 int main(int argc, char **argv)
@@ -51,12 +51,21 @@ Also:
 - the rest of the docs
 
 
+* faster blue noise! (add info to blog post and link to sample zoo?)
+ * resize array to full size at beginning, set instead of push_back
+ * when you generate a candidate, binary search to see closest neighbors in list and where to insert it if it wins
+ * when you accept a candidate, shift the array over and put the sample in the new spot
+
+
 ? is blue noise integration test getting stuck somehow??
+ * showing progress is probably really necessary cause I can't tell if it's getting stuck or not.
+
+
 
 Blue noise doc page:
 * show blue vs white noise integration vs jittered. maybe throw sobal in too, to show how quickly it integrates
 * compare blue noise dft vs white vs jittered, and show how blue DFT where it talks about frequency content
-
+* we are only doing one integration test now. delete the images (and links) for the others
 
 
 
