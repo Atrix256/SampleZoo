@@ -40,60 +40,6 @@ static bool ReadString(FILE* file, std::string& string)
     return fread((void*)string.data(), stringLength, 1, file) == 1;
 }
 
-// TODO: move this down to the other DataCacheRNGSeeds function
-
-bool DataCacheRNGSeeds::Load(FILE* file)
-{
-    // read how many keys there are
-    uint32_t numKeys;
-    if (!Read(file, numKeys))
-        return false;
-
-    // for each key...
-    for (uint32_t keyIndex = 0; keyIndex < numKeys; ++keyIndex)
-    {
-        // read the key
-        std::string key;
-        if (!ReadString(file, key))
-            return false;
-
-        // read the seed
-        DataCacheRNGSeed seed;
-        seed.seeded = true;
-        seed.usedThisRun = false;
-        if (!Read(file, seed.seed))
-            return false;
-
-        // insert this key
-        m_seedLists[key.c_str()] = seed;
-    }
-
-    return true;
-}
-
-void DataCacheRNGSeeds::Save(FILE* datFile, FILE* txtFile, const char* label) const
-{
-    fprintf(txtFile, "---------- %s ----------\r\n\r\n", label);
-
-    // write how many keys there are
-    Write(datFile, uint32_t(m_seedLists.size()));
-
-    fprintf(txtFile, "  %zu keys\r\n", m_seedLists.size());
-
-    // for each key...
-    for (const auto& pair : m_seedLists)
-    {
-        // write the key
-        WriteString(datFile, pair.first.c_str());
-
-        // write the seed
-        Write(datFile, pair.second.seed);
-
-        // write the txtFile data
-        fprintf(txtFile, "    %s  - %zu bytes\r\n", pair.first.c_str(), sizeof(pair.second.seed));
-    }
-}
-
 void DataCache::Load()
 {
     FILE* file = nullptr;
@@ -153,3 +99,55 @@ std::mt19937& DataCacheRNGSeeds::GetRNG(const char* cacheKey)
     // return the seeded rng
     return seed.rng;
 };
+
+bool DataCacheRNGSeeds::Load(FILE* file)
+{
+    // read how many keys there are
+    uint32_t numKeys;
+    if (!Read(file, numKeys))
+        return false;
+
+    // for each key...
+    for (uint32_t keyIndex = 0; keyIndex < numKeys; ++keyIndex)
+    {
+        // read the key
+        std::string key;
+        if (!ReadString(file, key))
+            return false;
+
+        // read the seed
+        DataCacheRNGSeed seed;
+        seed.seeded = true;
+        seed.usedThisRun = false;
+        if (!Read(file, seed.seed))
+            return false;
+
+        // insert this key
+        m_seedLists[key.c_str()] = seed;
+    }
+
+    return true;
+}
+
+void DataCacheRNGSeeds::Save(FILE* datFile, FILE* txtFile, const char* label) const
+{
+    fprintf(txtFile, "---------- %s ----------\r\n\r\n", label);
+
+    // write how many keys there are
+    Write(datFile, uint32_t(m_seedLists.size()));
+
+    fprintf(txtFile, "  %zu keys\r\n", m_seedLists.size());
+
+    // for each key...
+    for (const auto& pair : m_seedLists)
+    {
+        // write the key
+        WriteString(datFile, pair.first.c_str());
+
+        // write the seed
+        Write(datFile, pair.second.seed);
+
+        // write the txtFile data
+        fprintf(txtFile, "    %s  - %zu bytes\r\n", pair.first.c_str(), sizeof(pair.second.seed));
+    }
+}
