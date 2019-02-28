@@ -32,11 +32,13 @@ static void BestCandidateN(std::vector<float>& values, size_t numValues, std::mt
         {
             float candidateValue = dist(rng);
 
-            // calculate the closest distance from this point to an existing sample
+            // calculate the closest distance (torroidally) from this point to an existing sample
             float minDist = FLT_MAX;
             for (float value : values)
             {
                 float dist = fabsf(candidateValue - value);
+                if (dist > 0.5f)
+                    dist = 1.0f - dist;
                 if (dist < minDist)
                     minDist = dist;
             }

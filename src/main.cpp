@@ -11,7 +11,7 @@ DATE: 2/8/2019
 
 void ManualTest()
 {
-    _1d::Samples::BlueNoise::ManualTest();
+    //_1d::Samples::BlueNoise::ManualTest();
 }
 
 int main(int argc, char **argv)
@@ -51,20 +51,14 @@ Also:
 - the rest of the docs
 
 
-* get blue noise manual test working again
-
-* we have some unknowns that affect the blue noise documentation page:
- * make blue noise torroidal
- * try this for the dft experiment: https://twitter.com/Slartybartfast/status/1100789770920304640?s=03
-
+? is blue noise integration test getting stuck somehow??
 
 Blue noise doc page:
 * show blue vs white noise integration vs jittered. maybe throw sobal in too, to show how quickly it integrates
 * compare blue noise dft vs white vs jittered, and show how blue DFT where it talks about frequency content
-* use file name prefix in manual tests to disambiguate file name
 
 
-* need some way to override filename better than a prefix.  the blue noise tests for instance should go in the blue noise folder even for non blue noise sample functions i think.
+
 
 
 
@@ -97,6 +91,7 @@ Blue noise doc page:
 
 ----- STRETCH / UNSURE -----
 
+* need some way to override filename better than a prefix.  the blue noise tests for instance should go in the blue noise folder even for non blue noise sample functions i think.
 * some way to combine DFT graphs from different sampling types? not sure if useful
 * maybe some way to reset "wants unique" back to index 1.
  * that'd be good for "combined tests" too, being able to see the same things together.
@@ -118,6 +113,8 @@ Blue noise doc page:
 ----- AFTER RELEASE -----
 
 * James has a bluenoise type sampling he wants to contribute called dpp. Hit him up when you are ready to open things up!
+
+* make a page that talks about progressive vs non progressive sequences? outside the _1d block but in a general block
 
  * make sampleFunctions etc const in test function signatures
 
