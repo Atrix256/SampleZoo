@@ -50,12 +50,25 @@ Sobol is another low discrepancy sequence that actually performs really well for
 Sobol is actually just the Van Der Corput sequence base 2 re-arranged a little bit (but generated differently).  This means it has some ties to regular sampling as well, except that the sample re-arrangement is such that it's sufficiently different from regular sampling to have unique properties.
 
 Here is how you generate numbers in the Sobol sequence:
-* Calculate the Ruler function value for the current sample’s index(more info in a second)
-* Make the direction vector by shifting 1 left (in binary) 31 – ruler times.
+* Calculate the Ruler function value for the current sample’s index
+* Make the direction vector: 1 << (31 – ruler(index))
 * XOR the last sample by the direction vector to get the new sample
 * To interpret the sample as a floating point number you divide it by 2^32
 
-TODO: continue!
+In the final step when dividing by 2^{32}, we are really just interpreting the binary number as a fraction just like before, but it’s the LEFT most digit that is the 1/2 spot, not the RIGHT most digit.
+
+The Ruler Function goes like: 0, 1, 0, 2, 0, 1, 0, 3, 0, 1, 0, 2, 0, 1, 0, ...
+
+It’s pretty easy to calculate too. Calculating the ruler function for an index (starting at 1) is just the zero based index of the right most 1’s digit after converting the number to binary.
+
+1 in binary is 001 so Ruler(1) is 0.
+2 in binary is 010 so Ruler(2) is 1.
+3 in binary is 011 so Ruler(3) is 0.
+4 in binary is 100 so Ruler(4) is 2.
+5 in binary is 101 so Ruler(5) is 0.
+and so on.
+
+That might sound completely different than the Van der Corput sequence but it actually is the same thing – just re-ordered.
 
 ## links
 

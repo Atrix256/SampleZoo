@@ -38,7 +38,7 @@ TODO:
 Sign off on documentation for sampling types...
 + Blue noise
 + irrational numbers
-- LDS
++ LDS
 - Regular
 - Uniform Random
 tests...
