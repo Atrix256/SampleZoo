@@ -15,9 +15,9 @@ A problem with white noise is that the point locations are completely random wit
 
 The end result is that uniform random sampling is not very quick at numerical integration, and before it converges it can have a very noticeable and jarring noise pattern.
 
-Here are 16 samples of uniform random samples:
+Here are some uniform random samples:
 
-![16 samples Uniform Random](../../../samples/_1d/uniform_random/MakeNumberline_UniformRandom_16.png)
+![UniformRandom](../../../_1d/samples/uniform_random/MakeNumberline_UniformRandom.png)  
 
 Blue noise is an alternative to uniform random sampling which has many of the positive characteristics of white noise, but has a better error rate at lower sample counts, and the noise pattern it leaves is more pleasing to the eye due to being more uniformly distributed.
 
