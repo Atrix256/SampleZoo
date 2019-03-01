@@ -40,12 +40,12 @@ Sign off on documentation for sampling types...
 + irrational numbers
 + LDS
 + Regular
-- Uniform Random
++ Uniform Random
 tests...
-- DFT
-- Discrepancy
-- Integration
-- Numberline
++ DFT
++ Discrepancy
++ Integration
++ Numberline
 Also:
 - how to submit a 2d sampling type or test?
 - the rest of the docs
