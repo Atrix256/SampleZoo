@@ -8,10 +8,11 @@ Regular spaced samples are the lowest discrepancy sampling you can do in 1D, but
 
 See the page about the 1d discrepancy calculation test to learn more about discrepancy.
 
-There are three regular sampling strategies supplied:
+These are the regular sampling strategies supplied:
 * Regular()
 * RegularCentered()
 * RegularCenteredOffset()
+* RegularJittered()
 
 ## Regular()
 
@@ -43,7 +44,7 @@ At 16 samples have a discrepancy, and torroidal discrepancy of 0.125, which is 1
 
 ## RegularCenteredOffset()
 
-This is the same pattern as Regular, but adds 1/(n*2) to each sample position.
+This is the same pattern as Regular, but adds 1/(2n) to each sample position.
 
 If N is 4, the sampling pattern is: 1/8, 3/8, 5/8, 7/8.
 
@@ -56,3 +57,15 @@ If you are sampling something that gives the same meanting to 0 and 1, this sequ
 At 16 samples have a discrepancy, and torroidal discrepancy of 0.0625 which is 1/16.
 
 This sampling strategy is seemingly the best of the three because it works well for both the wrap around and non wrap around cases, and is tied for lowest discrepancy.
+
+## RegularJittered()
+
+This is the same as Regular(), but each sample has a random number added to it that is between 0 and 1/N.  This is the same as cutting the numberline into N buckets, and putting a sample at a random location in each bucket.
+
+This technique was invented by Pixar and as I understand it was patented until recently when the patent expired.
+
+This technique, and higher dimensional versions of it called jittered grid, give a frequency spectrum more like blue noise than either regular sampling or uniform random (white noise), which means that it is better at not having aliasing problems, but it still has good coverage over the sampling space.
+
+From the tests you can see that jittered grid has almost as high discrepancy as RegularCentered() but not quite.  In the integration tests you can't see a difference in integration error, although if we had some sort of visual example, you would see that it had less aliasing problems (at the cost of introducing noise to the result).
+
+![RegularJittered](../../../_1d/samples/regular/MakeNumberline_RegularJittered.png)  
