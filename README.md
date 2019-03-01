@@ -38,6 +38,12 @@ My interest in sampling patterns is mainly for use in numerical integration tech
 
 This stuff is surprisingly nuanced, and new sampling techniques come out every year as researchers continue to push the envelope.
 
+It can be hard to find implementations for some sampling patterns, especially if they are newly published.  Furthermore, each sampling paper seems to use different testing methods to show properties of their sequences, which can make it hard to compare against other sample sequences.
+
+My goal is to get as many implemented and tested as possible, including new ones as they come out, so this stuff is more accessible and usable by the folks who could benefit from it.
+
+It's a lot of work for one person though, so Sample Zoo need your help!
+
 # Other Software Used
 
 * **STB** - https://github.com/nothings/stb.  This is used to read and write images, and render true type text. Very cool set of header only libraries from Sean Barrett https://twitter.com/nothings.
