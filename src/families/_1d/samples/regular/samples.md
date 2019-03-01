@@ -23,11 +23,9 @@ A problem here is that if you take the average of those numbers, you get 0.375, 
 
 (Note: if what you are sampling wraps around and gives 0 and 1 the same meaning, this isn't a problem. There is no "true center" of the data, and you coud slide things around for 0.375 to be where 0.5 is. That is in fact effectively what is done in RegularCenteredOffset()!)
 
-16 samples:
+![Regular](../../../_1d/samples/regular/MakeNumberline_Regular.png)  
 
-![16 samples Regular](../../../samples/_1d/regular/MakeNumberline_Regular_16.png)
-
-These samples have a discrepancy, and torroidal discrepancy of 0.0625 which is 1/16.
+At 16 samples, these samples have a discrepancy, and torroidal discrepancy of 0.0625 which is 1/16.
 
 ## RegularCentered()
 
