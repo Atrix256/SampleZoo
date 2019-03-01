@@ -75,6 +75,13 @@ A list of specific things the project needs.
 * regular sampling and some others are not progressive. for integration graphing, it's useful to show what that means when tested the same way progressive samples are tested, but i think non progressive sampling types should be graphed such that at sample count N, it's showing the error for an N count sequence.
 * on the integration error graph, the actual graph being integrated could be shown in the lower left
 * look into making a power spectrum test: https://cs.dartmouth.edu/wjarosz/publications/subr16fourier.html
+* From paniq - could try a triangle or gaussian distribution on jittered grid.
+
+## 2d Dithering Patterns
+* ign
+* void and cluster
+* bayer
+* from paniq for blue noise: basically: fill a square image with uniform noise, stencil out a center circle with feathering, take an inverse FFT and tada, blue noise
 
 ## Work Needed, but claimed by Alan for now
 
