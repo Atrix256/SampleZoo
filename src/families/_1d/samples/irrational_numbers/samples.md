@@ -110,6 +110,10 @@ It turns out you can use algebra to turn that equation into the previous one, bu
 
 The golden ratio is a pretty useful thing, and appears in many other sampling situations besides this simple 1d case.
 
+Lastly - should you use index zero (which maps to zero) when using the golden ratio sequence?  In the tests below, there is GoldenRatioZero which includes zero and GoldenRatio which adds one to the index before multiplying by the golden ratio.
+
+They give pretty similar results, except that on sample zero, GoldenRatio has lower discrepancy, and it looks like in general it does a little better in integration. Because of this, you probably want to not include zero if using this sequence, I'd say.
+
 ## Links
 
 The Golden Ratio (why it is so irrational) - Numberphile  
