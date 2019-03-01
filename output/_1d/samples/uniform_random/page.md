@@ -1,5 +1,5 @@
 # Uniform Random Number Sampling
-Source Code: [source code](../../../../src/families/_1d/samples/uniform_random/)
+Source Code: [src/families/_1d/samples/uniform_random/](../../../../src/families/_1d/samples/uniform_random/)
 
 Uniform random sampling uses random numbers to make sample positions.
 

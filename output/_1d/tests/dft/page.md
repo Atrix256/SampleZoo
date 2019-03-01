@@ -1,5 +1,5 @@
 # Discrete Fourier Transform
-Source Code: [source code](../../../../src/families/_1d/tests/dft/)
+Source Code: [/src/families/_1d/tests/dft/](../../../../src/families/_1d/tests/dft/)
 
 
 # Test Results

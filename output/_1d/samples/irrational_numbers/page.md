@@ -1,5 +1,5 @@
 # Irrational Number Sampling
-Source Code: [source code](../../../../src/families/_1d/samples/irrational_numbers/)
+Source Code: [src/families/_1d/samples/irrational_numbers/](../../../../src/families/_1d/samples/irrational_numbers/)
 
 ## Rational Numbers
 

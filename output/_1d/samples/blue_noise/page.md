@@ -1,5 +1,5 @@
 # Blue Noise Sequences
-Source Code: [source code](../../../../src/families/_1d/samples/blue_noise/)
+Source Code: [src/families/_1d/samples/blue_noise/](../../../../src/families/_1d/samples/blue_noise/)
 
 Blue noise samples are randomized samples which are roughly evenly spaced.
 

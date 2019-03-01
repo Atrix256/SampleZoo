@@ -1,5 +1,5 @@
 # Low Discrepancy Sequences
-Source Code: [source code](../../../../src/families/_1d/samples/lds/)
+Source Code: [src/families/_1d/samples/lds/](../../../../src/families/_1d/samples/lds/)
 
 Low discrepancy sequences are deterministic (not randomized) number sequences that are low discrepancy - meaning the points tend not to clump together and leave holes.
 

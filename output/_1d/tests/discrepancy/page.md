@@ -1,5 +1,5 @@
 # Discrepancy Test
-Source Code: [source code](../../../../src/families/_1d/tests/discrepancy/)
+Source Code: [/src/families/_1d/tests/discrepancy/](../../../../src/families/_1d/tests/discrepancy/)
 
 Discrepancy is a real number given to a sampling sequence that describes how the points clump together or leave holes.
 
