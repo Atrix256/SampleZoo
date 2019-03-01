@@ -37,11 +37,9 @@ Averaging those values gives 0.5.
 
 If you are sampling something that gives the same meaning to 0 and 1 (when it wraps around, or is toroidal), a problem with this sequence is that it has 2 samples in the same location (the 0 and 1 are the same), so weights that sample location more highly (adding bias), and also gives less sampling coverage over the sampling domain, which affects the quality of the sampling.
 
-16 samples:
+![RegularCentered](../../../_1d/samples/regular/MakeNumberline_RegularCentered.png)  
 
-![16 samples Regular Centered](../../../samples/_1d/regular/MakeNumberline_RegularCentered_16.png)
-
-These samples have a discrepancy, and torroidal discrepancy of 0.125, which is 1/8. That is double the discrepancy of Regular()!
+At 16 samples have a discrepancy, and torroidal discrepancy of 0.125, which is 1/8. That is double the discrepancy of Regular()!
 
 ## RegularCenteredOffset()
 
@@ -53,10 +51,8 @@ Averaging those values gives 0.5.
 
 If you are sampling something that gives the same meanting to 0 and 1, this sequence has N distinct sample locations and the distance between all of the samples is a constant 1/N.
 
-16 samples:
+![RegularCenteredOffset](../../../_1d/samples/regular/MakeNumberline_RegularCenteredOffset.png)  
 
-![16 samples Regular Centered Offset](../../../samples/_1d/regular/MakeNumberline_RegularCenteredOffset_16.png)
-
-These samples have a discrepancy, and torroidal discrepancy of 0.0625 which is 1/16.
+At 16 samples have a discrepancy, and torroidal discrepancy of 0.0625 which is 1/16.
 
 This sampling strategy is seemingly the best of the three because it works well for both the wrap around and non wrap around cases, and is tied for lowest discrepancy.

@@ -39,7 +39,7 @@ Sign off on documentation for sampling types...
 + Blue noise
 + irrational numbers
 + LDS
-- Regular
++ Regular
 - Uniform Random
 tests...
 - DFT
