@@ -1,5 +1,6 @@
 # Irrational Number Sampling
-Source Code: [source code](../../../../families/_1d/samples/irrational_numbers/)
+Source Code: [source code](../../../../src/families/_1d/samples/irrational_numbers/)
+
 ## Rational Numbers
 
 Before we talk about using irrational numbers for generating sample points, let's talk about using rational numbers and start with the rational number 1/4.

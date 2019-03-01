@@ -1,5 +1,6 @@
 # Regular Sampling
-Source Code: [source code](../../../../families/_1d/samples/regular/)
+Source Code: [source code](../../../../src/families/_1d/samples/regular/)
+
 Regular sampling is also known as uniformly spaced sampling, regular grid sampling, it could be called "periodic sampling", and has some other names as well.
 
 This sampling strategy takes samples at even spaces which can show good convergence, but comes at the cost of aliasing.
