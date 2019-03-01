@@ -1,13 +1,13 @@
 testInfo = {
-    CodeName="Discrepancy",
-    ShortName="Discrepancy",
-    LongName="Discrepancy Test",
-    Description="Calculate metrics about actual point density compared to expected point density if the points were uniformly spaced.",
+    CodeName="Shuffle",
+    ShortName="Shuffle",
+    LongName="Shuffle Test",
+    Description="Tests to see how well a number sequence would do as a shuffle.",
     Functions= {
-        "CalculateDiscrepancy",
-        "CalculateDiscrepancyWrapAround",
+        "Histogram",
+        "Values",
     },
-    MakesIndividualImages = false,
-    MakesSampleTypeImages = true,
+    MakesIndividualImages = true,
+    MakesSampleTypeImages = false,
     SamplePageShowsFunctionName = true,
 }

@@ -84,21 +84,41 @@ From the tests you can see that jittered grid has almost as high discrepancy as 
 ![Regular](../../../_1d/samples/regular/DFT_Regular.png)  
 ### Numberline
 ![Regular](../../../_1d/samples/regular/MakeNumberline_Regular.png)  
+### Shuffle Test
+#### Histogram
+![Regular](../../../_1d/samples/regular/Histogram_Regular.png)  
+#### Values
+![Regular](../../../_1d/samples/regular/Values_Regular.png)  
 ## RegularCentered
 ### Discrete Fourier Transform
 ![RegularCentered](../../../_1d/samples/regular/DFT_RegularCentered.png)  
 ### Numberline
 ![RegularCentered](../../../_1d/samples/regular/MakeNumberline_RegularCentered.png)  
+### Shuffle Test
+#### Histogram
+![RegularCentered](../../../_1d/samples/regular/Histogram_RegularCentered.png)  
+#### Values
+![RegularCentered](../../../_1d/samples/regular/Values_RegularCentered.png)  
 ## RegularCenteredOffset
 ### Discrete Fourier Transform
 ![RegularCenteredOffset](../../../_1d/samples/regular/DFT_RegularCenteredOffset.png)  
 ### Numberline
 ![RegularCenteredOffset](../../../_1d/samples/regular/MakeNumberline_RegularCenteredOffset.png)  
+### Shuffle Test
+#### Histogram
+![RegularCenteredOffset](../../../_1d/samples/regular/Histogram_RegularCenteredOffset.png)  
+#### Values
+![RegularCenteredOffset](../../../_1d/samples/regular/Values_RegularCenteredOffset.png)  
 ## RegularJittered
 ### Discrete Fourier Transform
 ![RegularJittered](../../../_1d/samples/regular/DFT_RegularJittered.png)  
 ### Numberline
 ![RegularJittered](../../../_1d/samples/regular/MakeNumberline_RegularJittered.png)  
+### Shuffle Test
+#### Histogram
+![RegularJittered](../../../_1d/samples/regular/Histogram_RegularJittered.png)  
+#### Values
+![RegularJittered](../../../_1d/samples/regular/Values_RegularJittered.png)  
 ## Discrepancy Test
 ### CalculateDiscrepancy
 ![regular](../../../_1d/samples/regular/CalculateDiscrepancy.png)  

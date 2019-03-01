@@ -32,6 +32,22 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+shuffle value test:
+ * x axis needs labels.
+ * y axis needs labels.
+ * probably should do individual graphs.
+
+shuffle histogram test:
+ * do it!
+ * probably could do a combined graph
+
+
+! shuffle test documentation
+* does shuffle need to give any special consideration to progressive vs non progressive sequences? or randomized vs non randomized?
+
+
+
+
 * document: how to submit a 2d sampling type or test?
 * make blue noise faster with a sorted list and binary search. shouldn't need to cache samples then.
 * show progress: print out what tests it's doing and some % of total tests done? make it be part of the generated code.

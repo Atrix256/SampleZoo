@@ -9,21 +9,41 @@
 ![BestCandidate](../../../_1d/samples/blue_noise/DFT_BestCandidate.png)  
 ### Numberline
 ![BestCandidate](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate.png)  
+### Shuffle Test
+#### Histogram
+![BestCandidate](../../../_1d/samples/blue_noise/Histogram_BestCandidate.png)  
+#### Values
+![BestCandidate](../../../_1d/samples/blue_noise/Values_BestCandidate.png)  
 ## BestCandidate5
 ### Discrete Fourier Transform
 ![BestCandidate5](../../../_1d/samples/blue_noise/DFT_BestCandidate5.png)  
 ### Numberline
 ![BestCandidate5](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate5.png)  
+### Shuffle Test
+#### Histogram
+![BestCandidate5](../../../_1d/samples/blue_noise/Histogram_BestCandidate5.png)  
+#### Values
+![BestCandidate5](../../../_1d/samples/blue_noise/Values_BestCandidate5.png)  
 ## BestCandidate10
 ### Discrete Fourier Transform
 ![BestCandidate10](../../../_1d/samples/blue_noise/DFT_BestCandidate10.png)  
 ### Numberline
 ![BestCandidate10](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate10.png)  
+### Shuffle Test
+#### Histogram
+![BestCandidate10](../../../_1d/samples/blue_noise/Histogram_BestCandidate10.png)  
+#### Values
+![BestCandidate10](../../../_1d/samples/blue_noise/Values_BestCandidate10.png)  
 ## BestCandidateRefined
 ### Discrete Fourier Transform
 ![BestCandidateRefined](../../../_1d/samples/blue_noise/DFT_BestCandidateRefined.png)  
 ### Numberline
 ![BestCandidateRefined](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidateRefined.png)  
+### Shuffle Test
+#### Histogram
+![BestCandidateRefined](../../../_1d/samples/blue_noise/Histogram_BestCandidateRefined.png)  
+#### Values
+![BestCandidateRefined](../../../_1d/samples/blue_noise/Values_BestCandidateRefined.png)  
 ## Discrepancy Test
 ### CalculateDiscrepancy
 ![blue_noise](../../../_1d/samples/blue_noise/CalculateDiscrepancy.png)  
