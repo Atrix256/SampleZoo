@@ -1,4 +1,5 @@
 # Blue Noise Sequences
+Source Code: [source code](../../../../families/_1d/samples/blue_noise/)
 Blue noise samples are randomized samples which are roughly evenly spaced.
 
 It's called blue noise because if you do a DFT to look at the frequency content, it's missing (or has attenuated) low frequencies.

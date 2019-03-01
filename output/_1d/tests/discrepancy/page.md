@@ -1,4 +1,5 @@
 # Discrepancy Test
+Source Code: [source code](../../../../families/_1d/tests/discrepancy/)
 Discrepancy is a real number given to a sampling sequence that describes how the points clump together or leave holes.
 
 Discrepancy is calculated by finding the region with the largest difference between actual density of points and expected density if the points were evenly spaced.  The region with the largest difference may be either too dense, or too sparse.  That difference between actual and expected density in that region is the discrepancy.

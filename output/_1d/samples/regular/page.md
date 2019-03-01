@@ -1,4 +1,5 @@
 # Regular Sampling
+Source Code: [source code](../../../../families/_1d/samples/regular/)
 Regular sampling is also known as uniformly spaced sampling, regular grid sampling, it could be called "periodic sampling", and has some other names as well.
 
 This sampling strategy takes samples at even spaces which can show good convergence, but comes at the cost of aliasing.
@@ -7,7 +8,7 @@ Randomized sampling is often favored over regularly spaced samples to get rid of
 
 Regular spaced samples are the lowest discrepancy sampling you can do in 1D, but you actually want some discrepancy for best results, so "low discrepancy sequences" are actually better even though they have higher discrepancy than regular sampling.
 
-See this page about the 1d discrepancy calculation test to learn more about discrepancy: [1D Discrepancy Calculation](../../../tests/1d/discrepancy/discrepancy.md)
+See this page about the 1d discrepancy calculation test to learn more about discrepancy: [1D Discrepancy Calculation](../../../_1d/tests/discrepancy/discrepancy.md)
 
 There are three regular sampling strategies supplied:
 * Regular()
@@ -24,11 +25,9 @@ A problem here is that if you take the average of those numbers, you get 0.375, 
 
 (Note: if what you are sampling wraps around and gives 0 and 1 the same meaning, this isn't a problem. There is no "true center" of the data, and you coud slide things around for 0.375 to be where 0.5 is. That is in fact effectively what is done in RegularCenteredOffset()!)
 
-16 samples:
+![Regular](../../../_1d/samples/regular/MakeNumberline_Regular.png)  
 
-![16 samples Regular](../../../samples/_1d/regular/MakeNumberline_Regular_16.png)
-
-These samples have a discrepancy, and torroidal discrepancy of 0.0625 which is 1/16.
+At 16 samples, these samples have a discrepancy, and torroidal discrepancy of 0.0625 which is 1/16.
 
 ## RegularCentered()
 
