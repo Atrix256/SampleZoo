@@ -85,6 +85,7 @@ A list of specific things the project needs.
 
 ### 2d Sampling Patterns
 * best candidate.  Erin suggested kd tree with branch and bounds to find nearest point as an optimization. This would work better for 2d and beyond.
+* progressive multijittered sequences (PMJ) - https://graphics.pixar.com/library/ProgressiveMultiJitteredSampling/pmj_slides.pdf
 
 ### 2d Dithering Patterns
 * ign
@@ -97,6 +98,8 @@ A list of specific things the project needs.
 * explain progressive vs non progressive sequences
 * maybe an overview page for 1d sampling, saying what is best at what?
 * maybe a 1d page explaining a good order to read things in to best understand them?
+
+### Research - check out UTK (a sample comparison toolkit) for inspiration etc. https://utk-team.github.io/utk/
 
 ## Work Needed, but claimed by Alan for now
 
