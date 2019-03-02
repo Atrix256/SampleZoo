@@ -78,11 +78,17 @@ A list of specific things the project needs.
 * From paniq - could try a triangle or gaussian distribution on jittered grid.
 * another number line test: graph sum of samples divided by count of samples.  Good #s of sample counts will have this value being near 0.5. It's the "expected value" of the sample set at that sample count.
 
-## 2d Dithering Patterns
+### 2d Dithering Patterns
 * ign
 * void and cluster
 * bayer
 * from paniq for blue noise: basically: fill a square image with uniform noise, stencil out a center circle with feathering, take an inverse FFT and tada, blue noise
+
+### Documentation
+* mention how sampling is like convolution in frequency space somewhere?
+* explain progressive vs non progressive sequences
+* maybe an overview page for 1d sampling, saying what is best at what?
+* maybe a 1d page explaining a good order to read things in to best understand them?
 
 ## Work Needed, but claimed by Alan for now
 
