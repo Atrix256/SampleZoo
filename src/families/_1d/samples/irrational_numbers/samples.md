@@ -127,3 +127,7 @@ http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequence
 How to Generate Random Colors Programmatically
 This shows how to use the golden ratio to generate N colors from index [0,N) where the colors are nearly maximally different from eachother.  This technique is used in SampleZoo in fact, to do things like come up with the colors for lines in a line graph!
 https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmatically/
+
+Root 2 - Numberphile
+A video talking about some interesting properties of the square root of 2.
+https://www.youtube.com/watch?v=5sKah3pJnHI

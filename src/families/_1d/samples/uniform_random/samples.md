@@ -17,3 +17,7 @@ Here are some uniform random samples:
 ![UniformRandom](../../../_1d/samples/uniform_random/MakeNumberline_UniformRandom.png)  
 
 Blue noise is an alternative to uniform random sampling which has many of the positive characteristics of white noise, but has a better error rate at lower sample counts, and the noise pattern it leaves is more pleasing to the eye due to being more uniformly distributed.
+
+## Links
+
+http://luc.devroye.org/rnbookindex.html "Non-Uniform Random Variate Generation" - a huge book free online, on all things white noise.
