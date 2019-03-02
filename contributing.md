@@ -77,6 +77,11 @@ A list of specific things the project needs.
 * look into making a power spectrum test: https://cs.dartmouth.edu/wjarosz/publications/subr16fourier.html
 * From paniq - could try a triangle or gaussian distribution on jittered grid.
 * another number line test: graph sum of samples divided by count of samples.  Good #s of sample counts will have this value being near 0.5. It's the "expected value" of the sample set at that sample count.
+* there is a 2d space of anti aliasing vs discrepancy for sampling types.  I know how to quantify discrepancy but not aliasing. maybe figure that out and plot the sequences on a graph showing where they lay here?
+* for the integration graph, could show the actual function graphed in the lower left.
+* silver ratio etc: http://extremelearning.com.au/going-beyond-golden-ratio/
+* is blue noise more predictable than white noise? if in scope it could be interesting to make a test to show this.
+* shuffle test for sequences.  graph histogram max-min to show balance of shuffle.  find some way to show how random a shuffle is. I thought graphing actual sample value would help but it's not easy to read.  awolfe/shuffletest has a partial implementation here.
 
 ### 2d Sampling Patterns
 * best candidate.  Erin suggested kd tree with branch and bounds to find nearest point as an optimization. This would work better for 2d and beyond.
