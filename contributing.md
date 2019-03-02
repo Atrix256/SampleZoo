@@ -82,10 +82,16 @@ A list of specific things the project needs.
 * silver ratio etc: http://extremelearning.com.au/going-beyond-golden-ratio/
 * is blue noise more predictable than white noise? if in scope it could be interesting to make a test to show this.
 * shuffle test for sequences.  graph histogram max-min to show balance of shuffle.  find some way to show how random a shuffle is. I thought graphing actual sample value would help but it's not easy to read.  awolfe/shuffletest has a partial implementation here.
+* show how regular 1d sampling has aliasing problems. Also show how random samples trade the aliasing for noise. 
 
 ### 2d Sampling Patterns
 * best candidate.  Erin suggested kd tree with branch and bounds to find nearest point as an optimization. This would work better for 2d and beyond.
 * progressive multijittered sequences (PMJ) - https://graphics.pixar.com/library/ProgressiveMultiJitteredSampling/pmj_slides.pdf
+* correlated multi jittering: https://graphics.pixar.com/library/MultiJitteredSampling/paper.pdf
+* Martin's R2 sequence for 2d (and higher dimensions) http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
+* uniform random point in triangle: https://twitter.com/TechSparx/status/1093193006440726529?s=03
+* basic 2d LDS
+* sampling on spheres and hemispheres
 
 ### 2d Dithering Patterns
 * ign
@@ -99,25 +105,15 @@ A list of specific things the project needs.
 * maybe an overview page for 1d sampling, saying what is best at what?
 * maybe a 1d page explaining a good order to read things in to best understand them?
 
-### Research - check out UTK (a sample comparison toolkit) for inspiration etc. https://utk-team.github.io/utk/
+### Research
+* check out UTK (a sample comparison toolkit) for inspiration etc. https://utk-team.github.io/utk/
 
 ## Work Needed, but claimed by Alan for now
 
 ### Infrastructure
 * make a standard for how to add new samples or tests, fill it out in the contributing file.
-* make a data cache for expensive to compute things (eg blue noise)
 
 ### Sampling Patterns & tests
-* 2d basic LDS and others
-* Martin's R2 sequence for 2d (and higher dimensions)
-* uniform random point in triangle: https://twitter.com/TechSparx/status/1093193006440726529?s=03
-* prorgressive projective blue noise & all the papers you have linked etc.
-* dither / animated dither blue noise, ign, etc
-* sampling on a sphere
-* sampling in a triangle
-* 2d radial power spectrum test described here: https://cs.dartmouth.edu/wjarosz/publications/subr16fourier.html
+* prorgressive projective blue noise
+* gather papers linked from progressive projective blue noise project
 
-### Sampling Tests
-* 2d tests and beyond.
-* show how regular 1d sampling has aliasing problems. Also show how random samples trade the aliasing for noise. 
-* correlated multi jittering: https://graphics.pixar.com/library/MultiJitteredSampling/paper.pdf
