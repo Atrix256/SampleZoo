@@ -76,6 +76,7 @@ A list of specific things the project needs.
 * on the integration error graph, the actual graph being integrated could be shown in the lower left
 * look into making a power spectrum test: https://cs.dartmouth.edu/wjarosz/publications/subr16fourier.html
 * From paniq - could try a triangle or gaussian distribution on jittered grid.
+* another number line test: graph sum of samples divided by count of samples.  Good #s of sample counts will have this value being near 0.5. It's the "expected value" of the sample set at that sample count.
 
 ## 2d Dithering Patterns
 * ign
