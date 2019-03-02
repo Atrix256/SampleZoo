@@ -32,119 +32,20 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-
------ BEFORE RELEASE -----
-
-Sign off on documentation for sampling types...
-+ Blue noise
-+ irrational numbers
-+ LDS
-+ Regular
-+ Uniform Random
-tests...
-+ DFT
-+ Discrepancy
-+ Integration
-+ Numberline
-Also:
-- how to submit a 2d sampling type or test?
-- the rest of the docs
-
-
-
-
-
-
-
-
-
-
-
- * explain dft test
-
-* mention how VDC2 (in a full power of 2) is regular sampling but in a binary search pattern
-
-* document "regular jittered" and mention pixar.
-
-* document van der corupt base 2, 3, 5 and mention stuff from https://blog.demofox.org/2017/05/29/when-random-numbers-are-too-random-low-discrepancy-sequences/
-
- * make documentation for Sobol in LDS sample type
-  * and integration test
-  * and standard test
-
- * mention how sampling is like convolution in frequency space somewhere?
-
-! need to make sure all documentation is good (hand written). both present, and working w/ new image links etc.
-
-? have a page about how to make submissions
- * "how to submit a 1d test"
- * "how to submit a 1d sample sequence"
-
-* bounce whole thing off manu before announcing (or after, get his feedback)
-
-
------ AFTER RELEASE -----
-
-* discrepancy should have multiple tests for randomized samples, and so should integration. numberline doesn't care though.
-
-* make some 1d summary page: sobol vs golden ratio vs best candidate blue noise, vs regular centered offset?
- * text: i think the left side baseline is important. read that 16x aa blog post (part 3)
-
+* document: how to submit a 2d sampling type or test?
+* make blue noise faster with a sorted list and binary search. shouldn't need to cache samples then.
 * show progress: print out what tests it's doing and some % of total tests done? make it be part of the generated code.
-
-* need some way to override filename better than a prefix.  the blue noise tests for instance should go in the blue noise folder even for non blue noise sample functions i think.
-? maybe have codegen handle "ManualTest" if the lua file says to make it for a sample type?
-
-* profile
-
-* if we can optimize blue noise, we can store seed instead of samples like we do for white noise
- * Erin suggested kd tree with branch and bounds to find nearest point. This would work betetr for 2d and beyond. your sorted list thing works well for 1d.
-
-* faster blue noise! (add info to blog post and link to sample zoo?)
- * resize array to full size at beginning, set instead of push_back
- * when you generate a candidate, binary search to see closest neighbors in list and where to insert it if it wins
- * when you accept a candidate, shift the array over and put the sample in the new spot
- ! if you do this, you can likely get rid of (some?) of the blue noise caching
-
-* maybe some way to reset "wants unique" back to index 1.
- * that'd be good for "combined tests" too, being able to see the same things together.
- * probably reset it after every test.
- * probably also reset the rng's after every test.
 
 * James has a bluenoise type sampling he wants to contribute called dpp. Hit him up when you are ready to open things up!
 
-* make a page that talks about progressive vs non progressive sequences? outside the _1d block but in a general block
+* try resetting unique index back to 1 and rng back to seed after every test.
+ * should help cache, and also make different tests more consistent.
 
- * make sampleFunctions etc const in test function signatures
-
-! on read failure of cache, clear out all the data i think.
- * or just don't insert the bad data? but exit because the rest of the file is likely corrupt
+* text: i think the left side baseline is important. read that 16x aa blog post (part 3)
+* discrepancy should have multiple tests for randomized samples, and so should integration. numberline doesn't care though.
 
  ! gather links from progressive projective blue noise project! there are some good ones.
  * and email later.
-
- * try using left side bearing in the font drawing.  Sobol in particular has an issue but so does heljo, and RegularJittered
-
-* there's a thing about aliasing vs discrepancy? i dunno. it was from one of the papers you have a link to.  see if you can formalize that into a test of some kind.
- * find the paper that talks about it
-
-* for the purposes of documentation, it would be interesting to show non progressive sequences "graphed wrong" to show how the don't have good properties until the end.
-
-* for the integration graph, could show the actual function graphed in the lower left.
-
-? should integration error graphs (anywhere) show the expected convergence of white noise? check progressive projective blue noise project. maybe good for the documentation?
-
-* maybe interpolate the numberline using HSV to keep brightness or make it look better in general? not sure.
- * we have hsv code now. try it!
-
-* do these for LDS, and also link to from LDS
- * https://twitter.com/TechSparx/status/1096394113635753984?s=03
- * http://extremelearning.com.au/going-beyond-golden-ratio/
- * also your own ones: https://blog.demofox.org/2017/05/29/when-random-numbers-are-too-random-low-discrepancy-sequences/
-
- ? is blue noise more predictable than white? do tests to find out!
-
-
 
 
 
