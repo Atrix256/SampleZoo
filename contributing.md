@@ -3,6 +3,8 @@
 For a step by step walk through of how to contribute a new sampling sequence or a new sample sequence test, give this page a read:
 [Contributing a Sequence or Test](contributesampletest.md)
 
+For all other code changes, either submit a pull request, or drop me a line to chat details before you do work if you want a better chance of making sure your changes are accepted.
+
 ## Crediting Work
 
 Everyone who contributes code or non code contributions of any size are elligable to be included in the [Credits](credits.md) page.
