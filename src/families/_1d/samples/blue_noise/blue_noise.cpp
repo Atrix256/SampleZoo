@@ -22,33 +22,55 @@ static void BestCandidateN(std::vector<float>& values, size_t numValues, std::mt
 
     static std::uniform_real_distribution<float> dist(0, 1);
 
+    // handle the special case of not having any values yet, so we don't check for it in the loops.
+    if (values.size() == 0)
+        values.push_back(dist(rng));
+
+    // make a sorted list of existing samples
+    std::vector<float> sortedValues;
+    sortedValues = values;
+    sortedValues.reserve(numValues);
+    values.reserve(numValues);
+    std::sort(sortedValues.begin(), sortedValues.end());
+
     // use whatever samples currently exist, and just add to them, since this is a progressive sequence
     for (size_t i = values.size(); i < numValues; ++i)
     {
-        size_t numCandidates = values.size() * c_blueNoiseSampleMultiplier + 1;
+        size_t numCandidates = values.size() * c_blueNoiseSampleMultiplier;
         float bestDistance = 0.0f;
         float bestCandidateValue = 0;
+        size_t bestCandidateInsertLocation = 0;
         for (size_t candidate = 0; candidate < numCandidates; ++candidate)
         {
             float candidateValue = dist(rng);
 
-            // calculate the closest distance (torroidally) from this point to an existing sample
-            float minDist = FLT_MAX;
-            for (float value : values)
-            {
-                float dist = fabsf(candidateValue - value);
-                if (dist > 0.5f)
-                    dist = 1.0f - dist;
-                if (dist < minDist)
-                    minDist = dist;
-            }
+            // binary search the sorted value list to find the values it's closest to.
+            auto lowerBound = std::lower_bound(sortedValues.begin(), sortedValues.end(), candidateValue);
+            size_t insertLocation = lowerBound - sortedValues.begin();
 
+            // calculate the closest distance (torroidally) from this point to an existing sample by looking left and right.
+            float distanceLeft = (insertLocation > 0)
+                ? candidateValue - sortedValues[insertLocation - 1]
+                : 1.0f + candidateValue - *sortedValues.rbegin();
+
+            float distanceRight = (insertLocation < sortedValues.size())
+                ? sortedValues[insertLocation] - candidateValue
+                : distanceRight = 1.0f + sortedValues[0] - candidateValue;
+
+            // whichever is closer left vs right is the closer point distance
+            float minDist = std::min(distanceLeft, distanceRight);
+
+            // keep the best candidate seen
             if (minDist > bestDistance)
             {
                 bestDistance = minDist;
                 bestCandidateValue = candidateValue;
+                bestCandidateInsertLocation = insertLocation;
             }
         }
+
+        // take the best candidate and also insert it into the sorted values
+        sortedValues.insert(sortedValues.begin() + bestCandidateInsertLocation, bestCandidateValue);
         values.push_back(bestCandidateValue);
     }
 }

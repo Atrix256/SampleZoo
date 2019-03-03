@@ -32,6 +32,13 @@ int main(int argc, char **argv)
 /*
 TODO:
 
+* cache all samples in memory, even if not on disk
+ * have some auto gen'd code tell the data cache which keys to actually save, but always use the cache otherwise.
+ * nice for blue noise which is still slow enough to matter.
+ * do this before turning off cache usage for blue noise
+
+ * printf each test, and each sampling function within the test (indented)
+
 * document: how to submit a 2d sampling type or test?
 * make blue noise faster with a sorted list and binary search. shouldn't need to cache samples then.
 * show progress: print out what tests it's doing and some % of total tests done? make it be part of the generated code.
