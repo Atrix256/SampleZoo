@@ -33,12 +33,23 @@ int main(int argc, char **argv)
 /*
 TODOs:
 
+* finish DFT test
+ * do we need to rethink image resolution or sample count?
+
+* add to todo for 2d tests:
+ * radial power spectrum thing.
+ * should randomized sequences go through multiple tests? or is radially averaging decent enough?
+
 * uncomment 1d tests and manual tests before merging branch 
  * adding 2d auto tests makes manual tests have different results. why? rng should be reset etc. should be the same.
 
 * Get LDS types from your page
 * also progressive projective blue noise?
 * make documentation for plot test and uniform random
-* do DFT test and make documentation
+* document dft test
+* make discrepancy test
+* document discrepancy test
+* make and document integration test
+? what other tests make sense?
 
 */

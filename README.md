@@ -24,6 +24,7 @@
 [Uniform Random](output/_2d/samples/uniform_random/page.md) - Randomized sample positions using a uniform random number distribution.  
 ### Tests
 
+[DFT](output/_2d/tests/dft/page.md) - Transforms sampling patterns into frequency space  
 [Plot](output/_2d/tests/plot/page.md) - Plots sequences  
 
 
