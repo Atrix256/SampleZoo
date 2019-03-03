@@ -107,12 +107,7 @@ A list of specific things the project needs.
 ### Research
 * check out UTK (a sample comparison toolkit) for inspiration etc. https://utk-team.github.io/utk/
 
-## Work Needed, but claimed by Alan for now
-
-### Infrastructure
-* make a standard for how to add new samples or tests, fill it out in the contributing file.
-
-### Sampling Patterns & tests
-* prorgressive projective blue noise
+## Alan Specific TODOs
+* progressive projective blue noise
 * gather papers linked from progressive projective blue noise project
 
