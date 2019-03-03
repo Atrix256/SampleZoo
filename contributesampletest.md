@@ -123,3 +123,7 @@ Don't forget to add your name to the contributors page if you want your name the
 ## Create a Pull Request
 
 Next, create a pull request, and I'll get it.  I'll give it a look and let you know thumbs up or thumbs down with whatever recomendations there may be.
+
+## Questions?
+
+Ask away!  I'd love to do whatever I can to help get your contribution in.
