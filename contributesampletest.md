@@ -40,7 +40,7 @@ For both samples and tests, this text is what ends up going above the automatica
 
 The .lua file describes your test(s) and sample sequence(s), controlling how both the code and documentation are generated.
 
-for samples, the file must be called samples.lua and for tests, the file must be called tests.lua.
+for samples, the file must be called samples.lua and for tests, the file must be called tests.lua.  They have different options available in each file.
 
 ### samples.lua
 
@@ -71,8 +71,30 @@ sampleInfo = {
 
 ### tests.lua
 
-TODO: explain the file formats / options!
+```lua
+testInfo = {
+    CodeName="Discrepancy",
+    ShortName="Discrepancy",
+    LongName="Discrepancy Test",
+    Description="Calculate metrics about actual point density compared to expected point density if the points were uniformly spaced.",
+    Functions= {
+        "CalculateDiscrepancy",
+        "CalculateDiscrepancyWrapAround",
+    },
+    MakesIndividualImages = false,
+    MakesSampleTypeImages = true,
+    SamplePageShowsFunctionName = true,
+}
+```
 
+* CodeName - The name used in code, for things like namespaces.
+* ShortName - The name used in documentation when a shorter name is desired.
+* LongName - the name used in documentation when a longer name is desired.
+* Description - The description put next to the link to this content in the table of contents.
+* Functions - an array of 1 or more test function names.  These are the names of functions that it expects you to provide implementations for.
+* MakesIndividualImages - true if each sampling sequence has it's own image.  Used for generating documentation based on test results.
+* MakesSampleTypeImages - true if each sampleing type has it's own image (eg LDS has multiple sampling sequences in it, but they all show on the same graph).  Used for generating documentation based on test results.
+* SamplePageShowsFunctionName - If you have only one function in your test, you may not want to have it show the heading for the testing family as well as the testing function.  Set this to false to make it omit the testing function heading.
 
 ## Add your source code
 
