@@ -50,6 +50,7 @@ void DataCache::Load()
     DataCache& cache = Instance();
     cache.m_samples__1d.Load(file);
     cache.m_rngSeeds.Load(file);
+    cache.m_samples__2d.Load(file);
 
     fclose(file);
 }
@@ -69,6 +70,7 @@ void DataCache::Save()
 
     cache.m_samples__1d.Save(datFile, txtFile, "Samples 1D");
     cache.m_rngSeeds.Save(datFile, txtFile, "RNG Seeds");
+    cache.m_samples__2d.Save(datFile, txtFile, "Samples 2D");
 
     fclose(datFile);
     fclose(txtFile);

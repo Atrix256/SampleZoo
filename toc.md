@@ -15,3 +15,11 @@
 [Discrepancy](output/_1d/tests/discrepancy/page.md) - Calculate metrics about actual point density compared to expected point density if the points were uniformly spaced.  
 [Integration](output/_1d/tests/integration/page.md) - Use sample points to integrate 1d functions  
 [Numberline](output/_1d/tests/numberline/page.md) - Makes numberlines  
+## _2d
+
+### Samples
+
+[Uniform Random](output/_2d/samples/uniform_random/page.md) - Randomized sample positions using a uniform random number distribution.  
+### Tests
+
+[Plot](output/_2d/tests/plot/page.md) - Plots sequences  

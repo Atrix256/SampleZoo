@@ -81,3 +81,7 @@
     regular::RegularJittered  - 32 bytes
     uniform_random::UniformRandom  - 32 bytes
 
+---------- Samples 2D ----------
+
+  0 keys
+
