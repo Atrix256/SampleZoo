@@ -107,10 +107,11 @@ A list of specific things the project needs.
 * maybe an overview page for 1d sampling, saying what is best at what?
 * maybe a 1d page explaining a good order to read things in to best understand them?
 
-### Research
-* check out UTK (a sample comparison toolkit) for inspiration etc. https://utk-team.github.io/utk/
-
 ## Alan Specific TODOs
 * progressive projective blue noise
 * gather papers linked from progressive projective blue noise project
 * James has a bluenoise type sampling he wants to contribute called dpp. Hit him up when you are ready to open things up!
+* check out UTK (a sample comparison toolkit) for inspiration etc. https://utk-team.github.io/utk/
+* check out these from Martin
+ * "Aliasing-Free Blue Noise Sampling" https://kops.uni-konstanz.de/handle/123456789/20250
+ * "Stair Blue Noise Sampling" https://www.researchgate.net/publication/308797027_Stair_Blue_Noise_Sampling
