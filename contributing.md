@@ -84,6 +84,7 @@ A list of specific things the project needs.
 * is blue noise more predictable than white noise? if in scope it could be interesting to make a test to show this.
 * shuffle test for sequences.  graph histogram max-min to show balance of shuffle.  find some way to show how random a shuffle is. I thought graphing actual sample value would help but it's not easy to read.  awolfe/shuffletest has a partial implementation here.
 * show how regular 1d sampling has aliasing problems. Also show how random samples trade the aliasing for noise. 
+* discrepancy and integration tests should really do multiple tests for randomized samples.
 
 ### 2d Sampling Patterns
 * best candidate.  Erin suggested kd tree with branch and bounds to find nearest point as an optimization. This would work better for 2d and beyond.
@@ -112,4 +113,4 @@ A list of specific things the project needs.
 ## Alan Specific TODOs
 * progressive projective blue noise
 * gather papers linked from progressive projective blue noise project
-
+* James has a bluenoise type sampling he wants to contribute called dpp. Hit him up when you are ready to open things up!
