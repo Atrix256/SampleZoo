@@ -1,7 +1,7 @@
 # Contributing
 
 For a step by step walk through of how to contribute a new sampling sequence or a new sample sequence test, give this page a read:
-contributesampletest.md
+[Contributing a Sequence or Test](contributesampletest.md)
 
 ## Crediting Work
 
