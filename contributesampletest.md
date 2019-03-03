@@ -42,7 +42,37 @@ The .lua file describes your test(s) and sample sequence(s), controlling how bot
 
 for samples, the file must be called samples.lua and for tests, the file must be called tests.lua.
 
+### samples.lua
+
+```lua
+sampleInfo = {
+    CodeName="BlueNoise",
+    ShortName="Blue Noise",
+    LongName="Blue Noise Sequences",
+    Description="Randomized sequences that have only high frequency content",
+    Functions= {
+        { name = "BestCandidate", progressive = true, randomized = true, cache = true },
+        { name = "BestCandidate5", progressive = true, randomized = true, cache = true },
+        { name = "BestCandidate10", progressive = true, randomized = true, cache = true },
+        { name = "BestCandidateRefined", progressive = false, randomized = true, cache = true },
+    },
+}
+```
+
+* CodeName - The name used in code, for things like namespaces.
+* ShortName - The name used in documentation when a shorter name is desired.
+* LongName - the name used in documentation when a longer name is desired.
+* Description - The description put next to the link to this content in the table of contents.
+* Functions - one or more sampling functions each having:
+  * name - this is used as a label for the samples in results, but also as the name of the function that implements it.
+  * progressive - whether this sequence can have more samples added to it as needed (progressive) or if it needs to be rebuilt from scratch for different counts of samples (not progressive).
+  * randomized - If the sequence is randomized, some tests will be run against the sequence multiple times to provide min, max, average, etc.
+  * cache - Whether the samples should be cached on disk for subsequent runs.  This is useful for sequences that take a long time to create.  This should be false for most sequences, since it takes up a lot of space on disk to cache the sequences.
+
+### tests.lua
+
 TODO: explain the file formats / options!
+
 
 ## Add your source code
 
