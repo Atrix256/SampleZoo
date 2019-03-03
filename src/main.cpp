@@ -32,44 +32,10 @@ int main(int argc, char **argv)
 /*
 TODO:
 
-* document: how to submit a sampling type or test?
-
 * James has a bluenoise type sampling he wants to contribute called dpp. Hit him up when you are ready to open things up!
 
-* text: i think the left side baseline is important. read that 16x aa blog post (part 3)
 * discrepancy should have multiple tests for randomized samples, and so should integration. numberline doesn't care though.
 
- ! gather links from progressive projective blue noise project! there are some good ones.
- * and email later.
-
- * 2d sampling real soon. That's where the good stuff is.
-
-
-
-Documentation WIP:
-
-Guidelines overall:
-* samples are in [0,1)^N in general and similar. If you have a good reason to diverge from that, you can. might be worth a new sample family?
-* Code should ideally be copy / paste-able for easy drop in use. modular / standalone to be low effort to take & use.
-* Prefer readability over efficiency. STL is fine.
-* Comments are good
-* snake case file names
-* upper camel case function names, name space names
-* The purpose of sample specific documentation is two fold...
- 1) Make programmers (non mathematicians) able to understand how it works.
- 2) Show how it works, as well as any choices or trade offs there may be.
- * NOTE: comparison vs other sequences is usually out of scope of a sample submission, and should be made into a special test type, which you can link to.
-
-Guidelines for 1d sampling submissions:
-* generate values to sample in [0,1)
-* make a subfolder in src/samples/_1d/.  The subfolder name is snake case.
- * add your code (multiple cpps and headers are allowed)
- * make an info.lua
-* run premake and it will make a .h file that is named the same as the subfolder that exposes the functions you listed in your info.lua file.
- * it will also update the header files to include this header file.
-* The namespace is named off of "code name" in the .lua file.  It should be the same as the subfolder name but upper camel case instead of snake case.
-! TODO: talk about documentation md file.
-! update this.
- * I think you might have to run premake after running the auto tests?
+* 2d sampling real soon. That's where the good stuff is.
 
 */
