@@ -28,14 +28,3 @@ int main(int argc, char **argv)
     DataCache::Save();
     return 0;
 }
-
-/*
-TODO:
-
-* James has a bluenoise type sampling he wants to contribute called dpp. Hit him up when you are ready to open things up!
-
-* discrepancy should have multiple tests for randomized samples, and so should integration. numberline doesn't care though.
-
-* 2d sampling real soon. That's where the good stuff is.
-
-*/
