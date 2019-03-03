@@ -70,6 +70,7 @@
     blue_noise::BestCandidateRefined_7  - 1 entries, 28 bytes
     blue_noise::BestCandidateRefined_8  - 1 entries, 32 bytes
     blue_noise::BestCandidateRefined_9  - 1 entries, 36 bytes
+
 ---------- RNG Seeds ----------
 
   6 keys
@@ -79,3 +80,4 @@
     blue_noise::BestCandidateRefined  - 32 bytes
     regular::RegularJittered  - 32 bytes
     uniform_random::UniformRandom  - 32 bytes
+

@@ -9,7 +9,7 @@ Holds re-usable data on disk, such as expensive to create sampling patterns, to 
 
 #include "datacache.h"
 #include <stdint.h>
-
+#include "datacachesavelist.h"
 
 template <typename T>
 static bool Write(FILE* file, const T& data)
@@ -56,6 +56,8 @@ void DataCache::Load()
 
 void DataCache::Save()
 {
+    SetupSaveKeys();
+
     FILE* datFile = nullptr;
     FILE* txtFile = nullptr;
     fopen_s(&datFile, "datacache/cache.dat", "w+b");
@@ -150,4 +152,6 @@ void DataCacheRNGSeeds::Save(FILE* datFile, FILE* txtFile, const char* label) co
         // write the txtFile data
         fprintf(txtFile, "    %s  - %zu bytes\r\n", pair.first.c_str(), sizeof(pair.second.seed));
     }
+
+    fprintf(txtFile, "\r\n");
 }

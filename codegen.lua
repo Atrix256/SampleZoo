@@ -93,7 +93,7 @@ for k,v in pairs(sampleFamilies) do
             end
             file:write("\""..cacheKey.."\", ")
             file:write(sampleFamily.."::Samples::"..sampleInfo.CodeName.."::"..functionInfo.name..", ")
-            file:write("values, numValues, wantUnique, "..tostring(functionInfo.cache)..", "..tostring(functionInfo.randomized) .."); }, \""..cacheKey.."\", \""..sampleFamily.."\", \""..sampleType.."\", \""..functionInfo.name.."\", "..tostring(functionInfo.progressive)..", "..tostring(functionInfo.randomized).." },\n")
+            file:write("values, numValues, wantUnique, "..tostring(functionInfo.randomized) .."); }, \""..cacheKey.."\", \""..sampleFamily.."\", \""..sampleType.."\", \""..functionInfo.name.."\", "..tostring(functionInfo.progressive)..", "..tostring(functionInfo.randomized).." },\n")
         end
         file:write("        },\n")
     end
@@ -123,6 +123,26 @@ for k,v in pairs(sampleFamilies) do
 	file:write('    '..sampleFamily..'::Tests::AutoTest();\n')
 end
 file:write("};\n")
+file:close()
+
+-- make ./build/codegen/datacachesavelist.h
+file = io.open("./build/codegen/datacachesavelist.h", "w")
+file:write(dotHHeader)
+file:write("inline void SetupSaveKeys()\n{\n")
+for k,v in pairs(sampleFamilies) do
+    local sampleFamily = string.sub(v,3,-2)
+    local sampleTypes = scandir('cd ./src/families/'..sampleFamily..'/samples/ && ls -d ./*/ && cd ../../..')
+    for k3, v3 in pairs(sampleTypes) do
+        local sampleType = string.sub(v3,3,-2)
+        dofile("./src/families/"..sampleFamily.."/samples/"..sampleType.."/samples.lua")
+        for functionIndex, functionInfo in ipairs(sampleInfo.Functions) do
+            if functionInfo.cache then
+                file:write("    DataCache::Instance().m_samples_"..sampleFamily..".SaveKey(\""..sampleType.."::"..functionInfo.name.."\", "..tostring(functionInfo.progressive)..");\n")
+            end
+        end
+    end
+end
+file:write("}\n")
 file:close()
 
 -- make ./build/codegen/X/tests/tests.h

@@ -16,6 +16,7 @@ Holds re-usable data on disk, such as expensive to create sampling patterns, to 
 template <typename T>
 struct DataList
 {
+    bool saveKey = false;   // everything uses cached samples in memory.  If this is true, it will save to disk to be loaded next time.
     size_t m_uniqueIndex = 1;
 
     typedef std::vector<T> TData;
@@ -29,16 +30,10 @@ struct DataCacheFamily
     std::map<std::string, DataList<T>> m_dataLists;
 
     template <typename SAMPLE_FN>
-    void GetSamples_Progressive(const char* cacheKey, const SAMPLE_FN& SampleFn, std::vector<T>& values, size_t numValues, bool wantUnique, bool useCache, bool randomized)
+    void GetSamples_Progressive(const char* cacheKey, const SAMPLE_FN& SampleFn, std::vector<T>& values, size_t numValues, bool wantUnique, bool randomized)
     {
         static std::mt19937 dummy;
         std::mt19937& rng = randomized ? DataCache::Instance().m_rngSeeds.GetRNG(cacheKey) : dummy;
-
-        if (!useCache)
-        {
-            SampleFn(values, numValues, rng);
-            return;
-        }
 
         DataList<T>& dataList = m_dataLists[cacheKey];
 
@@ -61,16 +56,10 @@ struct DataCacheFamily
     }
 
     template <typename SAMPLE_FN>
-    void GetSamples_NonProgressive(const char* cacheKey_, const SAMPLE_FN& SampleFn, std::vector<T>& values, size_t numValues, bool wantUnique, bool useCache, bool randomized)
+    void GetSamples_NonProgressive(const char* cacheKey_, const SAMPLE_FN& SampleFn, std::vector<T>& values, size_t numValues, bool wantUnique, bool randomized)
     {
         static std::mt19937 dummy;
         std::mt19937& rng = randomized ? DataCache::Instance().m_rngSeeds.GetRNG(cacheKey_) : dummy;
-
-        if (!useCache)
-        {
-            SampleFn(values, numValues, rng);
-            return;
-        }
 
         char cacheKey[256];
         sprintf(cacheKey, "%s_%zu", cacheKey_, numValues);
@@ -146,13 +135,22 @@ struct DataCacheFamily
         fprintf(txtFile, "---------- %s ----------\r\n\r\n", label);
 
         // write how many keys there are
-        Write(datFile, uint32_t(m_dataLists.size()));
+        size_t dataListCount = 0;
+        for (const auto& pair : m_dataLists)
+        {
+            if (pair.second.saveKey)
+                dataListCount++;
+        }
+        Write(datFile, uint32_t(dataListCount));
 
-        fprintf(txtFile, "  %zu keys\r\n", m_dataLists.size());
+        fprintf(txtFile, "  %zu keys\r\n", dataListCount);
 
         // for each key...
         for (const auto& pair : m_dataLists)
         {
+            if (!pair.second.saveKey)
+                continue;
+
             // write the key
             WriteString(datFile, pair.first.c_str());
 
@@ -175,6 +173,25 @@ struct DataCacheFamily
 
             // write the txtFile data
             fprintf(txtFile, "    %s  - %zu entries, %zu bytes\r\n", pair.first.c_str(), pair.second.m_dataLists.size(), totalMemory);
+        }
+        fprintf(txtFile, "\r\n");
+    }
+
+    void SaveKey(const char* key, bool progressive)
+    {
+        if (progressive)
+        {
+            m_dataLists[key].saveKey = true;
+            return;
+        }
+
+        std::string prefix = key;
+        prefix.append("_");
+
+        for (auto& pair : m_dataLists)
+        {
+            if (pair.first.compare(0, prefix.length(), prefix) == 0)
+                pair.second.saveKey = true;
         }
     }
 };
