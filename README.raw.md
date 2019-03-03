@@ -5,7 +5,9 @@ TOCTOC
 # SampleZoo
 Simple copy/paste-able implementations of sampling patterns, with objective and subjective tests to compare them, along with understandable explanations.
 
-Created by Alan Wolfe (alan.wolfe@gmail.com)
+Created by Alan Wolfe
+email: alan.wolfe@gmail.com
+twitter: https://twitter.com/Atrix256
 
 Building and running this code: [building](building.md)
 
