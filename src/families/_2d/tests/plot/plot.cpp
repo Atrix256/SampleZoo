@@ -75,7 +75,7 @@ void _2d::Tests::Plot::MakePlot(const std::vector<std::vector<SampleGenerateInfo
             for (size_t sampleCountIndex = 0; sampleCountIndex < sampleCounts.size(); ++sampleCountIndex)
             {
                 sampleFunction.function(samples, sampleCounts[sampleCountIndex], sampleFunction.cacheKey, false);
-                Image newImage = ::MakePlot(samples, 512);
+                Image newImage = ::MakePlot(samples, 256);
 
                 char buffer[256];
                 sprintf(buffer, "%zu samples", sampleCounts[sampleCountIndex]);
