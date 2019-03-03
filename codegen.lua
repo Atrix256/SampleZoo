@@ -120,7 +120,6 @@ end
 file:write("\ninline void AutoTest()\n{\n")
 for k,v in pairs(sampleFamilies) do
 	local sampleFamily = string.sub(v,3,-2)
-    file:write('    printf("\\n====='..sampleFamily..'=====\\n\\n");\n')
 	file:write('    '..sampleFamily..'::Tests::AutoTest();\n')
 end
 file:write("};\n")
@@ -182,7 +181,6 @@ for k,v in pairs(sampleFamilies) do
     for k2,v2 in pairs(subTestTypes) do
         local subTestType = string.sub(v2,3,-2)
         dofile("./src/families/"..sampleFamily.."/tests/"..subTestType.."/tests.lua")
-        file:write('            printf("'..testInfo.CodeName..'...\\n");\n')
         file:write("            "..testInfo.CodeName.."::AutoTest();\n")
     end
 
@@ -209,7 +207,7 @@ for k,v in pairs(sampleFamilies) do
         file:write("            inline void AutoTest()\n            {\n")
 
         for functionIndex, functionName in ipairs(testInfo.Functions) do
-            file:write('                printf("    '..functionName..'...\\n");\n')
+            file:write('                printf("'..sampleFamily..'::'..subTestType..'::'..functionName..'...\\n");\n')
             file:write("                "..functionName.."("..sampleFamily.."::sampleFunctions, \""..functionName.."\", \"\");\n")
         end
 
