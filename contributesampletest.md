@@ -6,6 +6,14 @@ This page is a step by step guide on how to do just that.  The process is meant 
 
 The boilerplate code that interfaces with your sequence or test is auto generated to aid in this process.
 
+In short, the steps are:
+1. Make a subfolder with your code in it
+2. add a .lua file describing some properties of your sequence or test
+3. add a .md file explaining it
+4. run premake to generate code and documentation
+5. run the application to generate the test results
+6. Verify results, commit and push, make pull request.
+
 ## Make a Subfolder
 
 First you need to make a subfolder in the appropriate location for your test or samples. The location depends on whether you are making a test or a sample sequence.
