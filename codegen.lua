@@ -117,12 +117,6 @@ for k,v in pairs(sampleFamilies) do
 	local sampleFamily = string.sub(v,3,-2)
 	file:write('#include "'..sampleFamily..'/tests/autotest.h"\n')
 end
-file:write("\ninline void AutoTest()\n{\n")
-for k,v in pairs(sampleFamilies) do
-	local sampleFamily = string.sub(v,3,-2)
-	file:write('    '..sampleFamily..'::Tests::AutoTest();\n')
-end
-file:write("};\n")
 file:close()
 
 -- make ./build/codegen/datacachesavelist.h

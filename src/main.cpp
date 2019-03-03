@@ -21,8 +21,8 @@ int main(int argc, char **argv)
     // Note: comment this out and call your specific code directly if you want to iterate on code.
     // You can also pop open samples.cpp and comment out sampling types .
     // You can also follow this function call down to see what is actually called and comment out the tests (or family of tests) that you don't want it to do while you iterate.
-    // Note that any modifications you make to those files will be undone when you run premake and re-generate code and documentation.
-    AutoTest();
+    // Any modifications you make to those files will be undone when you run premake and re-generate code and documentation.
+    _1d::Tests::AutoTest();
     ManualTest();
 
     DataCache::Save();
