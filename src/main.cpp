@@ -37,7 +37,7 @@ TODO:
  * nice for blue noise which is still slow enough to matter.
  * do this before turning off cache usage for blue noise
 
- * printf each test, and each sampling function within the test (indented)
+ * printf after each sample function in testing functions
 
 * document: how to submit a 2d sampling type or test?
 * make blue noise faster with a sorted list and binary search. shouldn't need to cache samples then.
