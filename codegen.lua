@@ -229,6 +229,7 @@ for k,v in pairs(sampleFamilies) do
         for functionIndex, functionName in ipairs(testInfo.Functions) do
             file:write('                printf("'..sampleFamily..'::'..subTestType..'::'..functionName..'...\\n");\n')
             file:write("                "..functionName.."("..sampleFamily.."::sampleFunctions, \""..functionName.."\", \"\");\n")
+            file:write('                DataCache::Instance().PostTest();\n')
         end
 
         file:write("            }\n")

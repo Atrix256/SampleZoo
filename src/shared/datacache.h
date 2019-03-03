@@ -194,6 +194,12 @@ struct DataCacheFamily
                 pair.second.saveKey = true;
         }
     }
+
+    void PostTest()
+    {
+        for (auto& pair : m_dataLists)
+            pair.second.m_uniqueIndex = 1;
+    }
 };
 
 struct DataCacheRNGSeed
@@ -212,6 +218,8 @@ public:
     bool Load(FILE* file);
     void Save(FILE* datFile, FILE* txtFile, const char* label) const;
 
+    void PostTest();
+
 private:
     // a map, not an unordered_map because order matters. If the order changes, then cache.dat is different and means a huge file upload.
     std::map<std::string, DataCacheRNGSeed> m_seedLists;
@@ -229,6 +237,12 @@ public:
     static DataCache& Instance() {
         static DataCache cache;
         return cache;
+    }
+
+    void PostTest()
+    {
+        m_samples__1d.PostTest();
+        m_rngSeeds.PostTest();
     }
 
     DataCacheFamily<float> m_samples__1d;

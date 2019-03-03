@@ -102,6 +102,19 @@ std::mt19937& DataCacheRNGSeeds::GetRNG(const char* cacheKey)
     return seed.rng;
 };
 
+void DataCacheRNGSeeds::PostTest()
+{
+    for (auto pair : m_seedLists)
+    {
+        DataCacheRNGSeed& seed = pair.second;
+        if (seed.usedThisRun)
+        {
+            std::seed_seq fullSeed{ seed.seed[0], seed.seed[1], seed.seed[2], seed.seed[3], seed.seed[4], seed.seed[5], seed.seed[6], seed.seed[7], seed.seed[8] };
+            seed.rng = std::mt19937(fullSeed);
+        }
+    }
+}
+
 bool DataCacheRNGSeeds::Load(FILE* file)
 {
     // read how many keys there are
