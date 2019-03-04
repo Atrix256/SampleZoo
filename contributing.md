@@ -65,6 +65,10 @@ A list of specific things the project needs.
 * make datacache use file compression (zlib?). The data makes this a very poor proposition. a 30MB data cache file compressed to 27MB for me.
 * look into multithreading the tests & sample generation. data cache would need to be made safe for this.
 * pcg variant or splitmix instead of mersenne twister, says Marc Reynolds.  Faster and higher quality.
+* can we hash samples and test version or something somehow to know when we don't need to re-run a test if the target file already exists?
+* add profile information to the output. We can instrument the autogen'd code to time sample functions and test functions and see where the time is going. Maybe also some custom markers if we want more specific information.
+* save different caches to different files so they aren't such large binary diffs when anything changes.
+* look into using markdeep (html w/ a header to use some javascript) instead of markdown for all this documentation.  Main readme might be markdown but the rest could be html? http://casual-effects.com/markdeep/#templates
 
 ### 1D Sampling Patterns & Tests
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
@@ -96,6 +100,7 @@ A list of specific things the project needs.
 * basic 2d LDS
 * sampling on spheres and hemispheres
 * making pmj02 more quickly: http://www.jcgt.org/published/0008/01/04/paper.pdf
+* deterministic point process: https://arxiv.org/pdf/1207.6083.pdf and https://arxiv.org/pdf/1609.06840.pdf
 
 ### Circle sampling patterns
 * Vogel Disk: https://www.gamedev.net/articles/programming/graphics/contact-hardening-soft-shadows-made-fast-r4906/
