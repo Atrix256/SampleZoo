@@ -64,6 +64,7 @@ A list of specific things the project needs.
 * graph: make axis labels instead of using footer text
 * make datacache use file compression (zlib?). The data makes this a very poor proposition. a 30MB data cache file compressed to 27MB for me.
 * look into multithreading the tests & sample generation. data cache would need to be made safe for this.
+* pcg variant or splitmix instead of mersenne twister, says Marc Reynolds.  Faster and higher quality.
 
 ### 1D Sampling Patterns & Tests
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
