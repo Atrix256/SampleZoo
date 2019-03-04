@@ -105,3 +105,4 @@ void _2d::Tests::DFT::DFT(const std::vector<std::vector<SampleGenerateInfo_2d>>&
 }
 
 // TODO: need to offset the image by half, so DC is in the center.
+// TODO: we may not need such a large image. Probably won't know until we have more sample types analyzed though.
