@@ -22,6 +22,7 @@
 ### Samples
 
 [Blue Noise](output/_2d/samples/blue_noise/page.md) - Randomized sequences that have only high frequency content  
+[LDS](output/_2d/samples/lds/page.md) - Low discrepancy sequences  
 [Uniform Random](output/_2d/samples/uniform_random/page.md) - Randomized sample positions using a uniform random number distribution.  
 ### Tests
 

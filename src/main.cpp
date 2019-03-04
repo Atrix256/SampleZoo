@@ -40,6 +40,15 @@ TODOs:
 * uncomment 1d tests and manual tests before merging branch 
  * adding 2d auto tests makes manual tests have different results. why? rng should be reset etc. should be the same.
 
+* regular grid
+* jittered grid (stratified)
+* R2
+* latin squares? quincunx? n rooks, n queens?
+
+* dart throwing in 1d and 2d
+
+* 1d and 2d subrandom?
+
 * Get LDS types from your page
 * also progressive projective blue noise?
 * make documentation for plot test and uniform random
