@@ -10,6 +10,10 @@
 #### BestCandidate10
 ![BestCandidate10](../../../_2d/samples/blue_noise/MakePlot_BestCandidate10.png)  
 ### Low Discrepancy Sequences
+#### NRooks
+![NRooks](../../../_2d/samples/lds/MakePlot_NRooks.png)  
+#### Hammersley
+![Hammersley](../../../_2d/samples/lds/MakePlot_Hammersley.png)  
 #### Sobol
 ![Sobol](../../../_2d/samples/lds/MakePlot_Sobol.png)  
 #### Halton_2_3_Zero

@@ -4,11 +4,23 @@ Source Code: [src/families/_2d/samples/lds/](../../../../src/families/_2d/sample
 
 # Test Results
  samples tested:
+* NRooks (Not Progressive, Randomized)
+* Hammersley (Not Progressive, Not Randomized)
 * Sobol (Progressive, Not Randomized)
 * Halton_2_3_Zero (Progressive, Not Randomized)
 * Halton_2_3 (Progressive, Not Randomized)
 * Halton_5_7 (Progressive, Not Randomized)
 * Halton_13_9 (Progressive, Not Randomized)
+## NRooks
+### Discrete Fourier Transform
+![NRooks](../../../_2d/samples/lds/DFT_NRooks.png)  
+### Plot
+![NRooks](../../../_2d/samples/lds/MakePlot_NRooks.png)  
+## Hammersley
+### Discrete Fourier Transform
+![Hammersley](../../../_2d/samples/lds/DFT_Hammersley.png)  
+### Plot
+![Hammersley](../../../_2d/samples/lds/MakePlot_Hammersley.png)  
 ## Sobol
 ### Discrete Fourier Transform
 ![Sobol](../../../_2d/samples/lds/DFT_Sobol.png)  

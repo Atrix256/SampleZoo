@@ -112,3 +112,31 @@ void _2d::Samples::LDS::Halton_13_9(std::vector<Vec2>& values, size_t numValues,
     values.resize(numValues);
     Halton(values, numValues, 13, 9);
 }
+
+void _2d::Samples::LDS::Hammersley(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+{
+    // TODO: this!
+    values.resize(numValues, Vec2{ 0.5f, 0.5f });
+}
+
+void _2d::Samples::LDS::NRooks(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+{
+    // make N rooks that can't see eachother
+    std::vector<size_t> rookPositions(numValues, 0);
+    for (size_t i = 0; i < numValues; ++i)
+        rookPositions[i] = i;
+    std::shuffle(rookPositions.begin(), rookPositions.end(), rng);
+
+    // convert them to sampling locations
+    values.resize(numValues);
+    for (size_t i = 0; i < numValues; ++i)
+    {
+        values[i][0] = float(rookPositions[i]) / float(numValues - 1);
+        values[i][1] = float(i) / float(numValues - 1);
+    }
+
+    int ijkl = 0;
+    // TODO: should we add a half?
+}
+
+// TODO: sobol indexes out of range!

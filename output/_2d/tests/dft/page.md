@@ -14,6 +14,10 @@ Source Code: [/src/families/_2d/tests/dft/](../../../../src/families/_2d/tests/d
 #### BestCandidate10
 ![BestCandidate10](../../../_2d/samples/blue_noise/DFT_BestCandidate10.png)  
 ### Low Discrepancy Sequences
+#### NRooks
+![NRooks](../../../_2d/samples/lds/DFT_NRooks.png)  
+#### Hammersley
+![Hammersley](../../../_2d/samples/lds/DFT_Hammersley.png)  
 #### Sobol
 ![Sobol](../../../_2d/samples/lds/DFT_Sobol.png)  
 #### Halton_2_3_Zero
