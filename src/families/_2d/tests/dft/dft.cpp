@@ -38,8 +38,8 @@ struct ComplexImage2D
 
 void _2d::Tests::DFT::DFT(const std::vector<std::vector<SampleGenerateInfo_2d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
-    static const int c_numSamples = 128;
-    static const int c_sampleSourceImageWidth = 512;
+    static const int c_numSamples = 1024;
+    static const int c_sampleSourceImageWidth = 256;
 
     for (const std::vector<SampleGenerateInfo_2d>& sampleType : sampleFunctions)
     {
@@ -69,18 +69,19 @@ void _2d::Tests::DFT::DFT(const std::vector<std::vector<SampleGenerateInfo_2d>>&
 
             // get the magnitudes
             Image result(c_sampleSourceImageWidth, c_sampleSourceImageWidth);
-            const complex_type* src = sampleImageOut.pixels.data();
             PixelRGBAF32_PMA* dest = result.m_pixels.data();
             float maxMag = 0.0f;
             for (size_t y = 0; y < c_sampleSourceImageWidth; ++y)
             {
+                size_t srcY = (y + c_sampleSourceImageWidth / 2) % c_sampleSourceImageWidth;
                 for (size_t x = 0; x < c_sampleSourceImageWidth; ++x)
                 {
-                    const complex_type& c = *src;
+                    size_t srcX = (x + c_sampleSourceImageWidth / 2) % c_sampleSourceImageWidth;
+
+                    const complex_type& c = sampleImageOut(srcX, srcY);
                     float mag = float(sqrt(c.real()*c.real() + c.imag()*c.imag()));
                     maxMag = std::max(mag, maxMag);
                     *dest = PixelRGBAF32_PMA(PixelRGBAF32{mag, mag, mag, 1.0f});
-                    ++src;
                     ++dest;
                 }
             }
@@ -103,6 +104,3 @@ void _2d::Tests::DFT::DFT(const std::vector<std::vector<SampleGenerateInfo_2d>>&
         }
     }
 }
-
-// TODO: need to offset the image by half, so DC is in the center.
-// TODO: we may not need such a large image. Probably won't know until we have more sample types analyzed though.
