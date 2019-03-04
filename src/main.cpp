@@ -33,6 +33,10 @@ int main(int argc, char **argv)
 /*
 TODOs:
 
+* is there something better you can do for 2d regular sampling to calculate how much each axis should get in sample count?
+ * maybe find the multiples that bring it closest to even on each axis but still perfectly multiply into the number?
+ * i really don't know.
+ * right now if you ask for 17 samples, it would only give you 16, and a (0,0) for the next sample.
 
 * I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.
 

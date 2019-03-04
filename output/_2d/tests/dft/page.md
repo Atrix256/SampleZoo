@@ -32,6 +32,15 @@ Source Code: [/src/families/_2d/tests/dft/](../../../../src/families/_2d/tests/d
 ![Halton_5_7](../../../_2d/samples/lds/DFT_Halton_5_7.png)  
 #### Halton_13_9
 ![Halton_13_9](../../../_2d/samples/lds/DFT_Halton_13_9.png)  
+### Regular Sampling
+#### Regular
+![Regular](../../../_2d/samples/regular/DFT_Regular.png)  
+#### RegularCentered
+![RegularCentered](../../../_2d/samples/regular/DFT_RegularCentered.png)  
+#### RegularCenteredOffset
+![RegularCenteredOffset](../../../_2d/samples/regular/DFT_RegularCenteredOffset.png)  
+#### RegularJittered
+![RegularJittered](../../../_2d/samples/regular/DFT_RegularJittered.png)  
 ### Uniform Random Number Sampling
 #### UniformRandom
 ![UniformRandom](../../../_2d/samples/uniform_random/DFT_UniformRandom.png)  

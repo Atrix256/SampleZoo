@@ -28,6 +28,15 @@
 ![Halton_5_7](../../../_2d/samples/lds/MakePlot_Halton_5_7.png)  
 #### Halton_13_9
 ![Halton_13_9](../../../_2d/samples/lds/MakePlot_Halton_13_9.png)  
+### Regular Sampling
+#### Regular
+![Regular](../../../_2d/samples/regular/MakePlot_Regular.png)  
+#### RegularCentered
+![RegularCentered](../../../_2d/samples/regular/MakePlot_RegularCentered.png)  
+#### RegularCenteredOffset
+![RegularCenteredOffset](../../../_2d/samples/regular/MakePlot_RegularCenteredOffset.png)  
+#### RegularJittered
+![RegularJittered](../../../_2d/samples/regular/MakePlot_RegularJittered.png)  
 ### Uniform Random Number Sampling
 #### UniformRandom
 ![UniformRandom](../../../_2d/samples/uniform_random/MakePlot_UniformRandom.png)  
