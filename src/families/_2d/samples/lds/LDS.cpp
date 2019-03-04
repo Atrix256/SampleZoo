@@ -1,9 +1,7 @@
 /*
 FILE: LDS.cpp
 AUTHOR: Alan Wolfe (alan.wolfe@gmail.com)
-DATE: 2/11/2019
-
-Description: Low discrepancy sequences
+DATE: 3/4/2019
 */
 
 #include "codegen.h"
