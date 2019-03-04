@@ -92,10 +92,17 @@ A list of specific things the project needs.
 * progressive multijittered sequences (PMJ) - https://graphics.pixar.com/library/ProgressiveMultiJitteredSampling/pmj_slides.pdf
 * correlated multi jittering: https://graphics.pixar.com/library/MultiJitteredSampling/paper.pdf
 * Martin's R2 sequence for 2d (and higher dimensions) http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
-* uniform random point in triangle: https://twitter.com/TechSparx/status/1093193006440726529?s=03
 * basic 2d LDS
 * sampling on spheres and hemispheres
 * making pmj02 more quickly: http://www.jcgt.org/published/0008/01/04/paper.pdf
+
+### Circle sampling patterns
+* Vogel Disk: https://www.gamedev.net/articles/programming/graphics/contact-hardening-soft-shadows-made-fast-r4906/
+
+### Triangle sampling patterns
+* https://pharr.org/matt/blog/2019/02/27/triangle-sampling-1.html
+* uniform point in triangle: https://twitter.com/TechSparx/status/1093193006440726529?s=03
+* can do blue noise and white noise via rejection sampling
 
 ### 2d Dithering Patterns
 * ign
