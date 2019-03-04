@@ -2,6 +2,7 @@
  samples tested:
 * BestCandidate (Progressive, Randomized)
 * BestCandidate5 (Progressive, Randomized)
+* BestCandidate10 (Progressive, Randomized)
 ## BestCandidate
 ### Discrete Fourier Transform
 ![BestCandidate](../../../_2d/samples/blue_noise/DFT_BestCandidate.png)  
@@ -12,3 +13,8 @@
 ![BestCandidate5](../../../_2d/samples/blue_noise/DFT_BestCandidate5.png)  
 ### Plot
 ![BestCandidate5](../../../_2d/samples/blue_noise/MakePlot_BestCandidate5.png)  
+## BestCandidate10
+### Discrete Fourier Transform
+![BestCandidate10](../../../_2d/samples/blue_noise/DFT_BestCandidate10.png)  
+### Plot
+![BestCandidate10](../../../_2d/samples/blue_noise/MakePlot_BestCandidate10.png)  

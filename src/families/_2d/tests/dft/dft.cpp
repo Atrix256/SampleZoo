@@ -87,14 +87,18 @@ void _2d::Tests::DFT::DFT(const std::vector<std::vector<SampleGenerateInfo_2d>>&
             }
 
             // normalize the magnitudes
+            //const float c = 1.0f / log(1.0f / 255.0f + maxMag);
             dest = result.m_pixels.data();
             for (size_t y = 0; y < c_sampleSourceImageWidth; ++y)
             {
                 for (size_t x = 0; x < c_sampleSourceImageWidth; ++x)
                 {
-                    dest->r /= maxMag;
-                    dest->g /= maxMag;
-                    dest->b /= maxMag;
+                    //float normalized = c * log(1.0f / 255.0f + dest->r);
+
+                    float normalized = dest->r / maxMag;
+                    dest->r = normalized;
+                    dest->g = normalized;
+                    dest->b = normalized;
                     ++dest;
                 }
             }

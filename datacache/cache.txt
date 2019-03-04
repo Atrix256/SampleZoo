@@ -83,7 +83,8 @@
 
 ---------- Samples 2D ----------
 
-  2 keys
+  3 keys
     blue_noise::BestCandidate  - 2 entries, 8720 bytes
+    blue_noise::BestCandidate10  - 2 entries, 8720 bytes
     blue_noise::BestCandidate5  - 2 entries, 8720 bytes
 

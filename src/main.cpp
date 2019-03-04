@@ -33,10 +33,6 @@ int main(int argc, char **argv)
 /*
 TODOs:
 
-* for dtf might want to do this thing:
- * const float c = 255.0f / log(1.0f+maxmag);
- * from https://blog.demofox.org/2017/10/20/generating-blue-noise-sample-points-with-mitchells-best-candidate-algorithm/
-
 * add to todo for 2d tests:
  * radial power spectrum thing.
  * should randomized sequences go through multiple tests? or is radially averaging decent enough?

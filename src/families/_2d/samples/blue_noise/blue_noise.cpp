@@ -57,3 +57,8 @@ void _2d::Samples::BlueNoise::BestCandidate5(std::vector<Vec2>& values, size_t n
 {
     BestCandidateN(values, numValues, rng, 5);
 }
+
+void _2d::Samples::BlueNoise::BestCandidate10(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+{
+    BestCandidateN(values, numValues, rng, 10);
+}
