@@ -85,6 +85,7 @@ A list of specific things the project needs.
 * shuffle test for sequences.  graph histogram max-min to show balance of shuffle.  find some way to show how random a shuffle is. I thought graphing actual sample value would help but it's not easy to read.  awolfe/shuffletest has a partial implementation here.
 * show how regular 1d sampling has aliasing problems. Also show how random samples trade the aliasing for noise. 
 * discrepancy and integration tests should really do multiple tests for randomized samples.
+* probably should do some rational samples to go with the irrational ones. easy enough to do and can show some interesting things.
 
 ### 2d Sampling Patterns
 * best candidate.  Erin suggested kd tree with branch and bounds to find nearest point as an optimization. This would work better for 2d and beyond.
@@ -94,6 +95,7 @@ A list of specific things the project needs.
 * uniform random point in triangle: https://twitter.com/TechSparx/status/1093193006440726529?s=03
 * basic 2d LDS
 * sampling on spheres and hemispheres
+* making pmj02 more quickly: http://www.jcgt.org/published/0008/01/04/paper.pdf
 
 ### 2d Dithering Patterns
 * ign
