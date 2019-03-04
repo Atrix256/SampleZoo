@@ -73,3 +73,17 @@ inline std::array<float, N> operator + (const std::array<float, N>& A, float B)
         ret[i] = A[i] + B;
     return ret;
 }
+
+template <size_t N>
+inline float DistanceUnitTorroidal(const std::array<float, N>& A, const std::array<float, N>& B)
+{
+    float axisDistSquaredSum = 0.0f;
+    for (size_t i = 0; i < N; ++i)
+    {
+        float axisDist = B[i] - A[i];
+        if (axisDist > 0.5f)
+            axisDist = 1.0f - axisDist;
+        axisDistSquaredSum += axisDist * axisDist;
+    }
+    return sqrtf(axisDistSquaredSum);
+}
