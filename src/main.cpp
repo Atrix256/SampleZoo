@@ -44,7 +44,6 @@ TODOs:
 * sobol indexes out of range! need to fix. true for 2d, not sure if true for 1d.
 * should N rooks add a half? i think so... i think it should be like regular centered offset for best results.
 
-* 2d plot test should project points down to x and y axis.
  ? should we do 1d tests on those projections? i think probably yes.
 
 * add to todo for 2d tests:

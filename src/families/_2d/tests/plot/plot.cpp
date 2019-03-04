@@ -19,18 +19,12 @@ static Image MakePlot(const std::vector<Vec2>& samples, int width)
 
     Image image(width, height, { 1.0f, 1.0f, 1.0f, 1.0f});
 
-    float paddingMinX = 0.05f;
-    float paddingMaxX = 1.0f - paddingMinX;
-    float paddingMinY = 0.09f;
-    float paddingMaxY = 0.99f;
+    float paddingMinX = 0.1f;
+    float paddingMaxX = 0.9f;
+    float paddingMinY = 0.1f;
+    float paddingMaxY = 0.9f;
 
     DrawBox(image, Vec2{ paddingMinX, paddingMinY }, Vec2{ paddingMaxX, paddingMaxY }, { 0.85f, 0.85f, 0.85f, 1.0f });
-
-    DrawLine(image, paddingMinX, paddingMinY, paddingMinX, paddingMaxY, { 0.125f, 0.125f, 0.125f, 1.0f }, 2.0f / 512.0f);
-    DrawLine(image, paddingMaxX, paddingMinY, paddingMaxX, paddingMaxY, { 0.125f, 0.125f, 0.125f, 1.0f }, 2.0f / 512.0f);
-
-    DrawLine(image, paddingMinX, paddingMinY, paddingMaxX, paddingMinY, { 0.125f, 0.125f, 0.125f, 1.0f }, 2.0f / 512.0f);
-    DrawLine(image, paddingMinX, paddingMaxY, paddingMaxX, paddingMaxY, { 0.125f, 0.125f, 0.125f, 1.0f }, 2.0f / 512.0f);
 
     for (size_t i = 0; i < samples.size(); ++i)
     {
@@ -53,9 +47,22 @@ static Image MakePlot(const std::vector<Vec2>& samples, int width)
         Vec2 paddingMin = { paddingMinX, paddingMinY };
         Vec2 paddingMax = { paddingMaxX, paddingMaxY };
 
+        // draw the 2d sample location
         Vec2 samplePos = samples[i] * (paddingMax - paddingMin) + paddingMin;
         DrawCircle(image, samplePos, 5.0f / 512.0f, color);
+
+        // draw the x axis projection
+        DrawCircle(image, Vec2{ 0.05f, samplePos[1] }, 5.0f / 512.0f, color);
+
+        // draw the y axis projection
+        DrawCircle(image, Vec2{ samplePos[0], 0.95f }, 5.0f / 512.0f, color);
     }
+
+    // draw borders
+    DrawLine(image, paddingMinX, paddingMinY, paddingMinX, paddingMaxY, { 0.125f, 0.125f, 0.125f, 1.0f }, 2.0f / 512.0f);
+    DrawLine(image, paddingMaxX, paddingMinY, paddingMaxX, paddingMaxY, { 0.125f, 0.125f, 0.125f, 1.0f }, 2.0f / 512.0f);
+    DrawLine(image, paddingMinX, paddingMinY, paddingMaxX, paddingMinY, { 0.125f, 0.125f, 0.125f, 1.0f }, 2.0f / 512.0f);
+    DrawLine(image, paddingMinX, paddingMaxY, paddingMaxX, paddingMaxY, { 0.125f, 0.125f, 0.125f, 1.0f }, 2.0f / 512.0f);
 
     return image;
 }
