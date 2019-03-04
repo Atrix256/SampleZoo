@@ -18,6 +18,10 @@ Source Code: [/src/families/_2d/tests/plot/](../../../../src/families/_2d/tests/
 ![NRooks](../../../_2d/samples/lds/MakePlot_NRooks.png)  
 #### Hammersley
 ![Hammersley](../../../_2d/samples/lds/MakePlot_Hammersley.png)  
+#### Hammersley_1Bit
+![Hammersley_1Bit](../../../_2d/samples/lds/MakePlot_Hammersley_1Bit.png)  
+#### Hammersley_2Bits
+![Hammersley_2Bits](../../../_2d/samples/lds/MakePlot_Hammersley_2Bits.png)  
 #### Sobol
 ![Sobol](../../../_2d/samples/lds/MakePlot_Sobol.png)  
 #### Halton_2_3_Zero

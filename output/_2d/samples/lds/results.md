@@ -2,6 +2,8 @@
  samples tested:
 * NRooks (Not Progressive, Randomized)
 * Hammersley (Not Progressive, Not Randomized)
+* Hammersley_1Bit (Not Progressive, Not Randomized)
+* Hammersley_2Bits (Not Progressive, Not Randomized)
 * Sobol (Progressive, Not Randomized)
 * Halton_2_3_Zero (Progressive, Not Randomized)
 * Halton_2_3 (Progressive, Not Randomized)
@@ -17,6 +19,16 @@
 ![Hammersley](../../../_2d/samples/lds/DFT_Hammersley.png)  
 ### Plot
 ![Hammersley](../../../_2d/samples/lds/MakePlot_Hammersley.png)  
+## Hammersley_1Bit
+### Discrete Fourier Transform
+![Hammersley_1Bit](../../../_2d/samples/lds/DFT_Hammersley_1Bit.png)  
+### Plot
+![Hammersley_1Bit](../../../_2d/samples/lds/MakePlot_Hammersley_1Bit.png)  
+## Hammersley_2Bits
+### Discrete Fourier Transform
+![Hammersley_2Bits](../../../_2d/samples/lds/DFT_Hammersley_2Bits.png)  
+### Plot
+![Hammersley_2Bits](../../../_2d/samples/lds/MakePlot_Hammersley_2Bits.png)  
 ## Sobol
 ### Discrete Fourier Transform
 ![Sobol](../../../_2d/samples/lds/DFT_Sobol.png)  

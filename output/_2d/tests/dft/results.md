@@ -14,6 +14,10 @@
 ![NRooks](../../../_2d/samples/lds/DFT_NRooks.png)  
 #### Hammersley
 ![Hammersley](../../../_2d/samples/lds/DFT_Hammersley.png)  
+#### Hammersley_1Bit
+![Hammersley_1Bit](../../../_2d/samples/lds/DFT_Hammersley_1Bit.png)  
+#### Hammersley_2Bits
+![Hammersley_2Bits](../../../_2d/samples/lds/DFT_Hammersley_2Bits.png)  
 #### Sobol
 ![Sobol](../../../_2d/samples/lds/DFT_Sobol.png)  
 #### Halton_2_3_Zero

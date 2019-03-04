@@ -33,6 +33,20 @@ int main(int argc, char **argv)
 /*
 TODOs:
 
+
+* I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.
+
+! hammersley: if you skip index 0, it doesn't help anything, because you then get the zero from the next sequence! This unless you do N-1 sample items, which is kind of weird and doesn't really help anything.
+
+? is hammerlsey ok with tests doing non power of 2 sample counts on it? i think probably not, but check it out.
+* 2d "plot average" test? could have "average distance from center". Could also just draw a line showing how it moves around the center.. unknown.
+
+* sobol indexes out of range! need to fix. true for 2d, not sure if true for 1d.
+* should N rooks add a half? i think so... i think it should be like regular centered offset for best results.
+
+* 2d plot test should project points down to x and y axis.
+ ? should we do 1d tests on those projections? i think probably yes.
+
 * add to todo for 2d tests:
  * radial power spectrum thing.
  * should randomized sequences go through multiple tests? or is radially averaging decent enough?

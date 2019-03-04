@@ -6,15 +6,52 @@ DATE: 3/4/2019
 
 #include "codegen.h"
 
-static size_t Ruler(size_t n)
+static void Hammersley(std::vector<Vec2>& values, size_t numValues, size_t truncateBits)
 {
-    size_t ret = 0;
-    while (n != 0 && (n & 1) == 0)
+    // figure out how many bits we are working in.
+    size_t value = 1;
+    size_t numBits = 0;
+    while (value < numValues)
     {
-        n /= 2;
-        ++ret;
+        value *= 2;
+        ++numBits;
     }
-    return ret;
+
+    // calculate the sample points
+    values.resize(numValues);
+    size_t sampleInt = 0;
+    for (size_t i = 0; i < numValues; ++i)
+    {
+        // x axis
+        values[i][0] = 0.0f;
+        {
+            size_t n = i >> truncateBits;
+            float base = 1.0f / 2.0f;
+            while (n)
+            {
+                if (n & 1)
+                    values[i][0] += base;
+                n /= 2;
+                base /= 2.0f;
+            }
+        }
+
+        // y axis
+        values[i][1] = 0.0f;
+        {
+            size_t n = i >> truncateBits;
+            size_t mask = size_t(1) << (numBits - 1 - truncateBits);
+
+            float base = 1.0f / 2.0f;
+            while (mask)
+            {
+                if (n & mask)
+                    values[i][1] += base;
+                mask /= 2;
+                base /= 2.0f;
+            }
+        }
+    }
 }
 
 static void Halton(std::vector<Vec2>& values, size_t numValues, size_t baseX, size_t baseY, bool skipZero = true)
@@ -54,6 +91,17 @@ static void Halton(std::vector<Vec2>& values, size_t numValues, size_t baseX, si
     }
 }
 
+static size_t Ruler(size_t n)
+{
+    size_t ret = 0;
+    while (n != 0 && (n & 1) == 0)
+    {
+        n /= 2;
+        ++ret;
+    }
+    return ret;
+}
+
 void _2d::Samples::LDS::Sobol(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     // x axis
@@ -89,37 +137,42 @@ void _2d::Samples::LDS::Sobol(std::vector<Vec2>& values, size_t numValues, std::
 
 void _2d::Samples::LDS::Halton_2_3_Zero(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    values.resize(numValues);
     Halton(values, numValues, 2, 3, false);
 }
 
 void _2d::Samples::LDS::Halton_2_3(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    values.resize(numValues);
     Halton(values, numValues, 2, 3);
 }
 
 void _2d::Samples::LDS::Halton_5_7(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    values.resize(numValues);
     Halton(values, numValues, 5, 7);
 }
 
 void _2d::Samples::LDS::Halton_13_9(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    values.resize(numValues);
     Halton(values, numValues, 13, 9);
 }
 
 void _2d::Samples::LDS::Hammersley(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    // TODO: this!
-    values.resize(numValues, Vec2{ 0.5f, 0.5f });
+    ::Hammersley(values, numValues, 0);
+}
+
+void _2d::Samples::LDS::Hammersley_1Bit(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+{
+    ::Hammersley(values, numValues, 1);
+}
+
+void _2d::Samples::LDS::Hammersley_2Bits(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+{
+    ::Hammersley(values, numValues, 2);
 }
 
 void _2d::Samples::LDS::NRooks(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    // make N rooks that can't see eachother
+    // make N rooks that can't see each other on x or y axis
     std::vector<size_t> rookPositions(numValues, 0);
     for (size_t i = 0; i < numValues; ++i)
         rookPositions[i] = i;
@@ -132,9 +185,4 @@ void _2d::Samples::LDS::NRooks(std::vector<Vec2>& values, size_t numValues, std:
         values[i][0] = float(rookPositions[i]) / float(numValues - 1);
         values[i][1] = float(i) / float(numValues - 1);
     }
-
-    int ijkl = 0;
-    // TODO: should we add a half?
 }
-
-// TODO: sobol indexes out of range!
