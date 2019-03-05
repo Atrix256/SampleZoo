@@ -1,9 +1,9 @@
 # Test Results
  samples tested:
-* GoldenRatioZero (Progressive, Not Randomized)
-* GoldenRatio (Progressive, Not Randomized)
-* Pi (Progressive, Not Randomized)
-* Sqrt2 (Progressive, Not Randomized)
+* GoldenRatioZero (Progressive, Deterministic)
+* GoldenRatio (Progressive, Deterministic)
+* Pi (Progressive, Deterministic)
+* Sqrt2 (Progressive, Deterministic)
 ## GoldenRatioZero
 ### Discrete Fourier Transform
 ![GoldenRatioZero](../../../_1d/samples/irrational_numbers/DFT_GoldenRatioZero.png)  

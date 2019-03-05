@@ -86,7 +86,7 @@ for k,v in pairs(sampleFamilies) do
                         if sampleFunctionInfo.randomized then
                             file:write("Randomized)\n")
                         else
-                            file:write("Not Randomized)\n")
+                            file:write("Deterministic)\n")
                         end
 
                         file:write("!["..sampleFunctionInfo.name.."](../../../"..sampleFamily.."/samples/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionInfo.name..".png)  \n")
@@ -142,7 +142,7 @@ for k,v in pairs(sampleFamilies) do
             if sampleFunctionInfo.randomized then
                 file:write("Randomized)\n")
             else
-                file:write("Not Randomized)\n")
+                file:write("Deterministic)\n")
             end
         end
 

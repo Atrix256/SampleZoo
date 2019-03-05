@@ -1,6 +1,6 @@
 # Test Results
  samples tested:
-* R2 (Progressive, Not Randomized)
+* R2 (Progressive, Deterministic)
 * R2Jittered (Progressive, Randomized)
 ## R2
 ### Discrete Fourier Transform

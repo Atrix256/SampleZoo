@@ -1,8 +1,8 @@
 # Test Results
  samples tested:
-* Regular (Not Progressive, Not Randomized)
-* RegularCentered (Not Progressive, Not Randomized)
-* RegularCenteredOffset (Not Progressive, Not Randomized)
+* Regular (Not Progressive, Deterministic)
+* RegularCentered (Not Progressive, Deterministic)
+* RegularCenteredOffset (Not Progressive, Deterministic)
 * RegularJittered (Not Progressive, Randomized)
 ## Regular
 ### Discrete Fourier Transform

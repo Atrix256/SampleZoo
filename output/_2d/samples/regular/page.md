@@ -4,9 +4,9 @@ Source Code: [src/families/_2d/samples/regular/](../../../../src/families/_2d/sa
 
 # Test Results
  samples tested:
-* Regular (Not Progressive, Not Randomized)
-* RegularCentered (Not Progressive, Not Randomized)
-* RegularCenteredOffset (Not Progressive, Not Randomized)
+* Regular (Not Progressive, Deterministic)
+* RegularCentered (Not Progressive, Deterministic)
+* RegularCenteredOffset (Not Progressive, Deterministic)
 * RegularJittered (Not Progressive, Randomized)
 ## Regular
 ### Discrete Fourier Transform

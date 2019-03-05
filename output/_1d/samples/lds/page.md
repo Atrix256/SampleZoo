@@ -77,10 +77,10 @@ That might sound completely different than the Van der Corput sequence but it ac
 https://blog.demofox.org/2017/05/29/when-random-numbers-are-too-random-low-discrepancy-sequences/ - When Random Numbers Are Too Random: Low Discrepancy Sequences
 # Test Results
  samples tested:
-* Sobol (Progressive, Not Randomized)
-* VanDerCorput2 (Progressive, Not Randomized)
-* VanDerCorput3 (Progressive, Not Randomized)
-* VanDerCorput5 (Progressive, Not Randomized)
+* Sobol (Progressive, Deterministic)
+* VanDerCorput2 (Progressive, Deterministic)
+* VanDerCorput3 (Progressive, Deterministic)
+* VanDerCorput5 (Progressive, Deterministic)
 ## Sobol
 ### Discrete Fourier Transform
 ![Sobol](../../../_1d/samples/lds/DFT_Sobol.png)  

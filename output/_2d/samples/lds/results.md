@@ -1,14 +1,14 @@
 # Test Results
  samples tested:
 * NRooks (Not Progressive, Randomized)
-* Hammersley (Not Progressive, Not Randomized)
-* Hammersley_1Bit (Not Progressive, Not Randomized)
-* Hammersley_2Bits (Not Progressive, Not Randomized)
-* Sobol (Progressive, Not Randomized)
-* Halton_2_3_Zero (Progressive, Not Randomized)
-* Halton_2_3 (Progressive, Not Randomized)
-* Halton_5_7 (Progressive, Not Randomized)
-* Halton_13_9 (Progressive, Not Randomized)
+* Hammersley (Not Progressive, Deterministic)
+* Hammersley_1Bit (Not Progressive, Deterministic)
+* Hammersley_2Bits (Not Progressive, Deterministic)
+* Sobol (Progressive, Deterministic)
+* Halton_2_3_Zero (Progressive, Deterministic)
+* Halton_2_3 (Progressive, Deterministic)
+* Halton_5_7 (Progressive, Deterministic)
+* Halton_13_9 (Progressive, Deterministic)
 ## NRooks
 ### Discrete Fourier Transform
 ![NRooks](../../../_2d/samples/lds/DFT_NRooks.png)  
