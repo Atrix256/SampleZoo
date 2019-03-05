@@ -34,10 +34,10 @@ Some tests behave differently for progressive or non progressive sampling sequen
 
 An example of where this comes up is in numerical integration, where you are graphing the sample count on the x axis and the integration error on the y axis.
 
-If you are graphing 1 to N samples, for progressive sequence syou can just generate an N sample sequence and graph the integration error at each step in the sequence.
+If you are graphing 1 to N samples, for progressive sequences you can just generate an N sample sequence and graph the integration error at each step in the sequence.
 
 For non progressive sequences, it gets a little more difficult though.  You need to generate a sequence for EVERY sample count 1 to N and calculate the sample count of that sequence.
 
 The reason for this is because a non progressive sequence is almost always going to have A LOT of integration error in the beginning, regardless of how much error it gets to in the end.
 
-If we don't do that, we aren't giving a fair apples to apples test between the sequences.  Nobody is going to use a non progressive sequence and expect it to keep up with a progressive sequence in integration error in the intermediate samples.
+If we don't do that, we aren't giving a fair apples to apples test between the sequences.  Nobody is going to use a non progressive sequence and expect it to keep up with a progressive sequence in integration error for intermediate samples.
