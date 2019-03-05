@@ -8,6 +8,6 @@ For instance, blue noise is missing low frequency content, so you could see how 
 
 Below is the DFT of 1d blue noise made with the best candidate algorithm, and 1d jittered grid.
 
-![BestCandidate](../../../_1d/samples/blue_noise/DFT_BestCandidate.png)  
+![BestCandidate](../output/_1d/samples/blue_noise/DFT_BestCandidate.png)  
 
-![RegularJittered](../../../_1d/samples/regular/DFT_RegularJittered.png)  
+![RegularJittered](../output/_1d/samples/regular/DFT_RegularJittered.png)  
