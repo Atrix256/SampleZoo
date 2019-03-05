@@ -28,15 +28,14 @@ file:write('# Table of Contents\n\n')
 
 for k,v in pairs(sampleFamilies) do
 	local sampleFamily = string.sub(v,3,-2)
-	file:write('## '..sampleFamily..'\n\n')
-	file:write('### Samples\n\n')
+	file:write('## '..sampleFamily..' Samples\n\n')
 	local sampleTypes = scandir('cd ./src/families/'..sampleFamily..'/samples/ && ls -d ./*/ && cd ../../..')
 	for k2,v2 in pairs(sampleTypes) do
 		local sampleType = string.sub(v2,3,-2)
 		dofile("./src/families/"..sampleFamily.."/samples/"..sampleType.."/samples.lua")
 		file:write(' * ['..sampleInfo.ShortName..'](output/'..sampleFamily..'/samples/'..sampleType..'/page.md) - '..sampleInfo.Description..'  \n')
 	end
-	file:write('### Tests\n\n')
+	file:write('## '..sampleFamily..' Tests\n\n')
     local subTestTypes = scandir('cd ./src/families/'..sampleFamily..'/tests/ && ls -d ./*/ && cd ../../..')
     for k2,v2 in pairs(subTestTypes) do
         local subTestType = string.sub(v2,3,-2)
