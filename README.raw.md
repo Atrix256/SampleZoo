@@ -1,5 +1,9 @@
 ![SampleZoo](SampleZoo.jpg)
 
+# Table of Contents
+
+* [Progressive vs Non Progressive Samples](./doc/progressive.md)
+
 TOCTOC
 
 # SampleZoo

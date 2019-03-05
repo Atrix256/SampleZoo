@@ -24,8 +24,6 @@ local sampleFamilies = scandir('cd ./src/families/ && ls -d ./*/ && cd ../..')
 
 local file = io.open("./toc.md", "w")
 
-file:write('# Table of Contents\n\n')
-
 for k,v in pairs(sampleFamilies) do
 	local sampleFamily = string.sub(v,3,-2)
 	file:write('## '..sampleFamily..' Samples\n\n')

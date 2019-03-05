@@ -1,5 +1,3 @@
-# Table of Contents
-
 ## _1d Samples
 
  * [Blue Noise](output/_1d/samples/blue_noise/page.md) - Randomized sequences that have only high frequency content  
