@@ -73,7 +73,7 @@ A list of specific things the project needs.
 ### 1D Sampling Patterns & Tests
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
 * low discrepancy sequences (basic, more exotic, scrambled, etc!)
-* other 1d blue noise methods including: poisson disk, relaxation.
+* other 1d blue noise methods including: dart throwing, relaxation.
 * blue noise from eigenvectors: https://twitter.com/TechSparx/status/1093902404867760129
 * jittered grid
 * other 1d sampling patterns not listed here!
@@ -91,8 +91,9 @@ A list of specific things the project needs.
 * show how regular 1d sampling has aliasing problems. Also show how random samples trade the aliasing for noise. 
 * discrepancy and integration tests should really do multiple tests for randomized samples.
 * probably should do some rational samples to go with the irrational ones. easy enough to do and can show some interesting things.
+* subrandom numbers? from your blog post.
 
-### 2d Sampling Patterns
+### 2d Sampling Patterns and tests
 * best candidate.  Erin suggested kd tree with branch and bounds to find nearest point as an optimization. This would work better for 2d and beyond.
 * progressive multijittered sequences (PMJ) - https://graphics.pixar.com/library/ProgressiveMultiJitteredSampling/pmj_slides.pdf
 * correlated multi jittering: https://graphics.pixar.com/library/MultiJitteredSampling/paper.pdf
@@ -101,6 +102,16 @@ A list of specific things the project needs.
 * sampling on spheres and hemispheres
 * making pmj02 more quickly: http://www.jcgt.org/published/0008/01/04/paper.pdf
 * deterministic point process: https://arxiv.org/pdf/1207.6083.pdf and https://arxiv.org/pdf/1609.06840.pdf
+* when someone requests regular sampling of 17 samples, what should we do? right now it does 4x4 and adds zero samples for the rest.
+ * we should maybe find the most equal pair of factors that go into whatever number they asked for? not sure.
+* dart throwing and other 2d blue noise sample point generation strategies.
+* subrandom numbers? from your blog post.
+* 2d "plot average" test? could have "average distance from center". Could also just draw a line showing how it moves around the center.. unknown. like the 1d numberline average test but for 2d.
+* we could do (selected?) 1d tests on the projections of the 2d sampling patterns.
+* latin squares? quincunx?, n queens?
+* should randomized sequences go through multiple tests and report avg, min, max?
+* projective blue noise
+* your progressive projective blue noise
 
 ### Circle sampling patterns
 * Vogel Disk: https://www.gamedev.net/articles/programming/graphics/contact-hardening-soft-shadows-made-fast-r4906/
