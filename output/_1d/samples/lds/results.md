@@ -25,7 +25,6 @@
 ### Numberline
 ![VanDerCorput5](../../../_1d/samples/lds/MakeNumberline_VanDerCorput5.png)  
 ## Discrepancy Test
-### CalculateDiscrepancy
 ![lds](../../../_1d/samples/lds/CalculateDiscrepancy.png)  
 ## Numerical Integration
 ### Linear

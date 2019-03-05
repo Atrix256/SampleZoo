@@ -165,7 +165,9 @@ for k,v in pairs(sampleFamilies) do
             if testInfo.MakesSampleTypeImages then
                 file:write("## "..testInfo.LongName.."\n")
                 for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
-                    file:write("### "..testFunctionName.."\n")
+                    if testInfo.SamplePageShowsFunctionName then
+                        file:write("### "..testFunctionName.."\n")
+                    end
                     file:write("!["..sampleType.."](../../../"..sampleFamily.."/samples/"..sampleType.."/"..testFunctionName..".png)  \n")
                 end
             end

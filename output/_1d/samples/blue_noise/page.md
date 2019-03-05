@@ -72,7 +72,6 @@ http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.556.445&rep=rep1&type=p
 ### Numberline
 ![BestCandidateRefined](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidateRefined.png)  
 ## Discrepancy Test
-### CalculateDiscrepancy
 ![blue_noise](../../../_1d/samples/blue_noise/CalculateDiscrepancy.png)  
 ## Numerical Integration
 ### Linear

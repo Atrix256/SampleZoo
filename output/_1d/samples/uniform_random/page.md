@@ -34,7 +34,6 @@ http://luc.devroye.org/rnbookindex.html "Non-Uniform Random Variate Generation" 
 ### Numberline
 ![UniformRandom](../../../_1d/samples/uniform_random/MakeNumberline_UniformRandom.png)  
 ## Discrepancy Test
-### CalculateDiscrepancy
 ![uniform_random](../../../_1d/samples/uniform_random/CalculateDiscrepancy.png)  
 ## Numerical Integration
 ### Linear

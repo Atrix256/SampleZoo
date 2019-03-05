@@ -102,7 +102,6 @@ https://blog.demofox.org/2017/05/29/when-random-numbers-are-too-random-low-discr
 ### Numberline
 ![VanDerCorput5](../../../_1d/samples/lds/MakeNumberline_VanDerCorput5.png)  
 ## Discrepancy Test
-### CalculateDiscrepancy
 ![lds](../../../_1d/samples/lds/CalculateDiscrepancy.png)  
 ## Numerical Integration
 ### Linear

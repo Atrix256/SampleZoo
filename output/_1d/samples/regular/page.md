@@ -102,7 +102,6 @@ This is also known as stratified sampling.
 ### Numberline
 ![RegularJittered](../../../_1d/samples/regular/MakeNumberline_RegularJittered.png)  
 ## Discrepancy Test
-### CalculateDiscrepancy
 ![regular](../../../_1d/samples/regular/CalculateDiscrepancy.png)  
 ## Numerical Integration
 ### Linear

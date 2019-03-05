@@ -162,7 +162,6 @@ https://www.youtube.com/watch?v=5sKah3pJnHI
 ### Numberline
 ![Sqrt2](../../../_1d/samples/irrational_numbers/MakeNumberline_Sqrt2.png)  
 ## Discrepancy Test
-### CalculateDiscrepancy
 ![irrational_numbers](../../../_1d/samples/irrational_numbers/CalculateDiscrepancy.png)  
 ## Numerical Integration
 ### Linear

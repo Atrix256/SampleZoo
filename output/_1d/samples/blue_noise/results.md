@@ -25,7 +25,6 @@
 ### Numberline
 ![BestCandidateRefined](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidateRefined.png)  
 ## Discrepancy Test
-### CalculateDiscrepancy
 ![blue_noise](../../../_1d/samples/blue_noise/CalculateDiscrepancy.png)  
 ## Numerical Integration
 ### Linear
