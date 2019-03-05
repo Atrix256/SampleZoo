@@ -2,7 +2,7 @@
 
 # Table of Contents
 
-* [Progressive vs Non Progressive Samples](./doc/progressive.md)
+* [Progressive vs Non Progressive Sequeneces](./doc/progressive.md)
 
 ## _1d Samples
 
