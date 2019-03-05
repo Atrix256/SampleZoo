@@ -34,45 +34,13 @@ int main(int argc, char **argv)
 TODOs:
 
 ? integration test soon?
-
-* is there something better you can do for 2d regular sampling to calculate how much each axis should get in sample count?
- * maybe find the multiples that bring it closest to even on each axis but still perfectly multiply into the number?
- * i really don't know.
- * right now if you ask for 17 samples, it would only give you 16, and a (0,0) for the next sample.
+* discrepancy test soon.
+* R2 soon
 
 * I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.
 
 ? is hammerlsey ok with tests doing non power of 2 sample counts on it? i think probably not, but check it out.
-* 2d "plot average" test? could have "average distance from center". Could also just draw a line showing how it moves around the center.. unknown.
-
 * sobol indexes out of range! need to fix. true for 2d, not sure if true for 1d.
-
- ? should we do 1d tests on those projections? i think probably yes.
-
-* add to todo for 2d tests:
- * radial power spectrum thing.
- * should randomized sequences go through multiple tests? or is radially averaging decent enough?
-
-* uncomment 1d tests and manual tests before merging branch 
- * adding 2d auto tests makes manual tests have different results. why? rng should be reset etc. should be the same.
-
-* regular grid
-* jittered grid (stratified)
-* R2
-* latin squares? quincunx? n rooks, n queens?
-
-* dart throwing in 1d and 2d
-
-* 1d and 2d subrandom?
-
-* Get LDS types from your page
-* also progressive projective blue noise?
-* make documentation for plot test and uniform random
-* document dft test
-* make discrepancy test
-* document discrepancy test
-* make and document integration test
-? what other tests make sense?
 
 
 
