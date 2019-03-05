@@ -178,11 +178,13 @@ void _2d::Samples::LDS::NRooks(std::vector<Vec2>& values, size_t numValues, std:
         rookPositions[i] = i;
     std::shuffle(rookPositions.begin(), rookPositions.end(), rng);
 
+    float offset = 1.0f / float(numValues * 2);
+
     // convert them to sampling locations
     values.resize(numValues);
     for (size_t i = 0; i < numValues; ++i)
     {
-        values[i][0] = float(rookPositions[i]) / float(numValues - 1);
-        values[i][1] = float(i) / float(numValues - 1);
+        values[i][0] = offset + float(rookPositions[i]) / float(numValues);
+        values[i][1] = offset + float(i) / float(numValues);
     }
 }

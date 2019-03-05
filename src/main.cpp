@@ -22,9 +22,9 @@ int main(int argc, char **argv)
     // You can also pop open samples.cpp and comment out sampling types .
     // You can also follow this function call down to see what is actually called and comment out the tests (or family of tests) that you don't want it to do while you iterate.
     // Any modifications you make to those files will be undone when you run premake and re-generate code and documentation.
-    _1d::Tests::AutoTest();
+    //_1d::Tests::AutoTest();
     _2d::Tests::AutoTest();
-    ManualTest();
+    //ManualTest();
 
     DataCache::Save();
     return 0;
@@ -33,6 +33,8 @@ int main(int argc, char **argv)
 /*
 TODOs:
 
+? integration test soon?
+
 * is there something better you can do for 2d regular sampling to calculate how much each axis should get in sample count?
  * maybe find the multiples that bring it closest to even on each axis but still perfectly multiply into the number?
  * i really don't know.
@@ -40,13 +42,10 @@ TODOs:
 
 * I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.
 
-! hammersley: if you skip index 0, it doesn't help anything, because you then get the zero from the next sequence! This unless you do N-1 sample items, which is kind of weird and doesn't really help anything.
-
 ? is hammerlsey ok with tests doing non power of 2 sample counts on it? i think probably not, but check it out.
 * 2d "plot average" test? could have "average distance from center". Could also just draw a line showing how it moves around the center.. unknown.
 
 * sobol indexes out of range! need to fix. true for 2d, not sure if true for 1d.
-* should N rooks add a half? i think so... i think it should be like regular centered offset for best results.
 
  ? should we do 1d tests on those projections? i think probably yes.
 
@@ -74,5 +73,11 @@ TODOs:
 * document discrepancy test
 * make and document integration test
 ? what other tests make sense?
+
+
+
+Docs:
+! hammersley: if you skip index 0, it doesn't help anything, because you then get the zero from the next sequence! This unless you do N-1 sample items, which is kind of weird and doesn't really help anything.
+* n rooks -> followed regular centered offset best practices
 
 */
