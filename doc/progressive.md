@@ -2,7 +2,7 @@
 
 ## Progressive Sequences
 
-Progressive sequences are sequences that you can add more samples to ass you desire without having to recreate everything from scratch.
+Progressive sequences are sequences that you can add more samples to as you desire without having to recreate everything from scratch.
 
 For instance, random numbers are a progressive sequence.  If you have 5 random numbers but want a 6th, you can just add a 6th random number.
 
@@ -10,9 +10,11 @@ You can also remove items from the end of a progressive sequence without making 
 
 If you have 5 random numbers but only want 3, you can just ignore the last 2 and you still have 3 random numbers.
 
-A property of progressive sequences is that if you have N samples and haven't taken all of them yet, you'll still have "pretty good results" at every step of the way.
+Random numbers are special in that you could remove any value and it'd still be a valid random number sequence, but for most other progressive sequences, it's the end that you need to remove samples from.
 
-This is in contrast to non progressive sequences which will usually have very bad results until the very end.
+A property of progressive sequences is that if you have N samples and haven't taken all samples yet, you'll still have "pretty good results" at every step of the way, due to subsets of the sequence 0..M also being valid sequences with the same basic sequence properties.
+
+This is in contrast to non progressive sequences which will usually have very bad intermediary results until the very end.
 
 ## Non Progressive Sequences
 
