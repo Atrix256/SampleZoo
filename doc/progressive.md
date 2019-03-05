@@ -41,3 +41,8 @@ For non progressive sequences, it gets a little more difficult though.  You need
 The reason for this is because a non progressive sequence is almost always going to have A LOT of integration error in the beginning, regardless of how much error it gets to in the end.
 
 If we don't do that, we aren't giving a fair apples to apples test between the sequences.  Nobody is going to use a non progressive sequence and expect it to keep up with a progressive sequence in integration error for intermediate samples.
+
+Below you can see the numberline for the golden ratio sequence, which is progressive. Note how each sample count contains all previous samples.  Below that is a regular sampling sequence which is not progressive. Note how each sample count DOES NOT contain all previous samples
+
+![RegularJittered](../output/_1d/samples/irrational_numbers/MakeNumberline_GoldenRatio.png)  
+![RegularJittered](../output/_1d/samples/regular/MakeNumberline_RegularCenteredOffset.png)  
