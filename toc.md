@@ -20,6 +20,7 @@
 ### Samples
 
  * [Blue Noise](output/_2d/samples/blue_noise/page.md) - Randomized sequences that have only high frequency content  
+ * [Irrational Numbers](output/_2d/samples/irrational_numbers/page.md) - Using irrational numbers to make 2d low discrepancy sequences  
  * [LDS](output/_2d/samples/lds/page.md) - Low discrepancy sequences  
  * [Regular](output/_2d/samples/regular/page.md) - Uniformly spaced samples  
  * [Uniform Random](output/_2d/samples/uniform_random/page.md) - Randomized sample positions using a uniform random number distribution.  

@@ -35,13 +35,14 @@ TODOs:
 
 ? integration test soon?
 * discrepancy test soon.
-* R2 soon
 
 * I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.
 
 ? is hammerlsey ok with tests doing non power of 2 sample counts on it? i think probably not, but check it out.
 * sobol indexes out of range! need to fix. true for 2d, not sure if true for 1d.
 
+
+* reread for 2d sequences: http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
 
 
 Docs:

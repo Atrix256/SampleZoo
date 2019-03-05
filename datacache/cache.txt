@@ -73,11 +73,12 @@
 
 ---------- RNG Seeds ----------
 
-  7 keys
+  8 keys
     blue_noise::BestCandidate  - 32 bytes
     blue_noise::BestCandidate10  - 32 bytes
     blue_noise::BestCandidate5  - 32 bytes
     blue_noise::BestCandidateRefined  - 32 bytes
+    irrational_numbers::R2Jittered  - 32 bytes
     lds::NRooks  - 32 bytes
     regular::RegularJittered  - 32 bytes
     uniform_random::UniformRandom  - 32 bytes
