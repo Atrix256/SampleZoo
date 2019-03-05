@@ -76,7 +76,19 @@ for k,v in pairs(sampleFamilies) do
 
                 for sampleFunctionIndex, sampleFunctionInfo in ipairs(sampleInfo.Functions) do
                     if testInfo.MakesIndividualImages then
-                        file:write("#### "..sampleFunctionInfo.name.."\n")
+                        file:write("#### "..sampleFunctionInfo.name.." (")
+
+                        if sampleFunctionInfo.progressive then
+                            file:write("Progressive, ")
+                        else
+                            file:write("Not Progressive, ")
+                        end
+                        if sampleFunctionInfo.randomized then
+                            file:write("Randomized)\n")
+                        else
+                            file:write("Not Randomized)\n")
+                        end
+
                         file:write("!["..sampleFunctionInfo.name.."](../../../"..sampleFamily.."/samples/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionInfo.name..".png)  \n")
                     end
                 end
