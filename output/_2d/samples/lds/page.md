@@ -58,3 +58,14 @@ Source Code: [src/families/_2d/samples/lds/](../../../../src/families/_2d/sample
 ![Halton_13_9](../../../_2d/samples/lds/DFT_Halton_13_9.png)  
 ### Plot
 ![Halton_13_9](../../../_2d/samples/lds/MakePlot_Halton_13_9.png)  
+## Numerical Integration
+### Disk
+![lds](../../../_2d/samples/lds/Disk.png)  
+### Triangle
+![lds](../../../_2d/samples/lds/Triangle.png)  
+### Step
+![lds](../../../_2d/samples/lds/Step.png)  
+### Gaussian
+![lds](../../../_2d/samples/lds/Gaussian.png)  
+### Bilinear
+![lds](../../../_2d/samples/lds/Bilinear.png)  

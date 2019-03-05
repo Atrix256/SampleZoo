@@ -34,6 +34,8 @@ int main(int argc, char **argv)
 TODOs:
 
 ? integration test soon?
+ * copy the progressive projective blue noise tests: SampleImage_Disk and similar
+
 * discrepancy test soon.
 
 * I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.

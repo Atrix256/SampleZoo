@@ -29,6 +29,7 @@
 ### Tests
 
  * [DFT](output/_2d/tests/dft/page.md) - Transforms sampling patterns into frequency space  
+ * [Integration](output/_2d/tests/integration/page.md) - Use sample points to integrate 2d functions  
  * [Plot](output/_2d/tests/plot/page.md) - Plots sequences  
 
 

@@ -18,3 +18,14 @@
 ![BestCandidate10](../../../_2d/samples/blue_noise/DFT_BestCandidate10.png)  
 ### Plot
 ![BestCandidate10](../../../_2d/samples/blue_noise/MakePlot_BestCandidate10.png)  
+## Numerical Integration
+### Disk
+![blue_noise](../../../_2d/samples/blue_noise/Disk.png)  
+### Triangle
+![blue_noise](../../../_2d/samples/blue_noise/Triangle.png)  
+### Step
+![blue_noise](../../../_2d/samples/blue_noise/Step.png)  
+### Gaussian
+![blue_noise](../../../_2d/samples/blue_noise/Gaussian.png)  
+### Bilinear
+![blue_noise](../../../_2d/samples/blue_noise/Bilinear.png)  
