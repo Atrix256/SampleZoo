@@ -3,7 +3,7 @@
 # Table of Contents
 
 * [Progressive vs Non Progressive Sequeneces](./doc/progressive.md)
-* [Randomized vs Non Randomized Sequeneces](./doc/progressive.md)
+* [Randomized vs Non Randomized Sequeneces](./doc/randomized.md)
 
 TOCTOC
 
