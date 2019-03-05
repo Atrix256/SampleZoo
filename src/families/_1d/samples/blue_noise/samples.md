@@ -28,7 +28,6 @@ Many things in our world - natural and man made - are distributed in a blue nois
 # Comparison vs Other Sequences
 
 ![BestCandidateRefined](../../../_1d/samples/blue_noise/Doc_CalculateDiscrepancy.png)  
-![BestCandidateRefined](../../../_1d/samples/blue_noise/Doc_CalculateDiscrepancyWrapAround.png)  
 ![BestCandidateRefined](../../../_1d/samples/blue_noise/Doc_Quadratic.png)  
 
 # Links
