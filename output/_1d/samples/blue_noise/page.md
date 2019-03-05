@@ -74,8 +74,6 @@ http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.556.445&rep=rep1&type=p
 ## Discrepancy Test
 ### CalculateDiscrepancy
 ![blue_noise](../../../_1d/samples/blue_noise/CalculateDiscrepancy.png)  
-### CalculateDiscrepancyWrapAround
-![blue_noise](../../../_1d/samples/blue_noise/CalculateDiscrepancyWrapAround.png)  
 ## Numerical Integration
 ### Linear
 ![blue_noise](../../../_1d/samples/blue_noise/Linear.png)  

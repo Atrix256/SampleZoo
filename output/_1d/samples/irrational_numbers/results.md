@@ -27,8 +27,6 @@
 ## Discrepancy Test
 ### CalculateDiscrepancy
 ![irrational_numbers](../../../_1d/samples/irrational_numbers/CalculateDiscrepancy.png)  
-### CalculateDiscrepancyWrapAround
-![irrational_numbers](../../../_1d/samples/irrational_numbers/CalculateDiscrepancyWrapAround.png)  
 ## Numerical Integration
 ### Linear
 ![irrational_numbers](../../../_1d/samples/irrational_numbers/Linear.png)  

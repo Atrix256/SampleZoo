@@ -175,7 +175,7 @@ void _1d::Samples::BlueNoise::ManualTest()
         };
 
         _1d::Tests::Discrepancy::CalculateDiscrepancy(testFuncs, "CalculateDiscrepancy", "Doc_");
-        _1d::Tests::Discrepancy::CalculateDiscrepancyWrapAround(testFuncs, "CalculateDiscrepancyWrapAround", "Doc_");
+        //_1d::Tests::Discrepancy::CalculateDiscrepancyWrapAround(testFuncs, "CalculateDiscrepancyWrapAround", "Doc_");
     }
 
     {

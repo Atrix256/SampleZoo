@@ -27,8 +27,6 @@
 ## Discrepancy Test
 ### CalculateDiscrepancy
 ![regular](../../../_1d/samples/regular/CalculateDiscrepancy.png)  
-### CalculateDiscrepancyWrapAround
-![regular](../../../_1d/samples/regular/CalculateDiscrepancyWrapAround.png)  
 ## Numerical Integration
 ### Linear
 ![regular](../../../_1d/samples/regular/Linear.png)  

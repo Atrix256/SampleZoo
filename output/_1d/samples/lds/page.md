@@ -104,8 +104,6 @@ https://blog.demofox.org/2017/05/29/when-random-numbers-are-too-random-low-discr
 ## Discrepancy Test
 ### CalculateDiscrepancy
 ![lds](../../../_1d/samples/lds/CalculateDiscrepancy.png)  
-### CalculateDiscrepancyWrapAround
-![lds](../../../_1d/samples/lds/CalculateDiscrepancyWrapAround.png)  
 ## Numerical Integration
 ### Linear
 ![lds](../../../_1d/samples/lds/Linear.png)  

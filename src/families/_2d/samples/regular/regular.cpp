@@ -9,7 +9,7 @@ DATE: 3/4/2019
 
 void _2d::Samples::Regular::Regular(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    size_t sizeX = size_t(sqrtf(numValues));
+    size_t sizeX = size_t(sqrtf(float(numValues)));
     size_t sizeY = numValues / sizeX;
 
     values.resize(numValues, Vec2{ 0.0f, 0.0f });
@@ -27,7 +27,7 @@ void _2d::Samples::Regular::Regular(std::vector<Vec2>& values, size_t numValues,
 
 void _2d::Samples::Regular::RegularCentered(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    size_t sizeX = size_t(sqrtf(numValues));
+    size_t sizeX = size_t(sqrtf(float(numValues)));
     size_t sizeY = numValues / sizeX;
 
     values.resize(numValues, Vec2{ 0.0f, 0.0f });
@@ -45,7 +45,7 @@ void _2d::Samples::Regular::RegularCentered(std::vector<Vec2>& values, size_t nu
 
 void _2d::Samples::Regular::RegularCenteredOffset(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    size_t sizeX = size_t(sqrtf(numValues));
+    size_t sizeX = size_t(sqrtf(float(numValues)));
     size_t sizeY = numValues / sizeX;
 
     float offsetX = 1.0f / float(sizeX * 2);
@@ -66,7 +66,7 @@ void _2d::Samples::Regular::RegularCenteredOffset(std::vector<Vec2>& values, siz
 
 void _2d::Samples::Regular::RegularJittered(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    size_t sizeX = size_t(sqrtf(numValues));
+    size_t sizeX = size_t(sqrtf(float(numValues)));
     size_t sizeY = numValues / sizeX;
 
     std::uniform_real_distribution<float> distX(0.0f, 1.0f / float(sizeX));

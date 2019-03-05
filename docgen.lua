@@ -34,14 +34,14 @@ for k,v in pairs(sampleFamilies) do
 	for k2,v2 in pairs(sampleTypes) do
 		local sampleType = string.sub(v2,3,-2)
 		dofile("./src/families/"..sampleFamily.."/samples/"..sampleType.."/samples.lua")
-		file:write('['..sampleInfo.ShortName..'](output/'..sampleFamily..'/samples/'..sampleType..'/page.md) - '..sampleInfo.Description..'  \n')
+		file:write(' * ['..sampleInfo.ShortName..'](output/'..sampleFamily..'/samples/'..sampleType..'/page.md) - '..sampleInfo.Description..'  \n')
 	end
 	file:write('### Tests\n\n')
     local subTestTypes = scandir('cd ./src/families/'..sampleFamily..'/tests/ && ls -d ./*/ && cd ../../..')
     for k2,v2 in pairs(subTestTypes) do
         local subTestType = string.sub(v2,3,-2)
         dofile("./src/families/"..sampleFamily.."/tests/"..subTestType.."/tests.lua")
-        file:write('['..testInfo.ShortName..'](output/'..sampleFamily..'/tests/'..subTestType..'/page.md) - '..testInfo.Description..'  \n')
+        file:write(' * ['..testInfo.ShortName..'](output/'..sampleFamily..'/tests/'..subTestType..'/page.md) - '..testInfo.Description..'  \n')
     end	
 end
 
