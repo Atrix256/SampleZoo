@@ -22,9 +22,9 @@ int main(int argc, char **argv)
     // You can also pop open samples.cpp and comment out sampling types .
     // You can also follow this function call down to see what is actually called and comment out the tests (or family of tests) that you don't want it to do while you iterate.
     // Any modifications you make to those files will be undone when you run premake and re-generate code and documentation.
-    //_1d::Tests::AutoTest();
+    _1d::Tests::AutoTest();
     _2d::Tests::AutoTest();
-    //ManualTest();
+    ManualTest();
 
     DataCache::Save();
     return 0;
@@ -33,10 +33,9 @@ int main(int argc, char **argv)
 /*
 TODOs:
 
-? integration test soon?
- * copy the progressive projective blue noise tests: SampleImage_Disk and similar
-
-* discrepancy test soon.
+* make 2d/1d tests deal with randomized sequences appropriately? (integration might be hard... lots of samples needing to be generated. hard for blue noise)
+ * i wonder if the blue noise speedup idea you have would be any better? not for 2d....
+ * maybe just have discrepancy deal with randomization. integration has lots of samples so kinda handles randomization in that sense already.
 
 * I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.
 
@@ -50,5 +49,9 @@ TODOs:
 Docs:
 ! hammersley: if you skip index 0, it doesn't help anything, because you then get the zero from the next sequence! This unless you do N-1 sample items, which is kind of weird and doesn't really help anything.
 * n rooks -> followed regular centered offset best practices
+
+* centralize all explanations that you can.
+ * link to them from the family specific pages
+ * make the family specific pages be about technical details specific to that family.
 
 */

@@ -59,6 +59,7 @@ static float CalculateDiscrepancy(const std::vector<float>& samples)
     return maxDifference;
 }
 
+/*
 static float CalculateDiscrepancyWrapAround(const std::vector<float>& samples)
 {
     // one sample with wrap around:
@@ -106,6 +107,7 @@ static float CalculateDiscrepancyWrapAround(const std::vector<float>& samples)
     }
     return maxDifference;
 }
+*/
 
 void _1d::Tests::Discrepancy::CalculateDiscrepancy(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {

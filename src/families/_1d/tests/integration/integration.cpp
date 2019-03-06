@@ -109,7 +109,6 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         float globalmaxy = -FLT_MAX;
         for (const SampleGenerateInfo_1d& sampleFunction : sampleType)
         {
-            //printf("  %s...\n", sampleFunction.name);
             sprintf(fileName, "output/%s/samples/%s/%s%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, fileNamePrefix, testName, sampleFunction.name);
 
             desc.graphItems.resize(desc.graphItems.size() + 1);

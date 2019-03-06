@@ -59,6 +59,18 @@ static void GetErrorData(const std::vector<Vec2>& samples, GraphItem& error, con
 }
 
 template <typename LAMBDA>
+static float Integrate(const std::vector<Vec2>& samples, const LAMBDA& lambda)
+{
+    float approximation = 0.0f;
+    for (size_t index = 0, count = samples.size(); index < count; ++index)
+    {
+        float z = lambda(samples[index]);
+        approximation = Lerp(approximation, z, 1.0f / float(index + 1));
+    }
+    return approximation;
+}
+
+template <typename LAMBDA>
 static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_2d>>& sampleFunctions, const char* testName, const char* fileNamePrefix, const LAMBDA& lambda, const float c_actual)
 {
     static const size_t sampleCount = 4096;
@@ -105,14 +117,32 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_2
         float globalmaxy = -FLT_MAX;
         for (const SampleGenerateInfo_2d& sampleFunction : sampleType)
         {
-            std::vector<Vec2> samples;
-            sampleFunction.function(samples, sampleCount, sampleFunction.cacheKey, false);
             sprintf(fileName, "output/%s/samples/%s/%s%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, fileNamePrefix, testName, sampleFunction.name);
 
             desc.graphItems.resize(desc.graphItems.size() + 1);
             GraphItem& error = *desc.graphItems.rbegin();
             error.label = sampleFunction.name;
-            GetErrorData(samples, error, lambda, c_actual);
+            error.data.resize(sampleCount);
+
+            // progressive sequences are faster and easier to test
+            if (sampleFunction.progressive)
+            {
+                std::vector<Vec2> samples;
+                sampleFunction.function(samples, sampleCount, sampleFunction.cacheKey, false);
+                GetErrorData(samples, error, lambda, c_actual);
+            }
+            // non progressive sequences require many more operations!
+            else
+            {
+                std::vector<Vec2> samples;
+                for (size_t errorSampleCount = 0; errorSampleCount < sampleCount; ++errorSampleCount)
+                {
+                    sampleFunction.function(samples, errorSampleCount + 1, sampleFunction.cacheKey, false);
+                    float approximation = Integrate(samples, lambda);
+                    error.data[errorSampleCount][0] = float(errorSampleCount + 1);
+                    error.data[errorSampleCount][1] = fabsf(c_actual - approximation) / c_actual;
+                }
+            }
 
             // put y axis ticks at the min and max y
             std::vector<GraphAxisTick> yAxisTicks;
