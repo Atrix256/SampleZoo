@@ -15,8 +15,6 @@ The first sample is red and the last sample is green. This lets you see the orde
 ![BestCandidate5](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate5.png)  
 #### BestCandidate10 (Progressive, Randomized)
 ![BestCandidate10](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate10.png)  
-#### BestCandidateRefined (Progressive, Randomized)
-![BestCandidateRefined](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidateRefined.png)  
 ### Irrational Number Sampling
 #### GoldenRatioZero (Progressive, Deterministic)
 ![GoldenRatioZero](../../../_1d/samples/irrational_numbers/MakeNumberline_GoldenRatioZero.png)  

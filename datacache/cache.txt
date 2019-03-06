@@ -1,10 +1,9 @@
 ---------- Samples 1D ----------
 
-  4 keys
+  3 keys
     blue_noise::BestCandidate  - 10001 entries, 5136384 bytes
     blue_noise::BestCandidate10  - 10001 entries, 5136384 bytes
     blue_noise::BestCandidate5  - 10001 entries, 5136384 bytes
-    blue_noise::BestCandidateRefined  - 10001 entries, 5136384 bytes
 
 ---------- RNG Seeds ----------
 

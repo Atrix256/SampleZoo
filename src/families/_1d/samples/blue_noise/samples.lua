@@ -7,6 +7,7 @@ sampleInfo = {
         { name = "BestCandidate", progressive = true, randomized = true, cache = true },
         { name = "BestCandidate5", progressive = true, randomized = true, cache = true },
         { name = "BestCandidate10", progressive = true, randomized = true, cache = true },
-        { name = "BestCandidateRefined", progressive = true, randomized = true, cache = true }, -- it sort of is progressive, sort of not. it's too computationally expensive to treat as non progressive for eg integration :P
+        -- commenting out, it isn't useful, doesn't perform well and it isn't that interesting.
+        -- { name = "BestCandidateRefined", progressive = true, randomized = true, cache = true }, -- it sort of is progressive, sort of not. it's too computationally expensive to treat as non progressive for eg integration :P
     },
 }

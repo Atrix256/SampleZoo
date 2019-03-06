@@ -3,7 +3,6 @@
 * BestCandidate (Progressive, Randomized)
 * BestCandidate5 (Progressive, Randomized)
 * BestCandidate10 (Progressive, Randomized)
-* BestCandidateRefined (Progressive, Randomized)
 ## BestCandidate
 ### Discrete Fourier Transform
 ![BestCandidate](../../../_1d/samples/blue_noise/DFT_BestCandidate.png)  
@@ -19,11 +18,6 @@
 ![BestCandidate10](../../../_1d/samples/blue_noise/DFT_BestCandidate10.png)  
 ### Numberline
 ![BestCandidate10](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate10.png)  
-## BestCandidateRefined
-### Discrete Fourier Transform
-![BestCandidateRefined](../../../_1d/samples/blue_noise/DFT_BestCandidateRefined.png)  
-### Numberline
-![BestCandidateRefined](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidateRefined.png)  
 ## Discrepancy Test
 ![blue_noise](../../../_1d/samples/blue_noise/CalculateDiscrepancy.png)  
 ## Numerical Integration

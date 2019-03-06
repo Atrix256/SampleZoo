@@ -22,8 +22,6 @@ No windowing function is used (TODO: use a windowing function?)
 ![BestCandidate5](../../../_1d/samples/blue_noise/DFT_BestCandidate5.png)  
 #### BestCandidate10 (Progressive, Randomized)
 ![BestCandidate10](../../../_1d/samples/blue_noise/DFT_BestCandidate10.png)  
-#### BestCandidateRefined (Progressive, Randomized)
-![BestCandidateRefined](../../../_1d/samples/blue_noise/DFT_BestCandidateRefined.png)  
 ### Irrational Number Sampling
 #### GoldenRatioZero (Progressive, Deterministic)
 ![GoldenRatioZero](../../../_1d/samples/irrational_numbers/DFT_GoldenRatioZero.png)  
