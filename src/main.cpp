@@ -33,6 +33,11 @@ int main(int argc, char **argv)
 /*
 TODOs:
 
+* sobol indexes out of range! need to fix. true for 2d, not sure if true for 1d.
+ * it's because you were adding 1 to the index, to make it skip zero.  see if you can figure out if you added that or if it's correct (re-read your blog post too perhaps)
+ * if it's ok to not do that, you have it fixed and can delete this
+
+
 * make 2d/1d tests deal with randomized sequences appropriately? (integration might be hard... lots of samples needing to be generated. hard for blue noise)
  * i wonder if the blue noise speedup idea you have would be any better? not for 2d....
  * maybe just have discrepancy deal with randomization. integration has lots of samples so kinda handles randomization in that sense already.
@@ -40,9 +45,9 @@ TODOs:
 * I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.
 
 ? is hammerlsey ok with tests doing non power of 2 sample counts on it? i think probably not, but check it out.
-* sobol indexes out of range! need to fix. true for 2d, not sure if true for 1d.
 
 
+* there are a lot of disk sampling and other things in the progressive projective blue noise code.
 * reread for 2d sequences: http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
 
 

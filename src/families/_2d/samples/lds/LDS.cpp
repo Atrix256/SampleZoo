@@ -121,7 +121,7 @@ void _2d::Samples::LDS::Sobol(std::vector<Vec2>& values, size_t numValues, std::
 
     // Direction numbers
     std::vector<size_t> V;
-    V.resize((size_t)ceil(log((double)numValues) / log(2.0)));
+    V.resize((size_t)ceil(log((double)numValues+1) / log(2.0)));  //+1 because we are skipping index 0
     V[0] = size_t(1) << size_t(31);
     for (size_t i = 1; i < V.size(); ++i)
         V[i] = V[i - 1] ^ (V[i - 1] >> 1);
