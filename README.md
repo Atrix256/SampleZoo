@@ -29,6 +29,7 @@
 ## _2d Tests
 
  * [DFT](output/_2d/tests/dft/page.md) - Transforms sampling patterns into frequency space  
+ * [Discrepancy](output/_2d/tests/discrepancy/page.md) - Calculate metrics about actual point density compared to expected point density if the points were uniformly spaced.  
  * [Integration](output/_2d/tests/integration/page.md) - Use sample points to integrate 2d functions  
  * [Plot](output/_2d/tests/plot/page.md) - Plots sequences  
 

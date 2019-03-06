@@ -18,6 +18,8 @@
 ![BestCandidate10](../../../_2d/samples/blue_noise/DFT_BestCandidate10.png)  
 ### Plot
 ![BestCandidate10](../../../_2d/samples/blue_noise/MakePlot_BestCandidate10.png)  
+## Discrepancy Test
+![blue_noise](../../../_2d/samples/blue_noise/CalculateDiscrepancy.png)  
 ## Numerical Integration
 ### Disk
 ![blue_noise](../../../_2d/samples/blue_noise/Disk.png)  

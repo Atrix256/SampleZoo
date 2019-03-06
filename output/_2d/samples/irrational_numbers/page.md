@@ -16,6 +16,8 @@ Source Code: [src/families/_2d/samples/irrational_numbers/](../../../../src/fami
 ![R2Jittered](../../../_2d/samples/irrational_numbers/DFT_R2Jittered.png)  
 ### Plot
 ![R2Jittered](../../../_2d/samples/irrational_numbers/MakePlot_R2Jittered.png)  
+## Discrepancy Test
+![irrational_numbers](../../../_2d/samples/irrational_numbers/CalculateDiscrepancy.png)  
 ## Numerical Integration
 ### Disk
 ![irrational_numbers](../../../_2d/samples/irrational_numbers/Disk.png)  

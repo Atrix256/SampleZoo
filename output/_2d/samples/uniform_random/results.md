@@ -6,6 +6,8 @@
 ![UniformRandom](../../../_2d/samples/uniform_random/DFT_UniformRandom.png)  
 ### Plot
 ![UniformRandom](../../../_2d/samples/uniform_random/MakePlot_UniformRandom.png)  
+## Discrepancy Test
+![uniform_random](../../../_2d/samples/uniform_random/CalculateDiscrepancy.png)  
 ## Numerical Integration
 ### Disk
 ![uniform_random](../../../_2d/samples/uniform_random/Disk.png)  

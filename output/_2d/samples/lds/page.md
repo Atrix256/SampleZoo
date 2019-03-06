@@ -58,6 +58,8 @@ Source Code: [src/families/_2d/samples/lds/](../../../../src/families/_2d/sample
 ![Halton_13_9](../../../_2d/samples/lds/DFT_Halton_13_9.png)  
 ### Plot
 ![Halton_13_9](../../../_2d/samples/lds/MakePlot_Halton_13_9.png)  
+## Discrepancy Test
+![lds](../../../_2d/samples/lds/CalculateDiscrepancy.png)  
 ## Numerical Integration
 ### Disk
 ![lds](../../../_2d/samples/lds/Disk.png)  

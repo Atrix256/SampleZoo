@@ -28,6 +28,8 @@ Source Code: [src/families/_2d/samples/regular/](../../../../src/families/_2d/sa
 ![RegularJittered](../../../_2d/samples/regular/DFT_RegularJittered.png)  
 ### Plot
 ![RegularJittered](../../../_2d/samples/regular/MakePlot_RegularJittered.png)  
+## Discrepancy Test
+![regular](../../../_2d/samples/regular/CalculateDiscrepancy.png)  
 ## Numerical Integration
 ### Disk
 ![regular](../../../_2d/samples/regular/Disk.png)  
