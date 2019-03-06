@@ -49,7 +49,7 @@ http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.556.445&rep=rep1&type=p
 * BestCandidate (Progressive, Randomized)
 * BestCandidate5 (Progressive, Randomized)
 * BestCandidate10 (Progressive, Randomized)
-* BestCandidateRefined (Not Progressive, Randomized)
+* BestCandidateRefined (Progressive, Randomized)
 ## BestCandidate
 ### Discrete Fourier Transform
 ![BestCandidate](../../../_1d/samples/blue_noise/DFT_BestCandidate.png)  

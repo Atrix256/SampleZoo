@@ -3,7 +3,7 @@
 * BestCandidate (Progressive, Randomized)
 * BestCandidate5 (Progressive, Randomized)
 * BestCandidate10 (Progressive, Randomized)
-* BestCandidateRefined (Not Progressive, Randomized)
+* BestCandidateRefined (Progressive, Randomized)
 ## BestCandidate
 ### Discrete Fourier Transform
 ![BestCandidate](../../../_1d/samples/blue_noise/DFT_BestCandidate.png)  

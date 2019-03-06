@@ -9,7 +9,7 @@
 ![BestCandidate5](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate5.png)  
 #### BestCandidate10 (Progressive, Randomized)
 ![BestCandidate10](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidate10.png)  
-#### BestCandidateRefined (Not Progressive, Randomized)
+#### BestCandidateRefined (Progressive, Randomized)
 ![BestCandidateRefined](../../../_1d/samples/blue_noise/MakeNumberline_BestCandidateRefined.png)  
 ### Irrational Number Sampling
 #### GoldenRatioZero (Progressive, Deterministic)

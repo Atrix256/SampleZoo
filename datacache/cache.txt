@@ -1,75 +1,10 @@
 ---------- Samples 1D ----------
 
-  69 keys
+  4 keys
     blue_noise::BestCandidate  - 10001 entries, 5136384 bytes
     blue_noise::BestCandidate10  - 10001 entries, 5136384 bytes
     blue_noise::BestCandidate5  - 10001 entries, 5136384 bytes
-    blue_noise::BestCandidateRefined_1  - 1 entries, 4 bytes
-    blue_noise::BestCandidateRefined_10  - 1 entries, 40 bytes
-    blue_noise::BestCandidateRefined_11  - 1 entries, 44 bytes
-    blue_noise::BestCandidateRefined_12  - 1 entries, 48 bytes
-    blue_noise::BestCandidateRefined_128  - 10001 entries, 5120000 bytes
-    blue_noise::BestCandidateRefined_13  - 1 entries, 52 bytes
-    blue_noise::BestCandidateRefined_14  - 1 entries, 56 bytes
-    blue_noise::BestCandidateRefined_15  - 1 entries, 60 bytes
-    blue_noise::BestCandidateRefined_16  - 1 entries, 64 bytes
-    blue_noise::BestCandidateRefined_17  - 1 entries, 68 bytes
-    blue_noise::BestCandidateRefined_18  - 1 entries, 72 bytes
-    blue_noise::BestCandidateRefined_19  - 1 entries, 76 bytes
-    blue_noise::BestCandidateRefined_2  - 1 entries, 8 bytes
-    blue_noise::BestCandidateRefined_20  - 1 entries, 80 bytes
-    blue_noise::BestCandidateRefined_21  - 1 entries, 84 bytes
-    blue_noise::BestCandidateRefined_22  - 1 entries, 88 bytes
-    blue_noise::BestCandidateRefined_23  - 1 entries, 92 bytes
-    blue_noise::BestCandidateRefined_24  - 1 entries, 96 bytes
-    blue_noise::BestCandidateRefined_25  - 1 entries, 100 bytes
-    blue_noise::BestCandidateRefined_26  - 1 entries, 104 bytes
-    blue_noise::BestCandidateRefined_27  - 1 entries, 108 bytes
-    blue_noise::BestCandidateRefined_28  - 1 entries, 112 bytes
-    blue_noise::BestCandidateRefined_29  - 1 entries, 116 bytes
-    blue_noise::BestCandidateRefined_3  - 1 entries, 12 bytes
-    blue_noise::BestCandidateRefined_30  - 1 entries, 120 bytes
-    blue_noise::BestCandidateRefined_31  - 1 entries, 124 bytes
-    blue_noise::BestCandidateRefined_32  - 1 entries, 128 bytes
-    blue_noise::BestCandidateRefined_33  - 1 entries, 132 bytes
-    blue_noise::BestCandidateRefined_34  - 1 entries, 136 bytes
-    blue_noise::BestCandidateRefined_35  - 1 entries, 140 bytes
-    blue_noise::BestCandidateRefined_36  - 1 entries, 144 bytes
-    blue_noise::BestCandidateRefined_37  - 1 entries, 148 bytes
-    blue_noise::BestCandidateRefined_38  - 1 entries, 152 bytes
-    blue_noise::BestCandidateRefined_39  - 1 entries, 156 bytes
-    blue_noise::BestCandidateRefined_4  - 1 entries, 16 bytes
-    blue_noise::BestCandidateRefined_40  - 1 entries, 160 bytes
-    blue_noise::BestCandidateRefined_4096  - 1 entries, 16384 bytes
-    blue_noise::BestCandidateRefined_41  - 1 entries, 164 bytes
-    blue_noise::BestCandidateRefined_42  - 1 entries, 168 bytes
-    blue_noise::BestCandidateRefined_43  - 1 entries, 172 bytes
-    blue_noise::BestCandidateRefined_44  - 1 entries, 176 bytes
-    blue_noise::BestCandidateRefined_45  - 1 entries, 180 bytes
-    blue_noise::BestCandidateRefined_46  - 1 entries, 184 bytes
-    blue_noise::BestCandidateRefined_47  - 1 entries, 188 bytes
-    blue_noise::BestCandidateRefined_48  - 1 entries, 192 bytes
-    blue_noise::BestCandidateRefined_49  - 1 entries, 196 bytes
-    blue_noise::BestCandidateRefined_5  - 1 entries, 20 bytes
-    blue_noise::BestCandidateRefined_50  - 1 entries, 200 bytes
-    blue_noise::BestCandidateRefined_51  - 1 entries, 204 bytes
-    blue_noise::BestCandidateRefined_52  - 1 entries, 208 bytes
-    blue_noise::BestCandidateRefined_53  - 1 entries, 212 bytes
-    blue_noise::BestCandidateRefined_54  - 1 entries, 216 bytes
-    blue_noise::BestCandidateRefined_55  - 1 entries, 220 bytes
-    blue_noise::BestCandidateRefined_56  - 1 entries, 224 bytes
-    blue_noise::BestCandidateRefined_57  - 1 entries, 228 bytes
-    blue_noise::BestCandidateRefined_58  - 1 entries, 232 bytes
-    blue_noise::BestCandidateRefined_59  - 1 entries, 236 bytes
-    blue_noise::BestCandidateRefined_6  - 1 entries, 24 bytes
-    blue_noise::BestCandidateRefined_60  - 1 entries, 240 bytes
-    blue_noise::BestCandidateRefined_61  - 1 entries, 244 bytes
-    blue_noise::BestCandidateRefined_62  - 1 entries, 248 bytes
-    blue_noise::BestCandidateRefined_63  - 1 entries, 252 bytes
-    blue_noise::BestCandidateRefined_64  - 1 entries, 256 bytes
-    blue_noise::BestCandidateRefined_7  - 1 entries, 28 bytes
-    blue_noise::BestCandidateRefined_8  - 1 entries, 32 bytes
-    blue_noise::BestCandidateRefined_9  - 1 entries, 36 bytes
+    blue_noise::BestCandidateRefined  - 10001 entries, 5136384 bytes
 
 ---------- RNG Seeds ----------
 
