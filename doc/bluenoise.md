@@ -3,7 +3,7 @@
 Blue noise are numbers that are randomized, but roughly evenly spaced, like the below.
 ![MakeNumberline_BestCandidate.png](../output/_1d/samples/blue_noise/MakeNumberline_BestCandidate.png)  
 
-This is in contrast to regular old random number (white noise), which can clump together and leave empty holes.
+This is in contrast to regular old random numbers (white noise), which can clump together and leave empty holes.
 ![UniformRandom](../output/_1d/samples/uniform_random/MakeNumberline_UniformRandom.png)  
 
 For a non graphics oriented explanation of why that's useful, check this out: https://blog.demofox.org/2018/01/30/what-the-heck-is-blue-noise/
@@ -23,9 +23,11 @@ If you have the benefit of a higher sample count, and your result is going to be
 
 Since I'm a real time graphics person, blue noise is very much my friend.  It allows me to get nice looking results with a very low sample count.
 
-It's amazing what blue noise can accomplish at low sample counts, when doing apples to apples comparisons against other sampling strategies - most strikingly of all, compared to white noise which is jarring and hideous.
+It's amazing what blue noise can accomplish at low sample counts, when doing apples to apples comparisons against other sampling strategies - most strikingly of all, compared to white noise which really hurts to look at in comparison.
 
-When i have concrete examples to show (when the dithering section is done, or if any shadows or AO type tests show up), I'll put them here.  In the meantime, here's a blog post that shows some examples: https://blog.demofox.org/2017/10/31/animating-noise-for-integration-over-time/
+When there are concrete examples in Sample Zoo to show I'll put them here (when the dithering section is done, or if any shadows or AO type tests show up).  In the meantime, here's a blog post that shows some examples: https://blog.demofox.org/2017/10/31/animating-noise-for-integration-over-time/
+
+Beyond graphics, I've heard of game designers using blue noise for things like loot drops or boss encountered.  White noise has too much clumping and repeating.  Blue noise gives you something different every time so is more akin to shuffling.
 
 ## Links:
 
