@@ -17,4 +17,4 @@ These are people who have corrected terminology, added sampling strategies to th
 
 ## The Twitter Graphics Community
 
-Twitter has an AMAZING graphics community full of professionals, indie developers, artists, researchers and more.  I would list all the folks who have helped me learn over the years but I would leave important people out and feelings would get hurt.  Go see the people I follow and follow them too: https://twitter.com/Atrix256
+Twitter has an AMAZING graphics community full of professionals, indie developers, artists, researchers and more.  I would list all the folks who have helped me learn these things over the years but I would leave important people out and feelings would get hurt.  Go see the people I follow and follow them too: https://twitter.com/Atrix256
