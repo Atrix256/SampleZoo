@@ -113,9 +113,12 @@ A list of specific things the project needs.
 * should randomized sequences go through multiple tests and report avg, min, max?
 * projective blue noise
 * your progressive projective blue noise
+* this O(N) non progressive blue noise technique from Robert Bridson: https://www.jasondavies.com/poisson-disc/  (https://www.cs.ubc.ca/~rbridson/docs/bridson-siggraph07-poissondisk.pdf)
 
 ### Circle sampling patterns
 * Vogel Disk: https://www.gamedev.net/articles/programming/graphics/contact-hardening-soft-shadows-made-fast-r4906/
+* to dft, try this? Reverse the random point in disk thing.  Polar but squared distances.  Dft the resulting points in square!
+* sampling on disks and spheres: https://github.com/matt77hias/fibpy
 
 ### Triangle sampling patterns
 * https://pharr.org/matt/blog/2019/02/27/triangle-sampling-1.html
@@ -140,6 +143,13 @@ A list of specific things the project needs.
 * irrational numbers with integers instead. https://twitter.com/marc_b_reynolds/status/1101608307217842176
 * Stochastic Sampling in Computer Graphics (Pixar) http://www.cs.cmu.edu/afs/cs/academic/class/15462-s15/www/lec_slides/p51-cook.pdf
 * correlated multi jittered sampling: https://graphics.pixar.com/library/MultiJitteredSampling/paper.pdf
+* bilateral blue noise: https://www.liyiwei.org/papers/noise-siga13/
+* multiclass blue noise sampling: https://www.liyiwei.org/papers/noise-sig10/
+* a survey of blue noise sampling: http://archive.ymsc.tsinghua.edu.cn/pacm_download/38/276-2015_JCST_BNSurvey.pdf
+* links at https://www.jasondavies.com/poisson-disc/
+* find the electrostatic half toning paper
+* Blue noise sampling using an N-body simulation-based method.  https://link.springer.com/article/10.1007/s00371-017-1382-9
+* sample transformation zoo from http://www.realtimerendering.com/raytracinggems/
 
 ## Alan Specific TODOs
 * progressive projective blue noise
