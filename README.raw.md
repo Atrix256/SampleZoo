@@ -5,6 +5,7 @@
 * [Progressive vs Non Progressive Sequeneces](./doc/progressive.md)
 * [Randomized vs Deterministic Sequeneces](./doc/randomized.md)
 * [Discrete Fourier Transform (DFT) Testing](./doc/dft.md)
+* [What is blue noise?](./doc/bluenoise.md)
 
 TOCTOC
 

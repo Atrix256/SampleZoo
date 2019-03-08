@@ -33,9 +33,7 @@ int main(int argc, char **argv)
 /*
 TODOs:
 
-* sobol indexes out of range! need to fix. true for 2d, not sure if true for 1d.
- * it's because you were adding 1 to the index, to make it skip zero.  see if you can figure out if you added that or if it's correct (re-read your blog post too perhaps)
- * if it's ok to not do that, you have it fixed and can delete this
+* don't save small sample counts to disk?
 
 
 * make 2d/1d tests deal with randomized sequences appropriately? (integration might be hard... lots of samples needing to be generated. hard for blue noise)
@@ -54,6 +52,7 @@ TODOs:
 Docs:
 ! hammersley: if you skip index 0, it doesn't help anything, because you then get the zero from the next sequence! This unless you do N-1 sample items, which is kind of weird and doesn't really help anything.
 * n rooks -> followed regular centered offset best practices
+* sobol: starts at index 1 because first sample is 0. Sound familiar?
 
 * centralize all explanations that you can.
  * link to them from the family specific pages
