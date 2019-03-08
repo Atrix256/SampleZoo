@@ -134,10 +134,12 @@ A list of specific things the project needs.
 * maybe an overview page for 1d sampling, saying what is best at what?
 * maybe a 1d page explaining a good order to read things in to best understand them?
 
-### Research
+### Research (read these, turn them into todos)
 * look into this for rank 1 lattices: http://simul.iro.umontreal.ca/latbuilder/
 * sobol with a small table? from marc b reynolds. https://github.com/Marc-B-Reynolds/Stand-alone-junk/blob/master/src/SFH/Sobol.h  includes stratified sobol sampling?
 * irrational numbers with integers instead. https://twitter.com/marc_b_reynolds/status/1101608307217842176
+* Stochastic Sampling in Computer Graphics (Pixar) http://www.cs.cmu.edu/afs/cs/academic/class/15462-s15/www/lec_slides/p51-cook.pdf
+* correlated multi jittered sampling: https://graphics.pixar.com/library/MultiJitteredSampling/paper.pdf
 
 ## Alan Specific TODOs
 * progressive projective blue noise
