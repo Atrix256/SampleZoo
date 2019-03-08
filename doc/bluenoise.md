@@ -1,7 +1,7 @@
 # What is Blue Noise?
 
 Blue noise are numbers that are randomized, but roughly evenly spaced, like the below.
-![MakeNumberline_BestCandidate.png](../output/_1d/samples/uniform_random/MakeNumberline_UniformRandom.png)  
+![MakeNumberline_BestCandidate.png](../output/_1d/samples/blue_noise/MakeNumberline_BestCandidate.png)  
 
 This is in contrast to regular old random number (white noise), which can clump together and leave empty holes.
 ![UniformRandom](../output/_1d/samples/uniform_random/MakeNumberline_UniformRandom.png)  
