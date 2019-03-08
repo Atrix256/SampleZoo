@@ -27,7 +27,7 @@ It's amazing what blue noise can accomplish at low sample counts, when doing app
 
 When there are concrete examples in Sample Zoo to show I'll put them here (when the dithering section is done, or if any shadows or AO type tests show up).  In the meantime, here's a blog post that shows some examples: https://blog.demofox.org/2017/10/31/animating-noise-for-integration-over-time/
 
-Beyond graphics, I've heard of game designers using blue noise for things like loot drops or boss encountered.  White noise has too much clumping and repeating.  Blue noise gives you something different every time so is more akin to shuffling.
+Beyond graphics, I've heard of game designers using blue noise for things like loot drops or boss encountered.  White noise has too much clumping and repeating.  Blue noise gives you something different every time and so feels more random.  In that context, blue noise is a bit like a shuffle.
 
 ## Links:
 
