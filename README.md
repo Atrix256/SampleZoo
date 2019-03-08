@@ -5,7 +5,11 @@
 * [Progressive vs Non Progressive Sequeneces](./doc/progressive.md)
 * [Randomized vs Deterministic Sequeneces](./doc/randomized.md)
 * [Discrete Fourier Transform (DFT) Testing](./doc/dft.md)
+
+## Blue Noise Algorithms
+
 * [What is blue noise?](./doc/bluenoise.md)
+* [Mitchell's Best Candidate Algorithm](./doc/bestcandidate.md)
 
 ## _1d Samples
 
