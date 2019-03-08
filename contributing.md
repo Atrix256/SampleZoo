@@ -69,6 +69,7 @@ A list of specific things the project needs.
 * add profile information to the output. We can instrument the autogen'd code to time sample functions and test functions and see where the time is going. Maybe also some custom markers if we want more specific information.
 * save different caches to different files so they aren't such large binary diffs when anything changes.
 * look into using markdeep (html w/ a header to use some javascript) instead of markdown for all this documentation.  Main readme might be markdown but the rest could be html? http://casual-effects.com/markdeep/#templates
+* if the data cache gets too large, a way to get some space back is to not save lists of samples that are smaller than some threshold. 1d blue noise generates a lot for the dft for instance, that would be fairly quick to regenerate.
 
 ### 1D Sampling Patterns & Tests
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
