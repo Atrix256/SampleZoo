@@ -39,8 +39,8 @@ Beyond graphics, I've heard of game designers using blue noise for things like l
 
 ## Links:
 
-Blue noise links from Mikkel Gjoel (https://twitter.com/pixelmager) of INSIDE fame
-https://gist.github.com/pixelmager/5d25fa32987273b9608a2d2c6cc74bfa
+Blue noise links from Mikkel Gjoel (https://twitter.com/pixelmager) of INSIDE fame  
+https://gist.github.com/pixelmager/5d25fa32987273b9608a2d2c6cc74bfa  
 https://blog.demofox.org/2018/01/30/what-the-heck-is-blue-noise/ - What the heck is blue noise?  
 https://blog.demofox.org/2018/08/07/tiled-blue-noise/ - Tiled blue noise  
 https://blog.demofox.org/2018/08/12/not-all-blue-noise-is-created-equal/ - Not All Blue Noise is Created Equal  
