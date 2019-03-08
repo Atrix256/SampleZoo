@@ -1,7 +1,6 @@
-Blue noise samples are randomized samples which are roughly evenly spaced.
+Blue noise samples are randomized but roughly evenly spaced.
 
-More details:
-[What is Blue Noise?](../../../../doc/bluenoise.md)  
+More details: [What is Blue Noise?](../../../../doc/bluenoise.md)  
 
 There are many ways to generate 1d blue noise sample points, but there currently is only one way implemented:
 * [Mitchell's Best Candidate](../../../../doc/bestcandidate.md)  
