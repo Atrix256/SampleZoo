@@ -33,8 +33,7 @@ int main(int argc, char **argv)
 /*
 TODOs:
 
-* don't save small sample counts to disk?
-
+* for 2d blue noise: do a "comparison vs other types" manual test like we do for 1d.
 
 * make 2d/1d tests deal with randomized sequences appropriately? (integration might be hard... lots of samples needing to be generated. hard for blue noise)
  * i wonder if the blue noise speedup idea you have would be any better? not for 2d....
