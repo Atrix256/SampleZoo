@@ -1,8 +1,9 @@
-This extends the concept of irrational numbers from 1d to 2d
+This extends the concept of irrational numbers from 1d to 2d.
 
+Check out the 1d irratonal number sequence page for an explanation of the basic idea:
 [1D Irrational Number Sequences](../../../2d/output/_1d/samples/irrational_numbers/page.md)  
 
-There are currently only two 2d irrational number sequence implementations:
+There are currently two 2d irrational number sequence implementations:
 * R2
 * R2 Jittered
 
