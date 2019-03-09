@@ -69,6 +69,7 @@ A list of specific things the project needs.
 * add profile information to the output. We can instrument the autogen'd code to time sample functions and test functions and see where the time is going. Maybe also some custom markers if we want more specific information.
 * save different caches to different files so they aren't such large binary diffs when anything changes.
 * look into using markdeep (html w/ a header to use some javascript) instead of markdown for all this documentation.  Main readme might be markdown but the rest could be html? http://casual-effects.com/markdeep/#templates
+* we should probably have something that lists the sampling types / functions per progressive vs not and randomized vs not, in a sample family specific document.
 
 ### 1D Sampling Patterns & Tests
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
