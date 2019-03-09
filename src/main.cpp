@@ -38,6 +38,7 @@ TODOs:
 * tests in 1d /2d: need to explain how they deal with randomization vs determinism and progressive vs non progressiveness
 
 
+* test your links on each page, i think some are broken!
 
 
 * make 2d/1d tests deal with randomized sequences appropriately? (integration might be hard... lots of samples needing to be generated. hard for blue noise)
