@@ -8,7 +8,7 @@ This is in contrast to regular old random numbers (white noise), which can clump
 
 For a non graphics oriented explanation of why that's useful and interesting, check this out: https://blog.demofox.org/2018/01/30/what-the-heck-is-blue-noise/
 
-It's called blue noise because if you do a DFT to look at the frequency content, it's missing (or has attenuated) low frequencies.
+It's called blue noise because if you do a DFT to look at the frequency content, it's missing (or has attenuated) low frequencies, like blue light which is high frequency light.
 
 ![BestCandidate](../output/_1d/samples/blue_noise/DFT_BestCandidate.png)  
 
@@ -54,3 +54,4 @@ https://blog.demofox.org/2018/08/07/tiled-blue-noise/ - Tiled blue noise
 https://blog.demofox.org/2018/08/12/not-all-blue-noise-is-created-equal/ - Not All Blue Noise is Created Equal  
 https://www.princeton.edu/news/2014/02/24/eye-chicken-new-state-matter-comes-view - In the eye of a chicken, a new state of matter comes into view  
 https://blog.demofox.org/2017/10/31/animating-noise-for-integration-over-time/ - some visual examples comparing white noise to blue noise
+https://blog.demofox.org/2017/10/25/transmuting-white-noise-to-blue-red-green-purple/ - making various colors of noise
