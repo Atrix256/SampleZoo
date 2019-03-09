@@ -37,6 +37,10 @@ TODOs:
 * samples in 1d / 2d: need a "comparison vs others" section. to showcase vs worse (worst?) and better (best?) of the family
 * tests in 1d /2d: need to explain how they deal with randomization vs determinism and progressive vs non progressiveness
 
+* integration tests should show the function they are integrating, graphed.
+ * for 1d, easy enough to make a graph
+ * for 2d, could make a callback function to get a pixel's value. how to display it though? maybe clamp to 0 (black) and 1 (white?)
+
 * add a blue noise todo: try and think of a way on how to do random projection blue noise?
 
 * test your links on each page, i think some are broken!
