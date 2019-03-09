@@ -33,6 +33,10 @@ int main(int argc, char **argv)
 /*
 TODOs:
 
+* samples in 1d / 2d: need a "comparison vs others" section. to showcase vs worse (worst?) and better (best?) of the family
+* tests in 1d /2d: need to explain how they deal with randomization vs determinism and progressive vs non progressiveness
+
+
 * for 2d blue noise: do a "comparison vs other types" manual test like we do for 1d.
 
 * make 2d/1d tests deal with randomized sequences appropriately? (integration might be hard... lots of samples needing to be generated. hard for blue noise)
