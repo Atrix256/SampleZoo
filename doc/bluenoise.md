@@ -1,16 +1,18 @@
 # What is Blue Noise?
 
-Blue noise are numbers that are randomized, but roughly evenly spaced, like the below.
+Blue noise are numbers that are randomized, but roughly evenly spaced.
 ![MakeNumberline_BestCandidate.png](../output/_1d/samples/blue_noise/MakeNumberline_BestCandidate.png)  
 
-This is in contrast to regular old random numbers (white noise), which can clump together and leave empty holes.
+This is in contrast to regular old random numbers (white noise), which can clump together and leave empty regions.
 ![UniformRandom](../output/_1d/samples/uniform_random/MakeNumberline_UniformRandom.png)  
 
-For a non graphics oriented explanation of why that's useful, check this out: https://blog.demofox.org/2018/01/30/what-the-heck-is-blue-noise/
+For a non graphics oriented explanation of why that's useful and interesting, check this out: https://blog.demofox.org/2018/01/30/what-the-heck-is-blue-noise/
 
 It's called blue noise because if you do a DFT to look at the frequency content, it's missing (or has attenuated) low frequencies.
 
 ![BestCandidate](../output/_1d/samples/blue_noise/DFT_BestCandidate.png)  
+
+Blue noise sampling also goes by the name "Poisson Disk Sampling" because it can be made in 2D by randomly placing fairly tightly packed disks, and using their center points as the sampling positions.  This is not to be confused with "Poisson Sampling" aka "Poisson Point Sampling" which is made by randomly placing points and is just white noise.
 
 For graphics, blue noise has some interesting properties:
 * pro - gives the least aliasing
@@ -21,21 +23,27 @@ For graphics, blue noise has some interesting properties:
 * con - integrates at the same rate as white noise (slowly), even though it starts at a lower error.
 * con - can be computationally expensive to generate
 
-All this means that in general, if you can only afford a low sample count, and your result isn't going to converge all the way, you are best off using blue noise so that the remaining error is most pleasing to the eye and least noticeable.
+Blue noise tends to tile well.  The lack of low frequency content makes it so there are no larger structures to catch your eye.
 
-If you have the benefit of a higher sample count, and your result is going to be allowed to fully converge, other sampling strategies are probably more appropriate.
+Many things in our world - natural and man made - are distributed in a blue noise pattern.  This includes the photoreceptors in your eyes, as well as foam in a tempurpedic matress (something which is unique to their process of making matresses, and patented).  "Randomized but roughly evenly spaced" turns out to be a fairly common property and is exactly what blue noise is.
+
+Beyond graphics, I've heard of game designers using blue noise for things like loot drops or boss encountered.  White noise has too much clumping and repeating which make players say things like "I just got this loot last time. This isn't random at all!".  Blue noise gives you something different every time and so feels more random.  In that context, blue noise is a bit like a shuffle.
+
+## When Should Blue Noise Be Used?
+
+Blue noise has lower starting error than white noise but converges at the same rate.
+
+Since "converged rendering" looks the same no matter how you got there, if you can afford enough samples to converge using blue noise, you should probably switch to something else that converges faster and use fewer samples.  
+
+Conversely, if you aren't converging, but can reach convergence by switching to another sampling sequence for the same sample count, you should do that instead.
+
+The power of blue noise comes up when you can't spare afford samples to converge.
+
+The noise pattern left by blue noise is less jarring and less noticeable than white noise or things like low discrepancy sequences, and is more easily removed by denoising techniques such as a low pass filter (aka blue) due to the noise (error) being constrained to high frequencies.
 
 Since I'm a real time graphics person, blue noise is very much my friend.  It allows me to get nice looking results with a very low sample count.
 
-It's amazing what blue noise can accomplish at low sample counts, when doing apples to apples comparisons against other sampling strategies - most strikingly of all, compared to white noise which really hurts to look at in comparison.
-
-When there are concrete examples in Sample Zoo to show I'll put them here (when the dithering section is done, or if any shadows or AO type tests show up).  In the meantime, here's a blog post that shows some examples: https://blog.demofox.org/2017/10/31/animating-noise-for-integration-over-time/
-
-Blue noise sample points tend to tile well, even if they weren't designed to tile.  Their lack of low frequency content makes it so there are no larger structures to catch your eye.
-
-Many things in our world - natural and man made - are distributed in a blue noise pattern.  This includes the photoreceptors in your eyes, as well as foam in a tempurpedic matress (something which is unique to their process of making matresses, and patented).  "Randomized but roughly evenly spaced" turns out to be a really common requirement of things, and in fact, if you have something in a game that doesn't feel random enough ("hey, i just fought one of those guys! This isn't random at all!"), the real randomness you might be looking for is blue noise, which doesn't repeat in the same way white noise does.  Despite this, it's still randomized and unpredictable.
-
-Beyond graphics, I've heard of game designers using blue noise for things like loot drops or boss encountered.  White noise has too much clumping and repeating.  Blue noise gives you something different every time and so feels more random.  In that context, blue noise is a bit like a shuffle.
+It's amazing what blue noise can accomplish at low sample counts, when doing apples to apples comparisons against other sampling strategies - most strikingly of all, compared to white noise which is painful to look at in comparison.
 
 ## Links:
 
@@ -45,3 +53,4 @@ https://blog.demofox.org/2018/01/30/what-the-heck-is-blue-noise/ - What the heck
 https://blog.demofox.org/2018/08/07/tiled-blue-noise/ - Tiled blue noise  
 https://blog.demofox.org/2018/08/12/not-all-blue-noise-is-created-equal/ - Not All Blue Noise is Created Equal  
 https://www.princeton.edu/news/2014/02/24/eye-chicken-new-state-matter-comes-view - In the eye of a chicken, a new state of matter comes into view  
+https://blog.demofox.org/2017/10/31/animating-noise-for-integration-over-time/ - some visual examples comparing white noise to blue noise
