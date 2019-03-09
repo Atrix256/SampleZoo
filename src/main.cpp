@@ -37,6 +37,7 @@ TODOs:
 * samples in 1d / 2d: need a "comparison vs others" section. to showcase vs worse (worst?) and better (best?) of the family
 * tests in 1d /2d: need to explain how they deal with randomization vs determinism and progressive vs non progressiveness
 
+* add a blue noise todo: try and think of a way on how to do random projection blue noise?
 
 * test your links on each page, i think some are broken!
 
