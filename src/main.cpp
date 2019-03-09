@@ -43,6 +43,8 @@ TODOs:
 
 * add a blue noise todo: try and think of a way on how to do random projection blue noise?
 
+* remove mention of 1d discrepancy wrap around. i nuked it cause it wasn't useful.
+
 * test your links on each page, i think some are broken!
 
 
