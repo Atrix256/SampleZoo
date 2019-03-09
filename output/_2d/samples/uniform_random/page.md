@@ -1,7 +1,9 @@
 # Uniform Random Number Sampling
 Source Code: [src/families/_2d/samples/uniform_random/](../../../../src/families/_2d/samples/uniform_random/)
 
-
+Uniform random sampling in 2d is exactly the same as uniform random sampling in 1d with very similar properties.
+
+[1D Regular Sampling](../../../_1d/samples/uniform_random/page.md)  
 # Test Results
  samples tested:
 * UniformRandom (Progressive, Randomized)
