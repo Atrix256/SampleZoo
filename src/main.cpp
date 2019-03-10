@@ -9,11 +9,13 @@ DATE: 2/8/2019
 
 #include "families/_1d/samples/blue_noise/manual_test.h"
 #include "families/_1d/tests/integration/manual_test.h"
+#include "families/_2d/tests/integration/manual_test.h"
 
 void ManualTest()
 {
     _1d::Tests::Integration::ManualTest();
     _1d::Samples::BlueNoise::ManualTest();
+    _2d::Tests::Integration::ManualTest();
 }
 
 int main(int argc, char **argv)
@@ -39,7 +41,7 @@ TODOs:
 * samples in 1d / 2d: need a "comparison vs others" section. to showcase vs worse (worst?) and better (best?) of the family
 * tests in 1d /2d: need to explain how they deal with randomization vs determinism and progressive vs non progressiveness
 
-* make 2d integration graphs like you did for 1d.
+* 2d integration "triangle" graph doesn't look quite right.  What's wrong with it?
 
 * integration tests should show the function they are integrating, graphed.
  * for 1d, easy enough to make a graph

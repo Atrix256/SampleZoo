@@ -10,6 +10,7 @@ Uses samples to integrate 2d functions
 #include "codegen.h"
 #include "shared/math.h"
 #include "shared/graph.h"
+#include "manual_test.h"
 
 static const float c_pi = 3.14159265359f;
 
@@ -213,4 +214,67 @@ void _2d::Tests::Integration::Gaussian(const std::vector<std::vector<SampleGener
 void _2d::Tests::Integration::Bilinear(const std::vector<std::vector<SampleGenerateInfo_2d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
     DoIntegrationTest(sampleFunctions, testName, fileNamePrefix, SampleImage_Bilinear, c_referenceValue_Bilinear);
+}
+
+template <typename LAMBDA>
+static void MakeFunctionGraph(const LAMBDA& lambda, const char* functionName, const char* title)
+{
+    auto DrawData = [&](Image& image, Vec2 drawMin, Vec2 drawMax, Vec2 dataMin, Vec2 dataMax)
+    {
+        size_t startX = size_t(0.5f + drawMin[0] * float(image.m_width));
+        size_t endX = size_t(0.5f + drawMax[0] * float(image.m_width));
+        size_t startY = size_t(0.5f + drawMin[1] * float(image.m_height));
+        size_t endY = size_t(0.5f + drawMax[1] * float(image.m_height));
+
+        for (size_t y = startY; y < endY; ++y)
+        {
+            float percentY = float(y) / float(endY - startY);
+            float dataY = dataMin[1] + percentY * (dataMax[1] - dataMin[1]);
+
+            PixelRGBAF32_PMA* pixel = &image.m_pixels[y * image.m_width + startX];
+            for (size_t x = startX; x < endX; ++x, ++pixel)
+            {
+                float percentX = float(x) / float(endX - startX);
+                float dataX = dataMin[0] + percentX * (dataMax[0] - dataMin[0]);
+
+                float value = lambda(Vec2{dataX, dataY});
+                *pixel = PixelRGBAF32_PMA(PixelRGBAF32(value, value, value));
+            }
+        }
+    };
+
+    char fileName[256];
+    sprintf(fileName, "output/_2d/tests/integration/%s.png", functionName);
+
+    GraphDesc desc;
+    desc.fileName = fileName;
+    desc.footer = title;
+    desc.graphType = GraphType::Continuous;
+    desc.continuousCallback = DrawData;
+
+    desc.graphItems.resize(1);
+    GraphItem& graph = desc.graphItems[0];
+
+    desc.forceXMinMax = true;
+    desc.xMinMax = Vec2{ 0.0f, 1.0f };
+    desc.forceYMinMax = true;
+    desc.yMinMax = Vec2{ 0.0f, 1.0f };
+
+    desc.yAxisTicks.push_back({ 0.0f, "0", TextHAlign::Right, TextVAlign::Bottom });
+    desc.yAxisTicks.push_back({ 1.0f, "1", TextHAlign::Right, TextVAlign::Top });
+
+    desc.xAxisTicks.push_back({ 0.0f, "0", TextHAlign::Left, TextVAlign::Top });
+    desc.xAxisTicks.push_back({ 1.0f, "1", TextHAlign::Right, TextVAlign::Top });
+
+    MakeGraph(desc);
+}
+
+void _2d::Tests::Integration::ManualTest()
+{
+    // make a graph for each function being integrated, so we can show it as part of the documentation
+    MakeFunctionGraph(::SampleImage_Disk, "disk", "Disk");
+    MakeFunctionGraph(::SampleImage_Triangle, "triangle", "Triangle");
+    MakeFunctionGraph(::SampleImage_Step, "step", "Step");
+    MakeFunctionGraph(::SampleImage_Gaussian, "gaussian", "Gaussian");
+    MakeFunctionGraph(::SampleImage_Bilinear, "bilinear", "Bilinear");
 }

@@ -10,6 +10,9 @@ DATE: 2/17/2019
 #include <string>
 #include "vector.h"
 #include "drawtext.h"
+#include <functional>
+
+typedef std::function<void(Image& image, Vec2 drawMin, Vec2 drawMax, Vec2 dataMin, Vec2 dataMax)> TGraphContinuousCallback;
 
 struct GraphItem
 {
@@ -28,7 +31,8 @@ struct GraphAxisTick
 enum class GraphType
 {
     Lines,
-    Points
+    Points,
+    Continuous
 };
 
 struct GraphDesc
@@ -46,6 +50,9 @@ struct GraphDesc
     Vec2 maxPad = Vec2{ 0.0f, 0.0f };
     bool forceYMinMax = false;
     Vec2 yMinMax = Vec2{ 0.0f, 0.0f };
+    bool forceXMinMax = false;
+    Vec2 xMinMax = Vec2{ 0.0f, 0.0f };
+    TGraphContinuousCallback continuousCallback = nullptr;
 };
 
 void MakeGraph(const GraphDesc& desc);

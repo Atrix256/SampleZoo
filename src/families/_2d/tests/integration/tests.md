@@ -7,4 +7,10 @@ The functions being integrated over are:
 * Triangle: y > x
 * Step: x < 1/pi
 * Gaussian: z = e^(-x^2-y^2)
-* Bilinear: z = x*y
+* Bilinear: z = x * y
+
+![Disk](disk.png)  
+![Triangle](triangle.png)  
+![Step](step.png)  
+![Gaussian](gaussian.png)  
+![Bilinear](bilinear.png)  

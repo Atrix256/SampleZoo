@@ -49,6 +49,12 @@ void MakeGraph(const GraphDesc& desc)
             }
         }
 
+        if (desc.forceXMinMax)
+        {
+            dataMin[0] = desc.xMinMax[0];
+            dataMax[0] = desc.xMinMax[1];
+        }
+
         if (desc.forceYMinMax)
         {
             dataMin[1] = desc.yMinMax[0];
@@ -181,6 +187,10 @@ void MakeGraph(const GraphDesc& desc)
                 DrawCircle(image, imageSpacePoint, virtualPixel, lineColor);
             }
         }
+    }
+    else if (desc.graphType == GraphType::Continuous)
+    {
+        desc.continuousCallback(image, graphMin, graphMax, dataMin, dataMax);
     }
 
     // make the title
