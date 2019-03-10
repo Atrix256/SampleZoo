@@ -213,8 +213,7 @@ static void MakeFunctionGraph(const LAMBDA& lambda, const char* functionName, co
 
     GraphDesc desc;
     desc.fileName = fileName;
-    desc.title = functionName;
-    desc.footer = title;
+    desc.title = title;
 
     desc.graphItems.resize(1);
     GraphItem& graph = desc.graphItems[0];
@@ -252,8 +251,8 @@ static void MakeFunctionGraph(const LAMBDA& lambda, const char* functionName, co
 void _1d::Tests::Integration::ManualTest()
 {
     // make a graph for each function being integrated, so we can show it as part of the documentation
-    MakeFunctionGraph(::Linear, "linear", "y = x");
-    MakeFunctionGraph(::Step, "step", "y = x>0.5 ? 1 : 0");
-    MakeFunctionGraph(::Exp, "exp", "y = e^x");
-    MakeFunctionGraph(::Quadratic, "quadratic", "y = -3x^2+2x+1");
+    MakeFunctionGraph(::Linear, "linear", "Linear: y = x");
+    MakeFunctionGraph(::Step, "step", "Step: y = x>0.5 ? 1 : 0");
+    MakeFunctionGraph(::Exp, "exp", "Exp: y = e^x");
+    MakeFunctionGraph(::Quadratic, "quadratic", "Quadratic: y = -3x^2+2x+1");
 }
