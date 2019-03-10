@@ -14,7 +14,12 @@ This test uses each sampling type to try and integrate the following functions f
 * Linear: y = x
 * Step: y = (x > 0.5) ? 1.0 : 0.0
 * Exp: y = e^x
-* Quadratic: y=3x^2+2x+1
+* Quadratic: y=-3x^2+2x+1
+
+![Linear](linear.png)  
+![Step](step.png)  
+![Exp](exp.png)  
+![Quadratic](quadratic.png)  
 
 ## links
 

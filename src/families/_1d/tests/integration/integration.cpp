@@ -10,6 +10,7 @@ Uses samples to integrate 1d functions
 #include "codegen.h"
 #include "shared/math.h"
 #include "shared/graph.h"
+#include "manual_test.h"
 
 static const float e = 2.71828182845904523536f;
 
@@ -33,8 +34,8 @@ static float Exp(float x)
 
 static float Quadratic(float x)
 {
-    // function: y = 3x^2+2x+1
-    return 3.0f*x*x + 2.0f*x + 1.0f;
+    // function: y = -3x^2+2x+1
+    return -3.0f*x*x + 2.0f*x + 1.0f;
 }
 
 template <typename LAMBDA>
@@ -199,5 +200,60 @@ void _1d::Tests::Integration::Exp(const std::vector<std::vector<SampleGenerateIn
 
 void _1d::Tests::Integration::Quadratic(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
-    DoIntegrationTest(sampleFunctions, testName, fileNamePrefix, ::Quadratic, 3.0f);
+    DoIntegrationTest(sampleFunctions, testName, fileNamePrefix, ::Quadratic, 1.0f);
+}
+
+template <typename LAMBDA>
+static void MakeFunctionGraph(const LAMBDA& lambda, const char* functionName, const char* title)
+{
+    static size_t c_sampleCount = 256;  // TODO: not enough!
+
+    char fileName[256];
+    sprintf(fileName, "output/_1d/tests/integration/%s.png", functionName);
+
+    GraphDesc desc;
+    desc.fileName = fileName;
+    desc.title = functionName;
+    desc.footer = title;
+
+    desc.graphItems.resize(1);
+    GraphItem& graph = desc.graphItems[0];
+
+    float miny = 0.0;
+    float maxy = -FLT_MAX;
+
+    for (size_t sampleIndex = 0; sampleIndex < c_sampleCount; ++sampleIndex)
+    {
+        float x = float(sampleIndex) / float(c_sampleCount - 1);
+        float y = lambda(x);
+        graph.data.push_back(Vec2{x, y});
+
+        miny = std::min(miny, y);
+        maxy = std::max(maxy, y);
+    }
+
+    desc.forceYMinMax = true;
+    desc.yMinMax = Vec2{ miny, maxy };
+
+    char buffer[256];
+
+    sprintf(buffer, "%0.2f", miny);
+    desc.yAxisTicks.push_back({ miny, buffer, TextHAlign::Right, TextVAlign::Bottom });
+
+    sprintf(buffer, "%0.2f", maxy);
+    desc.yAxisTicks.push_back({ maxy, buffer, TextHAlign::Right, TextVAlign::Top });
+
+    desc.xAxisTicks.push_back({ 0.0f, "0", TextHAlign::Left, TextVAlign::Top });
+    desc.xAxisTicks.push_back({ 1.0f, "1", TextHAlign::Right, TextVAlign::Top });
+
+    MakeGraph(desc);
+}
+
+void _1d::Tests::Integration::ManualTest()
+{
+    // make a graph for each function being integrated, so we can show it as part of the documentation
+    MakeFunctionGraph(::Linear, "linear", "y = x");
+    MakeFunctionGraph(::Step, "step", "y = x>0.5 ? 1 : 0");
+    MakeFunctionGraph(::Exp, "exp", "y = e^x");
+    MakeFunctionGraph(::Quadratic, "quadratic", "y = -3x^2+2x+1");
 }
