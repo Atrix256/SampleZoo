@@ -116,6 +116,7 @@ A list of specific things the project needs.
 * projective blue noise
 * your progressive projective blue noise
 * this O(N) non progressive blue noise technique from Robert Bridson: https://www.jasondavies.com/poisson-disc/  (https://www.cs.ubc.ca/~rbridson/docs/bridson-siggraph07-poissondisk.pdf)
+* reread this for sources of 2d patterns: http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
 
 ### Sphere sampling patterns
 * http://extremelearning.com.au/how-to-generate-uniformly-random-points-on-n-spheres-and-n-balls/
@@ -178,6 +179,7 @@ A list of specific things the project needs.
 
 ## Alan Specific TODOs
 * progressive projective blue noise
+* try and think about random projection blue noise
 * gather papers linked from progressive projective blue noise project
 * James has a bluenoise type sampling he wants to contribute called dpp. Hit him up when you are ready to open things up!
 * check out UTK (a sample comparison toolkit) for inspiration etc. https://utk-team.github.io/utk/
