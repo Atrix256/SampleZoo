@@ -12,8 +12,12 @@ DATE: 2/17/2019
 
 static const float c_goldenRatioConjugate = 0.61803398875f;
 
-void MakeGraph(const GraphDesc& desc)
+void MakeGraph(const GraphDesc& desc_)
 {
+    GraphDesc desc = desc_;
+    if (desc.intermediateWidth == 0)
+        desc.intermediateWidth = desc.width;
+
     static const Vec2 graphMin = { 0.1f, 0.0f };
     static const Vec2 graphMax = { 1.0f, 0.9f };
 
@@ -22,7 +26,7 @@ void MakeGraph(const GraphDesc& desc)
     static const float log10epsilon = 0.000001f;
 
     // make the graph image
-    Image image(desc.width, desc.width, { 1.0f, 1.0f, 1.0f, 1.0f });
+    Image image(desc.intermediateWidth, desc.intermediateWidth, { 1.0f, 1.0f, 1.0f, 1.0f });
 
     // draw a darker region where the line graph will be
     DrawBox(image, graphMin, graphMax, { 0.25f, 0.25f, 0.25f, 1.0f });
@@ -230,10 +234,10 @@ void MakeGraph(const GraphDesc& desc)
     }
 
     // resize the image if we should
-    if (desc.width != desc.finalWidth)
+    if (desc.width != desc.intermediateWidth)
     {
-        int finalHeight = int(float(image.m_height) * float(desc.finalWidth) / float(desc.width));
-        ResizeImageBicubic(image, desc.finalWidth, finalHeight);
+        int finalHeight = int(float(image.m_height) * float(desc.width) / float(desc.intermediateWidth));
+        ResizeImageBicubic(image, desc.width, finalHeight);
     }
 
     // save the final image

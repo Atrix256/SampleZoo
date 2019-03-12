@@ -91,22 +91,62 @@ void ResizeImageBicubic(Image& image, int newWidth, int newHeight)
         for (int y = 0; y < newImage.m_height; ++y)
         {
             PixelRGBAF32_PMA* pixel = &newImage.m_pixels[y * newImage.m_width];
-            float v = (float(y) + 0.5f) / float(newImage.m_height);
+            Vec2 uv;
+            uv[1] = (float(y) + 0.5f) / float(newImage.m_height);
             for (int x = 0; x < newImage.m_width; ++x, ++pixel)
             {
-                float u = (float(x) + 0.5f) / float(newImage.m_width);
-                *pixel = SampleImageBicubic(image, Vec2{ u, v });
+                uv[0] = (float(x) + 0.5f) / float(newImage.m_width);
+                *pixel = SampleImageBicubic(image, uv);
             }
         }
 
         image = newImage;
     }
-
-    // TODO: need to make sure it doesn't ever get into an infinite loop due to precision problems. clamp the scaledW / scaledH i think?
 }
 
 PixelRGBAF32_PMA SampleImageBicubic(Image& image, Vec2 uv)
 {
-    // TODO: implement as bicubic
-    return PixelRGBAF32_PMA();
+    // calculate pixel coordinates
+    float x = (uv[0] * image.m_width) - 0.5f;
+    int xint = int(x);
+    float xfract = x - floor(x);
+
+    float y = (uv[1] * image.m_height) - 0.5f;
+    int yint = int(y);
+    float yfract = y - floor(y);
+
+    // gather 1st row
+    Vec4 p00 = image.GetPixelClamped(xint - 1, yint - 1).ToVec4();
+    Vec4 p10 = image.GetPixelClamped(xint + 0, yint - 1).ToVec4();
+    Vec4 p20 = image.GetPixelClamped(xint + 1, yint - 1).ToVec4();
+    Vec4 p30 = image.GetPixelClamped(xint + 2, yint - 1).ToVec4();
+
+    // gather 2nd row
+    Vec4 p01 = image.GetPixelClamped(xint - 1, yint + 0).ToVec4();
+    Vec4 p11 = image.GetPixelClamped(xint + 0, yint + 0).ToVec4();
+    Vec4 p21 = image.GetPixelClamped(xint + 1, yint + 0).ToVec4();
+    Vec4 p31 = image.GetPixelClamped(xint + 2, yint + 0).ToVec4();
+
+    // gather 3rd row
+    Vec4 p02 = image.GetPixelClamped(xint - 1, yint + 1).ToVec4();
+    Vec4 p12 = image.GetPixelClamped(xint + 0, yint + 1).ToVec4();
+    Vec4 p22 = image.GetPixelClamped(xint + 1, yint + 1).ToVec4();
+    Vec4 p32 = image.GetPixelClamped(xint + 2, yint + 1).ToVec4();
+
+    // gather 4th row
+    Vec4 p03 = image.GetPixelClamped(xint - 1, yint + 2).ToVec4();
+    Vec4 p13 = image.GetPixelClamped(xint + 0, yint + 2).ToVec4();
+    Vec4 p23 = image.GetPixelClamped(xint + 1, yint + 2).ToVec4();
+    Vec4 p33 = image.GetPixelClamped(xint + 2, yint + 2).ToVec4();
+
+    // interpolate each row to get 4 column values
+    Vec4 col0 = CubicHermite(p00, p10, p20, p30, xfract);
+    Vec4 col1 = CubicHermite(p01, p11, p21, p31, xfract);
+    Vec4 col2 = CubicHermite(p02, p12, p22, p32, xfract);
+    Vec4 col3 = CubicHermite(p03, p13, p23, p33, xfract);
+
+    // interpolate the column values to get the final result
+    PixelRGBAF32_PMA ret;
+    ret.FromVec4(CubicHermite(col0, col1, col2, col3, yfract));
+    return ret;
 }

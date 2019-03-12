@@ -37,8 +37,7 @@ int main(int argc, char **argv)
 /*
 
 For sure:
-* do bicubic interpolation to shrink graphs down from 512 to 256. implement ResizeImageBicubic()
-* maybe try this for integration tests... render 2x as large on each side and scale down.
+  maybe try this for integration tests... render 2x as large on each side and scale down.
  * could try jittering each graph a sub pixel amount too.
 * remove mention of 1d discrepancy wrap around. i nuked it cause it wasn't useful.
 * test your links on each page, i think some are broken!

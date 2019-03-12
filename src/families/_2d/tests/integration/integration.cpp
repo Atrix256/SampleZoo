@@ -251,8 +251,8 @@ static void MakeFunctionGraph(const LAMBDA& lambda, const char* functionName, co
     desc.footer = title;
     desc.graphType = GraphType::Continuous;
     desc.continuousCallback = DrawData;
+    desc.intermediateWidth = 1024;
     desc.width = 512;
-    desc.finalWidth = 256;
 
     desc.graphItems.resize(1);
     GraphItem& graph = desc.graphItems[0];

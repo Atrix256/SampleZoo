@@ -35,6 +35,14 @@ struct Image
         std::fill(m_pixels.begin(), m_pixels.end(), PixelRGBAF32_PMA(clearColor));
     }
 
+    PixelRGBAF32_PMA GetPixelClamped(int x, int y)
+    {
+        x = Clamp(x, 0, m_width - 1);
+        y = Clamp(y, 0, m_height - 1);
+
+        return m_pixels[y * m_width + x];
+    }
+
     int m_width;
     int m_height;
     std::vector<PixelRGBAF32_PMA> m_pixels;

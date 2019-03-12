@@ -44,8 +44,8 @@ struct GraphDesc
     std::vector<GraphItem> graphItems;
     std::vector<GraphAxisTick> xAxisTicks;
     std::vector<GraphAxisTick> yAxisTicks;
-    int width = 512;  // rendered at this size
-    int finalWidth = 512; // scaled to this size
+    int intermediateWidth = 512;  // rendered at this size if nonzero. else rendered at width size
+    int width = 512; // scaled to this size
     bool loglog = false;
     Vec2 minPad = Vec2{ 0.0f, 0.0f };
     Vec2 maxPad = Vec2{ 0.0f, 0.0f };

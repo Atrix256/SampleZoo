@@ -214,8 +214,8 @@ static void MakeFunctionGraph(const LAMBDA& lambda, const char* functionName, co
     GraphDesc desc;
     desc.fileName = fileName;
     desc.title = title;
+    desc.intermediateWidth = 1024;
     desc.width = 512;
-    desc.finalWidth = 256;
 
     desc.graphItems.resize(1);
     GraphItem& graph = desc.graphItems[0];
