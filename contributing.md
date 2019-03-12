@@ -70,6 +70,7 @@ A list of specific things the project needs.
 * save different caches to different files so they aren't such large binary diffs when anything changes.
 * look into using markdeep (html w/ a header to use some javascript) instead of markdown for all this documentation.  Main readme might be markdown but the rest could be html? http://casual-effects.com/markdeep/#templates
 * if the data cache gets too large, a way to get some space back is to not save lists of samples that are smaller than some threshold. 1d blue noise generates a lot for the dft for instance, that would be fairly quick to regenerate.
+* whenever autogend docs label a test or sample, make a hyperlink to click to go to the page for it
 
 ### 1D Sampling Patterns & Tests
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
@@ -116,6 +117,9 @@ A list of specific things the project needs.
 * your progressive projective blue noise
 * this O(N) non progressive blue noise technique from Robert Bridson: https://www.jasondavies.com/poisson-disc/  (https://www.cs.ubc.ca/~rbridson/docs/bridson-siggraph07-poissondisk.pdf)
 
+### Sphere sampling patterns
+* http://extremelearning.com.au/how-to-generate-uniformly-random-points-on-n-spheres-and-n-balls/
+
 ### Circle sampling patterns
 * Vogel Disk: https://www.gamedev.net/articles/programming/graphics/contact-hardening-soft-shadows-made-fast-r4906/
 * to dft, try this? Reverse the random point in disk thing.  Polar but squared distances.  Dft the resulting points in square!
@@ -124,6 +128,7 @@ A list of specific things the project needs.
 ### Triangle sampling patterns
 * https://pharr.org/matt/blog/2019/02/27/triangle-sampling-1.html
 * uniform point in triangle: https://twitter.com/TechSparx/status/1093193006440726529?s=03
+* https://twitter.com/eric_heitz/status/1105097492964741120?s=03
 * can do blue noise and white noise via rejection sampling
 
 ### 2d Dithering Patterns
@@ -131,6 +136,7 @@ A list of specific things the project needs.
 * void and cluster
 * bayer
 * from paniq for blue noise: basically: fill a square image with uniform noise, stencil out a center circle with feathering, take an inverse FFT and tada, blue noise
+* Cover dithering and triangle distributed noise? and the things here: http://bartwronski.com/2016/10/30/dithering-part-three-real-world-2d-quantization-dithering/
 
 ### Documentation
 * mention how sampling is like convolution in frequency space somewhere?
