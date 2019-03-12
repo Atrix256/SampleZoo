@@ -37,7 +37,9 @@ int main(int argc, char **argv)
 /*
 
 For sure:
-* 2d integration "triangle" graph doesn't look quite right.  What's wrong with it?
+* do bicubic interpolation to shrink graphs down from 512 to 256. implement ResizeImageBicubic()
+* maybe try this for integration tests... render 2x as large on each side and scale down.
+ * could try jittering each graph a sub pixel amount too.
 * remove mention of 1d discrepancy wrap around. i nuked it cause it wasn't useful.
 * test your links on each page, i think some are broken!
 * I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.

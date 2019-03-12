@@ -229,6 +229,13 @@ void MakeGraph(const GraphDesc& desc)
         }
     }
 
+    // resize the image if we should
+    if (desc.width != desc.finalWidth)
+    {
+        int finalHeight = int(float(image.m_height) * float(desc.finalWidth) / float(desc.width));
+        ResizeImageBicubic(image, desc.finalWidth, finalHeight);
+    }
+
     // save the final image
     SaveImage(image, desc.fileName);
 }

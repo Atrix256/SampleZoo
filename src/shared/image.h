@@ -45,3 +45,7 @@ void SaveImage(const Image& image, const char* fileName);
 void BlendInImage(Image& image, const Image& otherImage, int pastex, int pastey);
 
 void BlendInImage_Resize(Image& image, const Image& otherImage, unsigned int pastex, unsigned int pastey, PixelRGBAF32 clearColor);
+
+void ResizeImageBicubic(Image& image, int newWidth, int newHeight);
+
+PixelRGBAF32_PMA SampleImageBicubic(Image& image, Vec2 uv);

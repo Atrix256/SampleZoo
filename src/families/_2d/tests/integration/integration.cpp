@@ -228,13 +228,13 @@ static void MakeFunctionGraph(const LAMBDA& lambda, const char* functionName, co
 
         for (size_t y = startY; y < endY; ++y)
         {
-            float percentY = float(y) / float(endY - startY);
+            float percentY = float(y - startY) / float(endY - startY);
             float dataY = dataMin[1] + percentY * (dataMax[1] - dataMin[1]);
 
             PixelRGBAF32_PMA* pixel = &image.m_pixels[y * image.m_width + startX];
             for (size_t x = startX; x < endX; ++x, ++pixel)
             {
-                float percentX = float(x) / float(endX - startX);
+                float percentX = float(x - startX) / float(endX - startX);
                 float dataX = dataMin[0] + percentX * (dataMax[0] - dataMin[0]);
 
                 float value = lambda(Vec2{dataX, dataY});
@@ -251,7 +251,8 @@ static void MakeFunctionGraph(const LAMBDA& lambda, const char* functionName, co
     desc.footer = title;
     desc.graphType = GraphType::Continuous;
     desc.continuousCallback = DrawData;
-    desc.width = 256;
+    desc.width = 512;
+    desc.finalWidth = 256;
 
     desc.graphItems.resize(1);
     GraphItem& graph = desc.graphItems[0];

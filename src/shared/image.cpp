@@ -72,3 +72,41 @@ void BlendInImage_Resize(Image& image, const Image& otherImage, unsigned int pas
     // set the image to the new image
     image = newImage;
 }
+
+void ResizeImageBicubic(Image& image, int newWidth, int newHeight)
+{
+    // scale up or down by 2x at most, repeatedly, til done
+    while (image.m_width != newWidth && image.m_height != newHeight)
+    {
+        float scaleX = float(newWidth) / float(image.m_width);
+        float scaleY = float(newHeight) / float(image.m_height);
+        scaleX = Clamp(scaleX, 0.5f, 2.0f);
+        scaleY = Clamp(scaleY, 0.5f, 2.0f);
+
+        int scaledW = int(scaleX*float(image.m_width));
+        int scaledH = int(scaleY*float(image.m_height));
+
+        Image newImage(scaledW, scaledH);
+
+        for (int y = 0; y < newImage.m_height; ++y)
+        {
+            PixelRGBAF32_PMA* pixel = &newImage.m_pixels[y * newImage.m_width];
+            float v = (float(y) + 0.5f) / float(newImage.m_height);
+            for (int x = 0; x < newImage.m_width; ++x, ++pixel)
+            {
+                float u = (float(x) + 0.5f) / float(newImage.m_width);
+                *pixel = SampleImageBicubic(image, Vec2{ u, v });
+            }
+        }
+
+        image = newImage;
+    }
+
+    // TODO: need to make sure it doesn't ever get into an infinite loop due to precision problems. clamp the scaledW / scaledH i think?
+}
+
+PixelRGBAF32_PMA SampleImageBicubic(Image& image, Vec2 uv)
+{
+    // TODO: implement as bicubic
+    return PixelRGBAF32_PMA();
+}
