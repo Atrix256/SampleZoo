@@ -122,10 +122,11 @@ A list of specific things the project needs.
 * fib on spheres and caps: http://marc-b-reynolds.github.io/math/2018/06/21/SFPoints4ET.html
 * points on a sphere: https://www.cmu.edu/biolphys/deserno/pdf/sphere_equi.pdf
 
-### Circle sampling patterns
+### Circle /disk sampling patterns
 * Vogel Disk: https://www.gamedev.net/articles/programming/graphics/contact-hardening-soft-shadows-made-fast-r4906/
 * to dft, try this? Reverse the random point in disk thing.  Polar but squared distances.  Dft the resulting points in square!
 * sampling on disks and spheres: https://github.com/matt77hias/fibpy
+* square to disk transforms: http://jcgt.org/published/0005/02/01/
 
 ### Triangle sampling patterns
 * https://pharr.org/matt/blog/2019/02/27/triangle-sampling-1.html
