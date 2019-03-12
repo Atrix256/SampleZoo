@@ -35,36 +35,28 @@ int main(int argc, char **argv)
 }
 
 /*
-TODOs:
 
-* sample families: need an intro section that has a summary of the tests too (best?)
-* samples in 1d / 2d: need a "comparison vs others" section. to showcase vs worse (worst?) and better (best?) of the family
-* tests in 1d /2d: need to explain how they deal with randomization vs determinism and progressive vs non progressiveness
-
+For sure:
 * 2d integration "triangle" graph doesn't look quite right.  What's wrong with it?
-
-* integration tests should show the function they are integrating, graphed.
- * for 1d, easy enough to make a graph
- * for 2d, could make a callback function to get a pixel's value. how to display it though? maybe clamp to 0 (black) and 1 (white?)
-
-* add a blue noise todo: try and think of a way on how to do random projection blue noise?
-
 * remove mention of 1d discrepancy wrap around. i nuked it cause it wasn't useful.
-
 * test your links on each page, i think some are broken!
+* I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.
+? is hammerlsey ok with tests doing non power of 2 sample counts on it? i think probably not, but check out what it's actually doing.
+* there are a lot of disk sampling and other things in the progressive projective blue noise code.
+* tests in 1d /2d: need to explain how they deal with randomization vs determinism and progressive vs non progressiveness
 
 
 * make 2d/1d tests deal with randomized sequences appropriately? (integration might be hard... lots of samples needing to be generated. hard for blue noise)
  * i wonder if the blue noise speedup idea you have would be any better? not for 2d....
  * maybe just have discrepancy deal with randomization. integration has lots of samples so kinda handles randomization in that sense already.
 
-* I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.
+Dunno:
+* shrink the integration graphs?
+* Make a 1d and 2d generic readme to explain when they are used and also to put hand picked global results and analysis in. intro section per family?
+* samples in 1d / 2d: need a "comparison vs others" section. to showcase vs worse (worst?) and better (best?) of the family
 
-? is hammerlsey ok with tests doing non power of 2 sample counts on it? i think probably not, but check it out.
 
 
-* there are a lot of disk sampling and other things in the progressive projective blue noise code.
-* reread for 2d sequences: http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
 
 
 Docs:
