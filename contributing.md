@@ -119,6 +119,8 @@ A list of specific things the project needs.
 
 ### Sphere sampling patterns
 * http://extremelearning.com.au/how-to-generate-uniformly-random-points-on-n-spheres-and-n-balls/
+* fib on spheres and caps: http://marc-b-reynolds.github.io/math/2018/06/21/SFPoints4ET.html
+* points on a sphere: https://www.cmu.edu/biolphys/deserno/pdf/sphere_equi.pdf
 
 ### Circle sampling patterns
 * Vogel Disk: https://www.gamedev.net/articles/programming/graphics/contact-hardening-soft-shadows-made-fast-r4906/
@@ -131,12 +133,27 @@ A list of specific things the project needs.
 * https://twitter.com/eric_heitz/status/1105097492964741120?s=03
 * can do blue noise and white noise via rejection sampling
 
+### 1d dithering patterns
+* as a gateway to 2d dithering patterns.
+* 1d dithering is like dice rolls over time (could look at blue vs white noise dice rolls!)
+* explain relationship between dithering and integration (temporal integration)
+
 ### 2d Dithering Patterns
 * ign
 * void and cluster
 * bayer
 * from paniq for blue noise: basically: fill a square image with uniform noise, stencil out a center circle with feathering, take an inverse FFT and tada, blue noise
 * Cover dithering and triangle distributed noise? and the things here: http://bartwronski.com/2016/10/30/dithering-part-three-real-world-2d-quantization-dithering/
+* Animated dithering is something different than static dithering. Then can do taa and not, etc.
+* Talk about how dithering relates to sample points.
+* 2d sample points: (x,y)=f(x)
+* 2d do: z=f(x,y)
+* ?how does 1d dithering differ from 1d sample points? An important question to answer to clear some things up.
+* 2d sample points: when you have a 2d region you need to take samples of.
+* 2d dithering: when you have 2d data that you need to decrease precision on.
+* Integration comes up in dithering when you animate it.
+* Fewer bits to represent a higher bit depth. Either Integrate it explicitly (actually, or with taa), or let display / eyes integrate it.
+* Talk about ordered dithering and thresholding.
 
 ### Documentation
 * mention how sampling is like convolution in frequency space somewhere?
