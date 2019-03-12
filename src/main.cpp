@@ -39,6 +39,9 @@ int main(int argc, char **argv)
 For sure:
   maybe try this for integration tests... render 2x as large on each side and scale down.
  * could try jittering each graph a sub pixel amount too.
+* need to fix legend rendering.  it's absolute pixels, so doesn't scale.
+? maybe try making all graphs do supersampling? make default have width of 512, and intermediate width of 1024?
+
 * remove mention of 1d discrepancy wrap around. i nuked it cause it wasn't useful.
 * test your links on each page, i think some are broken!
 * I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.
