@@ -7,19 +7,11 @@ Discrepancy is calculated by finding the region with the largest difference betw
 
 In higher dimensions, the same process is followed with rectangular regions.  Sometimes this process will be simplified to just considering regions where one point is at the origin, which is an approximation of discrepancy calculated more quickly, called "Star Discrepancy", which is written as D*.
 
-The discrepancy test has two functions available:
-* CalculateDiscrepancy()
-* CalculateDiscrepancyWrapAround()
-
 CalculateDiscrepancy() calculates discrepancy assuming that 0 and 1 do not wrap around and are "hard walls".
 
 The right most empty section that it checks for discrepancy is between the right most point and 1.0.
 
-CalculateDiscrepancyWrapAround() calculates discrepancy assuming that 0 and 1 DO wrap around.
-
-The right most empty section that it checks for discrepancy is between the right most point and the left most point, but wrapping around as if they were neighbors.
-
-There are times when the things you are sampling wrap around, and other times when they don't, so it's important to know how your sampling sequence behaves in each situation.  These two discrepancy calculations can help you understand that better.
+For a while, I had a torroidal (wrap around) discrepancy calculation test, to analyze sequences for times when you are sampling something that wraps around, like angles on a circle.  It ended up being fairly rare that the "wrap around region" was the region with the largest discrepancy so i removed the test, since the graph looked virtually identical to the non wrap around version.
 
 ## Links
 
