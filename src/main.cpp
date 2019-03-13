@@ -38,6 +38,18 @@ int main(int argc, char **argv)
 
 For sure:
 
+* quite a few lds results making for busy graphs.
+ * can we make focused "manual" graphs which compare things individually better?
+ * i'd like to see how hammersley vs hammersley offset looks.
+
+* ok, wolfram alpha and wikipedia are not so far off after all...
+ * both have D-1 axes of halton.
+ * wolfram says reverse the bits for the second axis
+ * wikipedia says n/N for the second axis (should we add 1/N*2 ??)
+ * wolfram also talks about bit truncation.  Does that also apply to wikipedia setup?
+
+* need to make sure hammersley wolfram bit truncation is working out like you had on paper.
+
 * I'm finding conflicting info about what hammersley really even is. wikipedia says (1/k, halton).  Wolfram says (halton, reverse bits halton).
 
 * hammersley paper (book) pdf from 1964

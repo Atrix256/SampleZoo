@@ -52,54 +52,32 @@ static void Hammersley(std::vector<Vec2>& values, size_t numValues, size_t trunc
         // y axis
         values[i][1] = 0.0f;
         {
-            size_t n = i >> truncateBits;
-            size_t mask = size_t(1) << (numBits - 1 - truncateBits);
-
+            size_t n = ReverseBits(i, numBits) >> truncateBits;
             float base = 1.0f / 2.0f;
-            while (mask)
+            while (n)
             {
-                if (n & mask)
+                if (n & 1)
                     values[i][1] += base;
-                mask /= 2;
+                n /= 2;
                 base /= 2.0f;
             }
         }
     }
 }
 
-static void Halton(std::vector<Vec2>& values, size_t numValues, size_t baseX, size_t baseY, bool skipZero = true)
+static void VanDerCorput(std::vector<Vec2>& values, size_t base, int axis, bool skipZero)
 {
-    values.resize(numValues);
-
-    // calculate the sample points
-    for (size_t i = 0; i < numValues; ++i)
+    for (size_t i = 0; i < values.size(); ++i)
     {
-        // x axis
-        values[i][0] = 0.0f;
+        values[i][axis] = 0.0f;
+        float denominator = float(base);
+        size_t n = i + (skipZero ? 1 : 0);
+        while (n > 0)
         {
-            float denominator = float(baseX);
-            size_t n = i + (skipZero ? 1 : 0);
-            while (n > 0)
-            {
-                size_t multiplier = n % baseX;
-                values[i][0] += float(multiplier) / denominator;
-                n = n / baseX;
-                denominator *= float(baseX);
-            }
-        }
-
-        // y axis
-        values[i][1] = 0.0f;
-        {
-            float denominator = float(baseY);
-            size_t n = i + (skipZero ? 1 : 0);
-            while (n > 0)
-            {
-                size_t multiplier = n % baseY;
-                values[i][1] += float(multiplier) / denominator;
-                n = n / baseY;
-                denominator *= float(baseY);
-            }
+            size_t multiplier = n % base;
+            values[i][axis] += float(multiplier) / denominator;
+            n = n / base;
+            denominator *= base;
         }
     }
 }
@@ -150,37 +128,64 @@ void _2d::Samples::LDS::Sobol(std::vector<Vec2>& values, size_t numValues, std::
 
 void _2d::Samples::LDS::Halton_2_3_Zero(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    Halton(values, numValues, 2, 3, false);
+    values.resize(numValues);
+    VanDerCorput(values, 2, 0, false);
+    VanDerCorput(values, 3, 1, false);
 }
 
 void _2d::Samples::LDS::Halton_2_3(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    Halton(values, numValues, 2, 3);
+    values.resize(numValues);
+    VanDerCorput(values, 2, 0, true);
+    VanDerCorput(values, 3, 1, true);
 }
 
 void _2d::Samples::LDS::Halton_5_7(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    Halton(values, numValues, 5, 7);
+    values.resize(numValues);
+    VanDerCorput(values, 5, 0, true);
+    VanDerCorput(values, 7, 1, true);
 }
 
 void _2d::Samples::LDS::Halton_13_9(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    Halton(values, numValues, 13, 9);
+    values.resize(numValues);
+    VanDerCorput(values, 13, 0, true);
+    VanDerCorput(values, 9, 1, true);
 }
 
-void _2d::Samples::LDS::Hammersley(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+/*
+void _2d::Samples::LDS::HammersleyWolfram2(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     ::Hammersley(values, numValues, 0);
 }
 
-void _2d::Samples::LDS::Hammersley_1Bit(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+void _2d::Samples::LDS::HammersleyWolfram_1Bit(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     ::Hammersley(values, numValues, 1);
 }
 
-void _2d::Samples::LDS::Hammersley_2Bits(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+void _2d::Samples::LDS::HammersleyWolfram_2Bits(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     ::Hammersley(values, numValues, 2);
+}
+*/
+
+void _2d::Samples::LDS::HammersleyWikipedia2(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+{
+    values.resize(numValues);
+    VanDerCorput(values, 2, 0, true);
+    for (size_t i = 0; i < numValues; ++i)
+        values[i][1] = float(i) / float(numValues);
+}
+
+void _2d::Samples::LDS::HammersleyWikipedia2Offset(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+{
+    values.resize(numValues);
+    VanDerCorput(values, 2, 0, true);
+    float offset = 1.0f / float(numValues * 2);
+    for (size_t i = 0; i < numValues; ++i)
+        values[i][1] = offset + float(i) / float(numValues);
 }
 
 void _2d::Samples::LDS::NRooks(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
