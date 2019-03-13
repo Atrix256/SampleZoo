@@ -26,9 +26,9 @@ int main(int argc, char **argv)
     // You can also pop open samples.cpp and comment out sampling types .
     // You can also follow this function call down to see what is actually called and comment out the tests (or family of tests) that you don't want it to do while you iterate.
     // Any modifications you make to those files will be undone when you run premake and re-generate code and documentation.
-    _1d::Tests::AutoTest();
+    //_1d::Tests::AutoTest();
     _2d::Tests::AutoTest();
-    ManualTest();
+    //ManualTest();
 
     DataCache::Save();
     return 0;
@@ -38,8 +38,20 @@ int main(int argc, char **argv)
 
 For sure:
 
+* I'm finding conflicting info about what hammersley really even is. wikipedia says (1/k, halton).  Wolfram says (halton, reverse bits halton).
+
+* hammersley paper (book) pdf from 1964
+* http://www.cs.fsu.edu/~mascagni/Hammersley-Handscomb.pdf
+
 * I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.
+ * hammersley explanation: http://planning.cs.uiuc.edu/node210.html
+
+? i dunno how bit truncation fits into hammersley
+
 ? is hammerlsey ok with tests doing non power of 2 sample counts on it? i think probably not, but check out what it's actually doing.
+
+* add to todos to implement and analyze 2) (t,s)-sequences and (t,m,s)-nets; and 3) lattices
+
 * there are a lot of disk sampling and other things in the progressive projective blue noise code.
 * tests in 1d /2d: need to explain how they deal with randomization vs determinism and progressive vs non progressiveness
 * test your links on each page, i think some are broken!

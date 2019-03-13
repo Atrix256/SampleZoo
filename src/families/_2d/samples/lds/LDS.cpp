@@ -6,6 +6,19 @@ DATE: 3/4/2019
 
 #include "codegen.h"
 
+static size_t ReverseBits(size_t number, size_t numBits)
+{
+    size_t ret = 0;
+    for (size_t bitIndex = 0; bitIndex < numBits; ++bitIndex)
+    {
+        ret = ret << 1;
+        if (number & 1)
+            ret |= 1;
+        number = number >> 1;
+    }
+    return ret;
+}
+
 static void Hammersley(std::vector<Vec2>& values, size_t numValues, size_t truncateBits)
 {
     // figure out how many bits we are working in.
