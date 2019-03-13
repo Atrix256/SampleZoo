@@ -75,8 +75,6 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
             continue;
 
         GraphDesc desc;
-        desc.intermediateWidth = 1024;
-        desc.width = 512;
 
         // useful for log graphs
         //put x axis ticks at every power of 10
@@ -216,8 +214,6 @@ static void MakeFunctionGraph(const LAMBDA& lambda, const char* functionName, co
     GraphDesc desc;
     desc.fileName = fileName;
     desc.title = title;
-    desc.intermediateWidth = 1024;
-    desc.width = 512;
 
     desc.graphItems.resize(1);
     GraphItem& graph = desc.graphItems[0];

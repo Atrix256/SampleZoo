@@ -217,6 +217,10 @@ void MakeGraph(const GraphDesc& desc_)
             if (graphItem.label.length() == 0)
                 continue;
 
+            float scale = float(desc.intermediateWidth) / float(desc.width);
+
+            Vec2 boxSize = scale * Vec2{ 512.0f, 25.0f };
+
             Vec2 outerBoxSize = Vec2{ 20.0f, 20.0f } / Vec2{ 512.0f, 25.0f };
             Vec2 outerBoxMin = Vec2{ 0.1f, 0.5f - outerBoxSize[1] / 2.0f };
             Vec2 outerBoxMax = outerBoxMin + outerBoxSize;
@@ -225,10 +229,10 @@ void MakeGraph(const GraphDesc& desc_)
             Vec2 innerBoxMin = outerBoxMin + (outerBoxSize - innerBoxSize) * 0.5f;
             Vec2 innerBoxMax = innerBoxMin + innerBoxSize;
 
-            Image legend(512, 25, { 1.0f, 1.0f, 1.0f, 1.0f });
+            Image legend(int(boxSize[0]), int(boxSize[1]), { 1.0f, 1.0f, 1.0f, 1.0f });
             DrawBox(legend, outerBoxMin, outerBoxMax, { 0.0f, 0.0f, 0.0f, 1.0f });
             DrawBox(legend, innerBoxMin, innerBoxMax, lineColor);
-            DrawText(legend, graphItem.label.c_str(), { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f / 25.0f, Vec2{ outerBoxMax[0] + 5.0f / 512.0f, 0.5f - 2.5f / 25.0f }, TextHAlign::Left, TextVAlign::Center);
+            DrawText(legend, graphItem.label.c_str(), { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f / 25.0f, Vec2{ outerBoxMax[0] + 5.0f / boxSize[0], 0.5f - 2.5f / boxSize[1] }, TextHAlign::Left, TextVAlign::Center);
             BlendInImage_Resize(image, legend, 0, image.m_height, { 1.0f, 1.0f, 1.0f, 1.0f });
         }
     }
