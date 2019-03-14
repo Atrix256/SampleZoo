@@ -127,7 +127,7 @@ void _2d::Samples::LDS::Halton_13_9(std::vector<Vec2>& values, size_t numValues,
 void _2d::Samples::LDS::HammersleyA2NoOffset(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
-    VanDerCorput(values, 2, 0, true, false, 0);
+    VanDerCorput(values, 2, 0, false, false, 0);
     for (size_t i = 0; i < numValues; ++i)
         values[i][1] = float(i) / float(numValues);
 }
@@ -135,7 +135,7 @@ void _2d::Samples::LDS::HammersleyA2NoOffset(std::vector<Vec2>& values, size_t n
 void _2d::Samples::LDS::HammersleyA2(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
-    VanDerCorput(values, 2, 0, true, false, 0);
+    VanDerCorput(values, 2, 0, false, false, 0);
     float offset = 1.0f / float(numValues * 2);
     for (size_t i = 0; i < numValues; ++i)
         values[i][1] = offset + float(i) / float(numValues);
@@ -144,7 +144,7 @@ void _2d::Samples::LDS::HammersleyA2(std::vector<Vec2>& values, size_t numValues
 void _2d::Samples::LDS::HammersleyA3(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
-    VanDerCorput(values, 3, 0, true, false, 0);
+    VanDerCorput(values, 3, 0, false, false, 0);
     float offset = 1.0f / float(numValues * 2);
     for (size_t i = 0; i < numValues; ++i)
         values[i][1] = offset + float(i) / float(numValues);
@@ -153,7 +153,7 @@ void _2d::Samples::LDS::HammersleyA3(std::vector<Vec2>& values, size_t numValues
 void _2d::Samples::LDS::HammersleyA5(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
-    VanDerCorput(values, 5, 0, true, false, 0);
+    VanDerCorput(values, 5, 0, false, false, 0);
     float offset = 1.0f / float(numValues * 2);
     for (size_t i = 0; i < numValues; ++i)
         values[i][1] = offset + float(i) / float(numValues);
