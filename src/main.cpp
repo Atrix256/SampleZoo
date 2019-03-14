@@ -38,6 +38,15 @@ int main(int argc, char **argv)
 
 For sure:
 
+* you might not have the bit reversal thing worked out for base > 2. :P
+
+* Chebyshev sampling from simd crawford
+
+
+* after hammersley code is sorted out, need to delete output folder and regen things
+
+! maybe break lds into some sub groups?  lds_hammersley etc?
+
 * quite a few lds results making for busy graphs.
  * can we make focused "manual" graphs which compare things individually better?
  * i'd like to see how hammersley vs hammersley offset looks.
@@ -85,6 +94,7 @@ Docs:
 ! hammersley: if you skip index 0, it doesn't help anything, because you then get the zero from the next sequence! This unless you do N-1 sample items, which is kind of weird and doesn't really help anything.
 * n rooks -> followed regular centered offset best practices
 * sobol: starts at index 1 because first sample is 0. Sound familiar?
+* hammersley offset vs none. getting away from the edges. sound familiar?
 
 * centralize all explanations that you can.
  * link to them from the family specific pages

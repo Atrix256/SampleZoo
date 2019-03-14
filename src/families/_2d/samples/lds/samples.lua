@@ -5,18 +5,22 @@ sampleInfo = {
     Description="Low discrepancy sequences",
     Functions= {
         { name = "NRooks", progressive = false, randomized = true, cache = false },
---[[        { name = "HammersleyWolfram2", progressive = false, randomized = false, cache = false },
-        { name = "HammersleyWolfram3", progressive = false, randomized = false, cache = false },
-        { name = "HammersleyWolfram5", progressive = false, randomized = false, cache = false },
-        { name = "HammersleyWolfram2_1Bit", progressive = false, randomized = false, cache = false },
-        { name = "HammersleyWolfram2_2Bits", progressive = false, randomized = false, cache = false },
-        ]]
-        { name = "HammersleyWikipedia2", progressive = false, randomized = false, cache = false },
-        { name = "HammersleyWikipedia2Offset", progressive = false, randomized = false, cache = false },
---[[        { name = "HammersleyWikipedia3", progressive = false, randomized = false, cache = false },
-        { name = "HammersleyWikipedia5", progressive = false, randomized = false, cache = false },
-        ]]
+
+        { name = "HammersleyA2NoOffset", progressive = false, randomized = false, cache = false },
+        { name = "HammersleyA2", progressive = false, randomized = false, cache = false },
+        { name = "HammersleyA3", progressive = false, randomized = false, cache = false },
+        { name = "HammersleyA5", progressive = false, randomized = false, cache = false },
+
+        { name = "HammersleyB2", progressive = false, randomized = false, cache = false },
+        { name = "HammersleyB3", progressive = false, randomized = false, cache = false },
+        { name = "HammersleyB5", progressive = false, randomized = false, cache = false },
+
+        { name = "HammersleyB2_1Bit", progressive = false, randomized = false, cache = false },
+        { name = "HammersleyB2_2Bit", progressive = false, randomized = false, cache = false },
+        { name = "HammersleyB2_3Bit", progressive = false, randomized = false, cache = false },
+
         { name = "Sobol", progressive = true, randomized = false, cache = false },
+
         { name = "Halton_2_3_Zero", progressive = true, randomized = false, cache = false },
         { name = "Halton_2_3", progressive = true, randomized = false, cache = false },
         { name = "Halton_5_7", progressive = true, randomized = false, cache = false },
