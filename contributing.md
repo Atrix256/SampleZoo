@@ -64,6 +64,8 @@ A list of specific things the project needs.
 * graph: make axis labels instead of using footer text
 * make datacache use file compression (zlib?). The data makes this a very poor proposition. a 30MB data cache file compressed to 27MB for me.
 * look into multithreading the tests & sample generation. data cache would need to be made safe for this.
+ * maybe making the discrepancy test a fork and join operation could be useful.
+ * could also be nice to have things threaded more at the macro level instead of micro.
 * pcg variant or splitmix instead of mersenne twister, says Marc Reynolds.  Faster and higher quality.
 * can we hash samples and test version or something somehow to know when we don't need to re-run a test if the target file already exists?
 * add profile information to the output. We can instrument the autogen'd code to time sample functions and test functions and see where the time is going. Maybe also some custom markers if we want more specific information.
