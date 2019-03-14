@@ -72,6 +72,8 @@ A list of specific things the project needs.
 * save different caches to different files so they aren't such large binary diffs when anything changes.
 * look into using markdeep (html w/ a header to use some javascript) instead of markdown for all this documentation.  Main readme might be markdown but the rest could be html? http://casual-effects.com/markdeep/#templates
 * we should probably have something that lists the sampling types / functions per progressive vs not and randomized vs not, in a sample family specific document.
+* figure out how to decrease compile times.
+ * I think part of it is that auto gen'd code is in headers.  I think if we had more things in .cpp's with .h's that don't change as details change, that compile times would be faster.
 
 ### 1D Sampling Patterns & Tests
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
