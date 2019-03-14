@@ -31,6 +31,9 @@ static void VanDerCorput(std::vector<Vec2>& values, size_t base, int axis, bool 
         ++numBits;
     }
 
+    size_t numBitsPreserved = numBits - truncateBits;
+    size_t bitsPreservedMask = numBitsPreserved > 0 ? (1 << numBitsPreserved) - 1 : 0;
+
     for (size_t i = 0; i < values.size(); ++i)
     {
         values[i][axis] = 0.0f;
@@ -38,7 +41,7 @@ static void VanDerCorput(std::vector<Vec2>& values, size_t base, int axis, bool 
         size_t n = i + (skipZero ? 1 : 0);
         if (reverseBits)
             n = ReverseBits(n, numBits);
-        n = n >> truncateBits;
+        n &= bitsPreservedMask;
         while (n > 0)
         {
             size_t multiplier = n % base;

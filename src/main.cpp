@@ -39,8 +39,9 @@ int main(int argc, char **argv)
 For sure:
 
 * you might not have the bit reversal thing worked out for base > 2. :P
+ * yeah i really think you do.
 
-* Chebyshev sampling from simd crawford
+* Chebyshev sampling from simd crawford. add to reserach list.
 
 
 * after hammersley code is sorted out, need to delete output folder and regen things
@@ -51,11 +52,9 @@ For sure:
  * can we make focused "manual" graphs which compare things individually better?
  * i'd like to see how hammersley vs hammersley offset looks.
 
-* ok, wolfram alpha and wikipedia are not so far off after all...
- * both have D-1 axes of halton.
- * wolfram says reverse the bits for the second axis
- * wikipedia says n/N for the second axis (should we add 1/N*2 ??)
- * wolfram also talks about bit truncation.  Does that also apply to wikipedia setup?
+
+ ? try bit truncation with hammersley A?
+
 
 * need to make sure hammersley wolfram bit truncation is working out like you had on paper.
 
@@ -99,5 +98,15 @@ Docs:
 * centralize all explanations that you can.
  * link to them from the family specific pages
  * make the family specific pages be about technical details specific to that family.
+
+* hammersley b2 with bit truncation: make sure and trim the bits off the end!
+
+
+* ok, wolfram alpha and wikipedia are not so far off after all...
+ * both have D-1 axes of halton.
+ * wolfram says reverse the bits for the second axis
+ * wikipedia says n/N for the second axis (should we add 1/N*2 ??)
+ * wolfram also talks about bit truncation.  Does that also apply to wikipedia setup?
+
 
 */
