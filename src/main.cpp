@@ -26,9 +26,9 @@ int main(int argc, char **argv)
     // You can also pop open samples.cpp and comment out sampling types .
     // You can also follow this function call down to see what is actually called and comment out the tests (or family of tests) that you don't want it to do while you iterate.
     // Any modifications you make to those files will be undone when you run premake and re-generate code and documentation.
-    //_1d::Tests::AutoTest();
+    _1d::Tests::AutoTest();
     _2d::Tests::AutoTest();
-    //ManualTest();
+    ManualTest();
 
     DataCache::Save();
     return 0;
@@ -38,50 +38,26 @@ int main(int argc, char **argv)
 
 For sure:
 
-* you might not have the bit reversal thing worked out for base > 2. :P
- * yeah i really think you do.
-
-* Chebyshev sampling from simd crawford. add to reserach list.
-
-
-* after hammersley code is sorted out, need to delete output folder and regen things
-
-! maybe break lds into some sub groups?  lds_hammersley etc?
-
-* quite a few lds results making for busy graphs.
- * can we make focused "manual" graphs which compare things individually better?
- * i'd like to see how hammersley vs hammersley offset looks.
-
-
- ? try bit truncation with hammersley A?
-
-
-* need to make sure hammersley wolfram bit truncation is working out like you had on paper.
-
-* I'm finding conflicting info about what hammersley really even is. wikipedia says (1/k, halton).  Wolfram says (halton, reverse bits halton).
-
-* hammersley paper (book) pdf from 1964
-* http://www.cs.fsu.edu/~mascagni/Hammersley-Handscomb.pdf
-
-* I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.
- * hammersley explanation: http://planning.cs.uiuc.edu/node210.html
-
-? i dunno how bit truncation fits into hammersley
+* it's ok for halton to skip zero. turn that back on and regenerate images!
 
 ? is hammerlsey ok with tests doing non power of 2 sample counts on it? i think probably not, but check out what it's actually doing.
+ * like for integration and discrepancy tests
 
-* add to todos to implement and analyze 2) (t,s)-sequences and (t,m,s)-nets; and 3) lattices
-
-* there are a lot of disk sampling and other things in the progressive projective blue noise code.
-* tests in 1d /2d: need to explain how they deal with randomization vs determinism and progressive vs non progressiveness
-* test your links on each page, i think some are broken!
-
-* make 2d/1d tests deal with randomized sequences appropriately? (integration might be hard... lots of samples needing to be generated. hard for blue noise)
+ * make 2d/1d tests deal with randomized sequences appropriately? (integration might be hard... lots of samples needing to be generated. hard for blue noise)
  * i wonder if the blue noise speedup idea you have would be any better? not for 2d....
  * maybe just have discrepancy deal with randomization. integration has lots of samples so kinda handles randomization in that sense already.
 
-Dunno:
-* shrink the integration graphs?
+
+TODOs
+
+* progressive means it's unbiased at less than full sequence. not that it's infinite.
+ * seperate from being infinite (open).
+ * need to fix things up on this.
+
+* Chebyshev sampling from simd crawford. add to reserach list.
+* add to todos to implement and analyze 2) (t,s)-sequences and (t,m,s)-nets; and 3) lattices
+* there are a lot of disk sampling and other things in the progressive projective blue noise code.
+
 * Make a 1d and 2d generic readme to explain when they are used and also to put hand picked global results and analysis in. intro section per family?
 * samples in 1d / 2d: need a "comparison vs others" section. to showcase vs worse (worst?) and better (best?) of the family
 
@@ -100,7 +76,7 @@ Docs:
  * make the family specific pages be about technical details specific to that family.
 
 * hammersley b2 with bit truncation: make sure and trim the bits off the end!
-
+* both hammersley explanations are the same when samples are a power of 2. reversing the bits / treating as fraction, and index/N.  same after full set of values anyways. first way gives a better intermediate image.
 
 * ok, wolfram alpha and wikipedia are not so far off after all...
  * both have D-1 axes of halton.
@@ -108,5 +84,12 @@ Docs:
  * wikipedia says n/N for the second axis (should we add 1/N*2 ??)
  * wolfram also talks about bit truncation.  Does that also apply to wikipedia setup?
 
+ * hammersley paper (book) pdf from 1964
+* http://www.cs.fsu.edu/~mascagni/Hammersley-Handscomb.pdf
 
+* I don't think hammersley bit truncation is working correctly.  In 8 samples, truncating 1 bit makes there be 4 unique samples.
+ * hammersley explanation: http://planning.cs.uiuc.edu/node210.html
+
+ * tests in 1d /2d: need to explain how they deal with randomization vs determinism and progressive vs non progressiveness
+* test your links on each page, i think some are broken!
 */

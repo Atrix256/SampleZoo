@@ -6,18 +6,15 @@ sampleInfo = {
     Functions= {
         { name = "NRooks", progressive = false, randomized = true, cache = false },
 
-        { name = "HammersleyA2NoOffset", progressive = false, randomized = false, cache = false },
-        { name = "HammersleyA2", progressive = false, randomized = false, cache = false },
-        { name = "HammersleyA3", progressive = false, randomized = false, cache = false },
-        { name = "HammersleyA5", progressive = false, randomized = false, cache = false },
+        { name = "Hammersley2NoOffset", progressive = false, randomized = false, cache = false },
+        { name = "Hammersley2", progressive = false, randomized = false, cache = false },
+        { name = "Hammersley3", progressive = false, randomized = false, cache = false },
+        { name = "Hammersley5", progressive = false, randomized = false, cache = false },
 
-        { name = "HammersleyB2", progressive = false, randomized = false, cache = false },
-        { name = "HammersleyB3", progressive = false, randomized = false, cache = false },
-        { name = "HammersleyB5", progressive = false, randomized = false, cache = false },
-
-        { name = "HammersleyB2_1Bit", progressive = false, randomized = false, cache = false },
-        { name = "HammersleyB2_2Bit", progressive = false, randomized = false, cache = false },
-        { name = "HammersleyB2_3Bit", progressive = false, randomized = false, cache = false },
+        { name = "Hammersley2_1Bit", progressive = false, randomized = false, cache = false },
+        { name = "Hammersley2_2Bit", progressive = false, randomized = false, cache = false },
+        { name = "Hammersley2_3Bit", progressive = false, randomized = false, cache = false },
+        { name = "Hammersley2_4Bit", progressive = false, randomized = false, cache = false },
 
         { name = "Sobol", progressive = true, randomized = false, cache = false },
 

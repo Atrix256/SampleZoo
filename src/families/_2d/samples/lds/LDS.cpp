@@ -19,7 +19,7 @@ static size_t ReverseBits(size_t number, size_t numBits)
     return ret;
 }
 
-static void VanDerCorput(std::vector<Vec2>& values, size_t base, int axis, bool skipZero, bool reverseBits, size_t truncateBits)
+static void VanDerCorput(std::vector<Vec2>& values, size_t base, int axis, bool skipZero, size_t truncateBits)
 {
     // figure out how many bits we are working in.
     size_t numValues = values.size();
@@ -30,7 +30,6 @@ static void VanDerCorput(std::vector<Vec2>& values, size_t base, int axis, bool 
         value *= 2;
         ++numBits;
     }
-
     size_t numBitsPreserved = numBits - truncateBits;
     size_t bitsPreservedMask = numBitsPreserved > 0 ? (1 << numBitsPreserved) - 1 : 0;
 
@@ -39,8 +38,6 @@ static void VanDerCorput(std::vector<Vec2>& values, size_t base, int axis, bool 
         values[i][axis] = 0.0f;
         float denominator = float(base);
         size_t n = i + (skipZero ? 1 : 0);
-        if (reverseBits)
-            n = ReverseBits(n, numBits);
         n &= bitsPreservedMask;
         while (n > 0)
         {
@@ -99,106 +96,148 @@ void _2d::Samples::LDS::Sobol(std::vector<Vec2>& values, size_t numValues, std::
 void _2d::Samples::LDS::Halton_2_3_Zero(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
-    VanDerCorput(values, 2, 0, false, false, 0);
-    VanDerCorput(values, 3, 1, false, false, 0);
+    VanDerCorput(values, 2, 0, true, 0);
+    VanDerCorput(values, 3, 1, true, 0);
 }
 
 void _2d::Samples::LDS::Halton_2_3(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
-    VanDerCorput(values, 2, 0, true, false, 0);
-    VanDerCorput(values, 3, 1, true, false, 0);
+    VanDerCorput(values, 2, 0, true, 0);
+    VanDerCorput(values, 3, 1, true, 0);
 }
 
 void _2d::Samples::LDS::Halton_5_7(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
-    VanDerCorput(values, 5, 0, true, false, 0);
-    VanDerCorput(values, 7, 1, true, false, 0);
+    VanDerCorput(values, 5, 0, true, 0);
+    VanDerCorput(values, 7, 1, true, 0);
 }
 
 void _2d::Samples::LDS::Halton_13_9(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
-    VanDerCorput(values, 13, 0, true, false, 0);
-    VanDerCorput(values, 9, 1, true, false, 0);
+    VanDerCorput(values, 13, 0, true, 0);
+    VanDerCorput(values, 9, 1, true, 0);
 }
 
-void _2d::Samples::LDS::HammersleyA2NoOffset(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+void _2d::Samples::LDS::Hammersley2NoOffset(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
-    VanDerCorput(values, 2, 0, false, false, 0);
+    VanDerCorput(values, 2, 0, false, 0);
     for (size_t i = 0; i < numValues; ++i)
         values[i][1] = float(i) / float(numValues);
 }
 
-void _2d::Samples::LDS::HammersleyA2(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+void _2d::Samples::LDS::Hammersley2(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
-    VanDerCorput(values, 2, 0, false, false, 0);
+    VanDerCorput(values, 2, 0, false, 0);
     float offset = 1.0f / float(numValues * 2);
     for (size_t i = 0; i < numValues; ++i)
         values[i][1] = offset + float(i) / float(numValues);
 }
 
-void _2d::Samples::LDS::HammersleyA3(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+void _2d::Samples::LDS::Hammersley3(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
-    VanDerCorput(values, 3, 0, false, false, 0);
+    VanDerCorput(values, 3, 0, false, 0);
     float offset = 1.0f / float(numValues * 2);
     for (size_t i = 0; i < numValues; ++i)
         values[i][1] = offset + float(i) / float(numValues);
 }
 
-void _2d::Samples::LDS::HammersleyA5(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+void _2d::Samples::LDS::Hammersley5(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
-    VanDerCorput(values, 5, 0, false, false, 0);
+    VanDerCorput(values, 5, 0, false, 0);
     float offset = 1.0f / float(numValues * 2);
     for (size_t i = 0; i < numValues; ++i)
         values[i][1] = offset + float(i) / float(numValues);
 }
 
-void _2d::Samples::LDS::HammersleyB2(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+void _2d::Samples::LDS::Hammersley2_1Bit(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
+    size_t truncatedBits = 1;
+
     values.resize(numValues);
-    VanDerCorput(values, 2, 0, false, false, 0);
-    VanDerCorput(values, 2, 1, false, true, 0);
+    VanDerCorput(values, 2, 0, false, truncatedBits);
+
+    size_t value = 1;
+    size_t numBits = 0;
+    while (value < numValues)
+    {
+        value *= 2;
+        ++numBits;
+    }
+    size_t numBitsPreserved = numBits - truncatedBits;
+    size_t multiplier = size_t(1) << numBitsPreserved;
+    float offset = 1.0f / float(numValues * 2);
+    for (size_t i = 0; i < numValues; ++i)
+        values[i][1] = offset + float(int(float(multiplier) * float(i) / float(numValues))) / float(multiplier);
 }
 
-void _2d::Samples::LDS::HammersleyB3(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+void _2d::Samples::LDS::Hammersley2_2Bit(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
+    size_t truncatedBits = 2;
+
     values.resize(numValues);
-    VanDerCorput(values, 3, 0, false, false, 0);
-    VanDerCorput(values, 3, 1, false, true, 0);
+    VanDerCorput(values, 2, 0, false, truncatedBits);
+
+    size_t value = 1;
+    size_t numBits = 0;
+    while (value < numValues)
+    {
+        value *= 2;
+        ++numBits;
+    }
+    size_t numBitsPreserved = numBits - truncatedBits;
+    size_t multiplier = size_t(1) << numBitsPreserved;
+    float offset = 1.0f / float(numValues * 2);
+    for (size_t i = 0; i < numValues; ++i)
+        values[i][1] = offset + float(int(float(multiplier) * float(i) / float(numValues))) / float(multiplier);
 }
 
-void _2d::Samples::LDS::HammersleyB5(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+void _2d::Samples::LDS::Hammersley2_3Bit(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
+    size_t truncatedBits = 3;
+
     values.resize(numValues);
-    VanDerCorput(values, 5, 0, false, false, 0);
-    VanDerCorput(values, 5, 1, false, true, 0);
+    VanDerCorput(values, 2, 0, false, truncatedBits);
+
+    size_t value = 1;
+    size_t numBits = 0;
+    while (value < numValues)
+    {
+        value *= 2;
+        ++numBits;
+    }
+    size_t numBitsPreserved = numBits - truncatedBits;
+    size_t multiplier = size_t(1) << numBitsPreserved;
+    float offset = 1.0f / float(numValues * 2);
+    for (size_t i = 0; i < numValues; ++i)
+        values[i][1] = offset + float(int(float(multiplier) * float(i) / float(numValues))) / float(multiplier);
 }
 
-void _2d::Samples::LDS::HammersleyB2_1Bit(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
+void _2d::Samples::LDS::Hammersley2_4Bit(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
-    values.resize(numValues);
-    VanDerCorput(values, 2, 0, false, false, 1);
-    VanDerCorput(values, 2, 1, false, true, 1);
-}
+    size_t truncatedBits = 4;
 
-void _2d::Samples::LDS::HammersleyB2_2Bit(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
-{
     values.resize(numValues);
-    VanDerCorput(values, 2, 0, false, false, 2);
-    VanDerCorput(values, 2, 1, false, true, 2);
-}
+    VanDerCorput(values, 2, 0, false, truncatedBits);
 
-void _2d::Samples::LDS::HammersleyB2_3Bit(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
-{
-    values.resize(numValues);
-    VanDerCorput(values, 2, 0, false, false, 3);
-    VanDerCorput(values, 2, 1, false, true, 3);
+    size_t value = 1;
+    size_t numBits = 0;
+    while (value < numValues)
+    {
+        value *= 2;
+        ++numBits;
+    }
+    size_t numBitsPreserved = numBits - truncatedBits;
+    size_t multiplier = size_t(1) << numBitsPreserved;
+    float offset = 1.0f / float(numValues * 2);
+    for (size_t i = 0; i < numValues; ++i)
+        values[i][1] = offset + float(int(float(multiplier) * float(i) / float(numValues))) / float(multiplier);
 }
 
 void _2d::Samples::LDS::NRooks(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
