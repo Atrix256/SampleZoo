@@ -38,8 +38,6 @@ int main(int argc, char **argv)
 
 For sure:
 
-* it's ok for halton to skip zero. turn that back on and regenerate images!
-
 ? is hammerlsey ok with tests doing non power of 2 sample counts on it? i think probably not, but check out what it's actually doing.
  * like for integration and discrepancy tests
 
@@ -48,11 +46,12 @@ For sure:
  * maybe just have discrepancy deal with randomization. integration has lots of samples so kinda handles randomization in that sense already.
 
 
-TODOs
+backlog TODOs 
 
 * progressive means it's unbiased at less than full sequence. not that it's infinite.
  * seperate from being infinite (open).
  * need to fix things up on this.
+ * yes: https://twitter.com/stefan_3d/status/1106498925337477120
 
 * Chebyshev sampling from simd crawford. add to reserach list.
 * add to todos to implement and analyze 2) (t,s)-sequences and (t,m,s)-nets; and 3) lattices

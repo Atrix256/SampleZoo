@@ -170,11 +170,10 @@ void _2d::Samples::LDS::Hammersley2_1Bit(std::vector<Vec2>& values, size_t numVa
         value *= 2;
         ++numBits;
     }
-    size_t numBitsPreserved = numBits - truncatedBits;
-    size_t multiplier = size_t(1) << numBitsPreserved;
+    size_t multiplier = size_t(1) << truncatedBits;
     float offset = 1.0f / float(numValues * 2);
     for (size_t i = 0; i < numValues; ++i)
-        values[i][1] = offset + float(int(float(multiplier) * float(i) / float(numValues))) / float(multiplier);
+        values[i][1] = offset + float(i / multiplier) / float(numValues / multiplier);
 }
 
 void _2d::Samples::LDS::Hammersley2_2Bit(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
@@ -191,11 +190,10 @@ void _2d::Samples::LDS::Hammersley2_2Bit(std::vector<Vec2>& values, size_t numVa
         value *= 2;
         ++numBits;
     }
-    size_t numBitsPreserved = numBits - truncatedBits;
-    size_t multiplier = size_t(1) << numBitsPreserved;
+    size_t multiplier = size_t(1) << truncatedBits;
     float offset = 1.0f / float(numValues * 2);
     for (size_t i = 0; i < numValues; ++i)
-        values[i][1] = offset + float(int(float(multiplier) * float(i) / float(numValues))) / float(multiplier);
+        values[i][1] = offset + float(i / multiplier) / float(numValues / multiplier);
 }
 
 void _2d::Samples::LDS::Hammersley2_3Bit(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
@@ -212,11 +210,10 @@ void _2d::Samples::LDS::Hammersley2_3Bit(std::vector<Vec2>& values, size_t numVa
         value *= 2;
         ++numBits;
     }
-    size_t numBitsPreserved = numBits - truncatedBits;
-    size_t multiplier = size_t(1) << numBitsPreserved;
+    size_t multiplier = size_t(1) << truncatedBits;
     float offset = 1.0f / float(numValues * 2);
     for (size_t i = 0; i < numValues; ++i)
-        values[i][1] = offset + float(int(float(multiplier) * float(i) / float(numValues))) / float(multiplier);
+        values[i][1] = offset + float(i / multiplier) / float(numValues / multiplier);
 }
 
 void _2d::Samples::LDS::Hammersley2_4Bit(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
@@ -233,11 +230,10 @@ void _2d::Samples::LDS::Hammersley2_4Bit(std::vector<Vec2>& values, size_t numVa
         value *= 2;
         ++numBits;
     }
-    size_t numBitsPreserved = numBits - truncatedBits;
-    size_t multiplier = size_t(1) << numBitsPreserved;
+    size_t multiplier = size_t(1) << truncatedBits;
     float offset = 1.0f / float(numValues * 2);
     for (size_t i = 0; i < numValues; ++i)
-        values[i][1] = offset + float(int(float(multiplier) * float(i) / float(numValues))) / float(multiplier);
+        values[i][1] = offset + float(i / multiplier) / float(numValues / multiplier);
 }
 
 void _2d::Samples::LDS::NRooks(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
