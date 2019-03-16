@@ -95,6 +95,7 @@ A list of specific things the project needs.
 * probably should do some rational samples to go with the irrational ones. easy enough to do and can show some interesting things.
 * subrandom numbers? from your blog post.
 * for 1d mitchells best candidate blue noise, instead of a binary search, since the samples are roughly even, could probably just find what % the sample is from 0-1 and linearly search from that % through the number list.  Maybe check and see if it's faster.
+* regular sampling is different if you are considering a wrap around domain or not: https://twitter.com/proceduralguy/status/1106275593719558144
 
 ### 2d Sampling Patterns and tests
 * best candidate.  Erin suggested kd tree with branch and bounds to find nearest point as an optimization. This would work better for 2d and beyond.
