@@ -117,20 +117,28 @@ A list of specific things the project needs.
 * your progressive projective blue noise
 * this O(N) non progressive blue noise technique from Robert Bridson: https://www.jasondavies.com/poisson-disc/  (https://www.cs.ubc.ca/~rbridson/docs/bridson-siggraph07-poissondisk.pdf)
 * reread this for sources of 2d patterns: http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
+* blue noise through optimal transport.
+ * optimal transport: https://mathematical-tours.github.io/book-basics-sources/ot-sources/TransportEN.pdf
+ * blue noise through optimal transport: http://www.geometry.caltech.edu/pubs/dGBOD12.pdf
 
 ### Sphere sampling patterns
 * http://extremelearning.com.au/how-to-generate-uniformly-random-points-on-n-spheres-and-n-balls/
 * fib on spheres and caps: http://marc-b-reynolds.github.io/math/2018/06/21/SFPoints4ET.html
 * points on a sphere: https://www.cmu.edu/biolphys/deserno/pdf/sphere_equi.pdf
 
+### hemisphere sampling patterns
+* square to hemisphere: https://twitter.com/paniq/status/1106558922566062080
+
 ### Circle /disk sampling patterns
 * Vogel Disk: https://www.gamedev.net/articles/programming/graphics/contact-hardening-soft-shadows-made-fast-r4906/
 * to dft, try this? Reverse the random point in disk thing.  Polar but squared distances.  Dft the resulting points in square!
 * sampling on disks and spheres: https://github.com/matt77hias/fibpy
 * square to disk transforms: http://jcgt.org/published/0005/02/01/
+* iq square to circle transform: https://twitter.com/iquilezles/status/1106127681974747136?s=03
 
 ### Triangle sampling patterns
 * https://pharr.org/matt/blog/2019/02/27/triangle-sampling-1.html
+* https://pharr.org/matt/blog/2019/03/13/triangle-sampling-1.5.html
 * uniform point in triangle: https://twitter.com/TechSparx/status/1093193006440726529?s=03
 * https://twitter.com/eric_heitz/status/1105097492964741120?s=03
 * can do blue noise and white noise via rejection sampling
