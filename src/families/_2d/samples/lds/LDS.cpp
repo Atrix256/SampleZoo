@@ -96,8 +96,8 @@ void _2d::Samples::LDS::Sobol(std::vector<Vec2>& values, size_t numValues, std::
 void _2d::Samples::LDS::Halton_2_3_Zero(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
 {
     values.resize(numValues);
-    VanDerCorput(values, 2, 0, true, 0);
-    VanDerCorput(values, 3, 1, true, 0);
+    VanDerCorput(values, 2, 0, false, 0);
+    VanDerCorput(values, 3, 1, false, 0);
 }
 
 void _2d::Samples::LDS::Halton_2_3(std::vector<Vec2>& values, size_t numValues, std::mt19937& rng)
