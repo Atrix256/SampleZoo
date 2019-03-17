@@ -8,6 +8,8 @@
 ![irrational_numbers](../../../_2d/samples/irrational_numbers/CalculateDiscrepancy.png)  
 ### Low Discrepancy Sequences
 ![lds](../../../_2d/samples/lds/CalculateDiscrepancy.png)  
+### Hammersley Low Discrepancy Sequence
+![lds_hammersley](../../../_2d/samples/lds_hammersley/CalculateDiscrepancy.png)  
 ### Regular Sampling
 ![regular](../../../_2d/samples/regular/CalculateDiscrepancy.png)  
 ### Uniform Random Number Sampling
