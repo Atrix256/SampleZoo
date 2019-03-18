@@ -15,6 +15,18 @@ Wikipedia describes it exactly like I have (https://en.wikipedia.org/wiki/Low-di
 
 Wolfram math world says that the last axis isn't index / N, but instead, you reverse the bits and treat them like fractions.  It turns out that these are actually exactly equivalent (same values, same order) so long as you are using base 2, and that you have a power of 2 number of samples.  (more generaly, when using base N and a power of N number of samples, you reverse the N-its and treat them like fractions)
 
+### The Usual Regular Sampling Situation
+
+Hammersley is Van Der Corput sequences on all axes except one (which you could also say it's Halton on all axes except one, which means the same thing), but that one axis is just regular sampling.
+
+All the common descriptions of Hammersley I could find left it at that, but if you think back to the 1d regular sampling, you'll remember that index/N is not really great for regular sampling.
+
+If you need a refresher on that: [1D Regular Sampling](../../../2d/output/_1d/samples/regular/page.md)  
+
+At this point in time, I don't see much of a difference
+
+TODO: finish this section. Maybe do manual test to compare offset vs not
+
 ### Truncating Bits
 
 Beyond the above, you can also modify Hammersley sequences by "truncating bits" (bits in base 2, trits in base 3, etc) from the least significant side of the numbers.
@@ -97,12 +109,4 @@ y4 = 000 = 0
 
 Going beyond 3 bits gives a regular grid as well, but with fewer unique points. Truncating 4 bits gives you a 4x4 grid. Truncating 5 bits gives you a 2x2 grid. Truncating 6 bits gives you a single point where all the samples lie, at (0,0).
 
-### The Usual Regular Sampling Situation
-
-Hammersley is Van Der Corput sequences on all axes except one (which you could also say it's Halton on all axes except one, which means the same thing), but that one axis is just regular sampling.
-
-All the common descriptions of Hammersley I could find left it at that, but if you think back to the 1d regular sampling, you'll remember that index/N is not really great for regular sampling.
-
-If you need a refresher on that: [1D Regular Sampling](../../../2d/output/_1d/samples/regular/page.md)  
-
-TODO: move this up. Make manual test images to show things.
+From my testing, truncating bits in 2d makes for a worse sequence, but maybe it works better in higher dimensions.
