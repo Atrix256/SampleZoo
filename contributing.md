@@ -118,6 +118,7 @@ A list of specific things the project needs.
 ### 2d Dithering Patterns
 * ign
 * void and cluster
+* gpu void and cluster https://github.com/jdupuy/BlueNoiseDitherMaskTiles
 * bayer
 * from paniq for blue noise: basically: fill a square image with uniform noise, stencil out a center circle with feathering, take an inverse FFT and tada, blue noise
 
