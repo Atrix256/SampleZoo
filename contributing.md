@@ -106,6 +106,9 @@ A list of specific things the project needs.
 * sampling on spheres and hemispheres
 * making pmj02 more quickly: http://www.jcgt.org/published/0008/01/04/paper.pdf
 * deterministic point process: https://arxiv.org/pdf/1207.6083.pdf and https://arxiv.org/pdf/1609.06840.pdf
+* orthogonal array sampling (esp for higher dims) https://cs.dartmouth.edu/~wjarosz/publications/jarosz19orthogonal.html
+* https://eheitzresearch.wordpress.com/762-2/
+* https://eheitzresearch.wordpress.com/772-2/
 
 ### Circle sampling patterns
 * Vogel Disk: https://www.gamedev.net/articles/programming/graphics/contact-hardening-soft-shadows-made-fast-r4906/
@@ -121,6 +124,7 @@ A list of specific things the project needs.
 * gpu void and cluster https://github.com/jdupuy/BlueNoiseDitherMaskTiles
 * bayer
 * from paniq for blue noise: basically: fill a square image with uniform noise, stencil out a center circle with feathering, take an inverse FFT and tada, blue noise
+* gpu void and cluster algorithm: https://github.com/jdupuy/BlueNoiseDitherMaskTiles
 
 ### Documentation
 * mention how sampling is like convolution in frequency space somewhere?
