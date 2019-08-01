@@ -9,7 +9,7 @@ For randomized sampling types, it does this test several times and reports the m
 
 There is no difference in this test for progressive vs non progressive sequences since it only ever generates a single 128 length sequence per sequence type.
 
-No windowing function is used (TODO: use a windowing function?)
+No windowing function is used, but in some cases (non torroidal sampling!), a windowing function may make sense.
 
 # Test Results
  tests done:

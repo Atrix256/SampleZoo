@@ -2,8 +2,8 @@
 
 # Table of Contents
 
-* [Progressive vs Non Progressive Sequeneces](./doc/progressive.md)
-* [Randomized vs Deterministic Sequeneces](./doc/randomized.md)
+* [Progressive and Open Sequences](./doc/progressive.md)
+* [Randomized vs Deterministic Sequences](./doc/randomized.md)
 * [Discrete Fourier Transform (DFT) Testing](./doc/dft.md)
 
 ## Blue Noise Algorithms

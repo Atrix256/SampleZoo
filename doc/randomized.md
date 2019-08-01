@@ -1,4 +1,4 @@
-# Randomized vs Deterministic Sequeneces
+# Randomized vs Deterministic Sequences
 
 Randomized sequences are sequences that use random numbers as part of generating sample points.
 
