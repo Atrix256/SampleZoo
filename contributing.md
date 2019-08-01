@@ -74,11 +74,13 @@ A list of specific things the project needs.
 * we should probably have something that lists the sampling types / functions per progressive vs not and randomized vs not, in a sample family specific document.
 * figure out how to decrease compile times.
  * I think part of it is that auto gen'd code is in headers.  I think if we had more things in .cpp's with .h's that don't change as details change, that compile times would be faster.
+* if the data cache gets too large, a way to get some space back is to not save lists of samples that are smaller than some threshold. 1d blue noise generates a lot for the dft for instance, that would be fairly quick to regenerate.
+* whenever autogend docs label a test or sample, make a hyperlink to click to go to the page for it
 
 ### 1D Sampling Patterns & Tests
 * more irrational numbers such as the silver ratio and the plastic constant. Just meaningful irrational numbers though. 
 * low discrepancy sequences (basic, more exotic, scrambled, etc!)
-* other 1d blue noise methods including: poisson disk, relaxation.
+* other 1d blue noise methods including: dart throwing, relaxation.
 * blue noise from eigenvectors: https://twitter.com/TechSparx/status/1093902404867760129
 * jittered grid
 * other 1d sampling patterns not listed here!
@@ -96,8 +98,11 @@ A list of specific things the project needs.
 * show how regular 1d sampling has aliasing problems. Also show how random samples trade the aliasing for noise. 
 * discrepancy and integration tests should really do multiple tests for randomized samples.
 * probably should do some rational samples to go with the irrational ones. easy enough to do and can show some interesting things.
+* subrandom numbers? from your blog post.
+* for 1d mitchells best candidate blue noise, instead of a binary search, since the samples are roughly even, could probably just find what % the sample is from 0-1 and linearly search from that % through the number list.  Maybe check and see if it's faster.
+* regular sampling is different if you are considering a wrap around domain or not: https://twitter.com/proceduralguy/status/1106275593719558144
 
-### 2d Sampling Patterns
+### 2d Sampling Patterns and tests
 * best candidate.  Erin suggested kd tree with branch and bounds to find nearest point as an optimization. This would work better for 2d and beyond.
 * progressive multijittered sequences (PMJ) - https://graphics.pixar.com/library/ProgressiveMultiJitteredSampling/pmj_slides.pdf
 * correlated multi jittering: https://graphics.pixar.com/library/MultiJitteredSampling/paper.pdf
@@ -110,13 +115,47 @@ A list of specific things the project needs.
 * https://eheitzresearch.wordpress.com/762-2/
 * https://eheitzresearch.wordpress.com/772-2/
 
-### Circle sampling patterns
+### Circle / disk sampling patterns
+* when someone requests regular sampling of 17 samples, what should we do? right now it does 4x4 and adds zero samples for the rest.
+ * we should maybe find the most equal pair of factors that go into whatever number they asked for? not sure.
+* dart throwing and other 2d blue noise sample point generation strategies.
+* subrandom numbers? from your blog post.
+* 2d "plot average" test? could have "average distance from center". Could also just draw a line showing how it moves around the center.. unknown. like the 1d numberline average test but for 2d.
+* we could do (selected?) 1d tests on the projections of the 2d sampling patterns.
+* latin squares? quincunx?, n queens?
+* should randomized sequences go through multiple tests and report avg, min, max?
+* projective blue noise
+* your progressive projective blue noise
+* this O(N) non progressive blue noise technique from Robert Bridson: https://www.jasondavies.com/poisson-disc/  (https://www.cs.ubc.ca/~rbridson/docs/bridson-siggraph07-poissondisk.pdf)
+* reread this for sources of 2d patterns: http://extremelearning.com.au/unreasonable-effectiveness-of-quasirandom-sequences/
+* blue noise through optimal transport.
+ * optimal transport: https://mathematical-tours.github.io/book-basics-sources/ot-sources/TransportEN.pdf
+ * blue noise through optimal transport: http://www.geometry.caltech.edu/pubs/dGBOD12.pdf
 * Vogel Disk: https://www.gamedev.net/articles/programming/graphics/contact-hardening-soft-shadows-made-fast-r4906/
+* to dft, try this? Reverse the random point in disk thing.  Polar but squared distances.  Dft the resulting points in square!
+* sampling on disks and spheres: https://github.com/matt77hias/fibpy
+* square to disk transforms: http://jcgt.org/published/0005/02/01/
+* iq square to circle transform: https://twitter.com/iquilezles/status/1106127681974747136?s=03
+
+### Sphere sampling patterns
+* http://extremelearning.com.au/how-to-generate-uniformly-random-points-on-n-spheres-and-n-balls/
+* fib on spheres and caps: http://marc-b-reynolds.github.io/math/2018/06/21/SFPoints4ET.html
+* points on a sphere: https://www.cmu.edu/biolphys/deserno/pdf/sphere_equi.pdf
+
+### hemisphere sampling patterns
+* square to hemisphere: https://twitter.com/paniq/status/1106558922566062080
 
 ### Triangle sampling patterns
 * https://pharr.org/matt/blog/2019/02/27/triangle-sampling-1.html
+* https://pharr.org/matt/blog/2019/03/13/triangle-sampling-1.5.html
 * uniform point in triangle: https://twitter.com/TechSparx/status/1093193006440726529?s=03
+* https://twitter.com/eric_heitz/status/1105097492964741120?s=03
 * can do blue noise and white noise via rejection sampling
+
+### 1d dithering patterns
+* as a gateway to 2d dithering patterns.
+* 1d dithering is like dice rolls over time (could look at blue vs white noise dice rolls!)
+* explain relationship between dithering and integration (temporal integration)
 
 ### 2d Dithering Patterns
 * ign
@@ -125,6 +164,18 @@ A list of specific things the project needs.
 * bayer
 * from paniq for blue noise: basically: fill a square image with uniform noise, stencil out a center circle with feathering, take an inverse FFT and tada, blue noise
 * gpu void and cluster algorithm: https://github.com/jdupuy/BlueNoiseDitherMaskTiles
+* Cover dithering and triangle distributed noise? and the things here: http://bartwronski.com/2016/10/30/dithering-part-three-real-world-2d-quantization-dithering/
+* Animated dithering is something different than static dithering. Then can do taa and not, etc.
+* Talk about how dithering relates to sample points.
+* 2d sample points: (x,y)=f(x)
+* 2d do: z=f(x,y)
+* ?how does 1d dithering differ from 1d sample points? An important question to answer to clear some things up.
+* 2d sample points: when you have a 2d region you need to take samples of.
+* 2d dithering: when you have 2d data that you need to decrease precision on.
+* Integration comes up in dithering when you animate it.
+* Fewer bits to represent a higher bit depth. Either Integrate it explicitly (actually, or with taa), or let display / eyes integrate it.
+* Talk about ordered dithering and thresholding.
+* https://github.com/Atrix256/BlueNoiseDitherPatternGeneration
 
 ### Documentation
 * mention how sampling is like convolution in frequency space somewhere?
@@ -132,8 +183,23 @@ A list of specific things the project needs.
 * maybe an overview page for 1d sampling, saying what is best at what?
 * maybe a 1d page explaining a good order to read things in to best understand them?
 
+### Research (read these, turn them into todos)
+* look into this for rank 1 lattices: http://simul.iro.umontreal.ca/latbuilder/
+* sobol with a small table? from marc b reynolds. https://github.com/Marc-B-Reynolds/Stand-alone-junk/blob/master/src/SFH/Sobol.h  includes stratified sobol sampling?
+* irrational numbers with integers instead. https://twitter.com/marc_b_reynolds/status/1101608307217842176
+* Stochastic Sampling in Computer Graphics (Pixar) http://www.cs.cmu.edu/afs/cs/academic/class/15462-s15/www/lec_slides/p51-cook.pdf
+* correlated multi jittered sampling: https://graphics.pixar.com/library/MultiJitteredSampling/paper.pdf
+* bilateral blue noise: https://www.liyiwei.org/papers/noise-siga13/
+* multiclass blue noise sampling: https://www.liyiwei.org/papers/noise-sig10/
+* a survey of blue noise sampling: http://archive.ymsc.tsinghua.edu.cn/pacm_download/38/276-2015_JCST_BNSurvey.pdf
+* links at https://www.jasondavies.com/poisson-disc/
+* find the electrostatic half toning paper
+* Blue noise sampling using an N-body simulation-based method.  https://link.springer.com/article/10.1007/s00371-017-1382-9
+* sample transformation zoo from http://www.realtimerendering.com/raytracinggems/
+
 ## Alan Specific TODOs
 * progressive projective blue noise
+* try and think about random projection blue noise
 * gather papers linked from progressive projective blue noise project
 * James has a bluenoise type sampling he wants to contribute called dpp. Hit him up when you are ready to open things up!
 * check out UTK (a sample comparison toolkit) for inspiration etc. https://utk-team.github.io/utk/
