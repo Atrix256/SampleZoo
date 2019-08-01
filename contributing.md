@@ -64,11 +64,16 @@ A list of specific things the project needs.
 * graph: make axis labels instead of using footer text
 * make datacache use file compression (zlib?). The data makes this a very poor proposition. a 30MB data cache file compressed to 27MB for me.
 * look into multithreading the tests & sample generation. data cache would need to be made safe for this.
+ * maybe making the discrepancy test a fork and join operation could be useful.
+ * could also be nice to have things threaded more at the macro level instead of micro.
 * pcg variant or splitmix instead of mersenne twister, says Marc Reynolds.  Faster and higher quality.
 * can we hash samples and test version or something somehow to know when we don't need to re-run a test if the target file already exists?
 * add profile information to the output. We can instrument the autogen'd code to time sample functions and test functions and see where the time is going. Maybe also some custom markers if we want more specific information.
 * save different caches to different files so they aren't such large binary diffs when anything changes.
 * look into using markdeep (html w/ a header to use some javascript) instead of markdown for all this documentation.  Main readme might be markdown but the rest could be html? http://casual-effects.com/markdeep/#templates
+* we should probably have something that lists the sampling types / functions per progressive vs not and randomized vs not, in a sample family specific document.
+* figure out how to decrease compile times.
+ * I think part of it is that auto gen'd code is in headers.  I think if we had more things in .cpp's with .h's that don't change as details change, that compile times would be faster.
 * if the data cache gets too large, a way to get some space back is to not save lists of samples that are smaller than some threshold. 1d blue noise generates a lot for the dft for instance, that would be fairly quick to regenerate.
 * whenever autogend docs label a test or sample, make a hyperlink to click to go to the page for it
 
@@ -106,6 +111,11 @@ A list of specific things the project needs.
 * sampling on spheres and hemispheres
 * making pmj02 more quickly: http://www.jcgt.org/published/0008/01/04/paper.pdf
 * deterministic point process: https://arxiv.org/pdf/1207.6083.pdf and https://arxiv.org/pdf/1609.06840.pdf
+* orthogonal array sampling (esp for higher dims) https://cs.dartmouth.edu/~wjarosz/publications/jarosz19orthogonal.html
+* https://eheitzresearch.wordpress.com/762-2/
+* https://eheitzresearch.wordpress.com/772-2/
+
+### Circle / disk sampling patterns
 * when someone requests regular sampling of 17 samples, what should we do? right now it does 4x4 and adds zero samples for the rest.
  * we should maybe find the most equal pair of factors that go into whatever number they asked for? not sure.
 * dart throwing and other 2d blue noise sample point generation strategies.
@@ -121,6 +131,11 @@ A list of specific things the project needs.
 * blue noise through optimal transport.
  * optimal transport: https://mathematical-tours.github.io/book-basics-sources/ot-sources/TransportEN.pdf
  * blue noise through optimal transport: http://www.geometry.caltech.edu/pubs/dGBOD12.pdf
+* Vogel Disk: https://www.gamedev.net/articles/programming/graphics/contact-hardening-soft-shadows-made-fast-r4906/
+* to dft, try this? Reverse the random point in disk thing.  Polar but squared distances.  Dft the resulting points in square!
+* sampling on disks and spheres: https://github.com/matt77hias/fibpy
+* square to disk transforms: http://jcgt.org/published/0005/02/01/
+* iq square to circle transform: https://twitter.com/iquilezles/status/1106127681974747136?s=03
 
 ### Sphere sampling patterns
 * http://extremelearning.com.au/how-to-generate-uniformly-random-points-on-n-spheres-and-n-balls/
@@ -129,13 +144,6 @@ A list of specific things the project needs.
 
 ### hemisphere sampling patterns
 * square to hemisphere: https://twitter.com/paniq/status/1106558922566062080
-
-### Circle /disk sampling patterns
-* Vogel Disk: https://www.gamedev.net/articles/programming/graphics/contact-hardening-soft-shadows-made-fast-r4906/
-* to dft, try this? Reverse the random point in disk thing.  Polar but squared distances.  Dft the resulting points in square!
-* sampling on disks and spheres: https://github.com/matt77hias/fibpy
-* square to disk transforms: http://jcgt.org/published/0005/02/01/
-* iq square to circle transform: https://twitter.com/iquilezles/status/1106127681974747136?s=03
 
 ### Triangle sampling patterns
 * https://pharr.org/matt/blog/2019/02/27/triangle-sampling-1.html
@@ -152,8 +160,10 @@ A list of specific things the project needs.
 ### 2d Dithering Patterns
 * ign
 * void and cluster
+* gpu void and cluster https://github.com/jdupuy/BlueNoiseDitherMaskTiles
 * bayer
 * from paniq for blue noise: basically: fill a square image with uniform noise, stencil out a center circle with feathering, take an inverse FFT and tada, blue noise
+* gpu void and cluster algorithm: https://github.com/jdupuy/BlueNoiseDitherMaskTiles
 * Cover dithering and triangle distributed noise? and the things here: http://bartwronski.com/2016/10/30/dithering-part-three-real-world-2d-quantization-dithering/
 * Animated dithering is something different than static dithering. Then can do taa and not, etc.
 * Talk about how dithering relates to sample points.
@@ -165,6 +175,7 @@ A list of specific things the project needs.
 * Integration comes up in dithering when you animate it.
 * Fewer bits to represent a higher bit depth. Either Integrate it explicitly (actually, or with taa), or let display / eyes integrate it.
 * Talk about ordered dithering and thresholding.
+* https://github.com/Atrix256/BlueNoiseDitherPatternGeneration
 
 ### Documentation
 * mention how sampling is like convolution in frequency space somewhere?

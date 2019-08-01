@@ -72,12 +72,14 @@ This technique, and higher dimensional versions of it called jittered grid, give
 From the tests you can see that jittered grid has almost as high discrepancy as RegularCentered() but not quite.  In the integration tests you can't see a difference in integration error, although if we had some sort of visual example, you would see that it had less aliasing problems (at the cost of introducing noise to the result).
 
 ![RegularJittered](../../../_1d/samples/regular/MakeNumberline_RegularJittered.png)  
+
+This is also known as stratified sampling.
 
 # Test Results
  samples tested:
-* Regular (Not Progressive, Not Randomized)
-* RegularCentered (Not Progressive, Not Randomized)
-* RegularCenteredOffset (Not Progressive, Not Randomized)
+* Regular (Not Progressive, Deterministic)
+* RegularCentered (Not Progressive, Deterministic)
+* RegularCenteredOffset (Not Progressive, Deterministic)
 * RegularJittered (Not Progressive, Randomized)
 ## Regular
 ### Discrete Fourier Transform
@@ -100,10 +102,7 @@ From the tests you can see that jittered grid has almost as high discrepancy as 
 ### Numberline
 ![RegularJittered](../../../_1d/samples/regular/MakeNumberline_RegularJittered.png)  
 ## Discrepancy Test
-### CalculateDiscrepancy
 ![regular](../../../_1d/samples/regular/CalculateDiscrepancy.png)  
-### CalculateDiscrepancyWrapAround
-![regular](../../../_1d/samples/regular/CalculateDiscrepancyWrapAround.png)  
 ## Numerical Integration
 ### Linear
 ![regular](../../../_1d/samples/regular/Linear.png)  

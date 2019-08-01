@@ -1,8 +1,8 @@
 # Test Results
  samples tested:
-* Regular (Not Progressive, Not Randomized)
-* RegularCentered (Not Progressive, Not Randomized)
-* RegularCenteredOffset (Not Progressive, Not Randomized)
+* Regular (Not Progressive, Deterministic)
+* RegularCentered (Not Progressive, Deterministic)
+* RegularCenteredOffset (Not Progressive, Deterministic)
 * RegularJittered (Not Progressive, Randomized)
 ## Regular
 ### Discrete Fourier Transform
@@ -25,10 +25,7 @@
 ### Numberline
 ![RegularJittered](../../../_1d/samples/regular/MakeNumberline_RegularJittered.png)  
 ## Discrepancy Test
-### CalculateDiscrepancy
 ![regular](../../../_1d/samples/regular/CalculateDiscrepancy.png)  
-### CalculateDiscrepancyWrapAround
-![regular](../../../_1d/samples/regular/CalculateDiscrepancyWrapAround.png)  
 ## Numerical Integration
 ### Linear
 ![regular](../../../_1d/samples/regular/Linear.png)  

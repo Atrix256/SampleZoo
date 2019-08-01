@@ -11,6 +11,7 @@ defines the types used to represent a pixel.
 
 #include <stdint.h>
 #include "math.h"
+#include "vector.h"
 #include "color_spaces.h"
 
 struct PixelRGBAF32_PMA;
@@ -69,6 +70,24 @@ struct PixelRGBAF32_PMA
         g *= alpha;
         b *= alpha;
         a *= alpha;
+    }
+
+    Vec4 ToVec4()
+    {
+        Vec4 ret;
+        ret[0] = r;
+        ret[1] = g;
+        ret[2] = b;
+        ret[3] = a;
+        return ret;
+    }
+
+    void FromVec4(const Vec4& v)
+    {
+        r = v[0];
+        g = v[1];
+        b = v[2];
+        a = v[3];
     }
 
     float r, g, b, a;

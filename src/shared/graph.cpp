@@ -12,8 +12,12 @@ DATE: 2/17/2019
 
 static const float c_goldenRatioConjugate = 0.61803398875f;
 
-void MakeGraph(const GraphDesc& desc)
+void MakeGraph(const GraphDesc& desc_)
 {
+    GraphDesc desc = desc_;
+    if (desc.intermediateWidth == 0)
+        desc.intermediateWidth = desc.width;
+
     static const Vec2 graphMin = { 0.1f, 0.0f };
     static const Vec2 graphMax = { 1.0f, 0.9f };
 
@@ -22,7 +26,7 @@ void MakeGraph(const GraphDesc& desc)
     static const float log10epsilon = 0.000001f;
 
     // make the graph image
-    Image image(desc.width, desc.width, { 1.0f, 1.0f, 1.0f, 1.0f });
+    Image image(desc.intermediateWidth, desc.intermediateWidth, { 1.0f, 1.0f, 1.0f, 1.0f });
 
     // draw a darker region where the line graph will be
     DrawBox(image, graphMin, graphMax, { 0.25f, 0.25f, 0.25f, 1.0f });
@@ -47,6 +51,12 @@ void MakeGraph(const GraphDesc& desc)
                 dataMax[0] = std::max(dataMax[0], dataPoint[0]);
                 dataMax[1] = std::max(dataMax[1], dataPoint[1]);
             }
+        }
+
+        if (desc.forceXMinMax)
+        {
+            dataMin[0] = desc.xMinMax[0];
+            dataMax[0] = desc.xMinMax[1];
         }
 
         if (desc.forceYMinMax)
@@ -182,6 +192,10 @@ void MakeGraph(const GraphDesc& desc)
             }
         }
     }
+    else if (desc.graphType == GraphType::Continuous)
+    {
+        desc.continuousCallback(image, graphMin, graphMax, dataMin, dataMax);
+    }
 
     // make the title
     DrawText(image, desc.title, { 0.0f, 0.0f, 0.0f, 1.0f }, 25.0f * virtualPixel, Vec2{ 0.55f, 0.0f }, TextHAlign::Center, TextVAlign::Top);
@@ -203,6 +217,10 @@ void MakeGraph(const GraphDesc& desc)
             if (graphItem.label.length() == 0)
                 continue;
 
+            float scale = float(desc.intermediateWidth) / float(desc.width);
+
+            Vec2 boxSize = scale * Vec2{ 512.0f, 25.0f };
+
             Vec2 outerBoxSize = Vec2{ 20.0f, 20.0f } / Vec2{ 512.0f, 25.0f };
             Vec2 outerBoxMin = Vec2{ 0.1f, 0.5f - outerBoxSize[1] / 2.0f };
             Vec2 outerBoxMax = outerBoxMin + outerBoxSize;
@@ -211,12 +229,19 @@ void MakeGraph(const GraphDesc& desc)
             Vec2 innerBoxMin = outerBoxMin + (outerBoxSize - innerBoxSize) * 0.5f;
             Vec2 innerBoxMax = innerBoxMin + innerBoxSize;
 
-            Image legend(512, 25, { 1.0f, 1.0f, 1.0f, 1.0f });
+            Image legend(int(boxSize[0]), int(boxSize[1]), { 1.0f, 1.0f, 1.0f, 1.0f });
             DrawBox(legend, outerBoxMin, outerBoxMax, { 0.0f, 0.0f, 0.0f, 1.0f });
             DrawBox(legend, innerBoxMin, innerBoxMax, lineColor);
-            DrawText(legend, graphItem.label.c_str(), { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f / 25.0f, Vec2{ outerBoxMax[0] + 5.0f / 512.0f, 0.5f - 2.5f / 25.0f }, TextHAlign::Left, TextVAlign::Center);
+            DrawText(legend, graphItem.label.c_str(), { 0.0f, 0.0f, 0.0f, 1.0f }, 20.0f / 25.0f, Vec2{ outerBoxMax[0] + 5.0f / boxSize[0], 0.5f - 2.5f / boxSize[1] }, TextHAlign::Left, TextVAlign::Center);
             BlendInImage_Resize(image, legend, 0, image.m_height, { 1.0f, 1.0f, 1.0f, 1.0f });
         }
+    }
+
+    // resize the image if we should
+    if (desc.width != desc.intermediateWidth)
+    {
+        int finalHeight = int(float(image.m_height) * float(desc.width) / float(desc.intermediateWidth));
+        ResizeImageBicubic(image, desc.width, finalHeight);
     }
 
     // save the final image

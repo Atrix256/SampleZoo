@@ -24,24 +24,21 @@ local sampleFamilies = scandir('cd ./src/families/ && ls -d ./*/ && cd ../..')
 
 local file = io.open("./toc.md", "w")
 
-file:write('# Table of Contents\n\n')
-
 for k,v in pairs(sampleFamilies) do
 	local sampleFamily = string.sub(v,3,-2)
-	file:write('## '..sampleFamily..'\n\n')
-	file:write('### Samples\n\n')
+	file:write('## '..sampleFamily..' Samples\n\n')
 	local sampleTypes = scandir('cd ./src/families/'..sampleFamily..'/samples/ && ls -d ./*/ && cd ../../..')
 	for k2,v2 in pairs(sampleTypes) do
 		local sampleType = string.sub(v2,3,-2)
 		dofile("./src/families/"..sampleFamily.."/samples/"..sampleType.."/samples.lua")
-		file:write('['..sampleInfo.ShortName..'](output/'..sampleFamily..'/samples/'..sampleType..'/page.md) - '..sampleInfo.Description..'  \n')
+		file:write(' * ['..sampleInfo.ShortName..'](output/'..sampleFamily..'/samples/'..sampleType..'/page.md) - '..sampleInfo.Description..'  \n')
 	end
-	file:write('### Tests\n\n')
+	file:write('## '..sampleFamily..' Tests\n\n')
     local subTestTypes = scandir('cd ./src/families/'..sampleFamily..'/tests/ && ls -d ./*/ && cd ../../..')
     for k2,v2 in pairs(subTestTypes) do
         local subTestType = string.sub(v2,3,-2)
         dofile("./src/families/"..sampleFamily.."/tests/"..subTestType.."/tests.lua")
-        file:write('['..testInfo.ShortName..'](output/'..sampleFamily..'/tests/'..subTestType..'/page.md) - '..testInfo.Description..'  \n')
+        file:write(' * ['..testInfo.ShortName..'](output/'..sampleFamily..'/tests/'..subTestType..'/page.md) - '..testInfo.Description..'  \n')
     end	
 end
 
@@ -79,7 +76,19 @@ for k,v in pairs(sampleFamilies) do
 
                 for sampleFunctionIndex, sampleFunctionInfo in ipairs(sampleInfo.Functions) do
                     if testInfo.MakesIndividualImages then
-                        file:write("#### "..sampleFunctionInfo.name.."\n")
+                        file:write("#### "..sampleFunctionInfo.name.." (")
+
+                        if sampleFunctionInfo.progressive then
+                            file:write("Progressive, ")
+                        else
+                            file:write("Not Progressive, ")
+                        end
+                        if sampleFunctionInfo.randomized then
+                            file:write("Randomized)\n")
+                        else
+                            file:write("Deterministic)\n")
+                        end
+
                         file:write("!["..sampleFunctionInfo.name.."](../../../"..sampleFamily.."/samples/"..sampleType.."/"..testFunctionName.."_"..sampleFunctionInfo.name..".png)  \n")
                     end
                 end
@@ -133,7 +142,7 @@ for k,v in pairs(sampleFamilies) do
             if sampleFunctionInfo.randomized then
                 file:write("Randomized)\n")
             else
-                file:write("Not Randomized)\n")
+                file:write("Deterministic)\n")
             end
         end
 
@@ -165,7 +174,9 @@ for k,v in pairs(sampleFamilies) do
             if testInfo.MakesSampleTypeImages then
                 file:write("## "..testInfo.LongName.."\n")
                 for testFunctionIndex, testFunctionName in ipairs(testInfo.Functions) do
-                    file:write("### "..testFunctionName.."\n")
+                    if testInfo.SamplePageShowsFunctionName then
+                        file:write("### "..testFunctionName.."\n")
+                    end
                     file:write("!["..sampleType.."](../../../"..sampleFamily.."/samples/"..sampleType.."/"..testFunctionName..".png)  \n")
                 end
             end

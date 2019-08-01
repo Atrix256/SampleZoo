@@ -10,6 +10,7 @@ Uses samples to integrate 1d functions
 #include "codegen.h"
 #include "shared/math.h"
 #include "shared/graph.h"
+#include "manual_test.h"
 
 static const float e = 2.71828182845904523536f;
 
@@ -33,14 +34,13 @@ static float Exp(float x)
 
 static float Quadratic(float x)
 {
-    // function: y = 3x^2+2x+1
-    return 3.0f*x*x + 2.0f*x + 1.0f;
+    // function: y = -3x^2+2x+1
+    return -3.0f*x*x + 2.0f*x + 1.0f;
 }
 
 template <typename LAMBDA>
 static void GetErrorData(const std::vector<float>& samples, GraphItem& error, const LAMBDA& lambda, const float c_actual)
 {
-    error.data.resize(samples.size());
     float approximation = 0.0f;
     for (size_t index = 0, count = samples.size(); index < count; ++index)
     {
@@ -49,6 +49,18 @@ static void GetErrorData(const std::vector<float>& samples, GraphItem& error, co
         error.data[index][0] = float(index + 1);
         error.data[index][1] = fabsf(c_actual - approximation) / c_actual;
     }
+}
+
+template <typename LAMBDA>
+static float Integrate(const std::vector<float>& samples, const LAMBDA& lambda)
+{
+    float approximation = 0.0f;
+    for (size_t index = 0, count = samples.size(); index < count; ++index)
+    {
+        float y = lambda(samples[index]);
+        approximation = Lerp(approximation, y, 1.0f / float(index + 1));
+    }
+    return approximation;
 }
 
 template <typename LAMBDA>
@@ -98,14 +110,32 @@ static void DoIntegrationTest(const std::vector<std::vector<SampleGenerateInfo_1
         float globalmaxy = -FLT_MAX;
         for (const SampleGenerateInfo_1d& sampleFunction : sampleType)
         {
-            std::vector<float> samples;
-            sampleFunction.function(samples, sampleCount, sampleFunction.cacheKey, false);
             sprintf(fileName, "output/%s/samples/%s/%s%s_%s.png", sampleFunction.sampleFamily, sampleFunction.sampleType, fileNamePrefix, testName, sampleFunction.name);
 
             desc.graphItems.resize(desc.graphItems.size() + 1);
             GraphItem& error = *desc.graphItems.rbegin();
             error.label = sampleFunction.name;
-            GetErrorData(samples, error, lambda, c_actual);
+            error.data.resize(sampleCount);
+
+            // progressive sequences are faster and easier to test
+            if (sampleFunction.progressive)
+            {
+                std::vector<float> samples;
+                sampleFunction.function(samples, sampleCount, sampleFunction.cacheKey, false);
+                GetErrorData(samples, error, lambda, c_actual);
+            }
+            // non progressive sequences require many more operations!
+            else
+            {
+                std::vector<float> samples;
+                for (size_t errorSampleCount = 0; errorSampleCount < sampleCount; ++errorSampleCount)
+                {
+                    sampleFunction.function(samples, errorSampleCount + 1, sampleFunction.cacheKey, false);
+                    float approximation = Integrate(samples, lambda);
+                    error.data[errorSampleCount][0] = float(errorSampleCount + 1);
+                    error.data[errorSampleCount][1] = fabsf(c_actual - approximation) / c_actual;
+                }
+            }
 
             // put y axis ticks at the min and max y
             std::vector<GraphAxisTick> yAxisTicks;
@@ -170,5 +200,59 @@ void _1d::Tests::Integration::Exp(const std::vector<std::vector<SampleGenerateIn
 
 void _1d::Tests::Integration::Quadratic(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix)
 {
-    DoIntegrationTest(sampleFunctions, testName, fileNamePrefix, ::Quadratic, 3.0f);
+    DoIntegrationTest(sampleFunctions, testName, fileNamePrefix, ::Quadratic, 1.0f);
+}
+
+template <typename LAMBDA>
+static void MakeFunctionGraph(const LAMBDA& lambda, const char* functionName, const char* title)
+{
+    static size_t c_sampleCount = 256;  // TODO: not enough!
+
+    char fileName[256];
+    sprintf(fileName, "output/_1d/tests/integration/%s.png", functionName);
+
+    GraphDesc desc;
+    desc.fileName = fileName;
+    desc.title = title;
+
+    desc.graphItems.resize(1);
+    GraphItem& graph = desc.graphItems[0];
+
+    float miny = 0.0;
+    float maxy = -FLT_MAX;
+
+    for (size_t sampleIndex = 0; sampleIndex < c_sampleCount; ++sampleIndex)
+    {
+        float x = float(sampleIndex) / float(c_sampleCount - 1);
+        float y = lambda(x);
+        graph.data.push_back(Vec2{x, y});
+
+        miny = std::min(miny, y);
+        maxy = std::max(maxy, y);
+    }
+
+    desc.forceYMinMax = true;
+    desc.yMinMax = Vec2{ miny, maxy };
+
+    char buffer[256];
+
+    sprintf(buffer, "%0.2f", miny);
+    desc.yAxisTicks.push_back({ miny, buffer, TextHAlign::Right, TextVAlign::Bottom });
+
+    sprintf(buffer, "%0.2f", maxy);
+    desc.yAxisTicks.push_back({ maxy, buffer, TextHAlign::Right, TextVAlign::Top });
+
+    desc.xAxisTicks.push_back({ 0.0f, "0", TextHAlign::Left, TextVAlign::Top });
+    desc.xAxisTicks.push_back({ 1.0f, "1", TextHAlign::Right, TextVAlign::Top });
+
+    MakeGraph(desc);
+}
+
+void _1d::Tests::Integration::ManualTest()
+{
+    // make a graph for each function being integrated, so we can show it as part of the documentation
+    MakeFunctionGraph(::Linear, "linear", "Linear: y = x");
+    MakeFunctionGraph(::Step, "step", "Step: y = x>0.5 ? 1 : 0");
+    MakeFunctionGraph(::Exp, "exp", "Exp: y = e^x");
+    MakeFunctionGraph(::Quadratic, "quadratic", "Quadratic: y = -3x^2+2x+1");
 }

@@ -90,6 +90,7 @@ void _1d::Samples::BlueNoise::BestCandidate10(std::vector<float>& values, size_t
     BestCandidateN(values, numValues, rng, 10);
 }
 
+/*
 void _1d::Samples::BlueNoise::BestCandidateRefined(std::vector<float>& values, size_t numValues, std::mt19937& rng)
 {
     // get the samples
@@ -159,35 +160,22 @@ void _1d::Samples::BlueNoise::BestCandidateRefined(std::vector<float>& values, s
     // fill the samples back in
     BestCandidate(values, numValues, rng);
 }
+*/
 
 void _1d::Samples::BlueNoise::ManualTest()
 {
+    std::vector<std::vector<SampleGenerateInfo_1d>> testFuncs =
     {
-        std::vector<std::vector<SampleGenerateInfo_1d>> testFuncs =
         {
-            {
-                { [](std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_Progressive("blue_noise::BestCandidate", _1d::Samples::BlueNoise::BestCandidate, values, numValues, wantUnique, true); }, "blue_noise::BestCandidate", "_1d", "blue_noise", "BestCandidate", true, true },
-                { [](std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_NonProgressive("regular::RegularJittered", _1d::Samples::Regular::RegularJittered, values, numValues, wantUnique, true); }, "regular::RegularJittered", "_1d", "regular", "RegularJittered", false, true },
-                { [](std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_Progressive("uniform_random::UniformRandom", _1d::Samples::UniformRandom::UniformRandom, values, numValues, wantUnique, true); }, "uniform_random::UniformRandom", "_1d", "uniform_random", "UniformRandom", true, true },
-                { [](std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_Progressive("lds::Sobol", _1d::Samples::LDS::Sobol, values, numValues, wantUnique, false); }, "lds::Sobol", "_1d", "lds", "Sobol", true, false },
-                { [](std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_NonProgressive("regular::RegularCenteredOffset", _1d::Samples::Regular::RegularCenteredOffset, values, numValues, wantUnique, false); }, "regular::RegularCenteredOffset", "_1d", "regular", "RegularCenteredOffset", false, false },
-            }
-        };
+            { [](std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_Progressive("blue_noise::BestCandidate", _1d::Samples::BlueNoise::BestCandidate, values, numValues, wantUnique, true); }, "blue_noise::BestCandidate", "_1d", "blue_noise", "BestCandidate", true, true },
+            { [](std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_NonProgressive("regular::RegularJittered", _1d::Samples::Regular::RegularJittered, values, numValues, wantUnique, true); }, "regular::RegularJittered", "_1d", "regular", "RegularJittered", false, true },
+            { [](std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_Progressive("uniform_random::UniformRandom", _1d::Samples::UniformRandom::UniformRandom, values, numValues, wantUnique, true); }, "uniform_random::UniformRandom", "_1d", "uniform_random", "UniformRandom", true, true },
+            { [](std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_Progressive("lds::Sobol", _1d::Samples::LDS::Sobol, values, numValues, wantUnique, false); }, "lds::Sobol", "_1d", "lds", "Sobol", true, false },
+            { [](std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_NonProgressive("regular::RegularCenteredOffset", _1d::Samples::Regular::RegularCenteredOffset, values, numValues, wantUnique, false); }, "regular::RegularCenteredOffset", "_1d", "regular", "RegularCenteredOffset", false, false },
+        }
+    };
 
-        _1d::Tests::Discrepancy::CalculateDiscrepancy(testFuncs, "CalculateDiscrepancy", "Doc_");
-        _1d::Tests::Discrepancy::CalculateDiscrepancyWrapAround(testFuncs, "CalculateDiscrepancyWrapAround", "Doc_");
-    }
-
-    {
-        std::vector<std::vector<SampleGenerateInfo_1d>> testFuncs =
-        {
-            {
-                { [](std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_Progressive("blue_noise::BestCandidate", _1d::Samples::BlueNoise::BestCandidate, values, numValues, wantUnique,  true); }, "blue_noise::BestCandidate", "_1d", "blue_noise", "BestCandidate", true, true },
-                { [](std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_Progressive("uniform_random::UniformRandom", _1d::Samples::UniformRandom::UniformRandom, values, numValues, wantUnique, true); }, "uniform_random::UniformRandom", "_1d", "uniform_random", "UniformRandom", true, true },
-                { [](std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique) {  DataCache::Instance().m_samples__1d.GetSamples_Progressive("lds::Sobol", _1d::Samples::LDS::Sobol, values, numValues, wantUnique, false); }, "lds::Sobol", "_1d", "lds", "Sobol", true, false },
-            }
-        };
-
-        _1d::Tests::Integration::Quadratic(testFuncs, "Quadratic", "Doc_");
-    }
+    _1d::Tests::Discrepancy::CalculateDiscrepancy(testFuncs, "CalculateDiscrepancy", "Doc_");
+    //_1d::Tests::Discrepancy::CalculateDiscrepancyWrapAround(testFuncs, "CalculateDiscrepancyWrapAround", "Doc_");
+    _1d::Tests::Integration::Quadratic(testFuncs, "Quadratic", "Doc_");
 }

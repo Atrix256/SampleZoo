@@ -18,7 +18,10 @@ local file
 file = io.open("./build/codegen/codegen.h", "w")
 file:write(dotHHeader)
 file:write('#define _CRT_SECURE_NO_WARNINGS // for stb\n\n')
-file:write("#include <vector>\n\n")
+file:write("#include <vector>\n")
+file:write("#include \"shared/vector.h\"\n\n")
+file:write("typedef float SampleType_1d;\n")
+file:write("typedef Vec2 SampleType_2d;\n\n")
 file:write("using SampleGenerate_1d = void(*)(std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique);\n\n")
 file:write("struct SampleGenerateInfo_1d\n{\n")
 file:write("    SampleGenerate_1d function;\n")
@@ -29,7 +32,16 @@ file:write("    const char* name;\n")
 file:write("    bool progressive;\n")
 file:write("    bool randomized;\n")
 file:write("};\n\n")
-file:write("using Test_1d = void(*)(const std::vector<std::vector<SampleGenerateInfo_1d>>& sampleFunctions, const char* testName, const char* fileNamePrefix);\n\n")
+file:write("using SampleGenerate_2d = void(*)(std::vector<Vec2>& values, size_t numValues, const char* cacheKey, bool wantUnique);\n\n")
+file:write("struct SampleGenerateInfo_2d\n{\n")
+file:write("    SampleGenerate_2d function;\n")
+file:write("    const char* cacheKey;\n")
+file:write("    const char* sampleFamily;\n")
+file:write("    const char* sampleType;\n")
+file:write("    const char* name;\n")
+file:write("    bool progressive;\n")
+file:write("    bool randomized;\n")
+file:write("};\n\n")
 file:write("#define countof(array) (sizeof(array) / sizeof(array[0]))\n\n");
 file:write('#include "shared/datacache.h"\n')
 file:write('#include "tests.h"\n')
@@ -85,11 +97,11 @@ for k,v in pairs(sampleFamilies) do
 
             local cacheKey = sampleType.."::"..functionInfo.name;
 
-            file:write("            { [](std::vector<float>& values, size_t numValues, const char* cacheKey, bool wantUnique) {")
+            file:write("            { [](std::vector<SampleType"..sampleFamily..">& values, size_t numValues, const char* cacheKey, bool wantUnique) {")
             if functionInfo.progressive then
-                file:write("  DataCache::Instance().m_samples__1d.GetSamples_Progressive(");
+                file:write("  DataCache::Instance().m_samples_"..sampleFamily..".GetSamples_Progressive(");
             else
-                file:write("  DataCache::Instance().m_samples__1d.GetSamples_NonProgressive(")
+                file:write("  DataCache::Instance().m_samples_"..sampleFamily..".GetSamples_NonProgressive(")
             end
             file:write("\""..cacheKey.."\", ")
             file:write(sampleFamily.."::Samples::"..sampleInfo.CodeName.."::"..functionInfo.name..", ")
@@ -117,12 +129,6 @@ for k,v in pairs(sampleFamilies) do
 	local sampleFamily = string.sub(v,3,-2)
 	file:write('#include "'..sampleFamily..'/tests/autotest.h"\n')
 end
-file:write("\ninline void AutoTest()\n{\n")
-for k,v in pairs(sampleFamilies) do
-	local sampleFamily = string.sub(v,3,-2)
-	file:write('    '..sampleFamily..'::Tests::AutoTest();\n')
-end
-file:write("};\n")
 file:close()
 
 -- make ./build/codegen/datacachesavelist.h
@@ -174,7 +180,7 @@ for k,v in pairs(sampleFamilies) do
         file:write("namespace "..sampleFamily.."\n{\n    namespace Tests\n    {\n        namespace "..testInfo.CodeName.."\n        {\n")
 
         for functionIndex, functionName in ipairs(testInfo.Functions) do
-            file:write("            void "..functionName.."(const std::vector<std::vector<SampleGenerateInfo_1d>>&, const char* testName, const char* fileNamePrefix);\n")
+            file:write("            void "..functionName.."(const std::vector<std::vector<SampleGenerateInfo"..sampleFamily..">>&, const char* testName, const char* fileNamePrefix);\n")
         end
 
         file:write("        };\n    };\n};\n")
@@ -255,7 +261,7 @@ for k,v in pairs(sampleFamilies) do
         file:write("namespace "..sampleFamily.."\n{\n    namespace Samples\n    {\n        namespace "..sampleInfo.CodeName.."\n        {\n")
 
         for functionIndex, functionInfo in ipairs(sampleInfo.Functions) do
-            file:write("            void "..functionInfo.name.."(std::vector<float>& values, size_t numValues, std::mt19937& rng);\n")
+            file:write("            void "..functionInfo.name.."(std::vector<SampleType"..sampleFamily..">& values, size_t numValues, std::mt19937& rng);\n")
         end
 
         file:write("        };\n    };\n};\n")

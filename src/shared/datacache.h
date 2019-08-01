@@ -13,6 +13,8 @@ Holds re-usable data on disk, such as expensive to create sampling patterns, to 
 #include <vector>
 #include <random>
 
+#include "vector.h"
+
 template <typename T>
 struct DataList
 {
@@ -114,7 +116,7 @@ struct DataCacheFamily
                 if (!Read(file, numDataItems))
                     return false;
 
-                std::vector<float>& dataList = dataLists.m_dataLists[dataListIndex];
+                std::vector<T>& dataList = dataLists.m_dataLists[dataListIndex];
                 dataList.resize(numDataItems);
                 for (uint32_t dataItemIndex = 0; dataItemIndex < numDataItems; ++dataItemIndex)
                 {
@@ -242,9 +244,11 @@ public:
     void PostTest()
     {
         m_samples__1d.PostTest();
+        m_samples__2d.PostTest();
         m_rngSeeds.PostTest();
     }
 
     DataCacheFamily<float> m_samples__1d;
+    DataCacheFamily<Vec2> m_samples__2d;
     DataCacheRNGSeeds m_rngSeeds;
 };

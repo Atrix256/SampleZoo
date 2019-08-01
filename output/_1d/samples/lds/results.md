@@ -1,9 +1,9 @@
 # Test Results
  samples tested:
-* Sobol (Progressive, Not Randomized)
-* VanDerCorput2 (Progressive, Not Randomized)
-* VanDerCorput3 (Progressive, Not Randomized)
-* VanDerCorput5 (Progressive, Not Randomized)
+* Sobol (Progressive, Deterministic)
+* VanDerCorput2 (Progressive, Deterministic)
+* VanDerCorput3 (Progressive, Deterministic)
+* VanDerCorput5 (Progressive, Deterministic)
 ## Sobol
 ### Discrete Fourier Transform
 ![Sobol](../../../_1d/samples/lds/DFT_Sobol.png)  
@@ -25,10 +25,7 @@
 ### Numberline
 ![VanDerCorput5](../../../_1d/samples/lds/MakeNumberline_VanDerCorput5.png)  
 ## Discrepancy Test
-### CalculateDiscrepancy
 ![lds](../../../_1d/samples/lds/CalculateDiscrepancy.png)  
-### CalculateDiscrepancyWrapAround
-![lds](../../../_1d/samples/lds/CalculateDiscrepancyWrapAround.png)  
 ## Numerical Integration
 ### Linear
 ![lds](../../../_1d/samples/lds/Linear.png)  

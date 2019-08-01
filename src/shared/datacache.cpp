@@ -50,6 +50,7 @@ void DataCache::Load()
     DataCache& cache = Instance();
     cache.m_samples__1d.Load(file);
     cache.m_rngSeeds.Load(file);
+    cache.m_samples__2d.Load(file);
 
     fclose(file);
 }
@@ -69,6 +70,7 @@ void DataCache::Save()
 
     cache.m_samples__1d.Save(datFile, txtFile, "Samples 1D");
     cache.m_rngSeeds.Save(datFile, txtFile, "RNG Seeds");
+    cache.m_samples__2d.Save(datFile, txtFile, "Samples 2D");
 
     fclose(datFile);
     fclose(txtFile);
@@ -94,7 +96,7 @@ std::mt19937& DataCacheRNGSeeds::GetRNG(const char* cacheKey)
     if (!seed.usedThisRun)
     {
         seed.usedThisRun = true;
-        std::seed_seq fullSeed{ seed.seed[0], seed.seed[1], seed.seed[2], seed.seed[3], seed.seed[4], seed.seed[5], seed.seed[6], seed.seed[7], seed.seed[8] };
+        std::seed_seq fullSeed{ seed.seed[0], seed.seed[1], seed.seed[2], seed.seed[3], seed.seed[4], seed.seed[5], seed.seed[6], seed.seed[7] };
         seed.rng = std::mt19937(fullSeed);
     }
 
