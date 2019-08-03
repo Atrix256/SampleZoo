@@ -4,19 +4,9 @@
 
 Progressive sequences are sequences that keep their desirable properties when using a subset of the entire sequence.
 
-For instance, random numbers are a progressive sequence.  If you have 5 random numbers but want a 6th, you can just add a 6th random number.
+For instance, random numbers are a progressive sequence.  If you have 5 random numbers but only want 3, you can just throw away the last 2 and you still have 3 perfectly good random numbers.
 
-You can also remove items from the end of a progressive sequence without making it invalid.
-
-If you have 5 random numbers but only want 3, you can just ignore the last 2 and you still have 3 random numbers.
-
-Random numbers are special in that you could remove any value and it'd still be a valid random number sequence, but for most other progressive sequences, it's the end that you need to remove samples from to keep the sequence valid.
-
-A property of progressive sequences is that if you have N samples and haven't taken all samples yet, you'll still have "pretty good results" at every step of the way, due to subsets of the sequence 0..M also being valid sequences with the same basic sequence properties.
-
-This is in contrast to non progressive sequences which will usually have very bad intermediary results until the very end.
-
-## Non Progressive Sequences
+For most progressive sequences, it's the end that you need to remove samples from to keep the sequence valid, but some sequences have less restrictive rules.  Random numbers are trivially progressive for any subset.  Sobol is progressive for any power of two region.
 
 Non progressive sequences are sequences where if you want to change the sample count in the sequence, you have to recreate them from scratch.
 
@@ -24,17 +14,27 @@ An example of a non progressive sequence is regular sampling.
 
 Let's say you had 4 regular sampled points in [0,1) : 0, 0.25, 0.5, 0.75
 
-If you want 5 regularly sampled points, you'd have to create it from scratch.  You can't just add another number to make it be the correct thing:  0, 0.2, 0.4, 0.6, 0.8.
-
-Similarly, if you want 3 regularly sampled points, you can't just remove the last sample point to get the correct sequence: 0, 0.333, 0.666
+If you only wanted to use 3 of those samples, it wouldn't be regularly sampled points anymore.  It would be 0, 0.25, 0.5 instead of 0, 0.333, 0.666.
 
 ## Open Sequences
 
 Open sequences are sequences that are unbounded in size.
 
-This makes all open sequences progressive, but not all progressive sequences are open.
+Random numbers are an open sequence: you can add more random numbers to the end, and the sequence as a whole is still perfectly random.
 
-For instance, you could use CCVD to make 512 blue noise sample points, and use techniques from the void and cluster algorithm to make those sample points progressive, but you can't add any more new points after the fact without re-running the relaxation algorithm and invalidating all the existing points.
+Regularly sampled points are not open though.  If you have 4 points: 0, 0.25, 0.5, 0.75, you can't just add a 5th point, you have to remake the sequence from scratch for 5 samples to get 0, 0.2, 0.4, 0.6, 0.8.
+
+Van Der Corput is an example of a non trivial open sequence.  You can keep adding more and more Van Der Corput points to infinity.
+
+All open sequences are progressive, but not all progressive sequences are open.
+
+As a more complex example, you could use CCVD to make 512 blue noise sample points, and use techniques from the void and cluster algorithm to make those sample points progressive, but you can't add any more new points after the fact without re-running the relaxation algorithm and invalidating all the existing points.
+
+## Sets vs Sequences
+
+Sometimes people will refer to samples as sets or sequences.
+
+Sequences have an ordering while sets do not.
 
 ## Sample Zoo Context
 
