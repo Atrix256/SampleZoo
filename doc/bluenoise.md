@@ -39,7 +39,7 @@ Conversely, if you aren't converging, but can reach convergence by switching to 
 
 The power of blue noise comes up when you can't spare afford samples to converge.
 
-The noise pattern left by blue noise is less jarring and less noticeable than white noise or things like low discrepancy sequences, and is more easily removed by denoising techniques such as a low pass filter (aka blue) due to the noise (error) being constrained to high frequencies.
+The noise pattern left by blue noise is less jarring and less noticeable than white noise or things like low discrepancy sequences, and is more easily removed by denoising techniques such as a low pass filter (aka blur) due to the noise (error) being constrained to high frequencies.
 
 Since I'm a real time graphics person, blue noise is very much my friend.  It allows me to get nice looking results with a very low sample count.
 
@@ -53,5 +53,5 @@ https://blog.demofox.org/2018/01/30/what-the-heck-is-blue-noise/ - What the heck
 https://blog.demofox.org/2018/08/07/tiled-blue-noise/ - Tiled blue noise  
 https://blog.demofox.org/2018/08/12/not-all-blue-noise-is-created-equal/ - Not All Blue Noise is Created Equal  
 https://www.princeton.edu/news/2014/02/24/eye-chicken-new-state-matter-comes-view - In the eye of a chicken, a new state of matter comes into view  
-https://blog.demofox.org/2017/10/31/animating-noise-for-integration-over-time/ - some visual examples comparing white noise to blue noise
+https://blog.demofox.org/2017/10/31/animating-noise-for-integration-over-time/ - some visual examples comparing white noise to blue noise  
 https://blog.demofox.org/2017/10/25/transmuting-white-noise-to-blue-red-green-purple/ - making various colors of noise
